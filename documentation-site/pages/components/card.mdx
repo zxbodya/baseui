@@ -13,6 +13,11 @@ import CardBasic from 'examples/card/basic.js';
 import CardWithImageCta from 'examples/card/image-cta.js';
 import CardWithThumbnailCta from 'examples/card/thumbnail-cta.js';
 
+import Overrides from '../../components/overrides';
+import {Card, StyledBody, StyledAction, StyledThumbnail} from 'baseui/card';
+import {Button} from 'baseui/button';
+import * as CardExports from 'baseui/card';
+
 export default Layout;
 
 # Card
@@ -27,8 +32,35 @@ export default Layout;
   <CardWithImageCta />
 </Example>
 
-<Example title="Card With Thumbnail and CTA" path="examples/card/thumbnail-cta.js">
+<Example
+  title="Card With Thumbnail and CTA"
+  path="examples/card/thumbnail-cta.js"
+>
   <CardWithThumbnailCta />
 </Example>
 
-<API heading="Card API" api={require('!!@uber-web-ui/extract-react-types-loader!../../../src/card/card.js')}/>
+## Overrides
+
+<Overrides
+  name="Card"
+  component={CardExports}
+  renderExample={props => (
+    <div style={{width: '328px'}}>
+      <Card
+        overrides={props.overrides}
+        action={<Button style={{width: '100%'}}>Button Label</Button>}
+        headerImage={'https://source.unsplash.com/user/erondu/700x400'}
+        title="Example card"
+        thumbnail={'https://source.unsplash.com/user/erondu/300x300'}
+      >
+        Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla ornare
+        faucibus ex, non facilisis nisl.
+      </Card>
+    </div>
+  )}
+/>
+
+<API
+  heading="Card API"
+  api={require('!!@uber-web-ui/extract-react-types-loader!../../../src/card/card.js')}
+/>
