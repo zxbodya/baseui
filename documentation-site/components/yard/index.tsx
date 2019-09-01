@@ -104,7 +104,10 @@ const Yard: React.FC<TYardProps> = ({
               alignItems: 'center',
             })}
           >
-            <Spinner size={placeholderHeight > 50 ? 50 : placeholderHeight} />
+            <Spinner
+              // todo: backport
+              // size={placeholderHeight > 50 ? 50 : placeholderHeight}
+            />
           </div>
         )}
       />

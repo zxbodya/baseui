@@ -9,8 +9,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": false
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "./**/*.ts", "./**/*.tsx"]
 }

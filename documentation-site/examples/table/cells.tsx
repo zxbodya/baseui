@@ -20,7 +20,7 @@ import {
   StyledAction,
 } from 'baseui/table';
 import {Caption1, Caption2, Paragraph3} from 'baseui/typography';
-import {Theme} from 'baseui/theme';
+import {ThemeT as Theme} from 'baseui';
 
 const StyledHeadingCell = withStyle(StyledCell, {
   paddingTop: 0,

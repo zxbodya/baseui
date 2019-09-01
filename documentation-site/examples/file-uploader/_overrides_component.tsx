@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {FileUploader} from 'baseui/file-uploader';
 import {
-  FileUploaderOverrides,
-  StyleProps,
+  OverridesT as FileUploaderOverrides,
+  StylePropsT as StyleProps,
 } from 'baseui/file-uploader';
 
 export default class Uploader extends React.Component<

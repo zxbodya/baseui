@@ -4,6 +4,8 @@ import {Button} from 'baseui/button';
 
 export default () => (
   <React.Fragment>
+    {/*
+    // @ts-ignore */}
     <Button $as="a" href="https://styletron.org" target="_blank">
       Visit the Styletron docs
     </Button>

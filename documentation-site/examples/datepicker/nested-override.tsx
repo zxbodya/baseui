@@ -2,7 +2,8 @@ import * as React from 'react';
 import {Datepicker} from 'baseui/datepicker';
 
 export default () => {
-  const [singleDate, setSingleDate] = React.useState();
+  // todo: name does not reflect types expected by component
+  const [singleDate, setSingleDate] = React.useState<null|Date|Date[]>();
   return (
     <Datepicker
       value={singleDate || null}

@@ -46,8 +46,8 @@ export default () => (
             getChildMenu: (item: {label: string}) => {
               if (item.label === OPEN_RECENT) {
                 return (
+                  // todo: removed size="compact"
                   <StatefulMenu
-                    size="compact"
                     items={RECENT_FILES}
                     overrides={{
                       List: {style: {width: '200px'}},

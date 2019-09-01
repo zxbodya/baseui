@@ -1,4 +1,5 @@
 import omit from 'just-omit';
+// @ts-ignore todo: ADJOINED is not exported
 import {Textarea, SIZE, ADJOINED} from 'baseui/textarea';
 import {PropTypes} from 'react-view';
 import {TConfig} from '../types';

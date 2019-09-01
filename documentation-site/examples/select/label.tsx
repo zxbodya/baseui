@@ -1,18 +1,21 @@
 import * as React from 'react';
 import {styled} from 'baseui';
-import {Select, Value} from 'baseui/select';
+import {Select, ValueT as Value} from 'baseui/select';
 
-const ColorSwatch = styled('div', (props: any) => {
-  return {
-    width: props.$theme.sizing.scale300,
-    height: props.$theme.sizing.scale300,
-    marginRight: props.$theme.sizing.scale200,
-    display: 'inline-block',
-    backgroundColor: props.$color,
-    verticalAlign: 'baseline',
-    ...props.$theme.borders.border400,
-  };
-});
+const ColorSwatch = styled<'div', {$color: any}>(
+  'div',
+  (props: any) => {
+    return {
+      width: props.$theme.sizing.scale300,
+      height: props.$theme.sizing.scale300,
+      marginRight: props.$theme.sizing.scale200,
+      display: 'inline-block',
+      backgroundColor: props.$color,
+      verticalAlign: 'baseline',
+      ...props.$theme.borders.border400,
+    };
+  },
+);
 
 const getLabel = ({option}: any) => {
   return (

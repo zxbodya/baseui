@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Select, Value} from 'baseui/select';
+import {Select, ValueT as Value} from 'baseui/select';
 
 const options = {
   __ungrouped: [{id: 'Black', color: '#000000'}],

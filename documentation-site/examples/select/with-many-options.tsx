@@ -1,10 +1,15 @@
 import * as React from 'react';
 import {withStyle} from 'baseui';
-import {Select, StyledDropdownListItem, Value} from 'baseui/select';
+import {
+  OptionT,
+  Select,
+  StyledDropdownListItem, ValueT,
+  ValueT as Value,
+} from 'baseui/select';
 import {
   StyledList,
   StyledEmptyState,
-  OptionListProps,
+  OptionListPropsT as OptionListProps,
 } from 'baseui/menu';
 
 import {FixedSizeList} from 'react-window';
@@ -33,6 +38,7 @@ const FixedSizeListItem = ({
   return (
     <ListItem
       key={item.id}
+      // @ts-ignore todo: is this working? to adjust styletron props if so
       style={{
         boxSizing: 'border-box',
         ...style,
@@ -44,7 +50,7 @@ const FixedSizeListItem = ({
   );
 };
 
-const VirtualDropdown = React.forwardRef((props: any, ref) => {
+const VirtualDropdown = React.forwardRef<HTMLUListElement, any>((props: any, ref) => {
   const children = React.Children.toArray(props.children);
 
   if (!children[0] || !children[0].props.item) {
@@ -82,12 +88,12 @@ const VirtualDropdown = React.forwardRef((props: any, ref) => {
   );
 });
 
-const options: {id: number; label: number}[] = [];
+const options: OptionT[] = [];
 
 for (let i = 0; i < 10000; i += 1) {
   options.push({
     id: i,
-    label: i,
+    label: ''+i,
   });
 }
 

@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   TreeView,
   TreeLabel,
-  TreeNode,
-  TreeLabelProps,
+  TreeNodeT as TreeNode,
+  TreeLabelT as TreeLabelProps,
   toggleIsExpanded,
 } from 'baseui/tree-view';
 import {ChevronRight} from 'baseui/icon';

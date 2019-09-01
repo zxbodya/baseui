@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   TreeView,
   toggleIsExpanded,
-  TreeNode,
+  TreeNodeT as TreeNode,
 } from 'baseui/tree-view';
 
 const initialData: TreeNode[] = [

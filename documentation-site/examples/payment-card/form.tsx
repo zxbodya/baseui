@@ -16,9 +16,9 @@ function getFormOverrides(width: string) {
 }
 
 export default () => {
-  const [number, setNumber] = React.useState();
-  const [expiration, setExpiration] = React.useState();
-  const [code, setCode] = React.useState();
+  const [number, setNumber] = React.useState('');
+  const [expiration, setExpiration] = React.useState('');
+  const [code, setCode] = React.useState('');
   const [css] = useStyletron();
 
   const {card} = valid.number(number);
@@ -29,7 +29,8 @@ export default () => {
   }
 
   return (
-    <div className={css({display: 'flex', flexDirecton: 'row'})}>
+    // todo: backport typo
+    <div className={css({display: 'flex', flexDirection: 'row'})}>
       <FormControl
         overrides={getFormOverrides('250px')}
         caption="Card number"
