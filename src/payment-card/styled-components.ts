@@ -7,11 +7,15 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {SIZE} from '../input/index';
 
-export const IconWrapper = styled<{
-  $size: typeof SIZE;
-}>('div', props => {
+export const IconWrapper = styled<
+  'div',
+  {
+    // todo: incorrect flow type
+    $size: keyof typeof SIZE;
+  }
+>('div', props => {
   const {$size, $theme} = props;
-  const margin = {
+  const margin: {[k in keyof typeof SIZE]: string} = {
     [SIZE.mini]: $theme.sizing.scale300,
     [SIZE.compact]: $theme.sizing.scale500,
     [SIZE.default]: $theme.sizing.scale600,

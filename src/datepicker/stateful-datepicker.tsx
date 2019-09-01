@@ -12,7 +12,7 @@ import type {StatefulDatepickerPropsT, DatepickerPropsT} from './types';
 type PropsT<T> = StatefulDatepickerPropsT<DatepickerPropsT<T>, T>;
 
 class StatefulComponent<T = Date> extends React.Component<PropsT<T>> {
-  static defaultProps: PropsT<T> = {
+  static defaultProps: PropsT<any> = {
     initialState: {},
     stateReducer: (type, nextState) => nextState,
     onChange: () => {},

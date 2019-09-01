@@ -82,6 +82,7 @@ class Modal extends React.Component<ModalPropsT, ModalStateT> {
         the next major version upgrade.`);
       }
       // $FlowFixMe: flow complains that this prop doesn't exist
+      // @ts-ignore it indeed should not exist, and if typescript is used - this issue would be catched at compile time
       if (this.props.closable) {
         console.warn(
           'The property `closable` is not supported on the Modal. Did you mean `closeable`?',
@@ -255,6 +256,7 @@ class Modal extends React.Component<ModalPropsT, ModalStateT> {
 
   getChildren() {
     const {children} = this.props;
+    // @ts-ignore
     return typeof children === 'function' ? children() : children;
   }
 

@@ -31,7 +31,7 @@ export type OverridesT = {
   Label?: OverrideT;
 };
 
-type ChildrenT = Array<React.ReactNode>;
+type ChildrenT = Array<React.ReactNode> | React.ReactNode;
 
 // Props shared by all flavors of component
 export type ListPropsT = {
@@ -83,4 +83,5 @@ export type SharedStylePropsArgT = {
   $isRemovableByMove: boolean;
   $isOutOfBounds: boolean;
   $value: React.ReactNode;
+  $index: number; // todo: missing field in flow types
 };

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import {styled} from '../styles/index';
 
-export const Link = styled<{
+export const Link = styled<'a', {
   $isAnimateUnderline: boolean;
   $isFocusVisible: boolean;
 }>('a', ({$theme, $isAnimateUnderline, $isFocusVisible}) => {

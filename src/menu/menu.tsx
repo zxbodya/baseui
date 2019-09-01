@@ -15,7 +15,7 @@ import {
 import OptionList from './option-list';
 import {getOverrides} from '../helpers/overrides';
 // Types
-import type {StatelessMenuPropsT} from './types';
+import type {RenderItemPropsT, StatelessMenuPropsT} from './types';
 import type {LocaleT} from '../locale/types';
 
 import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
@@ -73,7 +73,7 @@ export default function Menu(props: StatelessMenuPropsT) {
       }
       const groupItems = groupedItems[optgroup].map((item, index) => {
         itemIndex = itemIndex + 1;
-        const {getRequiredItemProps = (item, index) => ({})} = props;
+        const {getRequiredItemProps = (item, index) => ({} as RenderItemPropsT)} = props;
 
         const {
           disabled,

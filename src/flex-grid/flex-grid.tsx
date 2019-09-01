@@ -24,7 +24,7 @@ export const BaseFlexGrid = React.forwardRef<HTMLElement, BlockPropsT>(
   ),
 );
 
-const FlexGrid = ({
+const FlexGrid: React.FC<FlexGridPropsT & {forwardedRef:React.Ref<HTMLElement>}> = ({
   forwardedRef,
   children,
   as,
@@ -33,7 +33,7 @@ const FlexGrid = ({
   flexGridColumnGap,
   flexGridRowGap,
   ...restProps
-}): React.ReactNode => {
+}) => {
   const [FlexGrid, flexGridProps] = getOverrides(
     overrides && overrides.Block,
     BaseFlexGrid,
@@ -43,7 +43,7 @@ const FlexGrid = ({
       // coerced to any because because of how react components are typed.
       // cannot guarantee an html element
       // eslint-disable-next-line flowtype/no-weak-types
-      ref={forwardedRef as any}
+      ref={forwardedRef}
       as={as}
       {...restProps}
       {...flexGridProps}
@@ -52,7 +52,8 @@ const FlexGrid = ({
         // flatten fragments so FlexGrid correctly iterates over fragments’ children
         flattenFragments(children).map(
           (
-            child: React.ReactNode,
+            // todo: incorrect component typings - children should be strictly ReactElement[] or implementation below needs to be updated to handle other things that can be in ReactNode
+            child: React.ReactElement,
             flexGridItemIndex: number,
             {length: flexGridItemCount}: React.ReactNode[],
           ) => {
@@ -71,7 +72,7 @@ const FlexGrid = ({
   );
 };
 
-const FlexGridComponent = React.forwardRef<HTMLElement, FlexGridPropsT>(
+const FlexGridComponent = React.forwardRef<HTMLElement, Omit<React.ComponentProps<typeof FlexGrid>,'forwardedRef'>>(
   (props: FlexGridPropsT, ref) => <FlexGrid {...props} forwardedRef={ref} />,
 );
 FlexGridComponent.displayName = 'FlexGrid';

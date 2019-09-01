@@ -49,20 +49,20 @@ export type StateReducerT = (
 
 export type SharedPropsT = {
   /** Renders UI in 'focus' state */
-  $isFocused: boolean;
+  $isFocused?: boolean;
   /** Renders UI in 'disabled' state */
-  $disabled: boolean;
+  $disabled?: boolean;
   /** Renders UI in 'error' state */
-  $error: boolean;
+  $error?: boolean;
   /** Renders UI in 'positive' state */
-  $positive: boolean;
+  $positive?: boolean;
   /** Defines styles for inputs that are grouped with other controls. */
   $adjoined: AdjoinedT;
   /** Renders UI in provided size. */
   $size: SizeT;
   /** Renders UI in 'required' state */
-  $required: boolean;
-  $position: keyof typeof ENHANCER_POSITION;
+  $required?: boolean;
+  $position?: keyof typeof ENHANCER_POSITION;
   /** Defines if has a clearable or MaskToggleButton at the end */
   $hasIconTrailing: boolean;
 };
@@ -106,11 +106,11 @@ export type BaseInputPropsT<T> = {
   /** Determines if browser should provide value suggestions. */
   autoComplete?: string;
   /** If true the input will be focused on the first mount. */
-  autoFocus: boolean;
+  autoFocus?: boolean;
   /** Renders component in 'disabled' state. */
-  disabled: boolean;
+  disabled?: boolean;
   /** Renders component in 'error' state. */
-  error: boolean;
+  error?: boolean;
   /** Renders component in 'positive' state. */
   positive?: boolean;
   /** A regex that is used to validate the value of the input on form submission. The Input component must be wrapped in a form element */
@@ -122,27 +122,27 @@ export type BaseInputPropsT<T> = {
   inputMode?: string;
   /** A ref to access an input element. */
   inputRef?: React.RefObject<any>;
-  name: string;
-  onBlur: (e: FocusEvent<T>) => unknown;
+  name?: string;
+  onBlur?: (e: FocusEvent<T>) => unknown;
   onChange?: (e: ChangeEvent<T>) => unknown;
   onKeyDown?: (e: KeyboardEvent<T>) => unknown;
   onKeyPress?: (e: KeyboardEvent<T>) => unknown;
   onKeyUp?: (e: KeyboardEvent<T>) => unknown;
-  onFocus: (e: FocusEvent<T>) => unknown;
+  onFocus?: (e: FocusEvent<T>) => unknown;
   /** If true, adds a clear value icon button to the end of the input container. */
   clearable?: boolean;
   /** If undefined or true, clears the input when the Escape button is pressed with the input focused. True by default. */
   clearOnEscape?: boolean;
   maxLength?: number;
   onClear?: (e: SyntheticEvent<T>) => unknown;
-  overrides: BaseInputComponentsT;
+  overrides?: BaseInputComponentsT;
   placeholder?: string;
   /** Renders component in 'required' state. */
-  required: boolean;
+  required?: boolean;
   /** Input role attribute. */
   role?: string;
   /** Renders component in provided size. */
-  size: SizeT;
+  size?: SizeT;
   /** Input type attribute. */
   type?: string;
   /** Input value attribute. */
@@ -157,24 +157,20 @@ export type BaseInputPropsT<T> = {
 };
 
 export type InputPropsT = {
-  overrides: InputComponentsT;
+  overrides?: InputComponentsT;
   /** An input helper rendered before and attached to the input field. */
-  startEnhancer:
+  startEnhancer?:
     | React.ReactNode
-    | ((props: PropsT) => React.ReactNode)
-    | undefined
-    | null;
+    | ((props: PropsT) => React.ReactNode);
   /** An input helper rendered after and attached to the input field. */
-  endEnhancer:
+  endEnhancer?:
     | React.ReactNode
-    | ((props: PropsT) => React.ReactNode)
-    | undefined
-    | null;
+    | ((props: PropsT) => React.ReactNode);
   /** Handler for the `focus` event. */
-  onFocus: (e: FocusEvent<HTMLInputElement>) => unknown;
+  onFocus?: (e: FocusEvent<HTMLInputElement|HTMLTextAreaElement>) => unknown;
   /** Handler for the `blur` event. */
-  onBlur: (e: FocusEvent<HTMLInputElement>) => unknown;
-} & BaseInputPropsT<HTMLInputElement>;
+  onBlur?: (e: FocusEvent<HTMLInputElement|HTMLTextAreaElement>) => unknown;
+} & BaseInputPropsT<HTMLInputElement|HTMLTextAreaElement>;
 
 export type MaskedInputPropsT = Partial<
   {
@@ -190,21 +186,20 @@ export type StatefulContainerPropsT<T> = {
   /** Initial state of an uncontrolled input component. */
   initialState?: StateT;
   /** A state change handler. Used to override default state transitions. */
-  stateReducer: StateReducerT;
-  onChange: (e: ChangeEvent<T>) => unknown;
+  stateReducer?: StateReducerT;
+  onChange?: (e: ChangeEvent<T>) => unknown;
   /** If true, adds a clear value icon button to the end of the input container. */
   clearable?: boolean;
-} & StatefulInputPropsT;
+} & {
+    overrides?: InputComponentsT;
+  } & Omit<InputPropsT, 'overrides' | 'children'>;
 
-type OmitPropsT = {
-  overrides: InputComponentsT;
-  children: ((props: any) => React.ReactNode) | undefined | null;
-};
 
-type FullStPropsT = InputPropsT & StatefulContainerPropsT<HTMLInputElement>;
+type FullStPropsT = InputPropsT & StatefulContainerPropsT<HTMLInputElement|HTMLTextAreaElement>;
 
-export type StInputPropsDiffT = Omit<FullStPropsT, keyof OmitPropsT>;
+export type StInputPropsDiffT = Omit<FullStPropsT, 'overrides' | 'children'>;
 
 export type StatefulInputPropsT = {
   overrides?: InputComponentsT;
 } & StInputPropsDiffT;
+

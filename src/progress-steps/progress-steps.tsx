@@ -17,7 +17,8 @@ function ProgressSteps({
 }: ProgressStepsPropsT) {
   const [Root, rootProps] = getOverrides(overrides.Root, StyledProgressSteps);
   const numChildren = React.Children.count(children);
-  const modifiedChildren = React.Children.map(children, (child, index) => {
+  // @ts-ignore todo: stricter types - only elements can be cloned, not any child is an element
+  const modifiedChildren = React.Children.map(children, (child:any, index) => {
     if (!child) return;
 
     const childOverrides = child.props.overrides || {};

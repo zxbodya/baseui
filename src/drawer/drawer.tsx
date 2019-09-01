@@ -164,6 +164,7 @@ class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
     // Reset scroll to 0 (other libraries do this as well)
     const rootRef = this.getRef('Root').current;
     if (rootRef) {
+      // @ts-ignore
       rootRef.scrollTop = 0;
     }
 
@@ -214,6 +215,7 @@ class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
 
   getChildren() {
     const {children} = this.props;
+    // @ts-ignore
     return typeof children === 'function' ? children() : children;
   }
 

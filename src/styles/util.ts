@@ -25,7 +25,7 @@ export const ellipsisText = {
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   wordWrap: 'normal',
-};
+} as const;
 
 export function expandBorderStyles(borderStyles: BorderT) {
   return {

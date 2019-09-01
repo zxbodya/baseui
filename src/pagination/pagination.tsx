@@ -70,7 +70,7 @@ export default class Pagination extends React.PureComponent<
     }
   };
 
-  onPrevClick = (event: SyntheticEvent) => {
+  onPrevClick = (event: SyntheticEvent<any>) => {
     const {currentPage, onPageChange, onPrevClick} = this.props;
     if (currentPage > 1) {
       onPageChange &&
@@ -79,7 +79,7 @@ export default class Pagination extends React.PureComponent<
     }
   };
 
-  onNextClick = (event: SyntheticEvent) => {
+  onNextClick = (event: SyntheticEvent<any>) => {
     const {currentPage, numPages, onPageChange, onNextClick} = this.props;
     if (currentPage < numPages) {
       onPageChange &&

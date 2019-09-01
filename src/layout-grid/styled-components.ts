@@ -9,7 +9,7 @@ import {getMediaQueries} from '../helpers/responsive-helpers';
 import {BEHAVIOR} from './constants';
 import type {ResponsiveT, StyledGridPropsT, StyledCellPropsT} from './types';
 
-export const StyledGrid = styled<StyledGridPropsT>(
+export const StyledGrid = styled<'div', StyledGridPropsT>(
   'div',
   ({
     $theme,
@@ -73,7 +73,7 @@ export const StyledGrid = styled<StyledGridPropsT>(
   },
 );
 
-export const StyledCell = styled<StyledCellPropsT>(
+export const StyledCell = styled<'div', StyledCellPropsT>(
   'div',
   ({
     $theme,

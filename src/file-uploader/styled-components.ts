@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import type {StylePropsT} from './types';
 
-export const StyledFileDragAndDrop = styled<StylePropsT>('div', props => {
+export const StyledFileDragAndDrop = styled<'div', StylePropsT>('div', props => {
   const borderColor = props.$isDragActive
     ? props.$theme.colors.borderAccent
     : props.$theme.colors.fileUploaderBorderColorDefault;
@@ -43,7 +43,7 @@ export const StyledFileDragAndDrop = styled<StylePropsT>('div', props => {
   } as {};
 });
 
-export const StyledContentMessage = styled<StylePropsT>(
+export const StyledContentMessage = styled<'div', StylePropsT>(
   'div',
   ({$theme, $afterFileDrop, $isDragActive}) =>
     ({
@@ -62,7 +62,7 @@ export const StyledContentMessage = styled<StylePropsT>(
 
 export const StyledContentSeparator = StyledContentMessage;
 
-export const StyledErrorMessage = styled<StylePropsT>(
+export const StyledErrorMessage = styled<'div', StylePropsT>(
   'div',
   props =>
     ({
@@ -73,7 +73,7 @@ export const StyledErrorMessage = styled<StylePropsT>(
     } as {}),
 );
 
-export const StyledRoot = styled<StylePropsT>('div', props => ({
+export const StyledRoot = styled<'div', StylePropsT>('div', props => ({
   ...props.$theme.typography.font300,
   color: props.$theme.colors.fileUploaderMessageColor,
 }));

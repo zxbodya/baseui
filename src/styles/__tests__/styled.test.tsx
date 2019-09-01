@@ -134,7 +134,7 @@ describe('styled flow', () => {
       hello: string;
     };
 
-    const a = styled<P>('div', props => {
+    const a = styled<'div', P>('div', props => {
       console.log(props.hello);
       // $FlowFixMe
       console.log(props.world);
@@ -143,7 +143,7 @@ describe('styled flow', () => {
   });
 
   test('it provides flow error if accessing property not defined in default theme type', () => {
-    const a = styled<{}>('div', props => {
+    const a = styled('div', props => {
       console.log(props.$theme.colors.primary400);
       // $FlowFixMe
       console.log(props.$theme.colors.primary9000);
@@ -152,7 +152,7 @@ describe('styled flow', () => {
   });
 
   test('it provides flow error if returning invalid style object', () => {
-    const a = styled<{}>('div', props => {
+    const a = styled('div', props => {
       // $FlowFixMe
       return {invalid: 'true'};
     });
@@ -222,7 +222,7 @@ describe('withStyle flow', () => {
       hello: string;
     };
 
-    const a = styled<P>('div', props => {
+    const a = styled<'div', P>('div', props => {
       return {color: 'blue'};
     });
 
@@ -239,7 +239,7 @@ describe('withStyle flow', () => {
   });
 
   test('it provides flow error if accessing property not defined in default theme type', () => {
-    const a = styled<{}>('div', props => {
+    const a = styled('div', props => {
       console.log(props.$theme.colors.primary400);
       // $FlowFixMe
       console.log(props.$theme.colors.primary9000);
@@ -255,7 +255,7 @@ describe('withStyle flow', () => {
   });
 
   test('it provides flow error if returning invalid style object', () => {
-    const a = styled<{}>('div', props => {
+    const a = styled('div', props => {
       return {color: 'red'};
     });
 

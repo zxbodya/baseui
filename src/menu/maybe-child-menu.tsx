@@ -25,13 +25,15 @@ type PropsT = {
   };
 };
 
-export default function MaybeChildMenu(props: PropsT) {
+export default function MaybeChildMenu(props: PropsT): React.ReactElement | null {
   if (!props.getChildMenu) {
+    // @ts-ignore todo: children should be of type ReactElement or null
     return props.children;
   }
 
   const ChildMenu = props.getChildMenu(props.item);
   if (!ChildMenu) {
+    // @ts-ignore todo: children should be of type ReactElement or null
     return props.children;
   }
   const {overrides = {}} = props;

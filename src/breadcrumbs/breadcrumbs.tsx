@@ -40,10 +40,10 @@ export function Breadcrumbs(props: BreadcrumbsPropsT) {
 
   const iconOverrides = mergeOverrides(
     {Svg: {style: {verticalAlign: 'text-bottom'}}},
-    // $FlowFixMe
+    // @ts-ignore
     baseIconProps && baseIconProps.overrides,
   );
-  // $FlowFixMe
+  // @ts-ignore
   baseIconProps.overrides = iconOverrides;
 
   childrenArray.forEach((child, index) => {

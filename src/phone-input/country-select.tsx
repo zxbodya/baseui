@@ -9,7 +9,7 @@ LICENSE file in the root directory of this source tree.
 // in the next v11 major version in favor of `CountryPicker`.
 // The `DialCode` rendering should be a part of the composed
 // non-split phone input.
-import React from 'react';
+import * as React from 'react';
 import {
   StyledDialCode,
   StyledCountrySelectContainer,
@@ -67,10 +67,10 @@ export default function CountrySelect(props: CountrySelectPropsT) {
     Dropdown: overrides.CountrySelectDropdown,
     DropdownListItem: overrides.CountrySelectDropdownListItem,
   });
-  // $FlowFixMe
+  // @ts-ignore
   selectProps.overrides = mergeOverrides(
     selectOverrides,
-    // $FlowFixMe
+    // @ts-ignore
     selectProps.overrides,
   );
 

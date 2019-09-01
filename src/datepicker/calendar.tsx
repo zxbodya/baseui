@@ -58,7 +58,7 @@ export default class Calendar<T = Date> extends React.Component<
 
   dateHelpers: DateHelpers<T>;
 
-  calendar: React.RefObject<any>;
+  calendar: any;
 
   constructor(props: CalendarPropsT<T>) {
     super(props);
@@ -307,7 +307,7 @@ export default class Calendar<T = Date> extends React.Component<
         // need to look for any tabindex >= 0 and ideally for not disabled
         // focusable by default elements like input, button, etc.
         const focusable = this.state.rootElement
-          ? this.state.rootElement.querySelectorAll('[tabindex="0"]')
+          ? this.state.rootElement.querySelectorAll<HTMLElement>('[tabindex="0"]')
           : null;
         const length = focusable ? focusable.length : 0;
         if (event.shiftKey) {

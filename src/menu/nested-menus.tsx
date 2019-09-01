@@ -21,7 +21,9 @@ export const NestedMenuContext: React.Context<NestedMenuContextT> =
   React.createContext({
     addMenuToNesting: () => {},
     removeMenuFromNesting: () => {},
+    // @ts-ignore todo: incorrect default value
     getParentMenu: () => {},
+    // @ts-ignore todo: incorrect default value
     getChildMenu: () => {},
     mountRef: {current: null},
   });

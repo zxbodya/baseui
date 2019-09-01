@@ -26,9 +26,7 @@ export type OverridesT = {
 };
 
 // eslint-disable-next-line flowtype/no-weak-types
-export type ElementRefT = {
-  current: React.RefObject<any> | null;
-};
+export type ElementRefT = React.RefObject<HTMLDivElement> | null;
 
 // Props shared by all flavors of modal
 export type ModalPropsT = {

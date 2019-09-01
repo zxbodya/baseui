@@ -23,11 +23,13 @@ export type OverridesT = {
 };
 
 export type DefaultPropsT = {
+  overrides?: any;
   children?: ReactNode;
   checked: boolean;
   disabled: boolean;
   isError: boolean;
   error: boolean;
+  type: string;
   autoFocus: boolean;
   isIndeterminate: boolean;
   inputRef: {

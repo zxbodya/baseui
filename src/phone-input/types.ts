@@ -32,7 +32,7 @@ export type StateChangeT = keyof typeof STATE_CHANGE_TYPE;
 
 export type StateReducerT = (
   type: StateChangeT,
-  nextState: StateT,
+  nextState: Partial<StateT>,
   currentState: StateT,
 ) => StateT;
 
@@ -42,7 +42,7 @@ export type mapIsoToLabelT = (iso: string) => string;
 
 export type CountrySelectDropdownPropsT = {
   // eslint-disable-next-line flowtype/no-weak-types
-  children: ReadonlyArray<React.ReactElement<any>>;
+  children: Array<React.ReactElement<any>>;
   $country: CountryT;
   $mapIsoToLabel?: mapIsoToLabelT;
   $maxDropdownHeight: string;

@@ -113,7 +113,7 @@ export default class Datepicker<T = Date> extends React.Component<
       isPseudoFocused,
       ...(calendarFocused === null ? {} : {calendarFocused}),
       inputValue: this.formatDisplayValue(nextDate),
-    });
+    } as StateT);
 
     this.props.onChange && this.props.onChange({date: nextDate});
   };
@@ -378,7 +378,7 @@ export default class Datepicker<T = Date> extends React.Component<
       this.setState({
         calendarFocused: true,
         lastActiveElm,
-      });
+      } as StateT);
     }
   };
 

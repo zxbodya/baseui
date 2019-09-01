@@ -25,8 +25,11 @@ describe('Avatar styled Components flow', () => {
   test('it provides flow error if we not provide all required props for StyledRoot', () => {
     const CustomRoot = props => {
       const {children, ...rest} = props;
-      // $FlowFixMe missing $didImageFailToLoad prop
-      const BrokenCustomRootComponent = <Root>{props.children}</Root>;
+      // todo: Root -> StyledRoot
+      // @ts-ignore missing $didImageFailToLoad prop
+      const BrokenCustomRootComponent = (
+        <StyledRoot>{props.children}</StyledRoot>
+      );
       const CustomRootComponent = (
         <StyledRoot {...rest}>{props.children}</StyledRoot>
       );

@@ -9,8 +9,14 @@ import * as React from 'react';
 import type {BlockPropsT} from './types';
 import {StyledBlock} from './styled-components';
 import {getOverrides} from '../helpers/overrides';
+import type {ComponentProps} from 'react';
 
-function Block({
+const Block: React.FC<
+  BlockPropsT & {forwardedRef?: any} & Omit<
+      ComponentProps<'div'>,
+      keyof BlockPropsT
+    >
+> = ({
   forwardedRef,
   children,
   as = 'div',
@@ -81,7 +87,7 @@ function Block({
   textOverflow,
   whiteSpace,
   ...restProps
-}) {
+}) => {
   const [BaseBlock, baseBlockProps] = getOverrides(
     overrides.Block,
     StyledBlock,
@@ -166,10 +172,10 @@ function Block({
       {children}
     </BaseBlock>
   );
-}
+};
 
-const BlockComponent = React.forwardRef<HTMLElement, BlockPropsT>(
-  (props: BlockPropsT, ref) => <Block {...props} forwardedRef={ref} />,
+const BlockComponent = React.forwardRef<unknown, ComponentProps<typeof Block>>(
+  (props, ref) => <Block {...props} forwardedRef={ref} />,
 );
 BlockComponent.displayName = 'Block';
 export default BlockComponent;

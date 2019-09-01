@@ -197,6 +197,8 @@
     "card-validator": "^6.2.0",
     "date-fns": "^2.6.0",
     "glob": "^7.1.6",
+    "@types/react-virtualized-auto-sizer": "^1.0.0",
+    "@types/react-window": "^1.8.1",
     "just-extend": "^4.0.2",
     "memoize-one": "^5.1.1",
     "polished": "^3.2.0",

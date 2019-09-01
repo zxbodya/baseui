@@ -24,7 +24,7 @@ type StyledRootPropsT = {
   $divider?: DividerT;
 };
 
-export const StyledRoot = styled<StyledRootPropsT>(
+export const StyledRoot = styled<'div', StyledRootPropsT>(
   'div',
   ({$theme, $divider}) => {
     return {
@@ -46,7 +46,7 @@ type StyledTablePropsT = {
   $width?: string | null;
 };
 
-export const StyledTable = styled<StyledTablePropsT>(
+export const StyledTable = styled<'table', StyledTablePropsT>(
   'table',
   ({$theme, $width}) => {
     return {
@@ -58,11 +58,11 @@ export const StyledTable = styled<StyledTablePropsT>(
   },
 );
 
-export const StyledTableHead = styled<{}>('thead', ({$theme}) => {
+export const StyledTableHead = styled('thead', ({$theme}) => {
   return {};
 });
 
-export const StyledTableHeadRow = styled<{}>('tr', ({$theme}) => {
+export const StyledTableHeadRow = styled('tr', ({$theme}) => {
   return {};
 });
 
@@ -73,7 +73,7 @@ type StyledTableHeadCellPropsT = {
   $size?: SizeT;
 };
 
-export const StyledTableHeadCell = styled<StyledTableHeadCellPropsT>(
+export const StyledTableHeadCell = styled<'th', StyledTableHeadCellPropsT>(
   'th',
   ({$theme, $size, $divider}) => {
     const borderDir: string = $theme.direction === 'rtl' ? 'Left' : 'Right';
@@ -176,7 +176,7 @@ export const StyledSortNoneIcon = styled<typeof Blank, {}>(
   },
 );
 
-export const StyledTableBody = styled<{}>('tbody', ({$theme}) => {
+export const StyledTableBody = styled('tbody', ({$theme}) => {
   return {};
 });
 
@@ -186,7 +186,7 @@ type StyledTableBodyRowPropsT = {
   $divider?: DividerT;
 };
 
-export const StyledTableBodyRow = styled<StyledTableBodyRowPropsT>(
+export const StyledTableBodyRow = styled<'tr', StyledTableBodyRowPropsT>(
   'tr',
   ({$theme, $divider}) => {
     const borderHorizontal =
@@ -223,7 +223,7 @@ type StyledTableBodyCellPropsT = {
   $isNumeric?: boolean | null;
 };
 
-export const StyledTableBodyCell = styled<StyledTableBodyCellPropsT>(
+export const StyledTableBodyCell = styled<'td', StyledTableBodyCellPropsT>(
   'td',
   ({$theme, $size, $divider, $isNumeric}) => {
     const borderDir: string = $theme.direction === 'rtl' ? 'Left' : 'Right';
@@ -256,7 +256,7 @@ export const StyledTableBodyCell = styled<StyledTableBodyCellPropsT>(
   },
 );
 
-export const StyledTableLoadingMessage = styled<{}>('div', ({$theme}) => {
+export const StyledTableLoadingMessage = styled<'div', {}>('div', ({$theme}) => {
   return {
     ...$theme.typography.ParagraphSmall,
     color: $theme.colors.contentPrimary,

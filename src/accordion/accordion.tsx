@@ -33,7 +33,11 @@ export default class Accordion extends React.Component<
     ...this.props.initialState,
   };
 
-  onPanelChange(key: React.Key, onChange: () => {}, ...args: any) {
+  onPanelChange(
+    key: React.Key,
+    onChange: (...args: any[]) => {},
+    ...args: any
+  ) {
     let activeKeys = this.state.expanded;
     const {accordion} = this.props;
     if (accordion) {

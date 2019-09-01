@@ -8,7 +8,7 @@ LICENSE file in the root directory of this source tree.
 
 export const STATE_TYPE = {
   change: 'CHANGE',
-};
+} as const;
 
 export const ALIGN = {
   vertical: 'vertical',

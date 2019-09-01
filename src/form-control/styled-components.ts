@@ -8,7 +8,7 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import type {StylePropsT} from './types';
 
-export const Label = styled<StylePropsT>('label', props => {
+export const Label = styled<'label', StylePropsT>('label', props => {
   const {
     $disabled,
     $theme: {colors, sizing, typography},
@@ -30,7 +30,7 @@ export const Label = styled<StylePropsT>('label', props => {
   };
 });
 
-export const Caption = styled<StylePropsT>('div', props => {
+export const Caption = styled<'div', StylePropsT>('div', props => {
   const {
     $error,
     $positive,
@@ -58,7 +58,7 @@ export const Caption = styled<StylePropsT>('div', props => {
   };
 });
 
-export const ControlContainer = styled<StylePropsT>('div', props => {
+export const ControlContainer = styled<'div', StylePropsT>('div', props => {
   const {
     $theme: {sizing},
   } = props;

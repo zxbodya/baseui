@@ -7,8 +7,9 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {KIND, SIZE, SHAPE} from './constants';
 import type {SharedStylePropsT} from './types';
+import type {StyleObject} from 'styletron-standard';
 
-export const BaseButton = styled<SharedStylePropsT>(
+export const BaseButton = styled<'button', SharedStylePropsT>(
   'button',
   ({
     $theme,
@@ -61,7 +62,7 @@ export const BaseButton = styled<SharedStylePropsT>(
   }),
 );
 
-export const EndEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => {
+export const EndEnhancer = styled<'div', SharedStylePropsT>('div', ({$theme}) => {
   const marginDirection: string =
     $theme.direction === 'rtl' ? 'marginRight' : 'marginLeft';
   return {
@@ -70,7 +71,7 @@ export const EndEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => {
   };
 });
 
-export const StartEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => {
+export const StartEnhancer = styled<'div', SharedStylePropsT>('div', ({$theme}) => {
   const marginDirection: string =
     $theme.direction === 'rtl' ? 'marginLeft' : 'marginRight';
   return {
@@ -79,7 +80,7 @@ export const StartEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => {
   };
 });
 
-export const LoadingSpinnerContainer = styled<SharedStylePropsT>(
+export const LoadingSpinnerContainer = styled<'div', SharedStylePropsT>(
   'div',
   ({$theme, $size}) => {
     // we don't have a theming value for this
@@ -100,7 +101,7 @@ export const LoadingSpinnerContainer = styled<SharedStylePropsT>(
   },
 );
 
-export const LoadingSpinner = styled<SharedStylePropsT>(
+export const LoadingSpinner = styled<'span', SharedStylePropsT>(
   'span',
   ({$theme, $kind, $disabled, $size}) => {
     const {foreground, background} = getLoadingSpinnerColors({
@@ -149,7 +150,7 @@ export const LoadingSpinner = styled<SharedStylePropsT>(
           transform: 'rotate(0deg)',
         },
       },
-    };
+    } as StyleObject;
   },
 );
 

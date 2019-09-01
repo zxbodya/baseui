@@ -291,7 +291,7 @@ export const Action = styled<SharedPropsArgT>('span', props => {
 export const ActionIcon = styled('svg', {});
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Text = styled<SharedPropsArgT>('span', props => {
+export const Text = styled<'span', SharedPropsArgT>('span', props => {
   const {$theme} = props;
 
   return {
@@ -304,7 +304,7 @@ export const Text = styled<SharedPropsArgT>('span', props => {
 });
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Root = styled<SharedPropsArgT>('span', props => {
+export const Root = styled<'span', SharedPropsArgT>('span', props => {
   const {
     $theme,
     $kind = KIND.primary,

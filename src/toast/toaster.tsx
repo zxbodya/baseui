@@ -24,8 +24,7 @@ import type {
   ToastPropsT,
 } from './types';
 
-let toasterRef: React.RefObject<typeof ToasterContainer> | undefined | null =
-  null;
+let toasterRef: ToasterContainer | undefined;
 
 export class ToasterContainer extends React.Component<
   Partial<ToasterPropsT>,
@@ -71,6 +70,7 @@ export class ToasterContainer extends React.Component<
     return {autoFocus, autoHideDuration, closeable, ...props, key};
   };
 
+  // @ts-ignore todo: default value does not look correct and also probably do is never used
   show = (props: ToastPropsT = {}): React.Key => {
     if (this.state.toasts.map(t => t.key).includes(props.key)) {
       this.update(props.key, props);
@@ -95,7 +95,7 @@ export class ToasterContainer extends React.Component<
             }),
             key,
             ...(this.props.resetAutoHideTimerOnUpdate
-              ? {__updated: (parseInt(toast.__updated) || 0) + 1}
+              ? {__updated: (+toast.__updated || 0) + 1}
               : {}),
           };
           return updatedToastProps;
@@ -242,10 +242,7 @@ export class ToasterContainer extends React.Component<
 }
 
 const toaster = {
-  getRef: function ():
-    | React.RefObject<typeof ToasterContainer>
-    | undefined
-    | null {
+  getRef: function(): ToasterContainer | undefined {
     return toasterRef;
   },
   show: function (

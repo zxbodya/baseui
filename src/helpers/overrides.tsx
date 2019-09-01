@@ -9,8 +9,9 @@ import * as React from 'react';
 import {isValidElementType} from 'react-is';
 import deepMerge from '../utils/deep-merge';
 
-export type ConfigurationOverrideFunctionT = (a: {}) => {} | undefined | null;
-export type ConfigurationOverrideObjectT = {};
+// Object -> any
+export type ConfigurationOverrideFunctionT = (a: any) => any | undefined | null;
+export type ConfigurationOverrideObjectT = {[k: string]: any};
 
 export type ConfigurationOverrideT =
   | ConfigurationOverrideObjectT
@@ -99,7 +100,7 @@ export function toObjectOverride<T>(override: OverrideT): OverrideObjectT {
 export function getOverrides(
   override: any,
   defaultComponent: React.ComponentType<any>,
-): [React.ComponentType<any>, {}] {
+): [React.ComponentType<any>, {[k: string]: any}] {
   const Component = getOverride(override) || defaultComponent;
 
   if (

@@ -10,11 +10,11 @@ import {Svg as StyledSvg} from './styled-components';
 import omitDollarPrefixedKeys from './omit-dollar-prefixed-keys';
 import type {IconPropsT} from './types';
 
-function Icon(props: IconPropsT, ref) {
+const Icon: React.FC<IconPropsT> = (props, ref) => {
   const {children, title, size, color, overrides = {}, ...restProps} = props;
   const [Svg, overrideProps] = getOverrides(overrides.Svg, StyledSvg);
   // Determine how/which props are passed based on if the component is a Styletron component.
-  // $FlowFixMe: __STYLETRON__ not in React.AbstractcomponentStatics
+  // @ts-ignore __STYLETRON__ not in React.AbstractcomponentStatics
   const passThroughProps = Svg.__STYLETRON__
     ? {
         title,

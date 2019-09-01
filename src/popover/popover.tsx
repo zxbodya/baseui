@@ -41,11 +41,11 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
   static defaultProps: Partial<PopoverPropsT> = defaultProps;
 
   /* eslint-disable react/sort-comp */
-  animateInTimer: TimeoutID | undefined | null;
-  animateOutTimer: TimeoutID | undefined | null;
-  animateOutCompleteTimer: TimeoutID | undefined | null;
-  onMouseEnterTimer: TimeoutID | undefined | null;
-  onMouseLeaveTimer: TimeoutID | undefined | null;
+  animateInTimer?: TimeoutID;
+  animateOutTimer?: TimeoutID;
+  animateOutCompleteTimer?: TimeoutID;
+  onMouseEnterTimer?: TimeoutID;
+  onMouseLeaveTimer?: TimeoutID;
   generatedId: string = '';
   anchorRef = React.createRef() as {
     current: any;
@@ -303,6 +303,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     const anchorProps: AnchorPropsT = {
       'aria-haspopup': 'true',
       'aria-expanded': isOpen ? 'true' : 'false',
+      // @ts-ignore todo: should it be here?
       key: 'popover-anchor',
       ref: this.anchorRef,
     };
@@ -332,7 +333,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
   }
 
   getPopoverBodyProps() {
-    const bodyProps = {};
+    const bodyProps: React.HTMLAttributes<'body'> = {};
 
     const popoverId = this.getPopoverIdAttr();
     if (this.isAccessibilityTypeMenu()) {
@@ -386,8 +387,10 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     const anchorProps = this.getAnchorProps();
 
     if (typeof anchor === 'object' && isValidElement) {
+      // @ts-ignore todo: better type refinement for react element, might be use existing utility
       return React.cloneElement(anchor, anchorProps);
     }
+    // @ts-ignore todo: type of anchorProps is not strict enough
     return <span {...anchorProps}>{anchor}</span>;
   }
 

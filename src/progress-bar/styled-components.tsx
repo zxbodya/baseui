@@ -9,6 +9,7 @@ import {SIZE} from './constants';
 
 import type {StylePropsT, SizeT} from './types';
 import React from 'react';
+import type {StyleObject} from 'styletron-standard';
 
 function getBarHeight(size) {
   return {
@@ -18,13 +19,13 @@ function getBarHeight(size) {
   }[size];
 }
 
-export const StyledRoot = styled<StylePropsT>('div', props => {
+export const StyledRoot = styled<'div', StylePropsT>('div', props => {
   return {
     width: '100%',
   };
 });
 
-export const StyledBarContainer = styled<StylePropsT>('div', props => {
+export const StyledBarContainer = styled<'div', StylePropsT>('div', props => {
   const {$theme} = props;
   const {sizing} = $theme;
   return {
@@ -36,7 +37,7 @@ export const StyledBarContainer = styled<StylePropsT>('div', props => {
   } as {};
 });
 
-export const StyledBar = styled<StylePropsT>('div', props => {
+export const StyledBar = styled<'div', StylePropsT>('div', props => {
   const {$theme, $size, $steps} = props;
   const {colors, sizing, borders} = $theme;
   const borderRadius = borders.useRoundedCorners ? sizing.scale0 : 0;
@@ -60,7 +61,7 @@ export const StyledBar = styled<StylePropsT>('div', props => {
   } as {};
 });
 
-export const StyledBarProgress = styled<StylePropsT>('div', props => {
+export const StyledBarProgress = styled<'div', StylePropsT>('div', props => {
   const {$theme, $value, $successValue, $steps, $index} = props;
   const {colors, sizing, borders} = $theme;
   const width = `${100 - ($value / $successValue) * 100}%`;
@@ -90,7 +91,7 @@ export const StyledBarProgress = styled<StylePropsT>('div', props => {
     transform: `translateX(-${width})`,
   };
 
-  const stepAnimationStyles =
+  const stepAnimationStyles: StyleObject =
     stepState === stepStates.inProgress
       ? {
           animationDuration: '2.1s',
@@ -131,7 +132,7 @@ export const StyledBarProgress = styled<StylePropsT>('div', props => {
   };
 });
 
-export const StyledInfiniteBar = styled<{
+export const StyledInfiniteBar = styled<'div', {
   $isLeft?: boolean;
   $size: SizeT;
 }>('div', props => {
@@ -201,7 +202,7 @@ export const StyledInfiniteBar = styled<{
   };
 });
 
-export const StyledLabel = styled<StylePropsT>('div', props => {
+export const StyledLabel = styled<'div', StylePropsT>('div', props => {
   return {
     textAlign: 'center',
     ...props.$theme.typography.font150,
@@ -233,7 +234,7 @@ const PROGRESS_BAR_ROUNDED_SIZES = {
   },
 };
 
-export const StyledProgressBarRoundedRoot = styled<{
+export const StyledProgressBarRoundedRoot = styled<'div', {
   $size: SizeT;
   $inline: boolean;
 }>('div', ({$size, $inline}) => {
@@ -247,7 +248,7 @@ export const StyledProgressBarRoundedRoot = styled<{
   };
 });
 
-const _StyledProgressBarRoundedSvg = styled<{
+const _StyledProgressBarRoundedSvg = styled<'svg', {
   $size: SizeT;
 }>('svg', ({$size}) => {
   return {
@@ -274,7 +275,7 @@ export const StyledProgressBarRoundedSvg = withWrapper(
     },
 );
 
-const _StyledProgressBarRoundedTrackBackground = styled<{
+const _StyledProgressBarRoundedTrackBackground = styled<'path', {
   $size: SizeT;
 }>('path', ({$theme, $size}) => {
   return {
@@ -293,7 +294,7 @@ export const StyledProgressBarRoundedTrackBackground = withWrapper(
     },
 );
 
-const _StyledProgressBarRoundedTrackForeground = styled<{
+const _StyledProgressBarRoundedTrackForeground = styled<'path', {
   $size: SizeT;
   $visible: boolean;
   $pathLength: number;
@@ -318,7 +319,7 @@ export const StyledProgressBarRoundedTrackForeground = withWrapper(
     },
 );
 
-export const StyledProgressBarRoundedText = styled<{
+export const StyledProgressBarRoundedText = styled<'div', {
   $size: SizeT;
 }>('div', ({$theme, $size}) => {
   return {

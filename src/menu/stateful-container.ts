@@ -46,6 +46,7 @@ export default class MenuStatefulContainer extends React.Component<
   };
 
   state: StatefulContainerStateT = {
+    // @ts-ignore todo: probably MenuStatefulContainer should be used instead of this.constructor
     ...this.constructor.defaultProps.initialState,
     ...this.props.initialState,
   };
@@ -139,7 +140,7 @@ export default class MenuStatefulContainer extends React.Component<
   }
 
   // One array to hold all of list item refs
-  refList: Array<React$ElementRef<any>> = [];
+  refList: Array<React.RefObject<any>> = [];
   // list of ids applied to list items. used to set aria-activedescendant
   optionIds: string[] = [];
   //characters input from keyboard, will automatically be clear after some time
@@ -323,7 +324,7 @@ export default class MenuStatefulContainer extends React.Component<
   handleItemClick = (
     index: number,
     item: any,
-    event: MouseEvent<HTMLElement>,
+    event: React.MouseEvent<HTMLElement>,
   ) => {
     if (this.props.onItemSelect && !item.disabled) {
       this.props.onItemSelect({item, event});

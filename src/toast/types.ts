@@ -75,11 +75,11 @@ export type ToastPropsT = {
   kind: KindTypeT;
   notificationType: NotificationTypeT;
   /** A callback function called when a notification is dismissed. */
-  onBlur: (e: Event) => unknown;
+  onBlur: (e: React.FocusEvent) => unknown;
   onClose: () => unknown;
-  onFocus: (e: Event) => unknown;
-  onMouseEnter: (e: Event) => unknown;
-  onMouseLeave: (e: Event) => unknown;
+  onFocus: (e: React.FocusEvent) => unknown;
+  onMouseEnter: (e: React.MouseEvent) => unknown;
+  onMouseLeave: (e: React.MouseEvent) => unknown;
   overrides: OverridesT;
 };
 

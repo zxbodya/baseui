@@ -29,15 +29,7 @@ export type RadioGroupOverridesT = {
 
 export type OverridesT = {} & RadioOverridesT & RadioGroupOverridesT;
 
-export type DefaultPropsT = {
-  value: string;
-  disabled: boolean;
-  isError: boolean;
-  error: boolean;
-  autoFocus: boolean;
-  labelPlacement: LabelPlacementT;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => unknown;
-};
+export type DefaultPropsT = Partial<PropsT>;
 
 export type PropsT = {
   /** Id of element which contains a related caption */
@@ -197,7 +189,7 @@ export type StatefulRadioGroupPropsT = {
 };
 
 export type StylePropsT = {
-  $align?: boolean;
+  $align?: string; // todo: incorrect flow type - 'horizontal' is expected
   $checked: boolean;
   $disabled: boolean;
   $hasDescription: boolean;

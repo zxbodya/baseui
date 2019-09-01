@@ -25,7 +25,7 @@ export type LayersManagerStateT = {
 };
 
 export type LayersContextT = {
-  host: HTMLElement | undefined | null;
+  host?: HTMLElement | null;
   zIndex?: number;
   addEscapeHandler: (a: () => unknown) => void;
   removeEscapeHandler: (a: () => unknown) => void;

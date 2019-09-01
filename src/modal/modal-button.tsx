@@ -8,6 +8,7 @@ import * as React from 'react';
 import {Button} from '../button/index';
 import type {ButtonPropsT} from '../button/types';
 import {mergeOverrides} from '../helpers/overrides';
+import type {ComponentProps} from 'react';
 
 // ModalButtons should have some margin pre-applied
 const overrides = {

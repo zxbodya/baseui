@@ -10,8 +10,8 @@ import {
   findTimeZone,
   getZonedTime,
   listTimeZones,
-} from 'timezone-support/dist/index-1900-2050.js';
-import {formatZonedTime} from 'timezone-support/dist/parse-format.js';
+} from 'timezone-support/dist/index-1900-2050';
+import {formatZonedTime} from 'timezone-support/dist/parse-format';
 
 import {getOverrides, mergeOverrides} from '../helpers/overrides';
 import {LocaleContext} from '../locale/index';
@@ -23,7 +23,7 @@ class TimezonePicker extends React.Component<
   TimezonePickerPropsT,
   TimezonePickerStateT
 > {
-  state = {timezones: [], value: null};
+  state = {timezones: [], value: null} as TimezonePickerStateT;
 
   componentDidMount() {
     const timezones = this.buildTimezones(this.props.date || new Date());
@@ -34,6 +34,7 @@ class TimezonePicker extends React.Component<
         this.setState({timezones, value: tz});
 
         const option = timezones.find(o => o.id === tz);
+        // @ts-ignore //todo: possible error
         option && this.props.onChange && this.props.onChange(option);
       } else {
         this.setState({timezones});
@@ -51,6 +52,7 @@ class TimezonePicker extends React.Component<
       this.setState({timezones});
 
       const option = timezones.find(o => o.id === this.state.value);
+      // @ts-ignore //todo: possible error
       option && this.props.onChange && this.props.onChange(option);
     }
   }
@@ -65,7 +67,7 @@ class TimezonePicker extends React.Component<
           `z - [${zone}] ([GMT] Z)`,
         ).replace('_', ' ');
 
-        const option = {
+        const option: {offset: number; id: string; label: string} = {
           id: zone,
           label: formatted,
           offset: zonedTime.zone.offset,
@@ -107,10 +109,10 @@ class TimezonePicker extends React.Component<
       {
         Dropdown: {style: {maxHeight: '360px'}},
       },
-      // $FlowFixMe
+      // @ts-ignore
       selectProps.overrides,
     );
-    // $FlowFixMe
+    // @ts-ignore
     selectProps.overrides = selectOverrides;
 
     return (

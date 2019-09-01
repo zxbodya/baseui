@@ -8,7 +8,7 @@ import * as React from 'react';
 
 import {styled, withWrapper, expandBorderStyles} from '../styles/index';
 
-const StyledTableElement = styled<{}>('div', ({$theme}) => {
+const StyledTableElement = styled('div', ({$theme}) => {
   return {
     ...expandBorderStyles($theme.borders.border300),
     backgroundColor: $theme.colors.tableBackground,
@@ -38,7 +38,7 @@ type HorizontalStyleProps = {
   $cursor?: string;
 };
 
-const StyledHeadElement = styled<HorizontalStyleProps>(
+const StyledHeadElement = styled<'div', HorizontalStyleProps>(
   'div',
   ({$theme, $width}) => {
     return {
@@ -59,7 +59,7 @@ export const StyledHead = withWrapper(
     },
 );
 
-const StyledHeadCellElement = styled<HorizontalStyleProps>(
+const StyledHeadCellElement = styled<'div', HorizontalStyleProps>(
   'div',
   ({$theme, $cursor}) => {
     const borderDir: string =
@@ -94,7 +94,7 @@ export const StyledHeadCell = withWrapper(
     },
 );
 
-export const StyledSortableLabel = styled<{}>('button', ({$theme}) => {
+export const StyledSortableLabel = styled('button', ({$theme}) => {
   return {
     ...$theme.typography.font250,
     alignItems: 'center',
@@ -115,7 +115,7 @@ export const StyledSortableLabel = styled<{}>('button', ({$theme}) => {
   };
 });
 
-const StyledBodyElement = styled<HorizontalStyleProps>('div', ({$width}) => {
+const StyledBodyElement = styled<'div', HorizontalStyleProps>('div', ({$width}) => {
   return {
     width: $width ? $width : '100%',
     overflowX: 'hidden',
@@ -149,7 +149,7 @@ type CellStyledProps = {
   $striped?: boolean;
 };
 
-const StyledCellElement = styled<CellStyledProps>(
+const StyledCellElement = styled<'div', CellStyledProps>(
   'div',
   ({$theme, $striped}) => {
     return {
@@ -174,7 +174,7 @@ export const StyledCell = withWrapper(
     },
 );
 
-export const StyledFilterButton = styled<{
+export const StyledFilterButton = styled<'button', {
   $disabled?: boolean;
   $active?: boolean;
 }>('button', props => {
@@ -216,7 +216,7 @@ export const StyledFilterButton = styled<{
   };
 });
 
-export const StyledFilterContent = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterContent = styled('div', ({$theme}) => ({
   ...expandBorderStyles($theme.borders.border300),
   backgroundColor: $theme.colors.tableFilterBackground,
   borderRightStyle: 'none',
@@ -227,7 +227,7 @@ export const StyledFilterContent = styled<{}>('div', ({$theme}) => ({
   overflow: 'auto',
 }));
 
-export const StyledFilterHeading = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterHeading = styled('div', ({$theme}) => ({
   ...$theme.typography.font250,
   color: $theme.colors.tableFilterHeading,
   paddingTop: $theme.sizing.scale500,
@@ -236,7 +236,7 @@ export const StyledFilterHeading = styled<{}>('div', ({$theme}) => ({
   paddingLeft: $theme.sizing.scale600,
 }));
 
-export const StyledFilterFooter = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterFooter = styled('div', ({$theme}) => ({
   backgroundColor: $theme.colors.tableFilterFooterBackground,
   paddingTop: $theme.sizing.scale300,
   paddingRight: $theme.sizing.scale100,
@@ -247,7 +247,7 @@ export const StyledFilterFooter = styled<{}>('div', ({$theme}) => ({
   minWidth: '216px',
 }));
 
-export const StyledAction = styled<{}>('button', ({$theme}) => {
+export const StyledAction = styled('button', ({$theme}) => {
   return {
     backgroundColor: 'transparent',
     borderLeftStyle: 'none',

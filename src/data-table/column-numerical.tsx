@@ -55,7 +55,7 @@ function format(value: number, options) {
   if (typeof options.format === 'function') {
     return options.format(value);
   }
-  let formatted = value.toString();
+  let formatted: string | number = value.toString();
   switch (options.format) {
     case NUMERICAL_FORMATS.ACCOUNTING: {
       const abs = Math.abs(value);

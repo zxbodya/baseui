@@ -8,7 +8,7 @@ import * as React from 'react';
 import {styled, hexToRgb, withWrapper} from '../styles/index';
 import type {SharedPropsT} from './types';
 
-export const StyledRoot = styled<SharedPropsT>('nav', props => {
+export const StyledRoot = styled<'nav', SharedPropsT>('nav', props => {
   const {
     $theme: {colors, typography},
   } = props;
@@ -29,7 +29,7 @@ export const StyledRoot = styled<SharedPropsT>('nav', props => {
 
 export const StyledNavItemContainer = styled('li', {});
 
-export const StyledNavLink = styled<{
+export const StyledNavLink = styled<'a', {
   $isFocusVisible: boolean;
 }>('a', ({$theme, $isFocusVisible}) => ({
   color: 'inherit',
@@ -47,7 +47,7 @@ export const StyledNavLink = styled<{
     : {outline: 'none'},
 }));
 
-export const StyledNavItemElement = styled<SharedPropsT>('div', props => {
+export const StyledNavItemElement = styled<'div', SharedPropsT>('div', props => {
   const {
     $active,
     $selectable,

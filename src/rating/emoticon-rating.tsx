@@ -23,7 +23,7 @@ class EmoticonRating extends React.Component<
     readOnly: false,
   };
 
-  state = {isFocusVisible: false, previewIndex: undefined};
+  state = {isFocusVisible: false, previewIndex: undefined}  as RatingStateT;
 
   selectItem = (value: number) => {
     const {onChange} = this.props;

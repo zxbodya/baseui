@@ -28,12 +28,12 @@ const aspectRatioBoxStyle = ({$aspectRatio}) => ({
   },
 });
 
-const AspectRatioBox = ({
+const AspectRatioBox: React.FC<AspectRatioBoxPropsT & {forwardedRef: React.Ref<HTMLElement>}> = ({
   forwardedRef,
   aspectRatio = 1,
   overrides = {},
   ...restProps
-}): React.ReactNode => {
+}) => {
   const aspectRatioBoxOverrides = {
     Block: {
       style: aspectRatioBoxStyle,
@@ -47,6 +47,7 @@ const AspectRatioBox = ({
       // eslint-disable-next-line flowtype/no-weak-types
       ref={forwardedRef as any}
       overrides={blockOverrides}
+      // @ts-ignore
       $aspectRatio={aspectRatio}
       data-baseweb="aspect-ratio-box"
       {...restProps}

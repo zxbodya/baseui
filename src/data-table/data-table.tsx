@@ -65,13 +65,7 @@ type HeaderContextT = {
 type CellPlacementPropsT = {
   columnIndex: number;
   rowIndex: number;
-  style: {
-    position: string;
-    height: number;
-    width: number;
-    top: number;
-    left: number;
-  };
+  style: React.CSSProperties;
   data: {
     columns: ColumnT[];
     columnHighlightIndex: number;
@@ -85,7 +79,7 @@ type CellPlacementPropsT = {
   };
 };
 
-function CellPlacement({columnIndex, rowIndex, data, style}) {
+function CellPlacement({columnIndex, rowIndex, data, style}: CellPlacementPropsT) {
   const [css, theme] = useStyletron();
 
   // ignores the table header row
@@ -192,7 +186,7 @@ function compareCellPlacement(prevProps, nextProps) {
 
   return false;
 }
-const CellPlacementMemo = React.memo<CellPlacementPropsT, unknown>(
+const CellPlacementMemo = React.memo<CellPlacementPropsT>(
   CellPlacement,
   compareCellPlacement,
 );
@@ -597,6 +591,7 @@ const InnerTableElement = React.forwardRef<
               const RowActionIcon = rowAction.renderIcon;
               return (
                 <Button
+                  // @ts-ignore todo: alt on button?
                   alt={rowAction.label}
                   key={rowAction.label}
                   onClick={event =>
@@ -684,7 +679,8 @@ export function DataTable({
     },
     [rowHeight],
   );
-  const gridRef = React.useRef<typeof VariableSizeGrid | null>(null);
+  //todo: backport removed unnecessary typeof
+  const gridRef = React.useRef<VariableSizeGrid | null>(null);
   const [measuredWidths, setMeasuredWidths] = React.useState(
     columns.map(() => 0),
   );
@@ -751,7 +747,7 @@ export function DataTable({
   );
 
   const sortedIndices = React.useMemo(() => {
-    let toSort = allRows.map((r, i) => [r, i]);
+    let toSort = allRows.map((r, i): [DataTablePropsT['rows'][number], number] => [r, i]);
     const index = sortIndex;
 
     if (

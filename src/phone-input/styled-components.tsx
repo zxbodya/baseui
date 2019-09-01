@@ -26,7 +26,7 @@ type HeightStyleProps = {
 // The root element of the PhoneInputNext
 export const StyledPhoneInputRoot = styled('div', {display: 'flex'});
 
-export const StyledFlagContainer = styled<SizeStyleProps>(
+export const StyledFlagContainer = styled<'span', SizeStyleProps>(
   'span',
   ({$size = SIZE.default, $theme: {sizing}}) => {
     const sizeToFont = {
@@ -60,7 +60,7 @@ export const StyledRoot = withStyle<typeof SelectStyledRoot, SizeStyleProps>(
   },
 );
 
-export const StyledDialCode = styled<{}>(
+export const StyledDialCode = styled<'div', {}>(
   'div',
   ({$theme: {direction, sizing}}) => {
     const marginDir = direction === 'rtl' ? 'marginRight' : 'marginLeft';
@@ -109,7 +109,7 @@ export const StyledCountrySelectDropdownListItem = withWrapper(
     },
 );
 
-export const StyledCountrySelectDropdownFlagColumn = styled<{}>(
+export const StyledCountrySelectDropdownFlagColumn = styled(
   'div',
   ({$theme: {direction, sizing}}) => {
     const paddingDir = direction === 'rtl' ? 'paddingRight' : 'paddingLeft';
@@ -121,7 +121,7 @@ export const StyledCountrySelectDropdownFlagColumn = styled<{}>(
   },
 );
 
-export const StyledCountrySelectDropdownNameColumn = styled<{}>(
+export const StyledCountrySelectDropdownNameColumn = styled(
   'div',
   ({$theme: {direction, sizing}}) => {
     const paddingDir = direction === 'rtl' ? 'paddingRight' : 'paddingLeft';
@@ -131,7 +131,7 @@ export const StyledCountrySelectDropdownNameColumn = styled<{}>(
   },
 );
 
-export const StyledCountrySelectDropdownDialcodeColumn = styled<{}>(
+export const StyledCountrySelectDropdownDialcodeColumn = styled(
   'div',
   ({$theme: {direction, sizing}}) => {
     const paddingDir = direction === 'rtl' ? 'paddingLeft' : 'paddingRight';

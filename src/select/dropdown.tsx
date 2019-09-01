@@ -22,6 +22,7 @@ function groupOptions(options: ValueT) {
     (groups, option) => {
       if (option.__optgroup) {
         if (!groups[option.__optgroup]) {
+          // @ts-ignore todo: modifying what is declared as readonly array
           groups[option.__optgroup] = [];
         }
         groups[option.__optgroup].push(option);
@@ -185,7 +186,7 @@ export default class SelectDropdown extends React.Component<DropdownPropsT> {
                       props: {...listItemProps, role: 'option'},
                       // slightly hacky way to handle the list item style overrides
                       // since the menu component doesn't provide a top level overrides for it
-                      // $FlowFixMe
+                      // @ts-ignore
                       style: listItemProps.$style,
                     },
                   },

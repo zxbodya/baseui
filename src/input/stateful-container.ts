@@ -34,6 +34,7 @@ class StatefulContainer<T extends EventTarget> extends React.Component<
   };
 
   onChange = (e: ChangeEvent<T>) => {
+    // @ts-ignore todo: T should be stricter and restrict to be used only on inputs, or implementation below to be revisited to handle events without value
     const nextState = {value: e.target.value};
     this.internalSetState(STATE_CHANGE_TYPE.change, nextState);
     this.props.onChange(e);

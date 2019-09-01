@@ -11,6 +11,7 @@ import type {StatefulSliderPropsT} from './types';
 
 export default function StatefulSlider(props: StatefulSliderPropsT) {
   return (
+    // @ts-ignore
     <StatefulSliderContainer {...props}>
       {childrenProps => <Slider {...childrenProps} />}
     </StatefulSliderContainer>

@@ -39,13 +39,13 @@ export function useStyletron() {
 }
 
 export function styled(
-  ElementName: string | React.ComponentType<{}>,
+  ElementName: string | React.ComponentType<any>,
   objOrFn: ObjOrFnT = {},
 ) {
   class MockStyledComponent extends React.Component<PropsT, StateT> {
     static displayName = 'MockStyledComponent';
 
-    state = {};
+    state = {} as StateT;
 
     static getDerivedStateFromProps(props: PropsT) {
       const styleFnArg = {
@@ -91,7 +91,7 @@ export function styled(
     }
   }
 
-  // $FlowFixMe
+  // @ts-ignore
   MockStyledComponent.__STYLETRON__ = {
     getInitialStyle,
     wrapper: IDENTITY,

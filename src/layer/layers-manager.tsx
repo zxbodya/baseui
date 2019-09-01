@@ -40,10 +40,7 @@ export default class LayersManager extends React.Component<
   LayersManagerPropsT,
   LayersManagerStateT
 > {
-  host: {
-    // eslint-disable-next-line flowtype/no-weak-types
-    current: React.RefObject<any> | null;
-  } = React.createRef();
+  host = React.createRef<HTMLElement>();
 
   containerRef: {
     // eslint-disable-next-line flowtype/no-weak-types

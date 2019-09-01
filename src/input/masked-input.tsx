@@ -61,12 +61,13 @@ const MaskOverride = React.forwardRef<HTMLElement, MaskedInputPropsT>(
 export default function MaskedInput({
   mask,
   maskChar,
+  // @ts-ignore
   overrides: {Input: inputOverride = {}, ...restOverrides} = {},
   ...restProps
 }: MaskedInputPropsT) {
-  let componentOverride = MaskOverride;
-  let propsOverride = {};
-  let styleOverride = {};
+  let componentOverride: any = MaskOverride;
+  let propsOverride: any = {};
+  let styleOverride: any = {};
 
   if (typeof inputOverride === 'function') {
     componentOverride = inputOverride;

@@ -7,9 +7,10 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {SIZE, SIZE_DIMENSION, ANCHOR} from './constants';
 import type {SharedStylePropsArgT, SizePropT, AnchorPropT} from './types';
+import type {StyleObject} from 'styletron-standard';
 
 function getSizeStyles($size: SizePropT, $anchor: AnchorPropT) {
-  const styles = {
+  const styles: StyleObject = {
     maxWidth: '100%',
     maxHeight: '100%',
     width: SIZE_DIMENSION.default,
@@ -87,7 +88,7 @@ function getAnchorStyles(props: SharedStylePropsArgT) {
   }
 }
 
-export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
+export const StyledRoot = styled<'div', SharedStylePropsArgT>('div', props => {
   return {
     position: 'fixed',
     overflow: 'auto',
@@ -98,7 +99,7 @@ export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledBackdrop = styled<SharedStylePropsArgT>('div', props => {
+export const StyledBackdrop = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$animating, $isOpen, $isVisible, $theme} = props;
   return {
     position: 'fixed',
@@ -122,7 +123,7 @@ export const StyledBackdrop = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledDrawerContainer = styled<SharedStylePropsArgT>(
+export const StyledDrawerContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {$animating, $isOpen, $isVisible, $theme} = props;
@@ -147,7 +148,7 @@ export const StyledDrawerContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledDrawerBody = styled<SharedStylePropsArgT>('div', props => {
+export const StyledDrawerBody = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$theme} = props;
   return {
     ...$theme.typography.font200,
@@ -161,7 +162,7 @@ export const StyledDrawerBody = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledClose = styled<SharedStylePropsArgT>('button', props => {
+export const StyledClose = styled<'button', SharedStylePropsArgT>('button', props => {
   const {$theme, $isFocusVisible} = props;
   const dir: string = $theme.direction === 'rtl' ? 'left' : 'right';
   return {

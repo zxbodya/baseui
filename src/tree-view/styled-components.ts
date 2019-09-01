@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import {styled} from '../styles/index';
 
-export const StyledTreeItemList = styled<{
+export const StyledTreeItemList = styled<'ul', {
   $indentGuides?: boolean;
   $isChildNode?: boolean;
   $expanded?: boolean;
@@ -31,7 +31,7 @@ export const StyledTreeItemList = styled<{
   };
 });
 
-export const StyledTreeItem = styled<{
+export const StyledTreeItem = styled<'li', {
   $isLeafNode?: boolean;
 }>('li', ({$theme, $isLeafNode}) => {
   return {
@@ -50,7 +50,7 @@ export const StyledTreeItem = styled<{
   };
 });
 
-export const StyledItemContent = styled<{
+export const StyledItemContent = styled<'div', {
   $isSelected: boolean;
   $isFocusVisible: boolean;
 }>('div', ({$theme, $isSelected, $isFocusVisible}) => {
@@ -79,7 +79,7 @@ export const StyledItemContent = styled<{
   };
 });
 
-export const StyledIconContainer = styled<{}>('div', ({$theme}) => {
+export const StyledIconContainer = styled('div', ({$theme}) => {
   const marginDirection: string =
     $theme.direction === 'rtl' ? 'marginLeft' : 'marginRight';
   return {
@@ -92,7 +92,7 @@ export const StyledIconContainer = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const StyledNoIconContainer = styled<{}>('div', ({$theme}) => {
+export const StyledNoIconContainer = styled('div', ({$theme}) => {
   const marginDirection: string =
     $theme.direction === 'rtl' ? 'marginLeft' : 'marginRight';
   return {

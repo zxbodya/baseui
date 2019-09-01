@@ -14,8 +14,9 @@ export const VARIANT = Object.freeze({
   solid: 'solid',
   light: 'light',
   outlined: 'outlined',
-});
+} as const);
 
+// todo: dynamic identity map generation
 export const KIND = {
   custom: 'custom',
   // semantic
@@ -34,4 +35,4 @@ export const KIND = {
   orange: 'orange',
   purple: 'purple',
   brown: 'brown',
-};
+} as const;

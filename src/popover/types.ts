@@ -48,7 +48,7 @@ export type OverridesT = {
 
 // re-exports to maintain same public interface
 export type ChildT = React.ReactNode;
-export type ChildrenT = React.ChildrenArray<ChildT>;
+export type ChildrenT = Array<ChildT> | ChildT;
 
 // Props shared by all flavors of popover
 export type BasePopoverPropsT = {

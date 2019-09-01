@@ -15,6 +15,7 @@ import type {
   PlacementTypeT,
 } from './types';
 import type {ThemeT} from '../styles/types';
+import type {StyleObject} from 'styletron-standard';
 
 function getBackgroundColor(
   kind: KindTypeT,
@@ -47,49 +48,55 @@ function getFontColor(kind: KindTypeT, theme: ThemeT) {
   }[kind];
 }
 
-export function getPlacement(placement: PlacementTypeT) {
-  return {
-    [PLACEMENT.topLeft]: {
-      top: 0,
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-    },
-    [PLACEMENT.top]: {
-      top: 0,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-    },
-    [PLACEMENT.topRight]: {
-      top: 0,
-      alignItems: 'flex-end',
-      justifyContent: 'flex-start',
-      flexDirection: 'column',
-    },
-    [PLACEMENT.bottomRight]: {
-      bottom: 0,
-      alignItems: 'flex-end',
-      justifyContent: 'flex-end',
-      flexDirection: 'column-reverse',
-    },
-    [PLACEMENT.bottom]: {
-      bottom: 0,
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      flexDirection: 'column-reverse',
-    },
-    [PLACEMENT.bottomLeft]: {
-      bottom: 0,
-      alignItems: 'flex-start',
-      justifyContent: 'flex-end',
-      flexDirection: 'column-reverse',
-    },
-  }[placement];
+export function getPlacement(placement: PlacementTypeT): StyleObject {
+  switch (placement) {
+    case PLACEMENT.topLeft:
+      return {
+        top: 0,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+      };
+    case PLACEMENT.top:
+      return {
+        top: 0,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+      };
+    case PLACEMENT.topRight:
+      return {
+        top: 0,
+        alignItems: 'flex-end',
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
+      };
+    case PLACEMENT.bottomRight:
+      return {
+        bottom: 0,
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+        flexDirection: 'column-reverse',
+      };
+    case PLACEMENT.bottom:
+      return {
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        flexDirection: 'column-reverse',
+      };
+    case PLACEMENT.bottomLeft:
+      return {
+        bottom: 0,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-end',
+        flexDirection: 'column-reverse',
+      };
+  }
 }
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Root = styled<ToasterSharedStylePropsArgT>('div', props => {
+export const Root = styled<'div', ToasterSharedStylePropsArgT>('div', props => {
   const {$placement, $theme} = props;
   return {
     pointerEvents: 'none',
@@ -106,10 +113,10 @@ export const Root = styled<ToasterSharedStylePropsArgT>('div', props => {
 });
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const InnerContainer = styled<SharedStylePropsArgT>('div', {});
+export const InnerContainer = styled<'div', SharedStylePropsArgT>('div', {});
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Body = styled<SharedStylePropsArgT>('div', props => {
+export const Body = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$isVisible, $kind, $type, $theme} = props;
   const isInline = $type === TYPE.inline;
   return {
@@ -140,8 +147,7 @@ export const Body = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-// $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const CloseIconSvg = styled<SharedStylePropsArgT>('svg', props => {
+export const CloseIconSvg = styled<'svg', SharedStylePropsArgT>('svg', props => {
   return {
     ...getSvgStyles(props),
     cursor: 'pointer',

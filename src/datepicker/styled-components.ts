@@ -7,18 +7,19 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import getDayStateCode from './utils/day-state';
 import type {SharedStylePropsT} from './types';
+import type {StyleObject} from 'styletron-standard';
 
 /**
  * Main component container element
  */
-export const StyledInputWrapper = styled<SharedStylePropsT>('div', () => ({
+export const StyledInputWrapper = styled<'div', SharedStylePropsT>('div', () => ({
   width: '100%',
 }));
 
 /**
  * Main component container element
  */
-export const StyledRoot = styled<SharedStylePropsT>('div', props => {
+export const StyledRoot = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $theme: {typography, colors, borders},
   } = props;
@@ -37,7 +38,7 @@ export const StyledRoot = styled<SharedStylePropsT>('div', props => {
 
 export const StyledMonthContainer = styled('div', {display: 'flex'});
 
-export const StyledCalendarContainer = styled<SharedStylePropsT>(
+export const StyledCalendarContainer = styled<'div', SharedStylePropsT>(
   'div',
   props => {
     const {
@@ -52,7 +53,7 @@ export const StyledCalendarContainer = styled<SharedStylePropsT>(
   },
 );
 
-export const StyledSelectorContainer = styled<SharedStylePropsT>(
+export const StyledSelectorContainer = styled<'div', SharedStylePropsT>(
   'div',
   ({$theme}) => {
     const textAlign = $theme.direction === 'rtl' ? 'right' : 'left';
@@ -65,7 +66,7 @@ export const StyledSelectorContainer = styled<SharedStylePropsT>(
   },
 );
 
-export const StyledCalendarHeader = styled<SharedStylePropsT>('div', props => {
+export const StyledCalendarHeader = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $theme: {borders, colors, sizing},
   } = props;
@@ -88,7 +89,7 @@ export const StyledCalendarHeader = styled<SharedStylePropsT>('div', props => {
   };
 });
 
-export const StyledMonthHeader = styled<SharedStylePropsT>('div', props => {
+export const StyledMonthHeader = styled<'div', SharedStylePropsT>('div', props => {
   return {
     color: props.$theme.colors.calendarHeaderForeground,
     backgroundColor: props.$theme.colors.calendarHeaderBackground,
@@ -96,7 +97,7 @@ export const StyledMonthHeader = styled<SharedStylePropsT>('div', props => {
   };
 });
 
-export const StyledMonthYearSelectButton = styled<{
+export const StyledMonthYearSelectButton = styled<'button', {
   $isFocusVisible: boolean;
 }>('button', props => {
   return {
@@ -119,7 +120,7 @@ export const StyledMonthYearSelectButton = styled<{
   };
 });
 
-export const StyledMonthYearSelectIconContainer = styled<{}>('span', props => {
+export const StyledMonthYearSelectIconContainer = styled('span', props => {
   const marginDirection: string =
     props.$theme.direction === 'rtl' ? 'marginRight' : 'marginLeft';
   return {
@@ -129,7 +130,7 @@ export const StyledMonthYearSelectIconContainer = styled<{}>('span', props => {
   };
 });
 
-function getArrowBtnStyle({$theme, $disabled, $isFocusVisible}) {
+function getArrowBtnStyle({$theme, $disabled, $isFocusVisible}): StyleObject {
   return {
     boxSizing: 'border-box',
     color: $disabled
@@ -160,17 +161,17 @@ function getArrowBtnStyle({$theme, $disabled, $isFocusVisible}) {
   };
 }
 
-export const StyledPrevButton = styled<SharedStylePropsT>(
+export const StyledPrevButton = styled<'button', SharedStylePropsT>(
   'button',
   getArrowBtnStyle,
 );
 
-export const StyledNextButton = styled<SharedStylePropsT>(
+export const StyledNextButton = styled<'button', SharedStylePropsT>(
   'button',
   getArrowBtnStyle,
 );
 
-export const StyledMonth = styled<SharedStylePropsT>(
+export const StyledMonth = styled<'div', SharedStylePropsT>(
   'div',
   (props: SharedStylePropsT) => {
     return {
@@ -179,7 +180,7 @@ export const StyledMonth = styled<SharedStylePropsT>(
   },
 );
 
-export const StyledWeek = styled<SharedStylePropsT>('div', props => {
+export const StyledWeek = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $theme: {sizing},
   } = props;
@@ -379,7 +380,7 @@ function getDayStyles(code, {colors}): any {
   return dayStateStyle[code] || defaultDayStyle;
 }
 
-export const StyledDay = styled<SharedStylePropsT>('div', props => {
+export const StyledDay = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $disabled,
     $isFocusVisible,
@@ -503,7 +504,7 @@ export const StyledDay = styled<SharedStylePropsT>('div', props => {
   } as {};
 });
 
-export const StyledDayLabel = styled<SharedStylePropsT>('div', props => {
+export const StyledDayLabel = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $theme: {typography, colors},
     $selected,
@@ -514,7 +515,7 @@ export const StyledDayLabel = styled<SharedStylePropsT>('div', props => {
   };
 });
 
-export const StyledWeekdayHeader = styled<SharedStylePropsT>('div', props => {
+export const StyledWeekdayHeader = styled<'div', SharedStylePropsT>('div', props => {
   const {
     $theme: {sizing},
   } = props;

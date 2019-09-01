@@ -9,7 +9,7 @@ export const KIND = {
   secondary: 'secondary',
   tertiary: 'tertiary',
   minimal: 'minimal',
-};
+} as const;
 
 export const SHAPE = {
   default: 'default',
@@ -17,11 +17,11 @@ export const SHAPE = {
   round: 'round',
   circle: 'circle',
   square: 'square',
-};
+} as const;
 
 export const SIZE = {
   mini: 'mini',
   default: 'default',
   compact: 'compact',
   large: 'large',
-};
+} as const;

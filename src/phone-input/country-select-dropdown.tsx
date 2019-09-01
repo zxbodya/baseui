@@ -22,6 +22,7 @@ import {iso2FlagEmoji} from './utils';
 
 import type {CountrySelectDropdownPropsT} from './types';
 import type {LocaleT} from '../locale/types';
+import type {ComponentProps} from 'react';
 
 CountrySelectDropdown.defaultProps = {
   maxDropdownHeight: defaultProps.maxDropdownHeight,
@@ -30,7 +31,7 @@ CountrySelectDropdown.defaultProps = {
 
 function CountrySelectDropdown(
   props: CountrySelectDropdownPropsT & {
-    $forwardedRef: React.RefObject<any>;
+    $forwardedRef: React.Ref<any>;
   },
 ) {
   const {
@@ -144,6 +145,6 @@ function CountrySelectDropdown(
 }
 
 export default React.forwardRef<
-  typeof CountrySelectDropdown,
-  CountrySelectDropdownPropsT
+  any,
+  ComponentProps<typeof CountrySelectDropdown>
 >((props, ref) => <CountrySelectDropdown {...props} $forwardedRef={ref} />);

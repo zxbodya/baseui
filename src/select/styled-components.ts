@@ -12,7 +12,7 @@ import type {SharedStylePropsArgT} from './types';
 import {ellipsisText} from '../styles/util';
 import type {ThemeT} from '../styles/types';
 
-function getFont(size = SIZE.default, typography) {
+function getFont(size: keyof typeof SIZE = SIZE.default, typography) {
   return {
     [SIZE.mini]: typography.font100,
     [SIZE.compact]: typography.font200,
@@ -102,7 +102,7 @@ function getControlPadding(props) {
   }[$size];
 }
 
-export const StyledDropdownContainer = styled<SharedStylePropsArgT>(
+export const StyledDropdownContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     return {
@@ -115,7 +115,7 @@ export const StyledDropdown = StyledList;
 
 export const StyledDropdownListItem = StyledListItem;
 
-export const StyledOptionContent = styled<SharedStylePropsArgT>(
+export const StyledOptionContent = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {$isHighlighted, $selected, $disabled, $theme} = props;
@@ -129,7 +129,7 @@ export const StyledOptionContent = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
+export const StyledRoot = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $theme: {typography},
     $size,
@@ -204,7 +204,7 @@ function getControlContainerColors(
   };
 }
 
-export const StyledControlContainer = styled<SharedStylePropsArgT>(
+export const StyledControlContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {
@@ -255,7 +255,7 @@ export const StyledControlContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledValueContainer = styled<SharedStylePropsArgT>(
+export const StyledValueContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const padding = getControlPadding(props);
@@ -274,7 +274,7 @@ export const StyledValueContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledPlaceholder = styled<SharedStylePropsArgT>('div', props => {
+export const StyledPlaceholder = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $disabled,
     $theme: {colors},
@@ -290,7 +290,7 @@ export const StyledPlaceholder = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledSingleValue = styled<SharedStylePropsArgT>('div', props => {
+export const StyledSingleValue = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $searchable,
     $size,
@@ -310,7 +310,7 @@ export const StyledSingleValue = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledInputContainer = styled<SharedStylePropsArgT>(
+export const StyledInputContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {
@@ -346,7 +346,7 @@ export const StyledInputContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledInput = styled<SharedStylePropsArgT>('input', props => {
+export const StyledInput = styled<'input', SharedStylePropsArgT>('input', props => {
   const {
     $theme: {colors, typography},
     $size,
@@ -378,7 +378,7 @@ export const StyledInput = styled<SharedStylePropsArgT>('input', props => {
   };
 });
 
-export const StyledInputSizer = styled<SharedStylePropsArgT>(
+export const StyledInputSizer = styled<'div', SharedStylePropsArgT>(
   'div',
   ({$size, $theme, $theme: {typography}}) => {
     const dir: string = $theme.direction === 'rtl' ? 'right' : 'left';
@@ -395,7 +395,7 @@ export const StyledInputSizer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledIconsContainer = styled<SharedStylePropsArgT>(
+export const StyledIconsContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   ({$theme, $theme: {sizing}}) => {
     const paddingDir: string =
@@ -422,7 +422,7 @@ function getSvgStyles({$theme}) {
   };
 }
 
-export const StyledSelectArrow = styled<SharedStylePropsArgT>('svg', props => {
+export const StyledSelectArrow = styled<'svg', SharedStylePropsArgT>('svg', props => {
   const {$theme, $disabled} = props;
   const {colors} = $theme;
   return {
@@ -432,7 +432,7 @@ export const StyledSelectArrow = styled<SharedStylePropsArgT>('svg', props => {
   };
 });
 
-export const StyledClearIcon = styled<SharedStylePropsArgT>('svg', props => {
+export const StyledClearIcon = styled<'svg', SharedStylePropsArgT>('svg', props => {
   const {$theme} = props;
   const {colors} = $theme;
   return {
@@ -451,7 +451,7 @@ export const getLoadingIconStyles = (props: {$theme: ThemeT}) => {
   };
 };
 
-export const StyledSearchIconContainer = styled<SharedStylePropsArgT>(
+export const StyledSearchIconContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {$disabled, $theme} = props;

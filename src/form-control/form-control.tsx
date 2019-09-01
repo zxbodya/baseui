@@ -59,6 +59,7 @@ export default class FormControl extends React.Component<
       children,
     } = this.props;
 
+    // @ts-ignore todo: looks dangerous
     const onlyChildProps = React.Children.only(children).props;
 
     const sharedProps = {
@@ -103,7 +104,9 @@ export default class FormControl extends React.Component<
           {React.Children.map(children, (child, index) => {
             if (!child) return;
 
+            // @ts-ignore
             const key = child.key || String(index);
+            // @ts-ignore todo: stricter types to disallow primitive children
             return React.cloneElement(child, {
               key,
               'aria-errormessage': error ? this.state.captionId : null,

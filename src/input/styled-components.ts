@@ -9,8 +9,9 @@ import type {ThemeT} from '../styles/types';
 import {ADJOINED, SIZE} from './constants';
 import type {SharedPropsT, SizeT} from './types';
 import DeleteAlt from '../icon/delete-alt';
+import type {StyleObject} from 'styletron-standard';
 
-export const StyledMaskToggleButton = styled<{
+export const StyledMaskToggleButton = styled<'button', {
   $size: SizeT;
   $isFocusVisible: boolean;
   $theme: ThemeT;
@@ -37,7 +38,7 @@ export const StyledMaskToggleButton = styled<{
   };
 });
 
-export const StyledClearIconContainer = styled<{
+export const StyledClearIconContainer = styled<'div',{
   $size: SizeT;
   $alignTop: boolean;
   $theme: ThemeT;
@@ -192,7 +193,7 @@ export const getRootStyles = (props: {
   $size: SizeT;
   $theme: ThemeT;
   $hasIconTrailing: boolean;
-}) => {
+}): StyleObject => {
   const {
     $isFocused,
     $adjoined,
@@ -233,7 +234,7 @@ export const getRootStyles = (props: {
   };
 };
 
-export const Root = styled<SharedPropsT>('div', getRootStyles);
+export const Root = styled<'div', SharedPropsT>('div', getRootStyles);
 
 // InputEnhancer
 
@@ -304,7 +305,7 @@ function getInputEnhancerColors(
   };
 }
 
-export const InputEnhancer = styled<SharedPropsT>('div', props => {
+export const InputEnhancer = styled<'div', SharedPropsT>('div', props => {
   const {
     $size,
     $disabled,
@@ -334,7 +335,7 @@ function getInputContainerColors(
   $error,
   $positive,
   colors,
-) {
+): StyleObject {
   if ($disabled) {
     return {
       color: colors.inputTextDisabled,
@@ -376,7 +377,7 @@ export const getInputContainerStyles = (props: {
   $positive: boolean;
   $size: SizeT;
   $theme: ThemeT;
-}) => {
+}): StyleObject => {
   const {
     $isFocused,
     $error,
@@ -402,12 +403,12 @@ export const getInputContainerStyles = (props: {
   };
 };
 
-export const InputContainer = styled<SharedPropsT>(
+export const InputContainer = styled<'div', SharedPropsT>(
   'div',
   getInputContainerStyles,
 );
 
-function getInputColors($disabled, $isFocused, $error, colors) {
+function getInputColors($disabled, $isFocused, $error, colors): StyleObject {
   if ($disabled) {
     return {
       color: colors.inputTextDisabled,
@@ -432,7 +433,7 @@ export const getInputStyles = (
   props: SharedPropsT & {
     $theme: ThemeT;
   },
-) => {
+): StyleObject => {
   const {
     $disabled,
     $isFocused,
@@ -468,4 +469,4 @@ export const getInputStyles = (
   };
 };
 
-export const Input = styled<SharedPropsT>('input', getInputStyles);
+export const Input = styled<'input', SharedPropsT>('input', getInputStyles);

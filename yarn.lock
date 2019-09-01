@@ -3106,6 +3106,13 @@
   dependencies:
     "@types/react" "^16"
 
+"@types/react-virtualized-auto-sizer@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@types/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.0.tgz#fc32f30a8dab527b5816f3a757e1e1d040c8f272"
+  integrity sha512-NMErdIdSnm2j/7IqMteRiRvRulpjoELnXWUwdbucYCz84xG9PHcoOrr7QfXwB/ku7wd6egiKFrzt/+QK4Imeeg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-virtualized@^9.21.3":
   version "9.21.3"
   resolved "https://registry.yarnpkg.com/@types/react-virtualized/-/react-virtualized-9.21.3.tgz#79a44b870a4848cbc7cc04ff4bc06e5a10955262"

@@ -43,7 +43,7 @@ const CardTypeToComponent = {
 
 class PaymentCard extends React.Component<PaymentCardPropsT> {
   caretPosition = 0;
-  inRef: HTMLInputElement | undefined | null = null;
+  inRef: HTMLInputElement | HTMLTextAreaElement | null = null;
 
   static defaultProps = {
     autoComplete: 'cc-number',
@@ -81,7 +81,8 @@ class PaymentCard extends React.Component<PaymentCardPropsT> {
       StyledIconWrapper,
     );
 
-    const validatedValue = valid.number(value);
+    // todo: maybe incorrect typecast
+    const validatedValue = valid.number(value as string);
     let gaps: number[] = [];
     let type: string | undefined | null = undefined;
     if (validatedValue.card) {
@@ -126,8 +127,10 @@ class PaymentCard extends React.Component<PaymentCardPropsT> {
                 this.props.value ? String(this.props.value) : '',
                 e.target.selectionStart,
               );
+              // @ts-ignore todo: looks dangerous
               this.caretPosition = position;
               this.inRef = e.target;
+              // @ts-ignore todo: looks dangerous
               e.target.value = value;
               onChange && onChange(e);
             }}

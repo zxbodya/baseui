@@ -56,7 +56,7 @@ export type AccordionOnChangeHandlerT = (a: {
   expanded: Array<React.Key>;
 }) => unknown;
 
-type ChildrenT = React.ChildrenArray<React.ReactElement<any>>;
+type ChildrenT = Array<React.ReactElement<any>> | React.ReactElement<any>;
 
 export type AccordionPropsT = {
   /** Determines how many panels may be expanded at a time. If set to

@@ -9,7 +9,7 @@ import {styled, expandBorderStyles} from '../styles/index';
 import type {StyledContentPropsT, StyledArtworkContainerPropsT} from './types';
 import {artworkSizeToValue} from './utils';
 
-export const StyledRoot = styled<{}>('li', ({$theme}) => {
+export const StyledRoot = styled('li', ({$theme}) => {
   return {
     alignItems: 'center',
     backgroundColor: $theme.colors.backgroundPrimary,
@@ -19,7 +19,7 @@ export const StyledRoot = styled<{}>('li', ({$theme}) => {
   };
 });
 
-export const StyledContent = styled<StyledContentPropsT>(
+export const StyledContent = styled<'div', StyledContentPropsT>(
   'div',
   ({$mLeft, $sublist, $theme}) => {
     return {
@@ -45,7 +45,7 @@ export const StyledEndEnhancerContainer = styled('div', {
   display: 'flex',
 });
 
-export const StyledArtworkContainer = styled<StyledArtworkContainerPropsT>(
+export const StyledArtworkContainer = styled<'div', StyledArtworkContainerPropsT>(
   'div',
   ({$artworkSize, $sublist, $theme}) => {
     let sizeValue: number =

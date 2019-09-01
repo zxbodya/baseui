@@ -79,15 +79,11 @@ class Select extends React.Component<PropsT, SelectStateT> {
 
   // anchor is a ref that refers to the outermost element rendered when the dropdown menu is not
   // open. This is required so that we can check if clicks are on/off the anchor element.
-  anchor: {
-    current: HTMLElement | null;
-  } = React.createRef();
+  anchor = React.createRef<HTMLElement>();
   // dropdown is a ref that refers to the popover element. This is required so that we can check if
   // clicks are on/off the dropdown element.
-  dropdown: {
-    current: HTMLElement | null;
-  } = React.createRef();
-  input: React.RefObject<any>;
+  dropdown = React.createRef<HTMLElement>();
+  input?: HTMLInputElement;
   // dragging is a flag to track whether a mobile device is currently scrolling versus clicking.
   dragging: boolean;
   // focusAfterClear is a flag to indicate that the dropdowm menu should open after a selected
@@ -291,7 +287,7 @@ class Select extends React.Component<PropsT, SelectStateT> {
     this.openAfterFocus = false;
   };
 
-  handleBlur = (event: FocusEvent | MouseEvent) => {
+  handleBlur = (event: React.FocusEvent|MouseEvent) => {
     if (event.relatedTarget) {
       if (
         containsNode(this.anchor.current, event.relatedTarget) ||
@@ -888,7 +884,8 @@ class Select extends React.Component<PropsT, SelectStateT> {
       this.props.creatable &&
       this.options.concat(this.props.value).every(filterDoesNotMatchOption)
     ) {
-      // $FlowFixMe - this.options is typed as a read-only array
+      // todo:
+      // @ts-ignore - this.options is typed as a read-only array
       this.options.push({
         id: filterValue,
         [this.props.labelKey]: filterValue,

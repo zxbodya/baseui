@@ -12,9 +12,14 @@ import HeaderCell from './header-cell';
 import type {ColumnT, RowT} from './types';
 
 // https://github.com/Swizec/useDimensions
-function useDimensions() {
-  const [dimensions, setDimensions] = React.useState({});
-  const [node, setNode] = React.useState(null);
+function useDimensions(): [
+  (node) => void,
+  ClientRect | DOMRect | {width: number},
+] {
+  const [dimensions, setDimensions] = React.useState<
+    ClientRect | DOMRect | {width: number}
+  >({width: 0});
+  const [node, setNode] = React.useState<Element | null>(null);
 
   const ref = React.useCallback(node => {
     setNode(node);

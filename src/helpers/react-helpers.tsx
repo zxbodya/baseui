@@ -12,6 +12,7 @@ export const flattenFragments = (
   ChildWrapper?: React.ComponentType<any>,
   depth: number = 0,
 ): React.ReactNode[] =>
+  // @ts-ignore
   React.Children.toArray(children).reduce(
     (
       acc: React.ReactNode[],

@@ -32,9 +32,9 @@ export type GetProfileItemImgFnT = (
 
 export type GetProfileItemImgTextFnT = (item: ItemT) => string;
 
-export type SetRootRefFnT = (ref: React$ElementRef<any>) => void;
+export type SetRootRefFnT = (ref: React.RefObject<any>) => void;
 
-export type RootRefT = React$ElementRef<any>;
+export type RootRefT = React.RefObject<any>;
 
 export type OnItemSelectFnT = (a: {
   item: ItemT;
@@ -54,7 +54,7 @@ export type ProfileOverridesT = {
 
 export type RenderItemPropsT = {
   disabled?: boolean;
-  ref?: React$ElementRef<any>;
+  ref?: React.Ref<any>;
   id?: string | null;
   isFocused?: boolean;
   // indicates when the item is visually focused
@@ -71,7 +71,7 @@ export type GetRequiredItemPropsFnT = (
 
 export type StateReducerFnT = (
   changeType: keyof typeof STATE_CHANGE_TYPES | undefined | null,
-  changes: StatefulContainerStateT,
+  changes: Partial<StatefulContainerStateT>,
   currentState: StatefulContainerStateT,
 ) => StatefulContainerStateT;
 

@@ -18,7 +18,7 @@ import {
 import type {PropsT} from './types';
 import {artworkSizeToValue} from './utils';
 
-const ListItem = React.forwardRef<PropsT, HTMLLIElement>(
+const ListItem = React.forwardRef<HTMLLIElement, PropsT>(
   (props: PropsT, ref) => {
     const {overrides = {}} = props;
     const Artwork = props.artwork;

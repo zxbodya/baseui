@@ -46,6 +46,7 @@ export default class StatefulTabs extends React.Component<
     } else {
       return React.Children.map(
         children,
+        // @ts-ignore
         (child, index) => child.key || String(index),
       )[0];
     }

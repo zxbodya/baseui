@@ -62,7 +62,7 @@ class DateHelpers<T> {
       locale: instance.locale,
     });
     const updateOptions = updateOptionsBase || defaultGetOptions;
-    const UtilsClass = adapter.constructor;
+    const UtilsClass: any = adapter.constructor;
     const className = adapter.constructor.name;
     // This ensures that if the adapter class isn't
     // supported it just falls back the default formats
@@ -89,7 +89,7 @@ class DateHelpers<T> {
     );
   };
   // eslint-disable-next-line flowtype/no-weak-types
-  format: (c: T, b: string, a: any) => string = (date, format, locale) => {
+  format: (c: T, b: string, a?: any) => string = (date, format, locale) => {
     const adapter = locale
       ? this.getAdapterWithNewLocale(locale)
       : this.adapter;
@@ -263,8 +263,8 @@ class DateHelpers<T> {
   monthDisabledBefore: (
     b: T,
     a: {
-      minDate: T | undefined | null;
-      includeDates: Array<T> | undefined | null;
+      minDate?: T | undefined | null;
+      includeDates?: Array<T> | undefined | null;
     },
   ) => boolean = (day, {minDate, includeDates} = {}) => {
     const previousMonth = this.subMonths(day, 1);
@@ -282,8 +282,8 @@ class DateHelpers<T> {
   monthDisabledAfter: (
     b: T,
     a: {
-      maxDate: T | undefined | null;
-      includeDates: Array<T> | undefined | null;
+      maxDate?: T | undefined | null;
+      includeDates?: Array<T> | undefined | null;
     },
   ) => boolean = (day, {maxDate, includeDates} = {}) => {
     const nextMonth = this.adapter.addMonths(day, 1);
@@ -330,11 +330,11 @@ class DateHelpers<T> {
   isDayDisabled: (
     b: T,
     a: {
-      minDate: T | undefined | null;
-      maxDate: T | undefined | null;
-      excludeDates: Array<T> | undefined | null;
-      includeDates: Array<T> | undefined | null;
-      filterDate: ((day: T) => boolean) | undefined | null;
+      minDate?: T | undefined | null;
+      maxDate?: T | undefined | null;
+      excludeDates?: Array<T> | undefined | null;
+      includeDates?: Array<T> | undefined | null;
+      filterDate?: ((day: T) => boolean) | undefined | null;
     },
   ) => boolean = (
     day,
@@ -370,8 +370,8 @@ class DateHelpers<T> {
   isOutOfBounds: (
     b: T,
     a: {
-      minDate: T | undefined | null;
-      maxDate: T | undefined | null;
+      minDate?: T | undefined | null;
+      maxDate?: T | undefined | null;
     },
   ) => boolean = (day, {minDate, maxDate} = {}) => {
     return (

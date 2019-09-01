@@ -124,13 +124,9 @@ export const flexGridItemStyle = ({
   // - {mobile, small, medium}
   // - {mobile, small, medium, large}
   return [...Array(maxResponsiveLength).keys()].reduce((acc, i) => {
-    const [
-      flexGridColumnCountValue,
-      flexGridColumnGapValue,
-      flexGridRowGapValue,
-    ] = [$flexGridColumnCount, $flexGridColumnGap, $flexGridRowGap].map(r =>
-      getResponsiveValue(r, i),
-    );
+    const flexGridColumnCountValue = getResponsiveValue($flexGridColumnCount, i);
+    const flexGridColumnGapValue = getResponsiveValue($flexGridColumnGap, i);
+    const flexGridRowGapValue = getResponsiveValue($flexGridRowGap, i);
     const mediaQuery =
       i === 0
         ? // Custom media query needed so :nth-child styles don't conflict
@@ -150,7 +146,7 @@ export const flexGridItemStyle = ({
   }, baseFlexGridItemStyle);
 };
 
-const FlexGridItem = ({
+const FlexGridItem: React.FC<FlexGridItemPropsT & {forwardedRef: React.Ref<HTMLElement>}> = ({
   forwardedRef,
   children,
   as,
@@ -161,7 +157,7 @@ const FlexGridItem = ({
   flexGridItemIndex,
   flexGridItemCount,
   ...restProps
-}): React.ReactNode => {
+}) => {
   const flexGridItemOverrides = {
     Block: {
       style: flexGridItemStyle,
@@ -171,6 +167,7 @@ const FlexGridItem = ({
     ? mergeOverrides(flexGridItemOverrides, overrides)
     : flexGridItemOverrides;
   return (
+    // @ts-ignore overrides :(
     <Block
       // coerced to any because because of how react components are typed.
       // cannot guarantee an html element
@@ -178,6 +175,7 @@ const FlexGridItem = ({
       ref={forwardedRef as any}
       as={as}
       overrides={blockOverrides}
+      // @ts-ignore
       $flexGridColumnCount={flexGridColumnCount}
       $flexGridColumnGap={flexGridColumnGap}
       $flexGridRowGap={flexGridRowGap}

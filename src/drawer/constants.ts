@@ -8,23 +8,23 @@ export const SIZE = {
   default: 'default',
   full: 'full',
   auto: 'auto',
-};
+} as const;
 
 export const SIZE_DIMENSION = {
   default: '500px',
   full: '100%',
   auto: 'auto',
-};
+} as const;
 
 export const CLOSE_SOURCE = {
   closeButton: 'closeButton',
   backdrop: 'backdrop',
   escape: 'escape',
-};
+} as const;
 
 export const ANCHOR = {
   left: 'left',
   right: 'right',
   top: 'top',
   bottom: 'bottom',
-};
+} as const;
