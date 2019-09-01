@@ -5,13 +5,13 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {withStyle} from '../styles/index.js';
+import {withStyle} from '../styles/index';
 import {
   StyledTable as FlexStyledTable,
   StyledHeadCell as FlexStyledHeadCell,
   StyledCell as FlexStyledBodyCell,
-} from '../table/index.js';
-import {StyletronComponent} from '../styles/styled.js';
+} from '../table/index';
+import {StyletronComponent} from '../styles/styled';
 
 const StyledTableElement = withStyle<
   typeof FlexStyledTable,

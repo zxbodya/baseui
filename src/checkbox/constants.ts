@@ -8,11 +8,11 @@ LICENSE file in the root directory of this source tree.
 
 export const STATE_TYPE = {
   change: 'CHANGE',
-};
+} as const;
 
 export const STYLE_TYPE = Object.freeze({
   default: 'default',
   toggle: 'toggle',
-});
+} as const);
 
 /* eslint-enable import/prefer-default-export */

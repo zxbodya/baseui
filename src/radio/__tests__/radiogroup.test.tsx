@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {shallow} from 'enzyme';
 
-import {RadioGroup, Radio} from '../index.js';
+import {RadioGroup, Radio} from '../index';
 
 describe('radio-group', () => {
   it('sets expected child radio checked', () => {

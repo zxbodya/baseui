@@ -5,13 +5,13 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {STATE_CHANGE_TYPE} from './constants';
 import {
   StatefulContainerPropsT,
   StateT,
   StateReducerT,
   StateTypeT,
-} from './types.js';
+} from './types';
 
 import {ChangeEvent} from 'react';
 
@@ -34,6 +34,7 @@ class StatefulContainer<T extends EventTarget> extends React.Component<
   };
 
   onChange = (e: ChangeEvent<T>) => {
+    // @ts-ignore todo: T should be stricter and restrict to be used only on inputs, or implementation below to be revisited to handle events without value
     const nextState = {value: e.target.value};
     this.internalSetState(STATE_CHANGE_TYPE.change, nextState);
     this.props.onChange(e);

@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {BaseInputPropsT, StateReducerT, StateT} from '../input/types.js';
-import {ADJOINED, SIZE} from '../input/constants.js';
+import {BaseInputPropsT, StateReducerT, StateT} from '../input/types';
+import {ADJOINED, SIZE} from '../input/constants';
 
 import {SyntheticEvent} from 'react';
 

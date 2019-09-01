@@ -6,15 +6,15 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 import MultiRef from 'react-multi-ref';
-import defaultProps from './default-props.js';
+import defaultProps from './default-props';
 import {
   StyledRoot,
   StyledInputOverrideRoot,
   StyledInputOverrideInput,
-} from './styled-components.js';
-import {PropsT, StateT} from './types.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {Input as DefaultInput} from '../input/index.js';
+} from './styled-components';
+import {PropsT, StateT} from './types';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {Input as DefaultInput} from '../input/index';
 
 export default class PinCode extends React.Component<PropsT, StateT> {
   static defaultProps = defaultProps;
@@ -45,7 +45,7 @@ export default class PinCode extends React.Component<PropsT, StateT> {
       Root: {component: StyledInputOverrideRoot},
       Input: {component: StyledInputOverrideInput},
     };
-    // $FlowFixMe
+    // @ts-ignore
     inputProps.overrides = mergeOverrides(baseOverrides, inputProps.overrides);
     return (
       <Root data-baseweb="pin-code" {...rootProps}>

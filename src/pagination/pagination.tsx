@@ -7,20 +7,20 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import memoize from 'memoize-one';
 // Files
-import {LocaleContext} from '../locale/index.js';
-import {ThemeContext} from '../styles/theme-provider.js';
-import {Select as BaseSelect} from '../select/index.js';
-import {Button, StyledBaseButton, KIND} from '../button/index.js';
+import {LocaleContext} from '../locale/index';
+import {ThemeContext} from '../styles/theme-provider';
+import {Select as BaseSelect} from '../select/index';
+import {Button, StyledBaseButton, KIND} from '../button/index';
 import {
   StyledRoot,
   StyledMaxLabel,
   StyledDropdownContainer,
-} from './styled-components.js';
-import ChevronLeft from '../icon/chevron-left.js';
-import ChevronRight from '../icon/chevron-right.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {PaginationPropsT} from './types.js';
-import {LocaleT} from '../locale/types.js';
+} from './styled-components';
+import ChevronLeft from '../icon/chevron-left';
+import ChevronRight from '../icon/chevron-right';
+import {getOverrides} from '../helpers/overrides';
+import {PaginationPropsT} from './types';
+import {LocaleT} from '../locale/types';
 
 import {SyntheticEvent} from 'react';
 
@@ -51,7 +51,7 @@ export default class Pagination extends React.PureComponent<PaginationPropsT> {
     }
   };
 
-  onPrevClick = (event: SyntheticEvent) => {
+  onPrevClick = (event: SyntheticEvent<any>) => {
     const {currentPage, onPageChange, onPrevClick} = this.props;
     if (currentPage > 1) {
       onPageChange &&
@@ -60,7 +60,7 @@ export default class Pagination extends React.PureComponent<PaginationPropsT> {
     }
   };
 
-  onNextClick = (event: SyntheticEvent) => {
+  onNextClick = (event: SyntheticEvent<any>) => {
     const {currentPage, numPages, onPageChange, onNextClick} = this.props;
     if (currentPage < numPages) {
       onPageChange &&

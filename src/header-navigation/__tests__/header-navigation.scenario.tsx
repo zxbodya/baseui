@@ -11,10 +11,10 @@ import {
   ALIGN,
   StyledNavigationItem as NavigationItem,
   StyledNavigationList as NavigationList,
-} from '../index.js';
-import {Button} from '../../button/index.js';
-import {StyledLink as Link} from '../../link/index.js';
-import Menu from '../../icon/menu.js';
+} from '../index';
+import {Button} from '../../button/index';
+import {StyledLink as Link} from '../../link/index';
+import Menu from '../../icon/menu';
 
 export const name = 'header-navigation';
 

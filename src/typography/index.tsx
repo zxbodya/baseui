@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import Block from '../block/block.js';
-import {BlockPropsT} from '../block/types.js';
+import Block from '../block/block';
+import {BlockPropsT} from '../block/types';
 
 // Captions - aka Caption, CaptionLabel
 export const Caption1 = (props: BlockPropsT) => (
@@ -118,7 +118,7 @@ export const Label2 = (props: BlockPropsT) => (
 );
 
 // Paragraphs - Paragraph1, Paragraph2
-export const Paragraph1 = (props: BlockPropsT) => (
+export const Paragraph1: React.FC<BlockPropsT> = (props: BlockPropsT) => (
   <Block
     data-baseweb="typo-p1"
     as={props.as || 'p'}

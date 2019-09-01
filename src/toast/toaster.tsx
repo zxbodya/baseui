@@ -7,20 +7,20 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {KIND, PLACEMENT} from './constants.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {KIND, PLACEMENT} from './constants';
 import {
   Root as StyledRoot,
   Body as StyledBody,
   CloseIconSvg as StyledCloseIcon,
-} from './styled-components.js';
-import Toast from './toast.js';
+} from './styled-components';
+import Toast from './toast';
 import {
   ToasterPropsT,
   ToastPropsShapeT,
   ToasterContainerStateT,
   ToastPropsT,
-} from './types.js';
+} from './types';
 
 let toasterRef:
   | React.RefObject<typeof ToasterContainer>

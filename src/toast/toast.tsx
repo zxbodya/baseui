@@ -5,23 +5,23 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import DeleteIcon from '../icon/delete.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import DeleteIcon from '../icon/delete';
 import {
   Body as StyledBody,
   CloseIconSvg as StyledCloseIcon,
   InnerContainer as StyledInnerContainer,
-} from './styled-components.js';
-import {KIND, TYPE} from './constants.js';
-import {LocaleContext} from '../locale/index.js';
+} from './styled-components';
+import {KIND, TYPE} from './constants';
+import {LocaleContext} from '../locale/index';
 
 import {
   ToastPropsT,
   ToastPropsShapeT,
   ToastPrivateStateT,
   SharedStylePropsArgT,
-} from './types.js';
-import {OverridesT} from '../icon/index.js';
+} from './types';
+import {OverridesT} from '../icon/index';
 
 class Toast extends React.Component<ToastPropsT, ToastPrivateStateT> {
   static defaultProps: ToastPropsShapeT = {

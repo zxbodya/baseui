@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable flowtype/generic-spacing */
 import * as React from 'react';
-import {OverrideT} from '../helpers/overrides.js';
-import {ORIENTATION, STATE_CHANGE_TYPE} from './constants.js';
+import {OverrideT} from '../helpers/overrides';
+import {ORIENTATION, STATE_CHANGE_TYPE} from './constants';
 
 export type SharedStylePropsArgT = {
   $disabled?: boolean;

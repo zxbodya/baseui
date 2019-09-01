@@ -7,26 +7,26 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import valid from 'card-validator';
 
-import {addGaps, getCaretPosition} from './utils.js';
+import {addGaps, getCaretPosition} from './utils';
 
-import {getOverrides} from '../helpers/overrides.js';
-import {Input, SIZE} from '../input/index.js';
-import {ThemeContext} from '../styles/theme-provider.js';
+import {getOverrides} from '../helpers/overrides';
+import {Input, SIZE} from '../input/index';
+import {ThemeContext} from '../styles/theme-provider';
 
-import AmexIcon from './icons/amex.js';
-import DinersClubIcon from './icons/dinersclub.js';
-import DiscoverIcon from './icons/discover.js';
-import EloIcon from './icons/elo.js';
-import GenericIcon from './icons/generic.js';
-import JcbIcon from './icons/jcb.js';
-import MaestroIcon from './icons/maestro.js';
-import MastercardIcon from './icons/mastercard.js';
-import UnionPayIcon from './icons/unionpay.js';
-import VisaIcon from './icons/visa.js';
+import AmexIcon from './icons/amex';
+import DinersClubIcon from './icons/dinersclub';
+import DiscoverIcon from './icons/discover';
+import EloIcon from './icons/elo';
+import GenericIcon from './icons/generic';
+import JcbIcon from './icons/jcb';
+import MaestroIcon from './icons/maestro';
+import MastercardIcon from './icons/mastercard';
+import UnionPayIcon from './icons/unionpay';
+import VisaIcon from './icons/visa';
 
-import {IconWrapper as StyledIconWrapper} from './styled-components.js';
+import {IconWrapper as StyledIconWrapper} from './styled-components';
 
-import {PaymentCardPropsT} from './types.js';
+import {PaymentCardPropsT} from './types';
 
 const CardTypeToComponent = {
   visa: VisaIcon,
@@ -124,8 +124,10 @@ class PaymentCard extends React.Component<PaymentCardPropsT> {
                 this.props.value || '',
                 e.target.selectionStart,
               );
+              // @ts-ignore todo: looks dangerous
               this.caretPosition = position;
               this.inRef = e.target;
+              // @ts-ignore todo: looks dangerous
               e.target.value = value;
               onChange && onChange(e);
             }}

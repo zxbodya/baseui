@@ -11,7 +11,7 @@ LICENSE file in the root directory of this source tree.
 /* eslint-env node*/
 const fs = require('fs');
 const path = require('path');
-const prettier = require('prettier');
+import prettier = require('prettier');
 
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -76,7 +76,7 @@ async function generateNewIcons() {
     const svgFile = svgFilename.split('.')[0];
     const componentName = pascalCase(svgFile);
     iconExports.push(
-      `export {default as ${componentName}} from './${svgFile}.js';`,
+      `export {default as ${componentName}} from './${svgFile}';`,
     );
 
     const svgFileContents = fs.readFileSync(

@@ -5,10 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {TextareaPropsT} from './types.js';
-import {mergeOverrides} from '../helpers/overrides.js';
-import {BaseInput, SIZE, CUSTOM_INPUT_TYPE} from '../input/index.js';
-import {StyledTextarea, StyledTextareaContainer} from './styled-components.js';
+import {TextareaPropsT} from './types';
+import {mergeOverrides} from '../helpers/overrides';
+import {BaseInput, SIZE, CUSTOM_INPUT_TYPE} from '../input/index';
+import {StyledTextarea, StyledTextareaContainer} from './styled-components';
 
 class Textarea extends React.Component<TextareaPropsT> {
   static defaultProps = {

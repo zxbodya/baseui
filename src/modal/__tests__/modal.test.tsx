@@ -18,9 +18,9 @@ import {
   StyledClose,
   StyledDialog,
   CLOSE_SOURCE,
-} from '../index.js';
+} from '../index';
 
-import {styled} from '../../styles/index.js';
+import {styled} from '../../styles/index';
 
 jest.useFakeTimers();
 

@@ -14,7 +14,7 @@ import {
   StyledBody,
   StyledRow,
   StyledCell,
-} from '../index.js';
+} from '../index';
 
 const DATA = [
   ['1', 'Sarah', 'Brown', 31, '100 Broadway st. New York City, New York'],

@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {shallow} from 'enzyme';
 
-import {Button} from '../../button/index.js';
+import {Button} from '../../button/index';
 
-import {ButtonGroupRoot as ButtonGroup} from '../button-group.js';
+import {ButtonGroupRoot as ButtonGroup} from '../button-group';
 
 function buildSimpleWrapper(props = {}) {
   return shallow(

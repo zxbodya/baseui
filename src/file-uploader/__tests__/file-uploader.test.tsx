@@ -7,12 +7,8 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import {
-  FileUploader,
-  StyledContentMessage,
-  StyledErrorMessage,
-} from '../index.js';
-import {Spinner} from '../../spinner/index.js';
+import {FileUploader, StyledContentMessage, StyledErrorMessage} from '../index';
+import {Spinner} from '../../spinner/index';
 
 describe('FileUploader', () => {
   it('applies expected accessibility attributes to button', () => {

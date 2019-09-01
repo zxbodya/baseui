@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {StatefulContainer as StatefulPopoverContainer} from '../../popover/index.js';
-import {Tooltip, StatefulTooltip, PLACEMENT, TRIGGER_TYPE} from '../index.js';
-import baseDefaultProps from '../default-props.js';
+import {StatefulContainer as StatefulPopoverContainer} from '../../popover/index';
+import {Tooltip, StatefulTooltip, PLACEMENT, TRIGGER_TYPE} from '../index';
+import baseDefaultProps from '../default-props';
 
 function withoutChildren(props: any) {
   const shallowCopy = {...props};

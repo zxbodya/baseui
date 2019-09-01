@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import Pagination from './pagination.js';
-import StatefulContainer from './stateful-container.js';
-import {StatefulPaginationPropsT} from './types.js';
+import Pagination from './pagination';
+import StatefulContainer from './stateful-container';
+import {StatefulPaginationPropsT} from './types';
 
 export default function StatefulPagination({
   numPages,

@@ -11,8 +11,8 @@ import {
   PLACEMENT,
   TRIGGER_TYPE,
   STATE_CHANGE_TYPE,
-} from '../index.js';
-import {PopoverPropsWithoutChildrenT} from '../types.js';
+} from '../index';
+import {PopoverPropsWithoutChildrenT} from '../types';
 
 describe('StatefulPopoverContainer', () => {
   test('basic render', () => {

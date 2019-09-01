@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 
-import {H6, H5, H4, H3, H2, H1} from '../index.js';
+import {H6, H5, H4, H3, H2, H1} from '../index';
 
 export const name = 'typography-heading';
 

@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 /* global document */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {BaseInput} from '../index.js';
+import {BaseInput} from '../index';
 
 test('BaseInput - basic functionality', () => {
   const props = {

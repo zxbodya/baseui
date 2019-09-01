@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulSelect} from '../../select/index.js';
-import {Drawer} from '../index.js';
+import {StatefulSelect} from '../../select/index';
+import {Drawer} from '../index';
 
 export const name = 'drawer-select';
 

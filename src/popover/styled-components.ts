@@ -4,20 +4,20 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {ARROW_WIDTH} from './constants.js';
+import {styled} from '../styles/index';
+import {ARROW_WIDTH} from './constants';
 import {
   getPopoverMarginStyles,
   getArrowPositionStyles,
   getStartPosition,
   getEndPosition,
-} from './utils.js';
+} from './utils';
 import {
   ArrowStylePropsArgT,
   BodyStylePropsArgT,
   InnerStylePropsArgT,
-} from './types.js';
-import {ThemeT} from '../styles/types.js';
+} from './types';
+import {ThemeT} from '../styles/types';
 
 /**
  * Main popover container element that gets positioned next to the anchor

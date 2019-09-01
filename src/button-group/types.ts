@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {SIZE, SHAPE} from '../button/index.js';
-import {OverrideT} from '../helpers/overrides.js';
+import {SIZE, SHAPE} from '../button/index';
+import {OverrideT} from '../helpers/overrides';
 
-import {MODE, STATE_CHANGE_TYPE} from './constants.js';
+import {MODE, STATE_CHANGE_TYPE} from './constants';
 
 import {SyntheticEvent} from 'react';
 

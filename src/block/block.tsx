@@ -6,11 +6,11 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {BlockPropsT} from './types.js';
-import {StyledBlock} from './styled-components.js';
-import {getOverrides} from '../helpers/overrides.js';
+import {BlockPropsT} from './types';
+import {StyledBlock} from './styled-components';
+import {getOverrides} from '../helpers/overrides';
 
-function Block({
+const Block: React.FC<BlockPropsT & {forwardedRef: any}> = ({
   forwardedRef,
   children,
   as = 'div',
@@ -81,7 +81,7 @@ function Block({
   textOverflow,
   whiteSpace,
   ...restProps
-}) {
+}) => {
   const [BaseBlock, baseBlockProps] = getOverrides(
     overrides.Block,
     StyledBlock,
@@ -163,7 +163,7 @@ function Block({
       {children}
     </BaseBlock>
   );
-}
+};
 
 const BlockComponent = React.forwardRef<unknown, BlockPropsT>(
   (props: BlockPropsT, ref) => <Block {...props} forwardedRef={ref} />,

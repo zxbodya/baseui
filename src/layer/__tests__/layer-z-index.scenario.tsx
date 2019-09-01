@@ -5,14 +5,9 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {
-  Layer,
-  LayersManager,
-  TetherBehavior,
-  TETHER_PLACEMENT,
-} from '../index.js';
-import {Block} from '../../block/index.js';
-import {Button} from '../../button/index.js';
+import {Layer, LayersManager, TetherBehavior, TETHER_PLACEMENT} from '../index';
+import {Block} from '../../block/index';
+import {Button} from '../../button/index';
 
 // eslint-disable-next-line import/extensions
 import Screener, {Steps} from 'screener-storybook/src/screener';

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {OverrideT} from '../helpers/overrides.js';
+import {OverrideT} from '../helpers/overrides';
 
 import {ReactNode, ChangeEvent} from 'react';
 
@@ -27,14 +27,7 @@ export type RadioGroupOverridesT = {
 
 export type OverridesT = {} & RadioOverridesT & RadioGroupOverridesT;
 
-export type DefaultPropsT = {
-  value: string;
-  disabled: boolean;
-  isError: boolean;
-  autoFocus: boolean;
-  labelPlacement: LabelPlacementT;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => unknown;
-};
+export type DefaultPropsT = Partial<PropsT>;
 
 export type PropsT = {
   /**
@@ -172,7 +165,7 @@ export type StatefulRadioGroupPropsT = {
 };
 
 export type StylePropsT = {
-  $align?: boolean;
+  $align?: string; // todo: incorrect flow type - 'horizontal' is expected
   $checked: boolean;
   $disabled: boolean;
   $hasDescription: boolean;

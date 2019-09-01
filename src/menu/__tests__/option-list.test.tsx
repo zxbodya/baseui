@@ -7,8 +7,8 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {StyledListItem} from '../styled-components.js';
-import OptionList from '../option-list.js';
+import {StyledListItem} from '../styled-components';
+import OptionList from '../option-list';
 
 const mockItem = {label: 'item1'};
 

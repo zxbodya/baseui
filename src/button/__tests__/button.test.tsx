@@ -6,12 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {
-  StartEnhancer,
-  EndEnhancer,
-  LoadingSpinner,
-} from '../styled-components.js';
-import Button from '../button.js';
+import {StartEnhancer, EndEnhancer, LoadingSpinner} from '../styled-components';
+import Button from '../button';
 
 describe('Button Component', () => {
   test('basic render', () => {

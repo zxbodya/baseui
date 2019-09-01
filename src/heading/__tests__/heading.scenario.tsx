@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {Heading, HeadingLevel} from '../index.js';
-import {Paragraph1} from '../../typography/index.js';
+import {Heading, HeadingLevel} from '../index';
+import {Paragraph1} from '../../typography/index';
 
 export const name = 'heading';
 

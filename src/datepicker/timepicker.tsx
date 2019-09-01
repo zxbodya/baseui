@@ -6,12 +6,12 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
-import {Select, filterOptions} from '../select/index.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
+import {Select, filterOptions} from '../select/index';
 
-import {OptionT} from '../select/index.js';
-import {TimePickerPropsT, TimePickerStateT} from './types.js';
+import {OptionT} from '../select/index';
+import {TimePickerPropsT, TimePickerStateT} from './types';
 
 const MINUTE = 60;
 const HOUR = MINUTE * 60;

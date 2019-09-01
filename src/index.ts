@@ -12,8 +12,8 @@ export {
   createThemedWithStyle,
   createThemedUseStyletron,
   ThemeProvider,
-} from './styles/index.js';
-import LocaleProvider from './locale/index.js';
+} from './styles/index';
+import LocaleProvider from './locale/index';
 export {LocaleProvider};
 export {
   createTheme,
@@ -23,9 +23,9 @@ export {
   DarkThemeMove,
   LightTheme,
   LightThemeMove,
-} from './themes/index.js';
-export {default as BaseProvider} from './helpers/base-provider.js';
-export {withProps} from './helpers/index.js';
-export {mergeOverrides} from './helpers/overrides.js';
-export {PrimitivesT} from './themes/types.js';
-export {ThemeT} from './styles/types.js';
+} from './themes/index';
+export {default as BaseProvider} from './helpers/base-provider';
+export {withProps} from './helpers/index';
+export {mergeOverrides} from './helpers/overrides';
+export {PrimitivesT} from './themes/types';
+export {ThemeT} from './styles/types';

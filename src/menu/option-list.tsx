@@ -6,12 +6,12 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 
-import {OPTION_LIST_SIZE} from './constants.js';
-import MaybeChildMenu from './maybe-child-menu.js';
-import {StyledListItem} from './styled-components.js';
-import {OptionListPropsT} from './types.js';
+import {OPTION_LIST_SIZE} from './constants';
+import MaybeChildMenu from './maybe-child-menu';
+import {StyledListItem} from './styled-components';
+import {OptionListPropsT} from './types';
 
 function OptionList(props: OptionListPropsT, ref: React.RefObject<any>) {
   const {

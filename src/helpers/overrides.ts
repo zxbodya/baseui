@@ -6,9 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {isValidElementType} from 'react-is';
-import deepMerge from '../utils/deep-merge.js';
+import deepMerge from '../utils/deep-merge';
 
-export type ConfigurationOverrideFunctionT = (a: {}) => {} | undefined | null;
+// Object -> any
+export type ConfigurationOverrideFunctionT = (a: any) => any | undefined | null;
 export type ConfigurationOverrideObjectT = {};
 
 export type ConfigurationOverrideT =
@@ -19,9 +20,9 @@ export type StyleOverrideT = ConfigurationOverrideT;
 
 export type OverrideObjectT<T> = {
   component?: React.ComponentType<
-    T & {
+    T /* & {
       children: React.ReactNode;
-    }
+    }*/
   > | null;
   props?: ConfigurationOverrideT | null;
   style?: ConfigurationOverrideT | null;
@@ -29,11 +30,9 @@ export type OverrideObjectT<T> = {
 
 export type OverrideT<T> =
   | OverrideObjectT<T>
-  | React.ComponentType<
-      T & {
+  | React.ComponentType<T /* & {
         children: React.ReactNode;
-      }
-    >;
+      }*/>;
 
 export type OverridesT<T> = {
   [x: string]: OverrideT<T>;

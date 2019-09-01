@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulInput, SIZE} from '../index.js';
+import {StatefulInput, SIZE} from '../index';
 
 export const name = 'input';
 

@@ -8,12 +8,12 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {mount, shallow} from 'enzyme';
-import {Icon} from '../index.js';
-import {Svg} from '../styled-components.js';
-import * as Icons from '../icon-exports.js';
+import {Icon} from '../index';
+import {Svg} from '../styled-components';
+import * as Icons from '../icon-exports';
 
-import {ThemeProvider} from '../../styles/index.js';
-import {lightThemePrimitives, createTheme} from '../../themes/index.js';
+import {ThemeProvider} from '../../styles/index';
+import {lightThemePrimitives, createTheme} from '../../themes/index';
 
 describe('Icon', () => {
   test('renders an icon with viewBox and title', () => {

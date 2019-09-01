@@ -4,15 +4,15 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {TYPE} from './constants.js';
-import {StyledList, StyledListItem} from '../menu/index.js';
-import {SIZE} from './constants.js';
-import {SharedStylePropsArgT} from './types.js';
-import {ellipsisText} from '../styles/util.js';
-import {ThemeT} from '../styles/types.js';
+import {styled} from '../styles/index';
+import {TYPE} from './constants';
+import {StyledList, StyledListItem} from '../menu/index';
+import {SIZE} from './constants';
+import {SharedStylePropsArgT} from './types';
+import {ellipsisText} from '../styles/util';
+import {ThemeT} from '../styles/types';
 
-function getFont(size = SIZE.default, typography) {
+function getFont(size: keyof typeof SIZE = SIZE.default, typography) {
   return {
     [SIZE.compact]: typography.font300,
     [SIZE.default]: typography.font400,
@@ -20,7 +20,7 @@ function getFont(size = SIZE.default, typography) {
   }[size];
 }
 
-function getControlPadding(props, emptyValue) {
+function getControlPadding(props, emptyValue?) {
   const {
     $theme,
     $theme: {sizing},

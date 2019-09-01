@@ -5,15 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {Root as StyledRoot} from './styled-components.js';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {getOverrides} from '../helpers/overrides';
+import {Root as StyledRoot} from './styled-components';
+import {STATE_CHANGE_TYPE} from './constants';
 import {
   AccordionPropsT,
   AccordionStateT,
   StateChangeTypeT,
   SharedStylePropsArgT,
-} from './types.js';
+} from './types';
 
 export default class Accordion extends React.Component<
   AccordionPropsT,
@@ -36,7 +36,11 @@ export default class Accordion extends React.Component<
     ...this.props.initialState,
   };
 
-  onPanelChange(key: React.Key, onChange: () => {}, ...args: any) {
+  onPanelChange(
+    key: React.Key,
+    onChange: (...args: any[]) => {},
+    ...args: any
+  ) {
     let activeKeys = this.state.expanded;
     const {accordion} = this.props;
     if (accordion) {

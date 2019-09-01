@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulRadioGroup, Radio} from '../index.js';
+import {StatefulRadioGroup, Radio} from '../index';
 
 export const name = 'radio';
 

@@ -6,13 +6,13 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {useStyletron} from '../../styles/index.js';
+import {useStyletron} from '../../styles/index';
 
 import {
   Unstable_StyledTable as StyledTable,
   Unstable_StyledHeadCell as StyledHeadCell,
   Unstable_StyledBodyCell as StyledBodyCell,
-} from '../index.js';
+} from '../index';
 
 export const name = 'table-grid';
 

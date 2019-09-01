@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import StatefulContainer from '../stateful-container.js';
-import {STATE_CHANGE_TYPE} from '../constants.js';
+import StatefulContainer from '../stateful-container';
+import {STATE_CHANGE_TYPE} from '../constants';
 
 test('StatefulContainer - basic render', () => {
   const props = {

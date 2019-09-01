@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {STATE_TYPE} from '../constants.js';
+import {STATE_TYPE} from '../constants';
 
-import {StatefulContainer} from '../index.js';
-import {StateReducerT} from '../types.js';
+import {StatefulContainer} from '../index';
+import {StateReducerT} from '../types';
 
 describe('Stateful container', function() {
   let allProps: any, childFn;

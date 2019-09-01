@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Block} from '../../block/index.js';
-import {TimezonePicker} from '../index.js';
+import {Block} from '../../block/index';
+import {TimezonePicker} from '../index';
 
 export const name = 'timezone-picker';
 

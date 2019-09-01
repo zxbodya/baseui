@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import SingleValue from '../value.js';
-import {StyledSingleValue} from '../styled-components.js';
+import SingleValue from '../value';
+import {StyledSingleValue} from '../styled-components';
 
 describe('Single Value component', function() {
   test('renders StyledSingleValue', function() {

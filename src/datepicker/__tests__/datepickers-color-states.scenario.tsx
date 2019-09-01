@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {Label2} from '../../typography/index.js';
-import {FlexGrid} from '../../flex-grid/index.js';
-import {Datepicker, TimePicker, TimezonePicker} from '../index.js';
+import {Label2} from '../../typography/index';
+import {FlexGrid} from '../../flex-grid/index';
+import {Datepicker, TimePicker, TimezonePicker} from '../index';
 
 const DATE = new Date('2019-07-03T12:00:00Z');
 export const name = 'datepickers-color-states';

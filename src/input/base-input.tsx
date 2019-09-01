@@ -8,20 +8,20 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {ADJOINED, SIZE, CUSTOM_INPUT_TYPE} from './constants.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {ADJOINED, SIZE, CUSTOM_INPUT_TYPE} from './constants';
 import {
   InputContainer as StyledInputContainer,
   Input as StyledInput,
   StyledClearIcon,
   StyledClearIconContainer,
-} from './styled-components.js';
-import {BaseInputPropsT, InternalStateT} from './types.js';
-import {getSharedProps} from './utils.js';
-import {Button, KIND} from '../button/index.js';
-import Hide from '../icon/hide.js';
-import Show from '../icon/show.js';
-import createEvent from '../utils/create-event.js';
+} from './styled-components';
+import {BaseInputPropsT, InternalStateT} from './types';
+import {getSharedProps} from './utils';
+import {Button, KIND} from '../button/index';
+import Hide from '../icon/hide';
+import Show from '../icon/show';
+import createEvent from '../utils/create-event';
 
 import {FocusEvent} from 'react';
 
@@ -92,8 +92,9 @@ class BaseInput<T extends EventTarget> extends React.Component<
     if (input) {
       const nativeInputValue = Object.getOwnPropertyDescriptor(
         this.props.type === CUSTOM_INPUT_TYPE.textarea
-          ? window.HTMLTextAreaElement.prototype
-          : window.HTMLInputElement.prototype,
+          ? // globals, not props of window object
+            HTMLTextAreaElement.prototype
+          : HTMLInputElement.prototype,
         'value',
       );
       if (nativeInputValue) {
@@ -156,10 +157,10 @@ class BaseInput<T extends EventTarget> extends React.Component<
         }),
       },
     };
-    // $FlowFixMe
+    // @ts-ignore
     maskToggleButtonProps.overrides = mergeOverrides(
       baseButtonOverrides,
-      // $FlowFixMe
+      // @ts-ignore
       maskToggleButtonProps.overrides,
     );
     const [MaskToggleShowIcon, maskToggleIconShowProps] = getOverrides(

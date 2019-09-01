@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import StatefulPagination from '../stateful-pagination.js';
-import StatefulContainer from '../stateful-container.js';
-import Pagination from '../pagination.js';
+import StatefulPagination from '../stateful-pagination';
+import StatefulContainer from '../stateful-container';
+import Pagination from '../pagination';
 
 function getSharedProps() {
   return {

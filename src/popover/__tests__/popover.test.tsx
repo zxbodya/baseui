@@ -8,16 +8,11 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {Layer, TetherBehavior} from '../../layer/index.js';
+import {Layer, TetherBehavior} from '../../layer/index';
 import {mount} from 'enzyme';
-import {
-  Popover,
-  StyledBody,
-  ACCESSIBILITY_TYPE,
-  TRIGGER_TYPE,
-} from '../index.js';
+import {Popover, StyledBody, ACCESSIBILITY_TYPE, TRIGGER_TYPE} from '../index';
 
-import {styled} from '../../styles/index.js';
+import {styled} from '../../styles/index';
 
 jest.useFakeTimers();
 

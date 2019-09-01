@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import {Button} from '../../button/index.js';
+import {Button} from '../../button/index';
 
-import {StatefulButtonGroup, MODE} from '../index.js';
+import {StatefulButtonGroup, MODE} from '../index';
 
 function buildSimpleWrapper(props = {}) {
   return mount(

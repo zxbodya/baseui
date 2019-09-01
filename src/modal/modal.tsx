@@ -8,18 +8,18 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 
-import {LocaleContext} from '../locale/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {Layer} from '../layer/index.js';
-import {SIZE, ROLE, CLOSE_SOURCE} from './constants.js';
+import {LocaleContext} from '../locale/index';
+import {getOverrides} from '../helpers/overrides';
+import {Layer} from '../layer/index';
+import {SIZE, ROLE, CLOSE_SOURCE} from './constants';
 import {
   Root as StyledRoot,
   Backdrop as StyledBackdrop,
   Dialog as StyledDialog,
   DialogContainer as StyledDialogContainer,
   Close as StyledClose,
-} from './styled-components.js';
-import {CloseIcon} from './close-icon.js';
+} from './styled-components';
+import {CloseIcon} from './close-icon';
 
 import {
   ModalPropsT,
@@ -27,7 +27,7 @@ import {
   SharedStylePropsArgT,
   CloseSourceT,
   ElementRefT,
-} from './types.js';
+} from './types';
 
 class Modal extends React.Component<ModalPropsT, ModalStateT> {
   static defaultProps: Partial<ModalPropsT> = {

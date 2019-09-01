@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {StatefulSelect} from '../index.js';
+import {StatefulSelect} from '../index';
 
 export const name = 'select-open';
 

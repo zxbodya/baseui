@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import * as flags from './flags/index.js';
-import {styled} from '../styles/index.js';
-import {SIZE} from './constants.js';
-import {CountryIsoT, SizeT} from './types.js';
+import * as flags from './flags/index';
+import {styled} from '../styles/index';
+import {SIZE} from './constants';
+import {CountryIsoT, SizeT} from './types';
 
 type SizeStyleProps = {
   $size?: SizeT;

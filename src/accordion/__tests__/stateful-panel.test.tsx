@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {StatefulPanel, StatefulPanelContainer, Panel} from '../index.js';
+import {StatefulPanel, StatefulPanelContainer, Panel} from '../index';
 
 describe('StatefulPanel', () => {
   test('basic render', () => {

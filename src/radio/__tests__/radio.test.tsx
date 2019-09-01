@@ -8,7 +8,7 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import {Radio, StyledRoot, StyledInput, StyledDescription} from '../index.js';
+import {Radio, StyledRoot, StyledInput, StyledDescription} from '../index';
 
 describe('Radio', () => {
   it('calls provided handlers', () => {

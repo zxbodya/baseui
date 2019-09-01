@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable flowtype/generic-spacing */
 import * as React from 'react';
-import {OverrideT} from '../helpers/overrides.js';
-import {SIZE, ROLE, CLOSE_SOURCE} from './constants.js';
+import {OverrideT} from '../helpers/overrides';
+import {SIZE, ROLE, CLOSE_SOURCE} from './constants';
 
 export type SizeT = keyof typeof SIZE;
 export type SizePropT = SizeT | number | string;

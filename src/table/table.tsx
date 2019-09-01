@@ -13,9 +13,9 @@ import {
   StyledBody,
   StyledRow,
   StyledCell,
-} from './styled-components.js';
+} from './styled-components';
 
-import {TablePropsT} from './types.js';
+import {TablePropsT} from './types';
 
 export default class Table extends React.Component<TablePropsT> {
   static defaultProps = {

@@ -9,12 +9,12 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import axe from 'axe-core';
 
-import {Layer, TetherBehavior, TETHER_PLACEMENT} from '../layer/index.js';
-import {Paragraph1, Caption1} from '../typography/index.js';
-import {styled} from '../styles/index.js';
-import {ThemeContext} from '../styles/theme-provider.js';
+import {Layer, TetherBehavior, TETHER_PLACEMENT} from '../layer/index';
+import {Paragraph1, Caption1} from '../typography/index';
+import {styled} from '../styles/index';
+import {ThemeContext} from '../styles/theme-provider';
 
-import {ViolationPropsT} from './types.js';
+import {ViolationPropsT} from './types';
 
 function validateNode(node) {
   return new Promise((resolve, reject) => {

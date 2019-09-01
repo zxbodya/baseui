@@ -4,8 +4,8 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {KIND, SIZE, SHAPE} from './constants.js';
-import {OverrideT} from '../helpers/overrides.js';
+import {KIND, SIZE, SHAPE} from './constants';
+import {OverrideT} from '../helpers/overrides';
 
 import {ReactNode, SyntheticEvent} from 'react';
 

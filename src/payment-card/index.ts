@@ -4,11 +4,11 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-export {default as StatefulPaymentCard} from './stateful-payment-card.js';
-export {default as StatefulContainer} from '../input/stateful-container.js';
-export {default as PaymentCard} from './payment-card.js';
+export {default as StatefulPaymentCard} from './stateful-payment-card';
+export {default as StatefulContainer} from '../input/stateful-container';
+export {default as PaymentCard} from './payment-card';
 export {default as valid} from 'card-validator';
-export {SIZE} from '../input/index.js';
+export {SIZE} from '../input/index';
 // Styled elements
-export {IconWrapper as StyledIconWrapper} from './styled-components.js';
-export * from './types.js';
+export {IconWrapper as StyledIconWrapper} from './styled-components';
+export * from './types';

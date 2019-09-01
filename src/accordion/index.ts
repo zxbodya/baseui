@@ -4,12 +4,12 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-export {default as Accordion} from './accordion.js';
-export {default as Panel} from './panel.js';
-export {default as StatefulPanel} from './stateful-panel.js';
-export {default as StatefulPanelContainer} from './stateful-panel-container.js';
+export {default as Accordion} from './accordion';
+export {default as Panel} from './panel';
+export {default as StatefulPanel} from './stateful-panel';
+export {default as StatefulPanelContainer} from './stateful-panel-container';
 // Constants
-export {STATE_CHANGE_TYPE} from './constants.js';
+export {STATE_CHANGE_TYPE} from './constants';
 // Styled elements
 export {
   Root as StyledRoot,
@@ -17,6 +17,6 @@ export {
   Header as StyledHeader,
   Content as StyledContent,
   ToggleIcon as StyledToggleIcon,
-} from './styled-components.js';
+} from './styled-components';
 // Flow
-export * from './types.js';
+export * from './types';

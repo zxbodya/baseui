@@ -4,9 +4,9 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {KIND, SIZE, SHAPE} from './constants.js';
-import {SharedStylePropsT} from './types.js';
+import {styled} from '../styles/index';
+import {KIND, SIZE, SHAPE} from './constants';
+import {SharedStylePropsT} from './types';
 
 export const BaseButton = styled<SharedStylePropsT>(
   'button',

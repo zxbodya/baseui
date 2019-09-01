@@ -5,9 +5,9 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import StatefulContainer from './stateful-panel-container.js';
-import Panel from './panel.js';
-import {StatefulPanelPropsT} from './types.js';
+import StatefulContainer from './stateful-panel-container';
+import Panel from './panel';
+import {StatefulPanelPropsT} from './types';
 
 export default function StatefulPanel(props: StatefulPanelPropsT) {
   const {children, ...restProps} = props;

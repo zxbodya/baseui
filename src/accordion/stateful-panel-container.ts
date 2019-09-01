@@ -5,14 +5,14 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {STATE_CHANGE_TYPE} from './constants';
 import {
   PanelStateT,
   StatefulPanelContainerPropsT,
   PanelStateReducerT,
   StateChangeTypeT,
   OnChangeHandlerT,
-} from './types.js';
+} from './types';
 
 const defaultStateReducer: PanelStateReducerT = (type, nextState) => nextState;
 

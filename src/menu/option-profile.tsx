@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 // Components
-import MaybeChildMenu from './maybe-child-menu.js';
+import MaybeChildMenu from './maybe-child-menu';
 import {
   StyledListItemProfile,
   StyledProfileImgContainer,
@@ -16,10 +16,10 @@ import {
   StyledProfileTitle,
   StyledProfileSubtitle,
   StyledProfileBody,
-} from './styled-components.js';
-import {getOverrides} from '../helpers/overrides.js';
+} from './styled-components';
+import {getOverrides} from '../helpers/overrides';
 // Types
-import {OptionProfilePropsT} from './types.js';
+import {OptionProfilePropsT} from './types';
 
 export default function OptionProfile(props: OptionProfilePropsT) {
   const {

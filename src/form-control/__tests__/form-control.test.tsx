@@ -7,12 +7,12 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {mount} from 'enzyme';
-import FormControl from '../form-control.js';
-import {Label, Caption, ControlContainer} from '../styled-components.js';
-import {Input} from '../../input/index.js';
-import {Textarea} from '../../textarea/index.js';
-import {Checkbox} from '../../checkbox/index.js';
-import {RadioGroup, Radio} from '../../radio/index.js';
+import FormControl from '../form-control';
+import {Label, Caption, ControlContainer} from '../styled-components';
+import {Input} from '../../input/index';
+import {Textarea} from '../../textarea/index';
+import {Checkbox} from '../../checkbox/index';
+import {RadioGroup, Radio} from '../../radio/index';
 
 describe('FormControl - Label and Caption for controls', () => {
   test('Renders label, caption, and error for the Input component', () => {

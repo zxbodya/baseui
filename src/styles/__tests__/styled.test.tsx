@@ -15,12 +15,12 @@ import {
   createThemedWithStyle,
   useStyletron,
   createThemedUseStyletron,
-} from '../styled.js';
+} from '../styled';
 import {
   withStyletronProvider,
   withThemeProvider,
-} from '../../test/test-utils.js';
-import {LightTheme} from '../../themes/index.js';
+} from '../../test/test-utils';
+import {LightTheme} from '../../themes/index';
 
 jest.unmock('../styled.js');
 

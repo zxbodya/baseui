@@ -6,13 +6,13 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {KIND, SIZE, SHAPE} from '../button/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
+import {KIND, SIZE, SHAPE} from '../button/index';
+import {getOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
 
-import {StyledRoot} from './styled-components.js';
-import {PropsT} from './types.js';
-import {ButtonGroupLocaleT} from './locale.js';
+import {StyledRoot} from './styled-components';
+import {PropsT} from './types';
+import {ButtonGroupLocaleT} from './locale';
 
 function isSelected(selected, index) {
   if (!Array.isArray(selected) && typeof selected !== 'number') {

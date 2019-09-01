@@ -9,16 +9,16 @@ export const KIND = {
   secondary: 'secondary',
   tertiary: 'tertiary',
   minimal: 'minimal',
-};
+} as const;
 
 export const SHAPE = {
   default: 'default',
   round: 'round',
   square: 'square',
-};
+} as const;
 
 export const SIZE = {
   default: 'default',
   compact: 'compact',
   large: 'large',
-};
+} as const;

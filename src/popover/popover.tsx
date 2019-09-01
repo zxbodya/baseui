@@ -8,31 +8,31 @@ LICENSE file in the root directory of this source tree.
 /* eslint-disable react/no-find-dom-node */
 import * as React from 'react';
 
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
-import getBuiId from '../utils/get-bui-id.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+import getBuiId from '../utils/get-bui-id';
 import {
   ACCESSIBILITY_TYPE,
   PLACEMENT,
   TRIGGER_TYPE,
   ANIMATE_OUT_TIME,
   ANIMATE_IN_TIME,
-} from './constants.js';
-import {Layer, TetherBehavior} from '../layer/index.js';
+} from './constants';
+import {Layer, TetherBehavior} from '../layer/index';
 import {
   Arrow as StyledArrow,
   Body as StyledBody,
   Inner as StyledInner,
-} from './styled-components.js';
-import {fromPopperPlacement} from './utils.js';
-import defaultProps from './default-props.js';
+} from './styled-components';
+import {fromPopperPlacement} from './utils';
+import defaultProps from './default-props';
 
 import {
   AnchorPropsT,
   PopoverPropsT,
   PopoverPrivateStateT,
   SharedStylePropsArgT,
-} from './types.js';
-import {PopperDataObjectT, NormalizedOffsetsT} from '../layer/types.js';
+} from './types';
+import {PopperDataObjectT, NormalizedOffsetsT} from '../layer/types';
 
 class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
   static defaultProps: Partial<PopoverPropsT> = defaultProps;
@@ -300,6 +300,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     const {isOpen} = this.props;
 
     const anchorProps: AnchorPropsT = {
+      // @ts-ignore todo: should it be here?
       key: 'popover-anchor',
       ref: this.anchorRef,
     };
@@ -332,7 +333,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
   }
 
   getPopoverBodyProps() {
-    const bodyProps = {};
+    const bodyProps: React.HTMLAttributes<'body'> = {};
 
     const popoverId = this.getPopoverIdAttr();
     if (this.isAccessibilityTypeMenu()) {
@@ -384,8 +385,10 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     const anchorProps = this.getAnchorProps();
 
     if (typeof anchor === 'object' && isValidElement) {
+      // @ts-ignore todo: better type refinement for react element, might be use existing utility
       return React.cloneElement(anchor, anchorProps);
     }
+    // @ts-ignore todo: type of achorProps is not strict enough
     return <span {...anchorProps}>{anchor}</span>;
   }
 

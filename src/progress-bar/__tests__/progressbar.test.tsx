@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {ProgressBar, StyledLabel} from '../index.js';
-import {styled} from '../../styles/index.js';
+import {ProgressBar, StyledLabel} from '../index';
+import {styled} from '../../styles/index';
 
 describe('Stateless progress bar', function() {
   let wrapper,

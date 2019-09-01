@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   StyledStep,
   StyledIcon,
@@ -15,9 +15,9 @@ import {
   StyledContentTitle,
   StyledContentTail,
   StyledContentDescription,
-} from './styled-components.js';
+} from './styled-components';
 
-import {StepPropsT} from './types.js';
+import {StepPropsT} from './types';
 
 function Step({
   overrides = {},

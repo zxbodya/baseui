@@ -6,14 +6,14 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 
 import {
   Avatar as StyledAvatar,
   Initials as StyledInitials,
   Root as StyledRoot,
-} from './styled-components.js';
-import {PropsT, StateT} from './types.js';
+} from './styled-components';
+import {PropsT, StateT} from './types';
 
 function getInitials(name) {
   const words = name.split(' ');

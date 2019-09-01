@@ -5,10 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-import {styled} from '../styles/index.js';
-import {STYLE_TYPE} from './constants.js';
+import {styled} from '../styles/index';
+import {STYLE_TYPE} from './constants';
 
-import {SharedStylePropsT} from './types.js';
+import {SharedStylePropsT} from './types';
 
 function getBorderColor(props) {
   const {$disabled, $checked, $isError, $isIndeterminate, $theme} = props;

@@ -5,18 +5,18 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {LocaleContext} from '../locale/index.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import PlusIcon from '../icon/plus.js';
-import CheckIndeterminateIcon from '../icon/check-indeterminate.js';
+import {LocaleContext} from '../locale/index';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import PlusIcon from '../icon/plus';
+import CheckIndeterminateIcon from '../icon/check-indeterminate';
 import {
   PanelContainer as StyledPanelContainer,
   Header as StyledHeader,
   Content as StyledContent,
   ToggleIcon as StyledToggleIcon,
-} from './styled-components.js';
+} from './styled-components';
 
-import {PanelPropsT, SharedStylePropsArgT} from './types.js';
+import {PanelPropsT, SharedStylePropsArgT} from './types';
 
 class Panel extends React.Component<PanelPropsT> {
   static defaultProps = {

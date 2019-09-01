@@ -5,9 +5,9 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import StatefulContainer from './stateful-tooltip-container.js';
-import Tooltip from './tooltip.js';
-import {StatefulTooltipPropsT} from './types.js';
+import StatefulContainer from './stateful-tooltip-container';
+import Tooltip from './tooltip';
+import {StatefulTooltipPropsT} from './types';
 
 function StatefulTooltip(props: StatefulTooltipPropsT) {
   const {children, ...restProps} = props;

@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {StyledProgressSteps} from './styled-components.js';
-import {ProgressStepsPropsT, StepPropsT} from './types.js';
+import {getOverrides} from '../helpers/overrides';
+import {StyledProgressSteps} from './styled-components';
+import {ProgressStepsPropsT, StepPropsT} from './types';
 
 function ProgressSteps({
   overrides = {},
@@ -20,6 +20,7 @@ function ProgressSteps({
   const modifiedChildren = React.Children.map(children, (child, index) => {
     if (!child) return;
 
+    // @ts-ignore todo: stricter types - only elements can be cloned, not any child is an element
     return React.cloneElement(child, {
       isLast: index === numChildren - 1,
       isCompleted: index < current,

@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {styled} from '../styles/index.js';
-import {StyletronComponent} from '../styles/styled.js';
+import {styled} from '../styles/index';
+import {StyletronComponent} from '../styles/styled';
 
 const StyledTableElement = styled<{}>('div', ({$theme}) => {
   return {

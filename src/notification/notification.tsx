@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Toast, TYPE} from '../toast/index.js';
-import {ToastPropsT, ToastPropsShapeT} from '../toast/types.js';
+import {Toast, TYPE} from '../toast/index';
+import {ToastPropsT, ToastPropsShapeT} from '../toast/types';
 
 export default class Notification extends React.Component<ToastPropsT> {
   static defaultProps: ToastPropsShapeT = {

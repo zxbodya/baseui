@@ -7,7 +7,8 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 
-import {Popover} from '../popover/index.js';
+import {Popover} from '../popover/index';
+import {ReactElement} from 'react';
 
 type PropsT = {
   children: React.ReactNode;
@@ -17,13 +18,15 @@ type PropsT = {
   resetParentMenu: () => void;
 };
 
-export default function MaybeChildMenu(props: PropsT) {
+export default function MaybeChildMenu(props: PropsT): ReactElement | null {
   if (!props.getChildMenu) {
+    // @ts-ignore todo: children should be of type ReactElement or null
     return props.children;
   }
 
   const ChildMenu = props.getChildMenu(props.item);
   if (!ChildMenu) {
+    // @ts-ignore todo: children should be of type ReactElement or null
     return props.children;
   }
 

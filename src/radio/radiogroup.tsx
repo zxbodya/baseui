@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 
-import {RadioGroupRoot as StyledRadioGroupRoot} from './styled-components.js';
-import {PropsT, DefaultPropsT, StatelessStateT} from './types.js';
+import {RadioGroupRoot as StyledRadioGroupRoot} from './styled-components';
+import {PropsT, DefaultPropsT, StatelessStateT} from './types';
 
 class StatelessRadioGroup extends React.Component<PropsT, StatelessStateT> {
   static defaultProps: DefaultPropsT = {

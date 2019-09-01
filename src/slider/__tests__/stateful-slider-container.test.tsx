@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {StatefulContainer as StatefulSliderContainer} from '../index.js';
-import {STATE_CHANGE_TYPE} from '../constants.js';
-import {StateReducerT} from '../types.js';
+import {StatefulContainer as StatefulSliderContainer} from '../index';
+import {STATE_CHANGE_TYPE} from '../constants';
+import {StateReducerT} from '../types';
 
 describe('Stateful Slider Container', function() {
   let allProps: any, childFn;

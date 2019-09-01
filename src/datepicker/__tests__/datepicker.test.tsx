@@ -6,14 +6,14 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Datepicker, Calendar, ORIENTATION} from '../index.js';
-import {Input} from '../../input/index.js';
-import {Popover} from '../../popover/index.js';
+import {Datepicker, Calendar, ORIENTATION} from '../index';
+import {Input} from '../../input/index';
+import {Popover} from '../../popover/index';
 import {addDays} from 'date-fns';
-import CalendarHeader from '../calendar-header.js';
-import ArrowLeft from '../../icon/arrow-left.js';
-import ArrowRight from '../../icon/arrow-right.js';
-import {StyledMonthYearSelectButton} from '../styled-components.js';
+import CalendarHeader from '../calendar-header';
+import ArrowLeft from '../../icon/arrow-left';
+import ArrowRight from '../../icon/arrow-right';
+import {StyledMonthYearSelectButton} from '../styled-components';
 
 jest.useFakeTimers();
 

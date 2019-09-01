@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Layer, LayersManager} from '../index.js';
+import {Layer, LayersManager} from '../index';
 
 describe('Layer', () => {
   let wrapper;

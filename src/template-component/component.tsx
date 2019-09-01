@@ -5,10 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
-import {Root as StyledRoot} from './styled-components.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+import {Root as StyledRoot} from './styled-components';
 
-import {ComponentPropsT, SharedStylePropsT} from './types.js';
+import {ComponentPropsT, SharedStylePropsT} from './types';
 
 class Component extends React.Component<ComponentPropsT> {
   static defaultProps: Partial<ComponentPropsT> = {

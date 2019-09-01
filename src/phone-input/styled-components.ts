@@ -4,15 +4,15 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {SIZE} from './constants.js';
-import {styled, withStyle} from '../styles/index.js';
-import {StyledList} from '../menu/index.js';
+import {SIZE} from './constants';
+import {styled, withStyle} from '../styles/index';
+import {StyledList} from '../menu/index';
 import {
   StyledDropdownListItem,
   StyledRoot as SelectStyledRoot,
-} from '../select/index.js';
-import defaultProps from '../select/default-props.js';
-import {SizeT} from './types.js';
+} from '../select/index';
+import defaultProps from '../select/default-props';
+import {SizeT} from './types';
 
 type SizeStyleProps = {
   $size?: SizeT;

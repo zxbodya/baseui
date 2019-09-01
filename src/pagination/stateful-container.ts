@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 // Files
-import {STATE_CHANGE_TYPE} from './constants.js';
-import {clamp} from './utils.js';
+import {STATE_CHANGE_TYPE} from './constants';
+import {clamp} from './utils';
 // Types
-import {StatefulContainerPropsT, StatefulContainerStateT} from './types.js';
+import {StatefulContainerPropsT, StatefulContainerStateT} from './types';
 
 export default class PaginationStatefulContainer extends React.Component<
   StatefulContainerPropsT,

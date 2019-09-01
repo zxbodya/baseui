@@ -5,10 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-import {getMediaQueries} from '../helpers/responsive-helpers.js';
-import {styled} from '../styles/index.js';
-import {BreakpointsT} from '../styles/types.js';
-import {StyledBlockPropsT} from './types.js';
+import {getMediaQueries} from '../helpers/responsive-helpers';
+import {styled} from '../styles/index';
+import {BreakpointsT} from '../styles/types';
+import {StyledBlockPropsT} from './types';
 
 // styletron will throw when value is undefined. if so, replace with null
 function constrainToNull(value) {

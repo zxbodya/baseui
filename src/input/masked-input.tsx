@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import InputMask from 'react-input-mask';
 
-import Input from './input.js';
-import {Input as StyledInput} from './styled-components.js';
-import {MaskedInputPropsT} from './types.js';
+import Input from './input';
+import {Input as StyledInput} from './styled-components';
+import {MaskedInputPropsT} from './types';
 
 const MaskOverride = React.forwardRef<HTMLElement, MaskedInputPropsT>(
   (
@@ -53,6 +53,7 @@ const MaskOverride = React.forwardRef<HTMLElement, MaskedInputPropsT>(
 
 export default function MaskedInput(props: MaskedInputPropsT) {
   const {
+    // @ts-ignore
     overrides: {Input: inputOverride, ...restOverrides} = {},
     ...restProps
   } = props;

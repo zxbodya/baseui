@@ -9,7 +9,9 @@ LICENSE file in the root directory of this source tree.
 /** A safe way to create event objects down to IE11 */
 export default function createEvent(eventName: string) {
   let event;
+  // @ts-ignore IE
   if (typeof window.Event === 'function') {
+    // @ts-ignore IE
     event = new window.Event(eventName, {bubbles: true, cancelable: true});
   } else {
     event = document.createEvent('Event');

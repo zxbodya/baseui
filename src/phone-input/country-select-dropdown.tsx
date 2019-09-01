@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {List, AutoSizer} from 'react-virtualized';
-import defaultProps from './default-props.js';
+import defaultProps from './default-props';
 import {
   StyledFlagContainer,
   StyledCountrySelectDropdownContainer as DefaultContainer,
@@ -14,11 +14,11 @@ import {
   StyledCountrySelectDropdownFlagColumn as DefaultFlagColumn,
   StyledCountrySelectDropdownNameColumn as DefaultNameColumn,
   StyledCountrySelectDropdownDialcodeColumn as DefaultDialcodeColumn,
-} from './styled-components.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {iso2FlagEmoji} from './utils.js';
+} from './styled-components';
+import {getOverrides} from '../helpers/overrides';
+import {iso2FlagEmoji} from './utils';
 
-import {CountrySelectDropdownPropsT} from './types.js';
+import {CountrySelectDropdownPropsT} from './types';
 
 CountrySelectDropdown.defaultProps = {
   maxDropdownHeight: defaultProps.maxDropdownHeight,

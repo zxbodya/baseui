@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import StatefulMenu from '../stateful-menu.js';
-import StatefulContainer from '../stateful-container.js';
-import Menu from '../menu.js';
+import StatefulMenu from '../stateful-menu';
+import StatefulContainer from '../stateful-container';
+import Menu from '../menu';
 
 describe('Menu StatefulMenu', () => {
   test('renders with props', () => {

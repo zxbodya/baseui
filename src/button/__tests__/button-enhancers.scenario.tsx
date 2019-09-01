@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Button} from '../index.js';
-import ArrowRight from '../../icon/arrow-right.js';
+import {Button} from '../index';
+import ArrowRight from '../../icon/arrow-right';
 
 export const name = 'button-enhancers';
 

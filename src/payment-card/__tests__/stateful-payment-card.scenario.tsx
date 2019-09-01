@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {StatefulPaymentCard} from '../index.js';
+import {StatefulPaymentCard} from '../index';
 
 export const name = 'stateful-payment-card';
 

@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 /* global document */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {styled} from '../styles/index.js';
-import {Consumer} from './layers-manager.js';
-import {LayerPropsT, LayerComponentPropsT, LayerStateT} from './types.js';
+import {styled} from '../styles/index';
+import {Consumer} from './layers-manager';
+import {LayerPropsT, LayerComponentPropsT, LayerStateT} from './types';
 
 const Container = styled<{
   $zIndex?: number;

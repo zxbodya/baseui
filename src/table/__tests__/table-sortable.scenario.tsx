@@ -14,7 +14,7 @@ import {
   StyledCell,
   SortableHeadCell,
   SORT_DIRECTION,
-} from '../index.js';
+} from '../index';
 
 export const name = 'table-sortable';
 

@@ -5,16 +5,17 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   Action as StyledAction,
   Root as StyledRoot,
   ActionIcon as StyledActionIcon,
   Text as StyledText,
-} from './styled-components.js';
-import {KIND, VARIANT} from './constants.js';
-import {getTextFromChildren} from './utils.js';
-import {PropsT, SharedPropsArgT} from './types.js';
+} from './styled-components';
+import {KIND, VARIANT} from './constants';
+import {getTextFromChildren} from './utils';
+import {PropsT, SharedPropsArgT} from './types';
+
 
 class Tag extends React.Component<PropsT, {}> {
   static defaultProps = {

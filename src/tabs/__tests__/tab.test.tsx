@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {StyledTab} from '../index.js';
+import {StyledTab} from '../index';
 
-import {default as Tab} from '../tab.js';
+import {default as Tab} from '../tab';
 
 describe('Tab', () => {
   test('basic rendering', () => {

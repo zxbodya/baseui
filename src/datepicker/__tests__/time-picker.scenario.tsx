@@ -8,7 +8,7 @@ import React, {useState} from 'react';
 // eslint-disable-next-line import/extensions
 import startOfDay from 'date-fns/startOfDay';
 
-import {TimePicker} from '../index.js';
+import {TimePicker} from '../index';
 
 export const name = 'time-picker';
 

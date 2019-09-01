@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulDatepicker} from '../index.js';
-import {addDays} from '../utils/index.js';
+import {StatefulDatepicker} from '../index';
+import {addDays} from '../utils/index';
 
 export const name = 'stateful-datepicker-quick-select';
 

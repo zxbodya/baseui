@@ -5,15 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {InputPropsT, InternalStateT, AdjoinedT} from './types.js';
-import {getSharedProps} from './utils.js';
-import BaseInput from './base-input.js';
+import {getOverrides} from '../helpers/overrides';
+import {InputPropsT, InternalStateT, AdjoinedT} from './types';
+import {getSharedProps} from './utils';
+import BaseInput from './base-input';
 import {
   Root as StyledRoot,
   InputEnhancer as StyledInputEnhancer,
-} from './styled-components.js';
-import {ADJOINED, ENHANCER_POSITION} from './constants.js';
+} from './styled-components';
+import {ADJOINED, ENHANCER_POSITION} from './constants';
 
 import {FocusEvent} from 'react';
 

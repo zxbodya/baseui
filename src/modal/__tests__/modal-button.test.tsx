@@ -8,10 +8,10 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {ModalButton} from '../index.js';
-import {Button, KIND} from '../../button/index.js';
-import {LightTheme} from '../../themes/index.js';
-import createMockTheme from '../../test/create-mock-theme.js';
+import {ModalButton} from '../index';
+import {Button, KIND} from '../../button/index';
+import {LightTheme} from '../../themes/index';
+import createMockTheme from '../../test/create-mock-theme';
 
 const mockTheme = createMockTheme(LightTheme);
 

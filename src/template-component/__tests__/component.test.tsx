@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Component, StyledRoot} from '../index.js';
+import {Component, StyledRoot} from '../index';
 
 describe('Component', () => {
   test('basic click functionality', () => {

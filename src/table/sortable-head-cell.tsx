@@ -6,13 +6,13 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
-import TriangleDown from '../icon/triangle-down.js';
-import TriangleUp from '../icon/triangle-up.js';
+import {getOverrides} from '../helpers/overrides';
+import TriangleDown from '../icon/triangle-down';
+import TriangleUp from '../icon/triangle-up';
 
-import {SORT_DIRECTION} from './constants.js';
-import {StyledHeadCell, StyledSortableLabel} from './styled-components.js';
-import {SortDirectionT, HeadCellPropsT} from './types.js';
+import {SORT_DIRECTION} from './constants';
+import {StyledHeadCell, StyledSortableLabel} from './styled-components';
+import {SortDirectionT, HeadCellPropsT} from './types';
 
 function SortDirectionIcon({direction}: {direction: SortDirectionT}) {
   switch (direction) {

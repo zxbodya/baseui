@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {ThemeProvider, LightTheme} from '../../index.js';
-import {component as DndScenario} from './dnd-list.scenario.js';
+import {ThemeProvider, LightTheme} from '../../index';
+import {component as DndScenario} from './dnd-list.scenario';
 
 export const name = 'dnd-list-rtl';
 

@@ -5,14 +5,14 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import NavItem from './nav-item.js';
+import {getOverrides} from '../helpers/overrides';
+import NavItem from './nav-item';
 import {
   StyledRoot,
   StyledNavItemContainer,
   StyledSubNavContainer,
-} from './styled-components.js';
-import {NavPropsT, Item} from './types.js';
+} from './styled-components';
+import {NavPropsT, Item} from './types';
 
 export default class SideNav extends React.Component<NavPropsT> {
   static defaultProps = {

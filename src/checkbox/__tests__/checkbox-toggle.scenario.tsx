@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulCheckbox, STYLE_TYPE} from '../index.js';
+import {StatefulCheckbox, STYLE_TYPE} from '../index';
 
 export const name = 'checkbox-toggle';
 

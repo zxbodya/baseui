@@ -6,11 +6,11 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Block} from '../block/index.js';
-import {flattenFragments} from '../helpers/react-helpers.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {BlockPropsT} from '../block/types.js';
-import {FlexGridPropsT} from './types.js';
+import {Block} from '../block/index';
+import {flattenFragments} from '../helpers/react-helpers';
+import {getOverrides} from '../helpers/overrides';
+import {BlockPropsT} from '../block/types';
+import {FlexGridPropsT} from './types';
 
 export const BaseFlexGrid = ({
   display,
@@ -42,7 +42,8 @@ const FlexGrid = ({
     <FlexGrid as={as} {...restProps} {...flexGridProps}>
       {// flatten fragments so FlexGrid correctly iterates over fragments’ children
       flattenFragments(children).map((
-        child: React.ReactNode, // $FlowFixMe https://github.com/facebook/flow/issues/4864
+        // todo: incorrect component typings - children should be strictly ReactElement[] or implementation below needs to be updated to handle other things that can be in ReactNode
+        child: React.ReactElement,
       ) =>
         React.cloneElement(child, {
           flexGridColumnCount,

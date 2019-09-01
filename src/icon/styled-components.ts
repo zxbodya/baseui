@@ -4,9 +4,9 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {ThemeT} from '../styles/types.js';
-import {StyledComponentArgsT} from './types.js';
+import {styled} from '../styles/index';
+import {ThemeT} from '../styles/types';
+import {StyledComponentArgsT} from './types';
 
 export function getSvgStyles({
   $theme,

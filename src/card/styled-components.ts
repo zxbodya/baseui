@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-import {styled} from '../styles/index.js';
+import {styled} from '../styles/index';
 
 export const Action = styled<{}>('div', ({$theme: {typography}}) => ({
   ...typography.font450,

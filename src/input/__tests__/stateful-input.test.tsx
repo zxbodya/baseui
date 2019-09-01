@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {shallow, mount} from 'enzyme';
-import {StatefulInput, StyledInput, StatefulContainer} from '../index.js';
+import {StatefulInput, StyledInput, StatefulContainer} from '../index';
 
 describe('', () => {
   test('basic render', () => {

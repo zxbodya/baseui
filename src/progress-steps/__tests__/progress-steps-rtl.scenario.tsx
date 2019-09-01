@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {component as ProgressSteps} from './progress-steps.scenario.js';
-import {ThemeProvider, LightTheme} from '../../index.js';
+import {component as ProgressSteps} from './progress-steps.scenario';
+import {ThemeProvider, LightTheme} from '../../index';
 
 export const name = 'progress-steps-rtl';
 

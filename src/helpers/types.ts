@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {ThemeT} from '../styles/types.js';
+import {ThemeT} from '../styles/types';
 
 export type BaseProviderPropsT = {
   /** Children element to be rendered. Normally the BaseProvider

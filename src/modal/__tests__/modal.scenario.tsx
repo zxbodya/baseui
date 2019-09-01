@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Button} from '../../button/index.js';
+import {Button} from '../../button/index';
 import {
   Modal,
   ModalHeader,
@@ -14,7 +14,7 @@ import {
   ModalFooter,
   ModalButton,
   SIZE,
-} from '../index.js';
+} from '../index';
 
 export const name = 'modal';
 

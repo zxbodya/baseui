@@ -23,4 +23,4 @@ export const ellipsisText = {
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   wordWrap: 'normal',
-};
+} as const;

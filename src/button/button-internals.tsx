@@ -8,11 +8,11 @@ import * as React from 'react';
 import {
   StartEnhancer as StyledStartEnhancer,
   EndEnhancer as StyledEndEnhancer,
-} from './styled-components.js';
-import {getSharedProps} from './utils.js';
-import {getOverrides} from '../helpers/overrides.js';
+} from './styled-components';
+import {getSharedProps} from './utils';
+import {getOverrides} from '../helpers/overrides';
 
-import {ButtonPropsT} from './types.js';
+import {ButtonPropsT} from './types';
 
 export default function ButtonInternals(props: ButtonPropsT) {
   const {children, overrides = {}, startEnhancer, endEnhancer} = props;

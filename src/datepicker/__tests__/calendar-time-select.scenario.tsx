@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Calendar} from '../index.js';
+import {Calendar} from '../index';
 
 export const name = 'calendar-time-select';
 

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import StatefulNavigation from '../stateful-nav.js';
+import StatefulNavigation from '../stateful-nav';
 
 const nav = [
   {

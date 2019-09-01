@@ -5,11 +5,11 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import Screener, {Steps} from 'screener-storybook/src/screener.js';
+import Screener, {Steps} from 'screener-storybook/src/screener';
 
-import {Block} from '../../block/index.js';
-import {Button} from '../../button/index.js';
-import {ProgressSteps, Step} from '../index.js';
+import {Block} from '../../block/index';
+import {Button} from '../../button/index';
+import {ProgressSteps, Step} from '../index';
 
 export const name = 'progress-steps';
 

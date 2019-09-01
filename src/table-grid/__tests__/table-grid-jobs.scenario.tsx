@@ -7,22 +7,22 @@ LICENSE file in the root directory of this source tree.
 import React from 'react';
 import {format} from 'date-fns';
 
-import {Button} from '../../button/index.js';
-import {Heading, HeadingLevel} from '../../heading/index.js';
-import ChevronDown from '../../icon/chevron-down.js';
-import ChevronRight from '../../icon/chevron-right.js';
-import Overflow from '../../icon/overflow.js';
-import {StyledLink} from '../../link/index.js';
-import {StatefulMenu} from '../../menu/index.js';
-import {StatefulPopover, PLACEMENT} from '../../popover/index.js';
-import {styled, withStyle, useStyletron} from '../../styles/index.js';
-import {Tag} from '../../tag/index.js';
+import {Button} from '../../button/index';
+import {Heading, HeadingLevel} from '../../heading/index';
+import ChevronDown from '../../icon/chevron-down';
+import ChevronRight from '../../icon/chevron-right';
+import Overflow from '../../icon/overflow';
+import {StyledLink} from '../../link/index';
+import {StatefulMenu} from '../../menu/index';
+import {StatefulPopover, PLACEMENT} from '../../popover/index';
+import {styled, withStyle, useStyletron} from '../../styles/index';
+import {Tag} from '../../tag/index';
 
 import {
   Unstable_StyledTable as StyledTable,
   Unstable_StyledHeadCell as StyledHeadCell,
   Unstable_StyledBodyCell as StyledBodyCell,
-} from '../index.js';
+} from '../index';
 
 export const name = 'table-grid-jobs';
 

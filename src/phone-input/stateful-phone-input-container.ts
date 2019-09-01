@@ -5,15 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import React, {ChangeEvent} from 'react';
-import {COUNTRIES, STATE_CHANGE_TYPE} from './constants.js';
+import {COUNTRIES, STATE_CHANGE_TYPE} from './constants';
 import {
   StatefulPhoneInputContainerPropsT,
   StateT,
   StateReducerT,
   StateChangeT,
-} from './types.js';
-import defaultProps from './default-props.js';
-import {OnChangeParamsT} from '../select/types.js';
+} from './types';
+import defaultProps from './default-props';
+import {OnChangeParamsT} from '../select/types';
 
 const defaultStateReducer: StateReducerT = (type, nextState) => nextState;
 

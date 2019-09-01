@@ -21,8 +21,8 @@ import {
   StyledClearIcon,
   StyledSearchIcon,
   StyledOptionContent,
-} from '../index.js';
-import Select from '../select.js';
+} from '../index';
+import Select from '../select';
 
 jest.mock('../select');
 

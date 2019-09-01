@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {OverrideT} from '../helpers/overrides.js';
-import {STATE_CHANGE_TYPE, SIZE, TYPE} from './constants.js';
-import {OnItemSelectFnT} from '../menu/types.js';
+import {OverrideT} from '../helpers/overrides';
+import {STATE_CHANGE_TYPE, SIZE, TYPE} from './constants';
+import {OnItemSelectFnT} from '../menu/types';
 
 import {ReactNode, SyntheticEvent, ChangeEvent} from 'react';
 

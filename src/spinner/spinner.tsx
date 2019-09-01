@@ -6,15 +6,15 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {mergeOverrides, getOverrides} from '../helpers/overrides.js';
-import Icon from '../icon/icon.js';
+import {mergeOverrides, getOverrides} from '../helpers/overrides';
+import Icon from '../icon/icon';
 
 import {
   Svg as StyledSvg,
   StyledActivePath,
   StyledTrackPath,
-} from './styled-components.js';
-import {SpinnerPropsT} from './types.js';
+} from './styled-components';
+import {SpinnerPropsT} from './types';
 
 class Spinner extends React.Component<SpinnerPropsT> {
   static defaultProps: Partial<SpinnerPropsT> = {

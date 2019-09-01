@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 // Files
-import {STATE_CHANGE_TYPES, KEY_STRINGS} from './constants.js';
-import {scrollItemIntoView} from './utils.js';
+import {STATE_CHANGE_TYPES, KEY_STRINGS} from './constants';
+import {scrollItemIntoView} from './utils';
 // Types
 import {
   StatefulContainerPropsT,
@@ -15,7 +15,7 @@ import {
   GetRequiredItemPropsFnT,
   RenderPropsT,
   StateReducerFnT,
-} from './types.js';
+} from './types';
 
 import {MouseEvent} from 'react';
 
@@ -44,6 +44,7 @@ export default class MenuStatefulContainer extends React.Component<
   };
 
   state: StatefulContainerStateT = {
+    // @ts-ignore todo: probably MenuStatefulContainer should be used instead of this.constructor
     ...this.constructor.defaultProps.initialState,
     ...this.props.initialState,
   };

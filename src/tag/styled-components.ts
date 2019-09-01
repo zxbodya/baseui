@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import {lighten, darken} from 'polished';
 
-import {styled} from '../styles/index.js';
-import {KIND, VARIANT} from './constants.js';
-import {SharedPropsArgT} from './types.js';
+import {styled} from '../styles/index';
+import {KIND, VARIANT} from './constants';
+import {SharedPropsArgT} from './types';
 
 export function customOnRamp(color?: string, unit?: string) {
   switch (unit) {

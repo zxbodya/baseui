@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import ButtonGroup from './button-group.js';
-import StatefulContainer from './stateful-container.js';
-import {StatefulPropsT} from './types.js';
+import ButtonGroup from './button-group';
+import StatefulContainer from './stateful-container';
+import {StatefulPropsT} from './types';
 
 export default function StatefulButtonGroup(props: StatefulPropsT) {
   const {children, initialState, ...restProps} = props;

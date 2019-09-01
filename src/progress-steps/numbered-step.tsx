@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   StyledNumberStep,
   StyledNumberIcon,
@@ -14,10 +14,10 @@ import {
   StyledContentTitle,
   StyledNumberContentTail,
   StyledContentDescription,
-} from './styled-components.js';
-import StyledCheckIcon from '../icon/check.js';
+} from './styled-components';
+import StyledCheckIcon from '../icon/check';
 
-import {NumberedStepPropsT} from './types.js';
+import {NumberedStepPropsT} from './types';
 
 function NumberedStep({
   overrides = {},

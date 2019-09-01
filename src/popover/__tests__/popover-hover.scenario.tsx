@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Button} from '../../button/index.js';
-import {StatefulPopover, TRIGGER_TYPE} from '../index.js';
+import {Button} from '../../button/index';
+import {StatefulPopover, TRIGGER_TYPE} from '../index';
 
 export const name = 'popover-hover';
 

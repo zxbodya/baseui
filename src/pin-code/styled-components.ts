@@ -4,13 +4,13 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled, withStyle} from '../styles/index.js';
+import {styled, withStyle} from '../styles/index';
 import {
   Root as StyledInputRoot,
   Input as StyledInputInput,
-} from '../input/styled-components.js';
-import {SizeT} from '../input/types.js';
-import {SIZE} from '../input/constants.js';
+} from '../input/styled-components';
+import {SizeT} from '../input/types';
+import {SIZE} from '../input/constants';
 
 export const StyledRoot = styled('div', {
   display: 'flex',

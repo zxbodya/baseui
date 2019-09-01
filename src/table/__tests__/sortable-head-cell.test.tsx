@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import TriangleDown from '../../icon/triangle-down.js';
-import TriangleUp from '../../icon/triangle-up.js';
-import {SortableHeadCell} from '../index.js';
+import TriangleDown from '../../icon/triangle-down';
+import TriangleUp from '../../icon/triangle-up';
+import {SortableHeadCell} from '../index';
 
 describe('sortable-head-cell', () => {
   it('displays triangle down when direction is ASC', () => {

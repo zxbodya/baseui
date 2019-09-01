@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {EmoticonRatingPropsT, RatingStateT} from './types.js';
-import {StyledRoot, StyledEmoticon} from './styled-components.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {ENTER_KEY_CODE, SPACE_KEY_CODE} from './utils.js';
+import {EmoticonRatingPropsT, RatingStateT} from './types';
+import {StyledRoot, StyledEmoticon} from './styled-components';
+import {getOverrides} from '../helpers/overrides';
+import {ENTER_KEY_CODE, SPACE_KEY_CODE} from './utils';
 
 class EmoticonRating extends React.Component<
   EmoticonRatingPropsT,
@@ -19,7 +19,7 @@ class EmoticonRating extends React.Component<
     overrides: {},
   };
 
-  state = {};
+  state = {} as RatingStateT;
 
   selectItem = (value: number) => {
     const {onChange} = this.props;

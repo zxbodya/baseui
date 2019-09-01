@@ -12,11 +12,11 @@ import {
   StyledBody,
   StyledThumbnail,
   StyledTitle,
-} from '../index.js';
-import {Button} from '../../button/index.js';
-import {styled} from '../../styles/index.js';
+} from '../index';
+import {Button} from '../../button/index';
+import {styled} from '../../styles/index';
 
-import {thumbnail} from '../images.js';
+import {thumbnail} from '../images';
 
 export const name = 'card';
 

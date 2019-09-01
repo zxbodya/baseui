@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {MODE, STATE_CHANGE_TYPE} from './constants.js';
+import {MODE, STATE_CHANGE_TYPE} from './constants';
 
-import {StatefulContainerPropsT, StateT} from './types.js';
+import {StatefulContainerPropsT, StateT} from './types';
 
 import {SyntheticEvent} from 'react';
 
@@ -37,7 +37,7 @@ export default class StatefulContainer extends React.Component<
   constructor(props: StatefulContainerPropsT) {
     super(props);
 
-    const {initialState = {}} = props;
+    const {initialState = {} as StateT} = props;
     const {selected = []} = initialState;
 
     this.state = {

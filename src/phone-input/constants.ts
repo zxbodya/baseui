@@ -10,9 +10,9 @@ export const DEFAULT_MAX_DROPDOWN_HEIGHT = '400px';
 export const STATE_CHANGE_TYPE = {
   textChange: 'textChange',
   countryChange: 'countryChange',
-};
+} as const;
 
-export {SIZE} from '../input/constants.js';
+export {SIZE} from '../input/constants';
 
 // List originally from [jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)
 export const COUNTRIES = {

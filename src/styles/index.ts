@@ -11,7 +11,7 @@ export {
   styled,
   withStyle,
   useStyletron,
-} from './styled.js';
-export {hexToRgb} from './util.js';
-export {default as ThemeProvider} from './theme-provider.js';
-export {ThemeT} from './types.js';
+} from './styled';
+export {hexToRgb} from './util';
+export {default as ThemeProvider} from './theme-provider';
+export {ThemeT} from './types';

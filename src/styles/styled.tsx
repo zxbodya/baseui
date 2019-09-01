@@ -12,9 +12,9 @@ import {
 } from 'styletron-react';
 import {driver, getInitialStyle} from 'styletron-standard';
 import {StyleObject} from 'styletron-standard';
-import {ThemeT} from './types.js';
+import {ThemeT} from './types';
 
-import {ThemeContext} from './theme-provider.js';
+import {ThemeContext} from './theme-provider';
 
 type $Call1<F extends (...args: any) => any, A> = F extends (
   a: A,

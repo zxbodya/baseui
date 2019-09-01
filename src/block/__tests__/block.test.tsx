@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {mount} from 'enzyme';
-import Block from '../block.js';
+import Block from '../block';
 
 describe('Block', () => {
   it('applies expected style rules', () => {

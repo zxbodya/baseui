@@ -6,13 +6,13 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
 import {
   Label as StyledLabel,
   Caption as StyledCaption,
   ControlContainer as StyledControlContainer,
-} from './styled-components.js';
-import {FormControlPropsT} from './types.js';
+} from './styled-components';
+import {FormControlPropsT} from './types';
 
 function chooseRenderedHint(caption, error, positive, sharedProps) {
   if (error && typeof error !== 'boolean') {
@@ -54,6 +54,7 @@ export default class FormControl extends React.Component<FormControlPropsT> {
       children,
     } = this.props;
 
+    // @ts-ignore todo: looks dangerous
     const onlyChildProps = React.Children.only(children).props;
 
     const sharedProps = {

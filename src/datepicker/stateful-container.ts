@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {STATE_CHANGE_TYPE} from './constants';
 import {
   CalendarPropsT,
   ContainerStateT,
@@ -13,7 +13,7 @@ import {
   StatefulContainerPropsT,
   StateChangeTypeT,
   StateReducerT,
-} from './types.js';
+} from './types';
 
 const defaultStateReducer: StateReducerT = (type, nextState) => nextState;
 

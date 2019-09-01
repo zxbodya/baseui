@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import Step from '../step.js';
+import Step from '../step';
 
 describe('Step', () => {
   it('applies isCompleted prop correctly', () => {

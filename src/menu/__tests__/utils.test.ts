@@ -4,7 +4,7 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import * as Utils from '../utils.js';
+import * as Utils from '../utils';
 
 describe.only('Menu Utils - scrollItemIntoView', () => {
   // |=======================| <-- top of parent window (at 0)

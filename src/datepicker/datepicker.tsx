@@ -5,16 +5,16 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import isValid from 'date-fns/isValid/index.js';
-import isAfter from 'date-fns/isAfter/index.js';
+import isValid from 'date-fns/isValid/index';
+import isAfter from 'date-fns/isAfter/index';
 
-import {MaskedInput} from '../input/index.js';
-import {Popover, PLACEMENT} from '../popover/index.js';
-import Calendar from './calendar.js';
-import {formatDate} from './utils/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
-import {DatepickerPropsT} from './types.js';
+import {MaskedInput} from '../input/index';
+import {Popover, PLACEMENT} from '../popover/index';
+import Calendar from './calendar';
+import {formatDate} from './utils/index';
+import {getOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
+import {DatepickerPropsT} from './types';
 
 import {ChangeEvent} from 'react';
 

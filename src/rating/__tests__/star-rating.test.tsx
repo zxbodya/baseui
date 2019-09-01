@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {mount, shallow} from 'enzyme';
-import {StarRating} from '../index.js';
+import {StarRating} from '../index';
 
 describe('StarRating', () => {
   let example, onChangeSpy;

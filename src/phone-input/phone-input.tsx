@@ -5,11 +5,11 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import React, {useRef} from 'react';
-import {Input as DefaultInput} from '../input/index.js';
-import CountrySelect from './country-select.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import defaultProps from './default-props.js';
-import {PropsT} from './types.js';
+import {Input as DefaultInput} from '../input/index';
+import CountrySelect from './country-select';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import defaultProps from './default-props';
+import {PropsT} from './types';
 
 PhoneInput.defaultProps = defaultProps;
 
@@ -58,7 +58,7 @@ export default function PhoneInput(props: PropsT) {
     },
   };
   const [Input, inputProps] = getOverrides(overrides.Input, DefaultInput);
-  // $FlowFixMe
+  // @ts-ignore
   inputProps.overrides = mergeOverrides(baseOverrides, inputProps.overrides);
   return (
     <Input

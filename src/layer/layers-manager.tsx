@@ -5,12 +5,11 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {LayersManagerPropsT, LayersContextT} from './types.js';
+import {LayersManagerPropsT, LayersContextT} from './types';
 
-export const {
-  Provider,
-  Consumer,
-}: React.Context<LayersContextT> = React.createContext({});
+export const {Provider, Consumer}: React.Context<LayersContextT> =
+  // todo: incorrect default value
+  React.createContext({} as LayersContextT);
 
 export default class LayersManager extends React.Component<
   LayersManagerPropsT

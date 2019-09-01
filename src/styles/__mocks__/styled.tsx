@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 import {getInitialStyle} from 'styletron-standard';
-import {LightTheme} from '../../themes/index.js';
-import createMockTheme from '../../test/create-mock-theme.js';
-import {ThemeT} from '../../styles/types.js';
+import {LightTheme} from '../../themes/index';
+import createMockTheme from '../../test/create-mock-theme';
+import {ThemeT} from '../../styles/types';
 type ObjOrFnT = {} | ((a: {}) => {});
 
 type PropsT = {

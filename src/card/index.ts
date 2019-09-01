@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-export {default as Card, hasThumbnail} from './card.js';
+export {default as Card, hasThumbnail} from './card';
 export {
   Action as StyledAction,
   Body as StyledBody,
@@ -15,5 +15,5 @@ export {
   Title as StyledTitle,
   Root as StyledRoot,
   Root as StyledWrapper,
-} from './styled-components.js';
-export * from './types.js';
+} from './styled-components';
+export * from './types';

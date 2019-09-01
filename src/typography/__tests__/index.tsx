@@ -21,8 +21,8 @@ import {
   Label2,
   Paragraph1,
   Paragraph2,
-} from '../index.js';
-import Block from '../../block/block.js';
+} from '../index';
+import Block from '../../block/block';
 
 function getStyle(element: React.ReactNode) {
   // $FlowFixMe

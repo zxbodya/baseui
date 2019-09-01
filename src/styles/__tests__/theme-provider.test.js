@@ -8,9 +8,9 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import ThemeProvider from '../theme-provider.js';
-import {styled} from '../styled.js';
-import {withStyletronProvider} from '../../test/test-utils.js';
+import ThemeProvider from '../theme-provider';
+import {styled} from '../styled';
+import {withStyletronProvider} from '../../test/test-utils';
 
 jest.unmock('../styled.js');
 

@@ -5,18 +5,18 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {FormControl} from '../form-control/index.js';
-import {LocaleContext} from '../locale/index.js';
-import {Select} from '../select/index.js';
-import CalendarHeader from './calendar-header.js';
-import Month from './month.js';
-import TimePicker from './timepicker.js';
+import {FormControl} from '../form-control/index';
+import {LocaleContext} from '../locale/index';
+import {Select} from '../select/index';
+import CalendarHeader from './calendar-header';
+import Month from './month';
+import TimePicker from './timepicker';
 import {
   StyledCalendarContainer,
   StyledMonthContainer,
   StyledRoot,
   StyledSelectorContainer,
-} from './styled-components.js';
+} from './styled-components';
 import {
   addDays,
   addMonths,
@@ -38,10 +38,10 @@ import {
   setSeconds,
   getHours,
   getMinutes,
-} from './utils/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {CalendarPropsT, CalendarInternalState} from './types.js';
-import {ORIENTATION} from './constants.js';
+} from './utils/index';
+import {getOverrides} from '../helpers/overrides';
+import {CalendarPropsT, CalendarInternalState} from './types';
+import {ORIENTATION} from './constants';
 
 function applyTime(prev: Date | undefined | null, next: Date) {
   if (!prev) return next;

@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import React from 'react';
 // eslint-disable-next-line import/extensions
 import Screener, {Steps} from 'screener-storybook/src/screener';
-import {StatefulDatepicker} from '../index.js';
+import {StatefulDatepicker} from '../index';
 
 export const name = 'datepicker-range-highlight';
 

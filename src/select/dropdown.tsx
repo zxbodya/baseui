@@ -10,10 +10,10 @@ import {
   StyledDropdown,
   StyledDropdownListItem,
   StyledOptionContent,
-} from './styled-components.js';
-import {StatefulMenu} from '../menu/index.js';
-import {DropdownPropsT} from './types.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
+} from './styled-components';
+import {StatefulMenu} from '../menu/index';
+import {DropdownPropsT} from './types';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
 
 export default class SelectDropdown extends React.Component<DropdownPropsT> {
   getSharedProps() {

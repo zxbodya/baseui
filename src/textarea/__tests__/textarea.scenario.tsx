@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulTextarea} from '../index.js';
+import {StatefulTextarea} from '../index';
 
 export const name = 'textarea';
 

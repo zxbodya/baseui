@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 /* global module */
 
-import {containsFlowComment} from './shared.js';
+import {containsFlowComment} from './shared';
 
 function getStyledImportName(j, root) {
   const baseImports = root.find(j.ImportDeclaration, {

@@ -4,8 +4,8 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {ThemeT} from '../styles/types.js';
-import {OverrideT} from '../helpers/overrides.js';
+import {ThemeT} from '../styles/types';
+import {OverrideT} from '../helpers/overrides';
 
 export type RatingOverridesT = {
   Root?: OverrideT<any>;

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {StatefulPhoneInput} from '../index.js';
+import {StatefulPhoneInput} from '../index';
 
 export const name = 'phone-input-overrides';
 

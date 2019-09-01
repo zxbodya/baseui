@@ -9,7 +9,7 @@ LICENSE file in the root directory of this source tree.
 import React from 'react';
 // eslint-disable-next-line import/extensions
 import Screener, {Steps} from 'screener-storybook/src/screener';
-import {StatefulInput} from '../index.js';
+import {StatefulInput} from '../index';
 
 export const name = 'input-password';
 

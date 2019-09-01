@@ -10,14 +10,14 @@ import {
   PLACEMENT,
   STATE_CHANGE_TYPE,
   TRIGGER_TYPE,
-} from './constants.js';
+} from './constants';
 import {
   PopoverPropsWithoutChildrenT,
   StateT,
   StatefulPopoverContainerPropsT,
   StateChangeTypeT,
   StateReducerT,
-} from './types.js';
+} from './types';
 
 const defaultStateReducer: StateReducerT = (type, nextState) => nextState;
 

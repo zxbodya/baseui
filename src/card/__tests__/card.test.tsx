@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Card} from '../index.js';
-import {header as headerImg, thumbnail as thumbnailImg} from '../images.js';
+import {Card} from '../index';
+import {header as headerImg, thumbnail as thumbnailImg} from '../images';
 
 test('Card - basic functionality', () => {
   const props = {

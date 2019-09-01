@@ -8,7 +8,7 @@ import {
   StyledTable,
   StyledHeadCell,
   StyledBodyCell,
-} from './styled-components.js';
+} from './styled-components';
 
 export const Unstable_StyledTable = StyledTable;
 export const Unstable_StyledHeadCell = StyledHeadCell;

@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Button} from '../../button/index.js';
-import {toaster, ToasterContainer, PLACEMENT} from '../index.js';
+import {Button} from '../../button/index';
+import {toaster, ToasterContainer, PLACEMENT} from '../index';
 
 export const name = 'toaster';
 

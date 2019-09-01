@@ -16,7 +16,7 @@ import {
   getStartPosition,
   isVerticalPosition,
   splitPlacement,
-} from '../utils.js';
+} from '../utils';
 
 describe('Popover utils', () => {
   describe('getOppositePosition', () => {

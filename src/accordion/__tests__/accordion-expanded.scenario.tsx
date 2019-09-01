@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Accordion, StatefulPanel, Panel} from '../index.js';
+import {Accordion, StatefulPanel, Panel} from '../index';
 
 export const name = 'accordion-expanded';
 

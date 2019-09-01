@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-import {styled} from '../styles/index.js';
-import {StyledRootPropsT, StyledRatingItemPropsT} from './types.js';
+import {styled} from '../styles/index';
+import {StyledRootPropsT, StyledRatingItemPropsT} from './types';
 import {
   starSVG,
   angryRatingSVG,
@@ -14,7 +14,7 @@ import {
   neutralRatingSVG,
   happyRatingSVG,
   veryHappyRatingSVG,
-} from './svg-icons.js';
+} from './svg-icons';
 
 export const StyledRoot = styled<StyledRootPropsT>('ul', ({$theme}) => {
   return {

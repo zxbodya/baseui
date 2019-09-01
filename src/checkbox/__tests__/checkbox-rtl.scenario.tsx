@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {component as Checkbox} from './checkbox.scenario.js';
-import {ThemeProvider, LightTheme} from '../../index.js';
+import {component as Checkbox} from './checkbox.scenario';
+import {ThemeProvider, LightTheme} from '../../index';
 
 export const name = 'checkbox-rtl';
 

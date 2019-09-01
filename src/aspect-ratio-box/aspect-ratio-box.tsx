@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Block} from '../block/index.js';
-import {mergeOverrides} from '../helpers/overrides.js';
-import {AspectRatioBoxPropsT} from './types.js';
+import {Block} from '../block/index';
+import {mergeOverrides} from '../helpers/overrides';
+import {AspectRatioBoxPropsT} from './types';
 
 const aspectRatioBoxStyle = ({$aspectRatio}) => ({
   position: 'relative',
@@ -30,11 +30,11 @@ const aspectRatioBoxStyle = ({$aspectRatio}) => ({
   },
 });
 
-export const AspectRatioBox = ({
+export const AspectRatioBox: React.FC<AspectRatioBoxPropsT> = ({
   aspectRatio,
   overrides,
   ...restProps
-}: AspectRatioBoxPropsT): React.ReactNode => {
+}: AspectRatioBoxPropsT) => {
   const aspectRatioBoxOverrides = {
     Block: {
       style: aspectRatioBoxStyle,
@@ -42,6 +42,7 @@ export const AspectRatioBox = ({
   };
   const blockOverrides = mergeOverrides(aspectRatioBoxOverrides, overrides);
   return (
+    // @ts-ignore
     <Block
       overrides={blockOverrides}
       $aspectRatio={aspectRatio}

@@ -9,8 +9,8 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {mount} from 'enzyme';
-import {Drawer, StyledBackdrop, StyledClose, CLOSE_SOURCE} from '../index.js';
-import {styled} from '../../styles/index.js';
+import {Drawer, StyledBackdrop, StyledClose, CLOSE_SOURCE} from '../index';
+import {styled} from '../../styles/index';
 
 jest.useFakeTimers();
 

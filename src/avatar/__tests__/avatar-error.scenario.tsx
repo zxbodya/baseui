@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Avatar} from '../index.js';
+import {Avatar} from '../index';
 
 export const name = 'avatar-error';
 

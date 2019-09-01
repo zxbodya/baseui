@@ -13,7 +13,7 @@ import {
   StyledMonth,
   StyledWeek,
   StyledDay,
-} from '../index.js';
+} from '../index';
 
 describe('Component', () => {
   test('basic render', () => {

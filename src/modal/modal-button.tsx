@@ -5,10 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {defaultProps} from '../button/default-props.js';
-import {Button} from '../button/index.js';
-import {ButtonPropsT} from '../button/types.js';
-import {mergeOverrides} from '../helpers/overrides.js';
+import {defaultProps} from '../button/default-props';
+import {Button} from '../button/index';
+import {ButtonPropsT} from '../button/types';
+import {mergeOverrides} from '../helpers/overrides';
 
 // ModalButtons should have some margin pre-applied
 const overrides = {

@@ -14,16 +14,16 @@ import {
   StyledCountrySelectDropdownFlagColumn as DefaultFlagColumn,
   StyledCountrySelectDropdownNameColumn as DefaultNameColumn,
   StyledCountrySelectDropdownDialcodeColumn as DefaultDialcodeColumn,
-} from './styled-components.js';
-import {COUNTRIES} from './constants.js';
-import {Block} from '../block/index.js';
-import {Select as DefaultSelect} from '../select/index.js';
-import {PLACEMENT} from '../popover/index.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import defaultProps from './default-props.js';
-import {iso2FlagEmoji} from './utils.js';
+} from './styled-components';
+import {COUNTRIES} from './constants';
+import {Block} from '../block/index';
+import {Select as DefaultSelect} from '../select/index';
+import {PLACEMENT} from '../popover/index';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import defaultProps from './default-props';
+import {iso2FlagEmoji} from './utils';
 
-import {CountryT, CountrySelectPropsT} from './types.js';
+import {CountryT, CountrySelectPropsT} from './types';
 
 CountrySelect.defaultProps = {
   disabled: defaultProps.disabled,
@@ -155,10 +155,10 @@ export default function CountrySelect(props: CountrySelectPropsT) {
     Dropdown: overrides.CountrySelectDropdown,
     DropdownListItem: overrides.CountrySelectDropdownListItem,
   });
-  // $FlowFixMe
+  // @ts-ignore
   selectProps.overrides = mergeOverrides(
     selectOverrides,
-    // $FlowFixMe
+    // @ts-ignore
     selectProps.overrides,
   );
 

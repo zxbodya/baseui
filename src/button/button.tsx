@@ -9,13 +9,13 @@ import {
   BaseButton as StyledBaseButton,
   LoadingSpinner as StyledLoadingSpinner,
   LoadingSpinnerContainer as StyledLoadingSpinnerContainer,
-} from './styled-components.js';
-import {getSharedProps} from './utils.js';
-import ButtonInternals from './button-internals.js';
-import {defaultProps} from './default-props.js';
-import {getOverrides} from '../helpers/overrides.js';
+} from './styled-components';
+import {getSharedProps} from './utils';
+import ButtonInternals from './button-internals';
+import {defaultProps} from './default-props';
+import {getOverrides} from '../helpers/overrides';
 
-import {ButtonPropsT} from './types.js';
+import {ButtonPropsT} from './types';
 
 // eslint-disable-next-line flowtype/no-weak-types
 class Button extends React.Component<
@@ -30,6 +30,7 @@ class Button extends React.Component<
     if (isLoading) {
       return;
     }
+    // @ts-ignore
     onClick && onClick(...args);
   };
 

@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {Button} from '../index.js';
-import {SIZE} from '../constants.js';
+import {Button} from '../index';
+import {SIZE} from '../constants';
 
 export const name = 'button-sizes';
 

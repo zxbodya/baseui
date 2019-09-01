@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Heading, HeadingLevel} from '../index.js';
+import {Heading, HeadingLevel} from '../index';
 
 describe('Heading', () => {
   let wrapper;

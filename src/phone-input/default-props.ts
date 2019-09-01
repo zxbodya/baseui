@@ -9,7 +9,7 @@ import {
   COUNTRIES,
   DEFAULT_MAX_DROPDOWN_HEIGHT,
   DEFAULT_MAX_DROPDOWN_WIDTH,
-} from './constants.js';
+} from './constants';
 
 const defaultProps = {
   'aria-label': 'Please choose a country dial code and enter a phone number.',

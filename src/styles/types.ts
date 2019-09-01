@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import {ComponentType} from 'react';
-import {IconPropsT} from '../icon/types.js';
+import {IconPropsT} from '../icon/types';
 
 export type BreakpointsT = {
   small: number;
@@ -178,7 +178,7 @@ export type ColorsT = {
   sliderBorderDisabled: string;
   // Input
   inputFill: string;
-  inputFillEnhancer: string;
+  // todo: unused inputFillEnhancer: string;
   inputFillError: string;
   inputFillDisabled: string;
   inputFillActive: string;
@@ -482,9 +482,10 @@ export type ThemeT = {
   icons?: IconT;
   // Remove this section in next major version
   // https://github.com/uber-web/baseui/pull/1184
-  tooltip: {
-    backgroundColor: string;
-  };
+  // todo: tooltip is already not there
+  // tooltip: {
+  //   backgroundColor: string;
+  // };
   // ^^^^^^^
 };
 

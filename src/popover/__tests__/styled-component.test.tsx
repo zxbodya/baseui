@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable */
 import * as React from 'react';
-import {StyledBody, StyledArrow, Popover, PLACEMENT} from '../index.js';
-import {BodyStylePropsArgT} from '../index.js';
+import {StyledBody, StyledArrow, Popover, PLACEMENT} from '../index';
+import {BodyStylePropsArgT} from '../index';
 
 describe('Popover styled components flow', () => {
   test('it runs without flow error when we override StyledArrow', () => {

@@ -10,7 +10,7 @@ import {
   StatefulComponentContainerPropsT,
   StateChangeTypeT,
   StateReducerT,
-} from './types.js';
+} from './types';
 
 const defaultStateReducer: StateReducerT = (type, nextState) => nextState;
 

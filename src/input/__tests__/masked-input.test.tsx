@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {MaskedInput} from '../index.js';
+import {MaskedInput} from '../index';
 
-import {styled} from '../../styles/index.js';
+import {styled} from '../../styles/index';
 
 test('MaskedInput - basic functionality', () => {
   const props = {

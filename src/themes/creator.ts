@@ -4,9 +4,9 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {ThemeT} from '../styles/types.js';
-import {PrimitivesT} from './types.js';
-import deepMerge from '../utils/deep-merge.js';
+import {ThemeT} from '../styles/types';
+import {PrimitivesT} from './types';
+import deepMerge from '../utils/deep-merge';
 
 const WHITE = '#FFFFFF';
 
@@ -14,7 +14,8 @@ export default function createTheme(
   primitives: PrimitivesT,
   overrides?: {},
 ): ThemeT {
-  const theme = {
+  const theme: ThemeT = {
+    name: 'unnamed', // todo: theme should have default name or ThemeT needs to be updated to not require it
     breakpoints: {
       small: 320,
       medium: 600,
@@ -602,6 +603,6 @@ export default function createTheme(
   };
 
   // to remove the FlowFixMe, we have to make deepMerge accept a ThemeT
-  // $FlowFixMe
+  // @ts-ignore types for deepMerge
   return deepMerge(theme, overrides);
 }

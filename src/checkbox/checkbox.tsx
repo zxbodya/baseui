@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
-import {PropsT, DefaultPropsT, StatelessStateT} from './types.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+import {PropsT, DefaultPropsT, StatelessStateT} from './types';
 import {
   Checkmark as StyledCheckmark,
   Input as StyledInput,
@@ -15,21 +15,21 @@ import {
   Toggle as StyledToggle,
   ToggleInner as StyledToggleInner,
   ToggleTrack as StyledToggleTrack,
-} from './styled-components.js';
-import {STYLE_TYPE} from './constants.js';
+} from './styled-components';
+import {STYLE_TYPE} from './constants';
 
 import {ChangeEvent} from 'react';
 
 class StatelessCheckbox extends React.Component<PropsT, StatelessStateT> {
   static defaultProps: DefaultPropsT = {
-    overrides: {},
+    overrides: {}, // todo: missing field in flow types
     checked: false,
     disabled: false,
     autoFocus: false,
     isIndeterminate: false,
     inputRef: React.createRef(),
     isError: false,
-    type: 'checkbox',
+    type: 'checkbox', // todo: missing field in flow types
     checkmarkType: STYLE_TYPE.default,
     onChange: () => {},
     onMouseEnter: () => {},

@@ -6,13 +6,13 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Block} from '../block/index.js';
-import {mergeOverrides} from '../helpers/overrides.js';
-import {getMediaQueries, getMediaQuery} from '../helpers/responsive-helpers.js';
-import {FlexGridItemPropsT} from './types.js';
-import {ResponsiveT, ScaleT} from '../block/index.js';
-import {StyleOverrideT} from '../helpers/overrides.js';
-import {ThemeT} from '../styles/index.js';
+import {Block} from '../block/index';
+import {mergeOverrides} from '../helpers/overrides';
+import {getMediaQueries, getMediaQuery} from '../helpers/responsive-helpers';
+import {FlexGridItemPropsT} from './types';
+import {ResponsiveT, ScaleT} from '../block/index';
+import {StyleOverrideT} from '../helpers/overrides';
+import {ThemeT} from '../styles/index';
 
 export const flexGridItemMediaQueryStyle = ({
   $theme,
@@ -39,6 +39,7 @@ export const flexGridItemMediaQueryStyle = ({
     // Subtract .5px to avoid rounding issues on IE/Edge
     // See https://github.com/uber-web/baseui/pull/1748
     width: `calc(${widthCalc} - .5px)`,
+    // todo: in old browsers or transpiled code - this might affect performance
     ...[...Array(colCount).keys()].reduce(
       (acc, i) => ({
         // Iterate over each column i for 0 <= i < colCount
@@ -133,6 +134,7 @@ export const flexGridItemStyle = ({
       flexGridColumnGapValue,
       flexGridRowGapValue,
     ] = [$flexGridColumnCount, $flexGridColumnGap, $flexGridRowGap].map(r =>
+      // @ts-ignore todo:
       getResponsiveValue(r, i),
     );
     const mediaQuery =
@@ -170,6 +172,7 @@ const FlexGridItem = ({
     ? mergeOverrides(flexGridItemOverrides, overrides)
     : flexGridItemOverrides;
   return (
+    // @ts-ignore overrides :(
     <Block
       as={as}
       overrides={blockOverrides}

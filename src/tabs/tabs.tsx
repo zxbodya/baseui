@@ -5,14 +5,14 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   Root as StyledRoot,
   TabBar as StyledTabBar,
   TabContent as StyledTabContent,
-} from './styled-components.js';
-import {TabsPropsT, SharedStylePropsArgT} from './types.js';
-import {ORIENTATION} from './constants.js';
+} from './styled-components';
+import {TabsPropsT, SharedStylePropsArgT} from './types';
+import {ORIENTATION} from './constants';
 
 export default class Tabs extends React.Component<TabsPropsT> {
   static defaultProps: Partial<TabsPropsT> = {

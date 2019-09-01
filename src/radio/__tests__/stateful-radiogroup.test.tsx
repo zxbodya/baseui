@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import {StatefulRadioGroup, Radio} from '../index.js';
+import {StatefulRadioGroup, Radio} from '../index';
 
 describe('radio-group', () => {
   it('sets clicked child checked', () => {

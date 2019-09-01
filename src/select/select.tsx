@@ -6,20 +6,20 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
-import DeleteAlt from '../icon/delete-alt.js';
-import TriangleDownIcon from '../icon/triangle-down.js';
-import SearchIconComponent from '../icon/search.js';
-import {LocaleContext} from '../locale/index.js';
-import {LocaleT} from '../locale/types.js';
-import {Popover, PLACEMENT} from '../popover/index.js';
-import {Spinner} from '../spinner/index.js';
+import {getOverrides} from '../helpers/overrides';
+import DeleteAlt from '../icon/delete-alt';
+import TriangleDownIcon from '../icon/triangle-down';
+import SearchIconComponent from '../icon/search';
+import {LocaleContext} from '../locale/index';
+import {LocaleT} from '../locale/types';
+import {Popover, PLACEMENT} from '../popover/index';
+import {Spinner} from '../spinner/index';
 
-import AutosizeInput from './autosize-input.js';
-import {TYPE, STATE_CHANGE_TYPE} from './constants.js';
-import defaultProps from './default-props.js';
-import SelectDropdown from './dropdown.js';
-import MultiValue from './multi-value.js';
+import AutosizeInput from './autosize-input';
+import {TYPE, STATE_CHANGE_TYPE} from './constants';
+import defaultProps from './default-props';
+import SelectDropdown from './dropdown';
+import MultiValue from './multi-value';
 import {
   StyledRoot,
   StyledControlContainer,
@@ -31,14 +31,14 @@ import {
   StyledClearIcon,
   getLoadingIconStyles,
   StyledSearchIcon,
-} from './styled-components.js';
-import {PropsT, SelectStateT, ValueT, OptionT, ChangeActionT} from './types.js';
+} from './styled-components';
+import {PropsT, SelectStateT, ValueT, OptionT, ChangeActionT} from './types';
 import {
   shouldShowValue,
   shouldShowPlaceholder,
   expandValue,
-} from './utils/index.js';
-import Value from './value.js';
+} from './utils/index';
+import Value from './value';
 
 import {SyntheticEvent, ChangeEvent} from 'react';
 

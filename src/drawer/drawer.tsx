@@ -8,18 +8,18 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 
-import {LocaleContext} from '../locale/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {Layer} from '../layer/index.js';
-import {SIZE, CLOSE_SOURCE, ANCHOR} from './constants.js';
+import {LocaleContext} from '../locale/index';
+import {getOverrides} from '../helpers/overrides';
+import {Layer} from '../layer/index';
+import {SIZE, CLOSE_SOURCE, ANCHOR} from './constants';
 import {
   StyledRoot,
   StyledBackdrop,
   StyledDrawerContainer,
   StyledDrawerBody,
   StyledClose,
-} from './styled-components.js';
-import {CloseIcon} from './close-icon.js';
+} from './styled-components';
+import {CloseIcon} from './close-icon';
 
 import {
   DrawerPropsT,
@@ -27,7 +27,7 @@ import {
   SharedStylePropsArgT,
   CloseSourceT,
   ElementRefT,
-} from './types.js';
+} from './types';
 
 class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
   static defaultProps: Partial<DrawerPropsT> = {
@@ -171,6 +171,7 @@ class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
     // Reset scroll to 0 (other libraries do this as well)
     const rootRef = this.getRef('Root').current;
     if (rootRef) {
+      // @ts-ignore
       rootRef.scrollTop = 0;
     }
 
@@ -221,6 +222,7 @@ class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
 
   getChildren() {
     const {children} = this.props;
+    // @ts-ignore
     return typeof children === 'function' ? children() : children;
   }
 

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 
 import {
   Root as StyledRoot,
@@ -15,8 +15,8 @@ import {
   RadioMarkInner as StyledRadioMarkInner,
   RadioMarkOuter as StyledRadioMarkOuter,
   Description as StyledDescription,
-} from './styled-components.js';
-import {RadioPropsT, RadioStateT} from './types.js';
+} from './styled-components';
+import {RadioPropsT, RadioStateT} from './types';
 
 import {ChangeEvent} from 'react';
 

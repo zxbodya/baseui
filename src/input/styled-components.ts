@@ -4,11 +4,11 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {ThemeT} from '../styles/types.js';
-import {ADJOINED, ENHANCER_POSITION, SIZE} from './constants.js';
-import {SharedPropsT, SizeT} from './types.js';
-import DeleteAlt from '../icon/delete-alt.js';
+import {styled} from '../styles/index';
+import {ThemeT} from '../styles/types';
+import {ADJOINED, ENHANCER_POSITION, SIZE} from './constants';
+import {SharedPropsT, SizeT} from './types';
+import DeleteAlt from '../icon/delete-alt';
 
 export const StyledClearIconContainer = styled<{
   $alignTop: boolean;

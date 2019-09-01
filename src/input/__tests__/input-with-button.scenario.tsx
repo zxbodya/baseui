@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {StatefulInput, SIZE} from '../index.js';
-import {Block} from '../../block/index.js';
-import {Button} from '../../button/index.js';
+import {StatefulInput, SIZE} from '../index';
+import {Block} from '../../block/index';
+import {Button} from '../../button/index';
 
 export const name = 'input-with-button';
 

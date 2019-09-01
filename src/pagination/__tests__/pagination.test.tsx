@@ -7,10 +7,10 @@ LICENSE file in the root directory of this source tree.
 /* eslint-env browser */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import * as StyledComponents from '../styled-components.js';
-import {Button} from '../../button/index.js';
-import {Select} from '../../select/index.js';
-import Pagination from '../pagination.js';
+import * as StyledComponents from '../styled-components';
+import {Button} from '../../button/index';
+import {Select} from '../../select/index';
+import Pagination from '../pagination';
 
 jest.useFakeTimers();
 

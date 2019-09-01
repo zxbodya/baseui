@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import MaybeChildMenu from '../maybe-child-menu.js';
+import MaybeChildMenu from '../maybe-child-menu';
 
 describe('MaybeChildMenu', () => {
   it('does not render popover if getChildMenu is undefined', () => {

@@ -4,8 +4,8 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {OverrideT} from '../helpers/overrides.js';
-import {STYLE_TYPE} from './constants.js';
+import {OverrideT} from '../helpers/overrides';
+import {STYLE_TYPE} from './constants';
 
 import {ReactNode, ChangeEvent} from 'react';
 
@@ -23,10 +23,12 @@ export type OverridesT = {
 };
 
 export type DefaultPropsT = {
+  overrides?: any;
   children?: ReactNode;
   checked: boolean;
   disabled: boolean;
   isError: boolean;
+  type: string;
   autoFocus: boolean;
   isIndeterminate: boolean;
   inputRef: {

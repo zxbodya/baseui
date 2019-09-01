@@ -5,8 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import Week from './week.js';
-import {StyledMonth} from './styled-components.js';
+import Week from './week';
+import {StyledMonth} from './styled-components';
 import {
   addDays,
   isSameMonth,
@@ -14,9 +14,9 @@ import {
   getStartOfMonth,
   getMonth,
   addWeeks,
-} from './utils/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {MonthPropsT} from './types.js';
+} from './utils/index';
+import {getOverrides} from '../helpers/overrides';
+import {MonthPropsT} from './types';
 
 const defaultProps = {
   date: new Date(),

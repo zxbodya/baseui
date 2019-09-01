@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Notification, KIND} from '../index.js';
+import {Notification, KIND} from '../index';
 
 export const name = 'notification';
 

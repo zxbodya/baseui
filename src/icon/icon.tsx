@@ -5,9 +5,9 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {Svg as StyledSvg} from './styled-components.js';
-import {IconPropsT} from './types.js';
+import {getOverrides} from '../helpers/overrides';
+import {Svg as StyledSvg} from './styled-components';
+import {IconPropsT} from './types';
 
 export default function Icon(props: IconPropsT) {
   const {children, title, overrides = {}, size, color, ...restProps} = props;

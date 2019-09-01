@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {StatefulSelect} from '../../select/index.js';
-import {Modal, ModalBody} from '../index.js';
+import {StatefulSelect} from '../../select/index';
+import {Modal, ModalBody} from '../index';
 
 export const name = 'modal-select';
 

@@ -5,14 +5,14 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {LocaleContext} from '../locale/index.js';
+import {LocaleContext} from '../locale/index';
 // Components
-import {StyledList, StyledEmptyState} from './styled-components.js';
-import OptionList from './option-list.js';
-import {getOverrides} from '../helpers/overrides.js';
+import {StyledList, StyledEmptyState} from './styled-components';
+import OptionList from './option-list';
+import {getOverrides} from '../helpers/overrides';
 // Types
-import {StatelessMenuPropsT} from './types.js';
-import {LocaleT} from '../locale/types.js';
+import {StatelessMenuPropsT} from './types';
+import {LocaleT} from '../locale/types';
 
 export default function Menu(props: StatelessMenuPropsT) {
   const {

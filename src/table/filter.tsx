@@ -7,18 +7,18 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 
-import {Button, KIND, SIZE} from '../button/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import FilterIcon from '../icon/filter.js';
-import {StatefulPopover, PLACEMENT} from '../popover/index.js';
+import {Button, KIND, SIZE} from '../button/index';
+import {getOverrides} from '../helpers/overrides';
+import FilterIcon from '../icon/filter';
+import {StatefulPopover, PLACEMENT} from '../popover/index';
 
 import {
   StyledFilterButton,
   StyledFilterContent,
   StyledFilterHeading,
   StyledFilterFooter,
-} from './styled-components.js';
-import {FilterProps} from './types.js';
+} from './styled-components';
+import {FilterProps} from './types';
 
 export default function Filter(props: FilterProps) {
   const {onSelectAll = () => {}, onReset = () => {}, overrides = {}} = props;

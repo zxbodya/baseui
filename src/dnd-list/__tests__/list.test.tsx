@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {List, StyledItem} from '../index.js';
+import {List, StyledItem} from '../index';
 
 describe('List', () => {
   //$FlowFixMe

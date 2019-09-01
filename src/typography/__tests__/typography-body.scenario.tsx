@@ -14,7 +14,7 @@ import {
   Label2,
   Paragraph1,
   Paragraph2,
-} from '../index.js';
+} from '../index';
 
 export const name = 'typography-body';
 

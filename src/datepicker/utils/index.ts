@@ -40,7 +40,7 @@ import subWeeks from 'date-fns/subWeeks';
 import subYears from 'date-fns/subYears';
 /* eslint-enable import/extensions */
 
-import {CalendarPropsT} from '../types.js';
+import {CalendarPropsT} from '../types';
 
 // ** Date Formatting **
 // eslint-disable-next-line flowtype/no-weak-types

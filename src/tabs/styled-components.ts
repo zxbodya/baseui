@@ -4,9 +4,9 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import {styled} from '../styles/index.js';
-import {ORIENTATION} from './constants.js';
-import {SharedStylePropsArgT} from './types.js';
+import {styled} from '../styles/index';
+import {ORIENTATION} from './constants';
+import {SharedStylePropsArgT} from './types';
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
 export const Root = styled<SharedStylePropsArgT>('div', props => {

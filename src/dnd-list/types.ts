@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable flowtype/generic-spacing */
 import * as React from 'react';
-import {OverrideT} from '../helpers/overrides.js';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {OverrideT} from '../helpers/overrides';
+import {STATE_CHANGE_TYPE} from './constants';
 
 export type StateT = {
   items: Array<React.ReactNode>;
@@ -81,4 +81,5 @@ export type SharedStylePropsArgT = {
   $isRemovableByMove: boolean;
   $isOutOfBounds: boolean;
   $value: React.ReactNode;
+  $index: number; // todo: missing field in flow types
 };

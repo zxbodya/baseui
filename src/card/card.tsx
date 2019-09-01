@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 
 import * as React from 'react';
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
 import {
   Action as StyledAction,
   Body as StyledBody,
@@ -15,9 +15,9 @@ import {
   Root as StyledRoot,
   Thumbnail as StyledThumbnail,
   Title as StyledTitle,
-} from './styled-components.js';
+} from './styled-components';
 
-import {CardsPropsT} from './types.js';
+import {CardsPropsT} from './types';
 
 export function hasThumbnail(props: {readonly thumbnail?: string}) {
   return !!props.thumbnail;

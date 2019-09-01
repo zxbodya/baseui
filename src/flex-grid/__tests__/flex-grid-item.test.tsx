@@ -11,8 +11,8 @@ import FlexGridItem, {
   flexGridItemMediaQueryStyle,
   flexGridItemStyle,
   getResponsiveValue,
-} from '../flex-grid-item.js';
-import {LightTheme} from '../../themes/index.js';
+} from '../flex-grid-item';
+import {LightTheme} from '../../themes/index';
 
 describe('FlexGridItem', () => {
   test('flexGridItemMediaQueryStyle', () => {

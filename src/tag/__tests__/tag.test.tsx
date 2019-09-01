@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Tag, StyledAction} from '../index.js';
+import {Tag, StyledAction} from '../index';
 
 describe('Stateless tag', function() {
   let wrapper,

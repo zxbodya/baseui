@@ -6,11 +6,11 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Card, StyledAction, StyledBody} from '../index.js';
-import {StyledLink} from '../../link/index.js';
-import {styled} from '../../styles/index.js';
+import {Card, StyledAction, StyledBody} from '../index';
+import {StyledLink} from '../../link/index';
+import {styled} from '../../styles/index';
 
-import {header} from '../images.js';
+import {header} from '../images';
 
 export const name = 'card-image-link';
 

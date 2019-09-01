@@ -7,8 +7,8 @@ LICENSE file in the root directory of this source tree.
 
 import * as React from 'react';
 import {shallow} from 'enzyme';
-import {StyledLink} from '../../link/index.js';
-import {BreadcrumbsRoot as Breadcrumbs} from '../breadcrumbs.js';
+import {StyledLink} from '../../link/index';
+import {BreadcrumbsRoot as Breadcrumbs} from '../breadcrumbs';
 
 describe('Breadcrumbs', () => {
   it('applies correct accessibility attributes to root element', () => {

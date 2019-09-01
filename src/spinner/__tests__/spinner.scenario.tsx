@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Spinner} from '../index.js';
+import {Spinner} from '../index';
 
 export const name = 'spinner';
 

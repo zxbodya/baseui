@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   Root as StyledRoot,
   List as StyledList,
@@ -13,12 +13,12 @@ import {
   DragHandle as StyledDragHandle,
   CloseHandle as StyledCloseHandle,
   Label as StyledLabel,
-} from './styled-components.js';
+} from './styled-components';
 import {List as MovableList} from 'react-movable';
-import Grab from '../icon/grab.js';
-import Delete from '../icon/delete.js';
+import Grab from '../icon/grab';
+import Delete from '../icon/delete';
 
-import {ListPropsT, SharedStylePropsArgT} from './types.js';
+import {ListPropsT, SharedStylePropsArgT} from './types';
 
 class StatelessList extends React.Component<ListPropsT> {
   static defaultProps: Partial<ListPropsT> = {

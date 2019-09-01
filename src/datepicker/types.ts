@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable flowtype/generic-spacing */
 import * as React from 'react';
-import {OverrideT} from '../helpers/overrides.js';
-import {ORIENTATION, STATE_CHANGE_TYPE} from './constants.js';
+import {OverrideT} from '../helpers/overrides';
+import {ORIENTATION, STATE_CHANGE_TYPE} from './constants';
 
-import {OptionT} from '../select/index.js';
+import {OptionT} from '../select/index';
 
 // eslint-disable-next-line flowtype/no-weak-types
 type LocaleT = any; // see https://github.com/date-fns/date-fns/blob/master/src/locale/index.js.flow

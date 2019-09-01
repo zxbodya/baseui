@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Select} from '../index.js';
-import {STATE_CHANGE_TYPE, TYPE} from '../constants.js';
+import {Select} from '../index';
+import {STATE_CHANGE_TYPE, TYPE} from '../constants';
 
 describe('Select component', function() {
   let wrapper;

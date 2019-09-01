@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Tabs, Tab} from '../index.js';
+import {Tabs, Tab} from '../index';
 
 export const name = 'tabs-controlled';
 

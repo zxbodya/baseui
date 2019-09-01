@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import {mount} from 'enzyme';
 
-import AspectRatioBoxBody from '../aspect-ratio-box-body.js';
+import AspectRatioBoxBody from '../aspect-ratio-box-body';
 
 describe('AspectRatioBoxBody', () => {
   it('renders', () => {

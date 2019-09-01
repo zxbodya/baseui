@@ -5,15 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable import/prefer-default-export */
-import {ARROW_SIZE, POPOVER_MARGIN, PLACEMENT} from './constants.js';
-import {OffsetT, PopoverPlacementT} from './types.js';
+import {ARROW_SIZE, POPOVER_MARGIN, PLACEMENT} from './constants';
+import {OffsetT, PopoverPlacementT} from './types';
 
 const OPPOSITE_POSITIONS = {
   top: 'bottom',
   bottom: 'top',
   right: 'left',
   left: 'right',
-};
+} as const;
 
 /**
  * Returns the opposite of the specified position. Useful for tooltip

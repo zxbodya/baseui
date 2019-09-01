@@ -14,7 +14,7 @@ import {
   StyledRow,
   StyledCell,
   StyledHeadCell,
-} from '../index.js';
+} from '../index';
 
 const BorderlessTable = withStyle(StyledTable, {
   border: 0,

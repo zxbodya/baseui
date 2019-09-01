@@ -10,14 +10,14 @@ import {
   findTimeZone,
   getZonedTime,
   listTimeZones,
-} from 'timezone-support/dist/index-2012-2022.js';
-import {formatZonedTime} from 'timezone-support/dist/parse-format.js';
+} from 'timezone-support/dist/index-2012-2022';
+import {formatZonedTime} from 'timezone-support/dist/parse-format';
 
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
-import {Select} from '../select/index.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
+import {Select} from '../select/index';
 
-import {TimezonePickerPropsT, TimezonePickerStateT} from './types.js';
+import {TimezonePickerPropsT, TimezonePickerStateT} from './types';
 
 class TimezonePicker extends React.Component<
   TimezonePickerPropsT,

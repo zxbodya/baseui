@@ -6,10 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {Block} from '../../block/index.js';
-import {FormControl} from '../../form-control/index.js';
-import ArrowRight from '../../icon/arrow-right.js';
-import {Datepicker, TimePicker, formatDate} from '../index.js';
+import {Block} from '../../block/index';
+import {FormControl} from '../../form-control/index';
+import ArrowRight from '../../icon/arrow-right';
+import {Datepicker, TimePicker, formatDate} from '../index';
 
 export const name = 'datepickers-composed-range';
 

@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {FileUploader} from '../index.js';
+import {FileUploader} from '../index';
 
 export const name = 'file-uploader-progress-bar';
 

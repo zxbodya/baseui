@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import React from 'react';
 
-import {StatefulPinCode} from '../index.js';
+import {StatefulPinCode} from '../index';
 
 export const name = 'pin-code-overrides';
 

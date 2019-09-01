@@ -11,7 +11,7 @@ export const STATE_CHANGE_TYPES = {
   mouseEnter: 'mouseEnter',
   focus: 'focus',
   reset: 'reset',
-};
+} as const;
 
 export const KEY_STRINGS = {
   ArrowUp: 'ArrowUp',
@@ -22,9 +22,9 @@ export const KEY_STRINGS = {
   Space: ' ',
   Escape: 'Escape',
   Backspace: 'Backspace',
-};
+} as const;
 
 export const OPTION_LIST_SIZE = {
   default: 'default',
   compact: 'compact',
-};
+} as const;

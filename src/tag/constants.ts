@@ -8,16 +8,14 @@ export const VARIANT = Object.freeze({
   solid: 'solid',
   light: 'light',
   outlined: 'outlined',
-});
+} as const);
 
-export const KIND = [
-  'neutral',
-  'primary',
-  'positive',
-  'warning',
-  'negative',
-  'custom',
-].reduce((kindMap, key) => {
-  kindMap[key] = key;
-  return kindMap;
-}, {});
+// todo: dynamic identity map generation
+export const KIND = {
+  neutral: 'neutral',
+  primary: 'primary',
+  positive: 'positive',
+  warning: 'warning',
+  negative: 'negative',
+  custom: 'custom',
+} as const;

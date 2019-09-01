@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {Datepicker, StatefulDatepicker} from '../index.js';
+import {Datepicker, StatefulDatepicker} from '../index';
 
 describe('StatefulDatepicker', () => {
   test('basic render', () => {

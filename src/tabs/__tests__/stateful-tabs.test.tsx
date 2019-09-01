@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {StatefulTabs, Tab, StyledTab, StyledTabContent} from '../index.js';
-import {STATE_CHANGE_TYPE} from '../constants.js';
+import {StatefulTabs, Tab, StyledTab, StyledTabContent} from '../index';
+import {STATE_CHANGE_TYPE} from '../constants';
 
 describe('StatefulTabs', () => {
   const Component = props => (

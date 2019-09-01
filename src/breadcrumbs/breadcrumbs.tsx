@@ -7,17 +7,17 @@ LICENSE file in the root directory of this source tree.
 
 import React, {Children} from 'react';
 
-import {LocaleContext} from '../locale/index.js';
-import ChevronRight from '../icon/chevron-right.js';
-import {BreadcrumbsPropsT} from './types.js';
-import {BreadcrumbLocaleT} from './locale.js';
+import {LocaleContext} from '../locale/index';
+import ChevronRight from '../icon/chevron-right';
+import {BreadcrumbsPropsT} from './types';
+import {BreadcrumbLocaleT} from './locale';
 import {
   StyledRoot,
   StyledSeparator,
   StyledList,
   StyledListItem,
-} from './styled-components.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
+} from './styled-components';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
 
 type LocaleT = {
   locale?: BreadcrumbLocaleT;
@@ -42,10 +42,10 @@ export function BreadcrumbsRoot(props: {} & BreadcrumbsPropsT & LocaleT) {
 
   const iconOverrides = mergeOverrides(
     {Svg: {style: {verticalAlign: 'text-bottom'}}},
-    // $FlowFixMe
+    // @ts-ignore
     baseIconProps && baseIconProps.overrides,
   );
-  // $FlowFixMe
+  // @ts-ignore
   baseIconProps.overrides = iconOverrides;
 
   Children.forEach(props.children, (child, index) => {

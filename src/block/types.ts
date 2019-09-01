@@ -6,7 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 
 import {ReactNode, ElementType} from 'react';
-import {OverrideT} from '../helpers/overrides.js';
+import {OverrideT} from '../helpers/overrides';
 
 export type OverridesT = {
   Block?: OverrideT<any>;

@@ -5,13 +5,13 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import ArrowRight from '../icon/arrow-right.js';
-import ArrowLeft from '../icon/arrow-left.js';
-import TriangleDown from '../icon/triangle-down.js';
-import {StatefulMenu} from '../menu/index.js';
-import {Popover} from '../popover/index.js';
-import {LocaleContext} from '../locale/index.js';
-import {ThemeContext} from '../styles/theme-provider.js';
+import ArrowRight from '../icon/arrow-right';
+import ArrowLeft from '../icon/arrow-left';
+import TriangleDown from '../icon/triangle-down';
+import {StatefulMenu} from '../menu/index';
+import {Popover} from '../popover/index';
+import {LocaleContext} from '../locale/index';
+import {ThemeContext} from '../styles/theme-provider';
 import {
   StyledCalendarHeader,
   StyledPrevButton,
@@ -20,7 +20,7 @@ import {
   StyledDay,
   StyledMonthYearSelectButton,
   StyledMonthYearSelectIconContainer,
-} from './styled-components.js';
+} from './styled-components';
 import {
   addDays,
   addMonths,
@@ -34,12 +34,12 @@ import {
   setMonth,
   setYear,
   subMonths,
-} from './utils/index.js';
-import {ORIENTATION, WEEKDAYS} from './constants.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {HeaderPropsT} from './types.js';
-import {LocaleT} from '../locale/types.js';
-import {ThemeT} from '../styles/types.js';
+} from './utils/index';
+import {ORIENTATION, WEEKDAYS} from './constants';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {HeaderPropsT} from './types';
+import {LocaleT} from '../locale/types';
+import {ThemeT} from '../styles/types';
 
 const navBtnStyle = ({$theme}) => ({
   cursor: 'pointer',
@@ -53,7 +53,7 @@ const MAX_MONTH = 11;
 const DIRECTION = {
   NEXT: 'next',
   PREVIOUS: 'previous',
-};
+} as const;
 
 function yearMonthToId(year, month) {
   return `${year}-${month}`;

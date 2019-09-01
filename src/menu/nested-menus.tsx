@@ -26,10 +26,14 @@ type PropsT = {
   children: React.ReactNode;
 };
 
-export const NestedMenuContext: React.Context<ContextT> = React.createContext({
+export const NestedMenuContext: React.Context<ContextT> = React.createContext<
+  ContextT
+>({
   addMenuToNesting: () => {},
   removeMenuFromNesting: () => {},
+  // @ts-ignore todo: incorrect default value
   getParentMenu: () => {},
+  // @ts-ignore todo: incorrect default value
   getChildMenu: () => {},
 });
 

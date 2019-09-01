@@ -6,8 +6,8 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 
-import {Button} from '../../button/index.js';
-import Upload from '../upload.js';
+import {Button} from '../../button/index';
+import Upload from '../upload';
 
 export const name = 'icon-buttons';
 

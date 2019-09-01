@@ -7,12 +7,12 @@ LICENSE file in the root directory of this source tree.
 import * as React from 'react';
 import Dropzone from 'react-dropzone';
 
-import {LocaleContext} from '../locale/index.js';
-import {Block} from '../block/index.js';
-import {Button, KIND} from '../button/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {ProgressBar} from '../progress-bar/index.js';
-import {Spinner} from '../spinner/index.js';
+import {LocaleContext} from '../locale/index';
+import {Block} from '../block/index';
+import {Button, KIND} from '../button/index';
+import {getOverrides} from '../helpers/overrides';
+import {ProgressBar} from '../progress-bar/index';
+import {Spinner} from '../spinner/index';
 
 import {
   StyledRoot,
@@ -20,8 +20,8 @@ import {
   StyledContentMessage,
   StyledErrorMessage,
   StyledHiddenInput,
-} from './styled-components.js';
-import {PropsT} from './types.js';
+} from './styled-components';
+import {PropsT} from './types';
 
 import {SyntheticEvent} from 'react';
 
@@ -64,6 +64,7 @@ function FileUploader(props: PropsT) {
   );
 
   return (
+    // @ts-ignore todo: dropzone api
     <Dropzone {...props} disabled={props.disabled || afterFileDrop}>
       {renderProps => {
         const {getRootProps, getInputProps, open, ...styleProps} = renderProps;

@@ -6,9 +6,9 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import Popper from 'popper.js';
-import {toPopperPlacement, parsePopperOffset} from './utils.js';
-import {TETHER_PLACEMENT} from './constants.js';
-import {TetherPropsT, TetherStateT, PopperDataObjectT} from './types.js';
+import {toPopperPlacement, parsePopperOffset} from './utils';
+import {TETHER_PLACEMENT} from './constants';
+import {TetherPropsT, TetherStateT, PopperDataObjectT} from './types';
 
 class Tether extends React.Component<TetherPropsT, TetherStateT> {
   static defaultProps = {

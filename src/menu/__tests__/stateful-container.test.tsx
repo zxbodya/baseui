@@ -7,9 +7,9 @@ LICENSE file in the root directory of this source tree.
 /* eslint-env browser */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import StatefulContainer from '../stateful-container.js';
-import {KEY_STRINGS, STATE_CHANGE_TYPES} from '../constants.js';
-import {scrollItemIntoView} from '../utils.js';
+import StatefulContainer from '../stateful-container';
+import {KEY_STRINGS, STATE_CHANGE_TYPES} from '../constants';
+import {scrollItemIntoView} from '../utils';
 
 jest.mock('../utils');
 

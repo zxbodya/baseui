@@ -6,12 +6,7 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {
-  Panel,
-  StyledContent,
-  StyledHeader,
-  StyledToggleIcon,
-} from '../index.js';
+import {Panel, StyledContent, StyledHeader, StyledToggleIcon} from '../index';
 
 describe('Panel', () => {
   test('basic rendering', () => {

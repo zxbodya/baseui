@@ -5,7 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
-import {StyledDay} from './styled-components.js';
+import {StyledDay} from './styled-components';
 import {
   formatDate,
   getDay,
@@ -14,9 +14,9 @@ import {
   isSameDay,
   isDayInRange,
   isAfter,
-} from './utils/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {DayPropsT, DayStateT} from './types.js';
+} from './utils/index';
+import {getOverrides} from '../helpers/overrides';
+import {DayPropsT, DayStateT} from './types';
 
 export default class Day extends React.Component<DayPropsT, DayStateT> {
   static defaultProps = {
