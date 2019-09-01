@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {styled} from 'baseui';
-import {Select, Value} from 'baseui/select';
+import {Select, ValueT as Value} from 'baseui/select';
 import {expandBorderStyles} from 'baseui/styles';
 
-const ColorSwatch = styled('div', (props: any) => {
+const ColorSwatch = styled<'div', {$color:string}>('div', (props) => {
   return {
     width: props.$theme.sizing.scale300,
     height: props.$theme.sizing.scale300,

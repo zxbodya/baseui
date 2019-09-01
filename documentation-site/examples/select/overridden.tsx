@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import {Select, Value} from 'baseui/select';
+import {Select, ValueT as Value} from 'baseui/select';
 
 export default function Example() {
   const [value, setValue] = React.useState<Value>([]);

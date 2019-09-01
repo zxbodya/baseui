@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   TreeView,
-  TreeNode,
+  TreeNodeT as TreeNode,
   toggleIsExpanded,
 } from 'baseui/tree-view';
 import {Plus as PlusIcon} from 'baseui/icon';

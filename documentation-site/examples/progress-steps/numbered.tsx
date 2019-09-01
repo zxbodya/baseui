@@ -3,7 +3,7 @@ import {ProgressSteps, NumberedStep} from 'baseui/progress-steps';
 import {
   Button,
   SHAPE,
-  ButtonProps,
+  ButtonPropsT as ButtonProps,
   KIND,
   SIZE,
 } from 'baseui/button';
