@@ -11,13 +11,13 @@ import {StyledList, StyledEmptyState} from './styled-components';
 import OptionList from './option-list';
 import {getOverrides} from '../helpers/overrides';
 // Types
-import {StatelessMenuPropsT} from './types';
+import {RenderItemPropsT, StatelessMenuPropsT} from './types';
 import {LocaleT} from '../locale/types';
 
 export default function Menu(props: StatelessMenuPropsT) {
   const {
     activedescendantId,
-    getRequiredItemProps = (item, index) => ({}),
+    getRequiredItemProps = (item, index) => ({} as RenderItemPropsT),
     items,
     noResultsMsg,
     overrides = {},

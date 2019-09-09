@@ -14,7 +14,7 @@ type StyledPropsT = {
   $size?: keyof typeof OPTION_LIST_SIZE;
 };
 
-export const StyledList = styled<StyledPropsT>('ul', ({$theme}) => {
+export const StyledList = styled<'ul', StyledPropsT>('ul', ({$theme}) => {
   return {
     backgroundColor: $theme.colors.menuFill,
     position: 'relative',
@@ -63,7 +63,7 @@ function getBackgroundColor(props) {
   return 'transparent';
 }
 
-export const StyledEmptyState = styled<StyledPropsT>('li', props => {
+export const StyledEmptyState = styled<'li', StyledPropsT>('li', props => {
   const {$theme, $size} = props;
   return {
     ...($size === OPTION_LIST_SIZE.compact
@@ -84,7 +84,7 @@ export const StyledEmptyState = styled<StyledPropsT>('li', props => {
   };
 });
 
-export const StyledListItem = styled<StyledPropsT>('li', props => {
+export const StyledListItem = styled<'li', StyledPropsT>('li', props => {
   const {$disabled, $theme, $size} = props;
   return {
     ...($size === OPTION_LIST_SIZE.compact
@@ -121,23 +121,26 @@ export const StyledListItem = styled<StyledPropsT>('li', props => {
   };
 });
 
-export const StyledListItemProfile = styled<StyledPropsT>('li', ({$theme}) => ({
-  position: 'relative',
-  display: 'flex',
-  alignItems: 'center',
-  cursor: 'pointer',
-  paddingTop: $theme.sizing.scale300,
-  paddingBottom: $theme.sizing.scale300,
-  paddingRight: $theme.sizing.scale800,
-  paddingLeft: $theme.sizing.scale800,
-  transitionProperty: 'color, background-color',
-  transitionDuration: $theme.animation.timing100,
-  transitionTimingFunction: $theme.animation.easeOutCurve,
+export const StyledListItemProfile = styled<'li', StyledPropsT>(
+  'li',
+  ({$theme}) => ({
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    paddingTop: $theme.sizing.scale300,
+    paddingBottom: $theme.sizing.scale300,
+    paddingRight: $theme.sizing.scale800,
+    paddingLeft: $theme.sizing.scale800,
+    transitionProperty: 'color, background-color',
+    transitionDuration: $theme.animation.timing100,
+    transitionTimingFunction: $theme.animation.easeOutCurve,
 
-  ':hover': {
-    backgroundColor: $theme.colors.menuFillHover,
-  },
-}));
+    ':hover': {
+      backgroundColor: $theme.colors.menuFillHover,
+    },
+  }),
+);
 
 export const StyledProfileImgContainer = styled('div', {
   width: '60px',
@@ -156,7 +159,7 @@ export const StyledProfileImg = styled('img', {
   borderBottomLeftRadius: '50%',
 });
 
-export const StyledProfileLabelsContainer = styled<StyledPropsT>(
+export const StyledProfileLabelsContainer = styled<'div', StyledPropsT>(
   'div',
   ({$theme}) => ({
     marginLeft: $theme.sizing.scale600,
@@ -166,25 +169,31 @@ export const StyledProfileLabelsContainer = styled<StyledPropsT>(
   }),
 );
 
-export const StyledProfileTitle = styled<StyledPropsT>('h6', ({$theme}) => ({
-  ...$theme.typography.font450,
-  color: $theme.colors.foreground,
-  marginTop: 0,
-  marginBottom: 0,
-  marginLeft: 0,
-  marginRight: 0,
-}));
+export const StyledProfileTitle = styled<'h6', StyledPropsT>(
+  'h6',
+  ({$theme}) => ({
+    ...$theme.typography.font450,
+    color: $theme.colors.foreground,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+  }),
+);
 
-export const StyledProfileSubtitle = styled<StyledPropsT>('p', ({$theme}) => ({
-  ...$theme.typography.font300,
-  color: $theme.colors.foreground,
-  marginTop: 0,
-  marginBottom: 0,
-  marginLeft: 0,
-  marginRight: 0,
-}));
+export const StyledProfileSubtitle = styled<'p', StyledPropsT>(
+  'p',
+  ({$theme}) => ({
+    ...$theme.typography.font300,
+    color: $theme.colors.foreground,
+    marginTop: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+  }),
+);
 
-export const StyledProfileBody = styled<StyledPropsT>('p', ({$theme}) => ({
+export const StyledProfileBody = styled<'p', StyledPropsT>('p', ({$theme}) => ({
   ...$theme.typography.font200,
   color: $theme.colors.foreground,
   marginTop: 0,

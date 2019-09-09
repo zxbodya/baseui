@@ -32,7 +32,7 @@ function getSizeStyles($size: SizePropT) {
   return styles;
 }
 
-export const Root = styled<SharedStylePropsArgT>('div', props => {
+export const Root = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$isOpen} = props;
   return {
     position: 'fixed',
@@ -45,7 +45,7 @@ export const Root = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const Backdrop = styled<SharedStylePropsArgT>('div', props => {
+export const Backdrop = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$animate, $isOpen, $isVisible, $theme} = props;
   return {
     position: 'fixed',
@@ -69,19 +69,22 @@ export const Backdrop = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const DialogContainer = styled<SharedStylePropsArgT>('div', props => {
-  return {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    minHeight: '100%',
-    pointerEvents: 'none',
-    userSelect: 'none',
-  };
-});
+export const DialogContainer = styled<'div', SharedStylePropsArgT>(
+  'div',
+  props => {
+    return {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '100%',
+      minHeight: '100%',
+      pointerEvents: 'none',
+      userSelect: 'none',
+    };
+  },
+);
 
-export const Dialog = styled<SharedStylePropsArgT>('div', props => {
+export const Dialog = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$animate, $isOpen, $isVisible, $size, $theme} = props;
   return {
     position: 'relative',
@@ -117,7 +120,7 @@ export const Dialog = styled<SharedStylePropsArgT>('div', props => {
   } as {};
 });
 
-export const Close = styled<SharedStylePropsArgT>('button', props => {
+export const Close = styled<'button', SharedStylePropsArgT>('button', props => {
   const {$theme} = props;
   return {
     // Reset button styles
@@ -156,7 +159,7 @@ export const Close = styled<SharedStylePropsArgT>('button', props => {
   };
 });
 
-export const ModalHeader = styled<{}>('div', ({$theme}) => ({
+export const ModalHeader = styled('div', ({$theme}) => ({
   ...$theme.typography.font500,
   color: $theme.colors.foreground,
   marginTop: $theme.sizing.scale900,
@@ -170,7 +173,7 @@ export const ModalHeader = styled<{}>('div', ({$theme}) => ({
     .scale900,
 }));
 
-export const ModalBody = styled<{}>('div', ({$theme}) => ({
+export const ModalBody = styled('div', ({$theme}) => ({
   ...$theme.typography.font300,
   color: $theme.colors.foregroundAlt,
   marginTop: $theme.sizing.scale600,
@@ -179,7 +182,7 @@ export const ModalBody = styled<{}>('div', ({$theme}) => ({
   marginBottom: $theme.sizing.scale700,
 }));
 
-export const ModalFooter = styled<{}>('div', ({$theme}) => ({
+export const ModalFooter = styled('div', ({$theme}) => ({
   ...$theme.typography.font300,
   marginTop: $theme.sizing.scale700,
   marginLeft: $theme.sizing.scale800,

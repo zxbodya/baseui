@@ -179,7 +179,9 @@ class Toast extends React.Component<ToastPropsT, ToastPrivateStateT> {
           >
             <InnerContainer {...sharedProps} {...innerContainerProps}>
               {typeof children === 'function'
-                ? children({dismiss: this.dismiss})
+                ?
+                // @ts-ignore
+                  children({dismiss: this.dismiss})
                 : children}
             </InnerContainer>
             {closeable ? (

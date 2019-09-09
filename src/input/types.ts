@@ -40,20 +40,20 @@ export type StateReducerT = (
 
 export type SharedPropsT = {
   /** Renders UI in 'focus' state */
-  $isFocused: boolean;
+  $isFocused?: boolean;
   /** Renders UI in 'disabled' state */
-  $disabled: boolean;
+  $disabled?: boolean;
   /** Renders UI in 'error' state */
-  $error: boolean;
+  $error?: boolean;
   /** Renders UI in 'positive' state */
-  $positive: boolean;
+  $positive?: boolean;
   /** Defines styles for inputs that are grouped with other controls. */
   $adjoined: AdjoinedT;
   /** Renders UI in provided size. */
   $size: SizeT;
   /** Renders UI in 'required' state */
-  $required: boolean;
-  $position: keyof typeof ENHANCER_POSITION;
+  $required?: boolean;
+  $position?: keyof typeof ENHANCER_POSITION;
 };
 
 export type PropsT = any;

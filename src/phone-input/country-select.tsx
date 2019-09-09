@@ -4,7 +4,7 @@ Copyright (c) 2018-2019 Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-import React from 'react';
+import React, {ComponentProps} from 'react';
 
 import {
   StyledRoot,
@@ -34,7 +34,10 @@ CountrySelect.defaultProps = {
   size: defaultProps.size,
 };
 
-const DropdownListItem = React.forwardRef((props, ref) => {
+const DropdownListItem = React.forwardRef<
+  any,
+  ComponentProps<typeof DefaultListItem>
+>((props, ref) => {
   const {children, ...rest} = props;
   return (
     <DefaultListItem ref={ref} {...rest}>

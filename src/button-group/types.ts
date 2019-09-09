@@ -69,7 +69,7 @@ export type StatefulContainerPropsT = {
       selected: number | Array<number>;
     } & Omit<PropsT, 'children'>,
   ) => React.ReactNode;
-} & StatefulPropsT;
+} & Omit<StatefulPropsT, 'children'>;
 
 export type StateT = {
   selected: Array<number>;
@@ -82,7 +82,9 @@ export type StateReducerT = (
 ) => StateT;
 
 // general
-type ClickHandlerT = (
-  event: SyntheticEvent<HTMLButtonElement>,
-  index: number,
-) => unknown;
+type ClickHandlerT = (...args: any[]) => void;
+// todo: causes type errors, and does not look right
+// (
+//   event: SyntheticEvent<HTMLButtonElement>,
+//   index: number,
+// ) => unknown;

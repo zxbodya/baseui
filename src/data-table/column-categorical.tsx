@@ -36,7 +36,7 @@ function CategoricalFilter(props) {
   const [selection, setSelection] = React.useState<Set<string>>(new Set());
   const [exclude, setExclude] = React.useState(false);
 
-  const categories = React.useMemo(() => {
+  const categories: string[] = React.useMemo(() => {
     return props.data.reduce((set, category) => set.add(category), new Set());
   }, [props.data]);
 

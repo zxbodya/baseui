@@ -9,13 +9,13 @@ import StatefulContainer from './stateful-container';
 import Datepicker from './datepicker';
 import {StatefulDatepickerPropsT, DatepickerPropsT} from './types';
 
-function StatefulComponent(props: StatefulDatepickerPropsT<DatepickerPropsT>) {
-  return (
-    <StatefulContainer {...props}>
-      {extendedProps => <Datepicker {...extendedProps} />}
-    </StatefulContainer>
-  );
-}
+const StatefulComponent: React.FC<
+  StatefulDatepickerPropsT<DatepickerPropsT>
+> = props => (
+  <StatefulContainer {...props}>
+    {extendedProps => <Datepicker {...extendedProps} />}
+  </StatefulContainer>
+);
 
 StatefulComponent.defaultProps = {
   initialState: {},

@@ -12,6 +12,7 @@ import {
   StyledCell as FlexStyledBodyCell,
 } from '../table/index';
 import {StyletronComponent} from '../styles/styled';
+import {ComponentProps} from 'react';
 
 const StyledTableElement = withStyle<
   typeof FlexStyledTable,
@@ -27,7 +28,10 @@ const StyledTableElement = withStyle<
 });
 
 // eslint-disable-next-line flowtype/no-weak-types
-export const StyledTable = (React.forwardRef<any, {}>((props, ref) => {
+export const StyledTable = (React.forwardRef<
+  any,
+  ComponentProps<typeof StyledTableElement>
+>((props, ref) => {
   return (
     //$FlowFixMe
     <StyledTableElement

@@ -7,9 +7,10 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {ORIENTATION} from './constants';
 import {SharedStylePropsArgT} from './types';
+import {StyleObject} from 'styletron-standard';
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Root = styled<SharedStylePropsArgT>('div', props => {
+export const Root = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$orientation} = props;
   return {
     display: 'flex',
@@ -18,46 +19,49 @@ export const Root = styled<SharedStylePropsArgT>('div', props => {
 });
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Tab = styled<SharedStylePropsArgT>('div', props => {
-  const {
-    $disabled,
-    $active,
-    $orientation,
-    $theme: {colors, sizing, typography},
-  } = props;
-  let style = {
-    ...typography.font300,
-    boxSizing: 'border-box',
-    color: $active ? colors.colorPrimary : colors.tabColor,
-    cursor: $disabled ? 'not-allowed' : 'pointer',
-    paddingTop: sizing.scale600,
-    paddingBottom: sizing.scale600,
-    paddingLeft: sizing.scale300,
-    paddingRight: sizing.scale300,
-    marginLeft: sizing.scale200,
-    marginRight: sizing.scale200,
-    borderBottom:
-      $orientation === ORIENTATION.horizontal && $active
-        ? `2px solid ${colors.primary400}`
-        : 'none',
-    display: 'inline-block',
-  };
-  if (!$disabled) {
-    style = {
-      ...style,
-      ':focus': {
-        color: colors.primary400,
-      },
-      ':hover': {
-        color: colors.primary400,
-      },
+export const Tab = styled<'div', SharedStylePropsArgT>(
+  'div',
+  (props): StyleObject => {
+    const {
+      $disabled,
+      $active,
+      $orientation,
+      $theme: {colors, sizing, typography},
+    } = props;
+    let style: StyleObject = {
+      ...typography.font300,
+      boxSizing: 'border-box',
+      color: $active ? colors.colorPrimary : colors.tabColor,
+      cursor: $disabled ? 'not-allowed' : 'pointer',
+      paddingTop: sizing.scale600,
+      paddingBottom: sizing.scale600,
+      paddingLeft: sizing.scale300,
+      paddingRight: sizing.scale300,
+      marginLeft: sizing.scale200,
+      marginRight: sizing.scale200,
+      borderBottom:
+        $orientation === ORIENTATION.horizontal && $active
+          ? `2px solid ${colors.primary400}`
+          : 'none',
+      display: 'inline-block',
     };
-  }
-  return style;
-});
+    if (!$disabled) {
+      style = {
+        ...style,
+        ':focus': {
+          color: colors.primary400,
+        },
+        ':hover': {
+          color: colors.primary400,
+        },
+      };
+    }
+    return style;
+  },
+);
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const TabBar = styled<SharedStylePropsArgT>('div', props => {
+export const TabBar = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $orientation,
     $theme: {colors, sizing},
@@ -72,7 +76,7 @@ export const TabBar = styled<SharedStylePropsArgT>('div', props => {
 });
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const TabContent = styled<SharedStylePropsArgT>('div', props => {
+export const TabContent = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $active,
     $theme: {sizing, typography},

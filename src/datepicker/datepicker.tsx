@@ -16,18 +16,19 @@ import {getOverrides} from '../helpers/overrides';
 import {LocaleContext} from '../locale/index';
 import {DatepickerPropsT} from './types';
 
-import {ChangeEvent} from 'react';
+type StateT = {
+  calendarFocused: boolean;
+  isOpen: boolean;
+  isPseudoFocused: boolean;
+  lastActiveElm: HTMLElement | undefined | null;
+  inputValue?: string;
+  isInputUsed?: boolean;
+};
+
 
 export default class Datepicker extends React.Component<
   DatepickerPropsT,
-  {
-    calendarFocused: boolean;
-    isOpen: boolean;
-    isPseudoFocused: boolean;
-    lastActiveElm: HTMLElement | undefined | null;
-    inputValue?: string;
-    isInputUsed?: boolean;
-  }
+  StateT
 > {
   static defaultProps = {
     'aria-describedby': 'datepicker--screenreader--message--input',
@@ -36,7 +37,7 @@ export default class Datepicker extends React.Component<
 
   calendar: HTMLElement | undefined | null;
 
-  state = {
+  state: StateT = {
     calendarFocused: false,
     isOpen: false,
     isPseudoFocused: false,
@@ -62,7 +63,7 @@ export default class Datepicker extends React.Component<
       isPseudoFocused,
       ...(calendarFocused === null ? {} : {calendarFocused}),
       inputValue: this.formatDisplayValue(date),
-    });
+    } as StateT);
     this.props.onChange && this.props.onChange(data);
   };
 
@@ -116,7 +117,7 @@ export default class Datepicker extends React.Component<
     }
   };
 
-  handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value;
     const date = [];
 
@@ -162,7 +163,7 @@ export default class Datepicker extends React.Component<
       this.setState({
         calendarFocused: true,
         lastActiveElm,
-      });
+      } as StateT);
     }
   };
 

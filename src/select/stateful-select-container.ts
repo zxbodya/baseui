@@ -47,7 +47,7 @@ class StatefulSelectContainer extends React.Component<
       stateReducer, // eslint-disable-line no-unused-vars
       ...restProps
     } = this.props;
-    // $FlowFixMe
+    // @ts-ignore
     return children({
       ...restProps,
       ...this.state,

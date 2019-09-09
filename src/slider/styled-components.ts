@@ -12,7 +12,7 @@ import {StylePropsT} from './types';
 export const Root = styled('div', {position: 'relative'});
 Root.displayName = 'StyledRoot';
 
-export const Track = styled<StylePropsT>('div', props => {
+export const Track = styled<'div', StylePropsT>('div', props => {
   const {$theme, $value = [], $disabled, $isDragged} = props;
   const {sizing} = $theme;
   let cursor = 'inherit';
@@ -34,7 +34,7 @@ export const Track = styled<StylePropsT>('div', props => {
 });
 Track.displayName = 'StyledTrack';
 
-export const InnerTrack = styled<StylePropsT>('div', props => {
+export const InnerTrack = styled<'div', StylePropsT>('div', props => {
   const {$theme, $value = [], $min, $max, $disabled} = props;
   const {colors, borders, sizing, direction} = $theme;
   const borderRadius = $theme.borders.useRoundedCorners ? borders.radius100 : 0;
@@ -61,14 +61,14 @@ export const InnerTrack = styled<StylePropsT>('div', props => {
 });
 InnerTrack.displayName = 'StyledInnerTrack';
 
-export const Tick = styled<StylePropsT>('div', props => {
+export const Tick = styled<'div', StylePropsT>('div', props => {
   return {
     ...props.$theme.typography.font300,
   };
 });
 Tick.displayName = 'StyledTick';
 
-export const TickBar = styled<StylePropsT>('div', props => {
+export const TickBar = styled<'div', StylePropsT>('div', props => {
   const {$theme} = props;
   const {sizing} = $theme;
   return {
@@ -82,7 +82,7 @@ export const TickBar = styled<StylePropsT>('div', props => {
 });
 TickBar.displayName = 'StyledTickBar';
 
-export const Thumb = styled<StylePropsT>('div', props => {
+export const Thumb = styled<'div', StylePropsT>('div', props => {
   const {$theme, $value = [], $thumbIndex, $disabled} = props;
   let isLeft = $value.length === 2 && $thumbIndex === 0;
   let isRight = $value.length === 2 && $thumbIndex === 1;
@@ -112,7 +112,7 @@ export const Thumb = styled<StylePropsT>('div', props => {
 });
 Thumb.displayName = 'StyledThumb';
 
-export const InnerThumb = styled<StylePropsT>('div', props => {
+export const InnerThumb = styled<'div', StylePropsT>('div', props => {
   const {$theme, $isDragged} = props;
   return {
     height: '8px',
@@ -126,7 +126,7 @@ export const InnerThumb = styled<StylePropsT>('div', props => {
 });
 InnerThumb.displayName = 'StyledInnerThumb';
 
-export const ThumbValue = styled<{}>('div', props => {
+export const ThumbValue = styled('div', props => {
   const {$theme} = props;
   return {
     position: 'absolute',

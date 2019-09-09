@@ -18,6 +18,7 @@ import {ViolationPropsT} from './types';
 
 function validateNode(node) {
   return new Promise((resolve, reject) => {
+    // @ts-ignore todo: reporter is not in type definitions
     axe.run(node, {reporter: 'v2'}, (error, results) => {
       if (error) reject(error);
       resolve(results.violations);
@@ -39,10 +40,13 @@ function segmentViolationsByNode(violations) {
   return Object.entries(nodes);
 }
 
-const ViolationContainer = styled<{
-  $top: string;
-  $left: string;
-}>('div', ({$theme, $top, $left}) => {
+const ViolationContainer = styled<
+  'div',
+  {
+    $top: string;
+    $left: string;
+  }
+>('div', ({$theme, $top, $left}) => {
   return {
     backgroundColor: $theme.colors.mono100,
     boxShadow: $theme.lighting.shadow600,

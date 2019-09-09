@@ -22,7 +22,7 @@ type HeightStyleProps = {
   $height: string;
 };
 
-export const StyledFlagContainer = styled<SizeStyleProps>(
+export const StyledFlagContainer = styled<'span', SizeStyleProps>(
   'span',
   ({$size = SIZE.default, $theme: {sizing}}) => {
     const sizeToFont = {
@@ -52,7 +52,7 @@ export const StyledRoot = withStyle<typeof SelectStyledRoot, SizeStyleProps>(
   },
 );
 
-export const StyledDialCode = styled<{}>('div', ({$theme: {sizing}}) => ({
+export const StyledDialCode = styled('div', ({$theme: {sizing}}) => ({
   marginLeft: sizing.scale100,
 }));
 
@@ -80,7 +80,7 @@ export const StyledCountrySelectDropdownListItem = withStyle<
   height: '42px',
 });
 
-export const StyledCountrySelectDropdownFlagColumn = styled<{}>(
+export const StyledCountrySelectDropdownFlagColumn = styled(
   'div',
   ({$theme: {sizing}}) => {
     return {
@@ -91,7 +91,7 @@ export const StyledCountrySelectDropdownFlagColumn = styled<{}>(
   },
 );
 
-export const StyledCountrySelectDropdownNameColumn = styled<{}>(
+export const StyledCountrySelectDropdownNameColumn = styled(
   'div',
   ({$theme: {sizing}}) => {
     return {
@@ -100,7 +100,7 @@ export const StyledCountrySelectDropdownNameColumn = styled<{}>(
   },
 );
 
-export const StyledCountrySelectDropdownDialcodeColumn = styled<{}>(
+export const StyledCountrySelectDropdownDialcodeColumn = styled(
   'div',
   ({$theme: {sizing}}) => {
     return {

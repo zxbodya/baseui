@@ -101,7 +101,10 @@ export function Unstable_DataTable(props: Props) {
   }
 
   const sortedIndices = React.useMemo(() => {
-    let toSort = props.rows.map((r, i) => [r, i]);
+    let toSort = props.rows.map((r, i): [Props['rows'][number], number] => [
+      r,
+      i,
+    ]);
 
     if (sortIndex !== -1) {
       const sortFn = props.columns[sortIndex].sortFn;
@@ -147,70 +150,72 @@ export function Unstable_DataTable(props: Props) {
 
   // replaces the content of the virtualized window with contents. in this case,
   // we are prepending a table header row before the table rows (children to the fn).
-  const InnerTableElement = React.forwardRef(({children, ...rest}, ref) => {
-    const [useCss, theme] = useStyletron();
-    return (
-      <div ref={ref} {...rest}>
-        <div
-          className={useCss({
-            position: 'sticky',
-            top: 0,
-            left: 0,
-            width: `${widths.reduce((sum, w) => sum + w, 0)}px`,
-            height: '48px',
-            display: 'flex',
-            // this feels bad.. the absolutely positioned children elements
-            // stack on top of this element with the layer component.
-            zIndex: 2,
-          })}
-        >
-          {props.columns.map((column, columnIndex) => {
-            const width = widths[columnIndex];
-            return (
-              <div
-                className={useCss({
-                  ...theme.borders.border200,
-                  backgroundColor: theme.colors.mono100,
-                  borderTop: 'none',
-                  borderLeft: 'none',
-                  boxSizing: 'border-box',
-                })}
-                key={columnIndex}
-                style={{width}}
-              >
-                <HeaderCell
-                  index={columnIndex}
-                  filterable={column.filterable}
-                  sortable={column.sortable}
-                  isHovered={headerHoverIndex === columnIndex}
-                  onMouseEnter={() => setHeaderHoverIndex(columnIndex)}
-                  onMouseLeave={() => setHeaderHoverIndex(-1)}
-                  onSort={handleSort}
-                  filter={({close}) => {
-                    const Filter = column.renderFilter;
-                    return (
-                      <Filter
-                        setFilter={(filterParams, description) => {
-                          addFilter(filterParams, column.title, description);
-                        }}
-                        data={props.rows.map(r => r.data[columnIndex])}
-                        close={close}
-                      />
-                    );
-                  }}
-                  sortDirection={
-                    sortIndex === columnIndex ? sortDirection : null
-                  }
-                  title={column.title}
-                />
-              </div>
-            );
-          })}
+  const InnerTableElement = React.forwardRef<HTMLDivElement>(
+    ({children, ...rest}, ref) => {
+      const [useCss, theme] = useStyletron();
+      return (
+        <div ref={ref} {...rest}>
+          <div
+            className={useCss({
+              position: 'sticky',
+              top: 0,
+              left: 0,
+              width: `${widths.reduce((sum, w) => sum + w, 0)}px`,
+              height: '48px',
+              display: 'flex',
+              // this feels bad.. the absolutely positioned children elements
+              // stack on top of this element with the layer component.
+              zIndex: 2,
+            })}
+          >
+            {props.columns.map((column, columnIndex) => {
+              const width = widths[columnIndex];
+              return (
+                <div
+                  className={useCss({
+                    ...theme.borders.border200,
+                    backgroundColor: theme.colors.mono100,
+                    borderTop: 'none',
+                    borderLeft: 'none',
+                    boxSizing: 'border-box',
+                  })}
+                  key={columnIndex}
+                  style={{width}}
+                >
+                  <HeaderCell
+                    index={columnIndex}
+                    filterable={column.filterable}
+                    sortable={column.sortable}
+                    isHovered={headerHoverIndex === columnIndex}
+                    onMouseEnter={() => setHeaderHoverIndex(columnIndex)}
+                    onMouseLeave={() => setHeaderHoverIndex(-1)}
+                    onSort={handleSort}
+                    filter={({close}) => {
+                      const Filter = column.renderFilter;
+                      return (
+                        <Filter
+                          setFilter={(filterParams, description) => {
+                            addFilter(filterParams, column.title, description);
+                          }}
+                          data={props.rows.map(r => r.data[columnIndex])}
+                          close={close}
+                        />
+                      );
+                    }}
+                    sortDirection={
+                      sortIndex === columnIndex ? sortDirection : null
+                    }
+                    title={column.title}
+                  />
+                </div>
+              );
+            })}
+          </div>
+          {children}
         </div>
-        {children}
-      </div>
-    );
-  });
+      );
+    },
+  );
   InnerTableElement.displayName = 'InnerTableElement';
 
   return (
@@ -222,7 +227,7 @@ export function Unstable_DataTable(props: Props) {
         onWidthsChange={nextWidths => {
           setWidths(nextWidths);
           if (gridRef.current) {
-            // $FlowFixMe trigger react-window to layout the elements again
+            // @ts-ignore trigger react-window to layout the elements again
             gridRef.current.resetAfterColumnIndex(0, true);
           }
         }}

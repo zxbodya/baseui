@@ -24,7 +24,7 @@ export const PanelContainer = styled('li', {
   width: '100%',
 });
 
-export const Header = styled<SharedStylePropsArgT>('div', props => {
+export const Header = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $disabled,
     $expanded,
@@ -53,7 +53,7 @@ export const Header = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const ToggleIcon = styled<SharedStylePropsArgT>('svg', props => {
+export const ToggleIcon = styled<'svg', SharedStylePropsArgT>('svg', props => {
   const {$theme, $disabled, $color} = props;
   return {
     ...getSvgStyles(props),
@@ -62,7 +62,7 @@ export const ToggleIcon = styled<SharedStylePropsArgT>('svg', props => {
   };
 });
 
-export const Content = styled<SharedStylePropsArgT>('div', props => {
+export const Content = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $theme: {animation, colors, sizing, typography},
     $expanded,

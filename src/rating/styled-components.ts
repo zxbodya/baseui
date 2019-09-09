@@ -15,8 +15,9 @@ import {
   happyRatingSVG,
   veryHappyRatingSVG,
 } from './svg-icons';
+import {StyleObject} from 'styletron-standard';
 
-export const StyledRoot = styled<StyledRootPropsT>('ul', ({$theme}) => {
+export const StyledRoot = styled<'ul', StyledRootPropsT>('ul', ({$theme}) => {
   return {
     marginLeft: 0,
     marginRight: 0,
@@ -33,7 +34,7 @@ export const StyledRoot = styled<StyledRootPropsT>('ul', ({$theme}) => {
   };
 });
 
-export const StyledStar = styled<StyledRatingItemPropsT>(
+export const StyledStar = styled<'li', StyledRatingItemPropsT>(
   'li',
   ({$theme, $isActive, $isSelected}) => {
     let starStroke = $theme.colors.mono500;
@@ -43,7 +44,7 @@ export const StyledStar = styled<StyledRatingItemPropsT>(
       starStroke = starFill = $theme.colors.rating400;
     }
 
-    const styles = {
+    const styles: StyleObject = {
       paddingLeft: 0,
       paddingTop: 0,
       paddingBottom: 0,
@@ -72,7 +73,7 @@ export const StyledStar = styled<StyledRatingItemPropsT>(
   },
 );
 
-export const StyledEmoticon = styled<StyledRatingItemPropsT>(
+export const StyledEmoticon = styled<'li', StyledRatingItemPropsT>(
   'li',
   ({$theme, $isActive, $isSelected, $index = 1}) => {
     let emoticonFill = $theme.colors.mono500;
@@ -89,7 +90,7 @@ export const StyledEmoticon = styled<StyledRatingItemPropsT>(
       veryHappyRatingSVG(emoticonFill),
     ];
 
-    const styles = {
+    const styles: StyleObject = {
       paddingLeft: 0,
       paddingTop: 0,
       paddingRight: 0,

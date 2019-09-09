@@ -11,9 +11,12 @@ import {styled} from '../styles/index';
 import {Consumer} from './layers-manager';
 import {LayerPropsT, LayerComponentPropsT, LayerStateT} from './types';
 
-const Container = styled<{
-  $zIndex?: number;
-}>('div', ({$zIndex}) => ({
+const Container = styled<
+  'div',
+  {
+    $zIndex?: number;
+  }
+>('div', ({$zIndex}) => ({
   position: 'absolute',
   top: 0,
   left: 0,

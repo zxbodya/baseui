@@ -10,6 +10,7 @@ import {useStyletron} from '../styles/index.js';
 
 import {COLUMNS} from './constants.js';
 import {ColumnT} from './types.js';
+import {ComponentProps} from 'react';
 
 // I could not re-use the ColumnT type to build this.. tried to spread the ColumnT
 // and define renderFilter, etc. to optional, but required status was maintained.
@@ -63,14 +64,16 @@ function CustomColumn<ValueT, FilterParamsT>(
       Boolean(options.filterable) &&
       Boolean(options.renderFilter) &&
       Boolean(options.buildFilter),
-    renderCell: React.forwardRef((props, ref) => {
-      const ProvidedCell = options.renderCell;
-      return (
-        <CustomCell {...props} ref={ref}>
-          <ProvidedCell value={props.value} />
-        </CustomCell>
-      );
-    }),
+    renderCell: React.forwardRef<HTMLDivElement, {value: ValueT}>(
+      (props, ref) => {
+        const ProvidedCell = options.renderCell;
+        return (
+          <CustomCell {...props} ref={ref}>
+            <ProvidedCell value={props.value} />
+          </CustomCell>
+        );
+      },
+    ),
     renderFilter: options.renderFilter || (() => null),
     buildFilter: options.buildFilter || (() => () => true),
     sortFn: options.sortFn || (() => 0),

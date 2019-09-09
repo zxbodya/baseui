@@ -12,7 +12,7 @@ import {
 import {SharedStylePropsT} from './types';
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const StyledTextareaContainer = styled<SharedStylePropsT>(
+export const StyledTextareaContainer = styled<'div', SharedStylePropsT>(
   'div',
   props => ({
     ...getInputContainerStyles(props),
@@ -20,7 +20,10 @@ export const StyledTextareaContainer = styled<SharedStylePropsT>(
 );
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const StyledTextarea = styled<SharedStylePropsT>('textarea', props => ({
-  ...getInputStyles(props),
-  resize: 'none',
-}));
+export const StyledTextarea = styled<'textarea', SharedStylePropsT>(
+  'textarea',
+  props => ({
+    ...getInputStyles(props),
+    resize: 'none',
+  }),
+);

@@ -8,8 +8,9 @@ import * as React from 'react';
 
 import {styled} from '../styles/index';
 import {StyletronComponent} from '../styles/styled';
+import {ComponentProps, Ref} from 'react';
 
-const StyledTableElement = styled<{}>('div', ({$theme}) => {
+const StyledTableElement = styled('div', ({$theme}) => {
   return {
     ...$theme.borders.border300,
     backgroundColor: $theme.colors.tableBackground,
@@ -24,18 +25,22 @@ const StyledTableElement = styled<{}>('div', ({$theme}) => {
   };
 });
 
-// eslint-disable-next-line flowtype/no-weak-types
-export const StyledTable = (React.forwardRef<any, {}>((props, ref) => {
-  return (
-    <StyledTableElement
-      ref={ref}
-      data-baseweb="table-custom"
-      role="grid"
-      {...props}
-    />
-  );
-  // eslint-disable-next-line flowtype/no-weak-types
-}) as any) as StyletronComponent<{}>;
+// @ts-ignore todo: utility for doing this
+export const StyledTable: StyletronComponent<
+  ComponentProps<typeof StyledTableElement> & {ref?: Ref<any>}
+> = React.forwardRef<any, ComponentProps<typeof StyledTableElement>>(
+  (props, ref) => {
+    return (
+      <StyledTableElement
+        ref={ref}
+        data-baseweb="table-custom"
+        role="grid"
+        {...props}
+      />
+    );
+  },
+);
+
 StyledTable.__STYLETRON__ = StyledTableElement.__STYLETRON__;
 StyledTable.displayName = 'StyledTable';
 
@@ -43,7 +48,7 @@ type HorizontalStyleProps = {
   $width?: string;
 };
 
-const StyledHeadElement = styled<HorizontalStyleProps>(
+const StyledHeadElement = styled<'div', HorizontalStyleProps>(
   'div',
   ({$theme, $width}) => {
     return {
@@ -63,7 +68,7 @@ export const StyledHead = (React.forwardRef<any, HorizontalStyleProps>( // eslin
 StyledHead.__STYLETRON__ = StyledHeadElement.__STYLETRON__;
 StyledHead.displayName = 'StyledHead';
 
-const StyledHeadCellElement = styled<{}>('div', ({$theme}) => {
+const StyledHeadCellElement = styled('div', ({$theme}) => {
   return {
     ...$theme.typography.font350,
     ...$theme.borders.border300,
@@ -94,7 +99,7 @@ export const StyledHeadCell = (React.forwardRef<any, {}>((
 StyledHeadCell.__STYLETRON__ = StyledHeadCellElement.__STYLETRON__;
 StyledHeadCell.displayName = 'StyledHeadCell';
 
-export const StyledSortableLabel = styled<{}>('button', ({$theme}) => {
+export const StyledSortableLabel = styled('button', ({$theme}) => {
   return {
     ...$theme.typography.font350,
     alignItems: 'center',
@@ -112,14 +117,17 @@ export const StyledSortableLabel = styled<{}>('button', ({$theme}) => {
   };
 });
 
-const StyledBodyElement = styled<HorizontalStyleProps>('div', ({$width}) => {
-  return {
-    width: $width ? $width : '100%',
-    overflowX: 'hidden',
-    overflowY: 'overlay',
-    flex: 1,
-  } as {};
-});
+const StyledBodyElement = styled<'div', HorizontalStyleProps>(
+  'div',
+  ({$width}) => {
+    return {
+      width: $width ? $width : '100%',
+      overflowX: 'hidden',
+      overflowY: 'overlay',
+      flex: 1,
+    } as {};
+  },
+);
 
 // eslint-disable-next-line flowtype/no-weak-types
 export const StyledBody = (React.forwardRef<any, HorizontalStyleProps>( // eslint-disable-next-line flowtype/no-weak-types
@@ -147,7 +155,7 @@ type CellStyledProps = {
   $striped?: boolean;
 };
 
-const StyledCellElement = styled<CellStyledProps>(
+const StyledCellElement = styled<'div', CellStyledProps>(
   'div',
   ({$theme, $striped}) => {
     return {
@@ -180,7 +188,7 @@ export const StyledFilterButton = styled('button', {
   paddingLeft: 'none',
 });
 
-export const StyledFilterContent = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterContent = styled('div', ({$theme}) => ({
   ...$theme.borders.border300,
   backgroundColor: $theme.colors.tableFilterBackground,
   borderRight: 'none',
@@ -191,7 +199,7 @@ export const StyledFilterContent = styled<{}>('div', ({$theme}) => ({
   overflow: 'auto',
 }));
 
-export const StyledFilterHeading = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterHeading = styled('div', ({$theme}) => ({
   ...$theme.typography.font350,
   color: $theme.colors.tableFilterHeading,
   paddingTop: $theme.sizing.scale500,
@@ -200,7 +208,7 @@ export const StyledFilterHeading = styled<{}>('div', ({$theme}) => ({
   paddingLeft: $theme.sizing.scale600,
 }));
 
-export const StyledFilterFooter = styled<{}>('div', ({$theme}) => ({
+export const StyledFilterFooter = styled('div', ({$theme}) => ({
   backgroundColor: $theme.colors.tableFilterFooterBackground,
   paddingTop: $theme.sizing.scale300,
   paddingRight: $theme.sizing.scale100,
@@ -211,7 +219,7 @@ export const StyledFilterFooter = styled<{}>('div', ({$theme}) => ({
   minWidth: '216px',
 }));
 
-export const StyledAction = styled<{}>('button', ({$theme}) => {
+export const StyledAction = styled('button', ({$theme}) => {
   return {
     backgroundColor: 'transparent',
     border: 'none',

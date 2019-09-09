@@ -19,6 +19,7 @@ import {getOverrides} from '../helpers/overrides';
 import {iso2FlagEmoji} from './utils';
 
 import {CountrySelectDropdownPropsT} from './types';
+import {ComponentProps} from 'react';
 
 CountrySelectDropdown.defaultProps = {
   maxDropdownHeight: defaultProps.maxDropdownHeight,
@@ -27,7 +28,7 @@ CountrySelectDropdown.defaultProps = {
 
 function CountrySelectDropdown(
   props: CountrySelectDropdownPropsT & {
-    $forwardedRef: React.RefObject<any>;
+    $forwardedRef: React.Ref<any>;
   },
 ) {
   const {
@@ -127,6 +128,6 @@ function CountrySelectDropdown(
 }
 
 export default React.forwardRef<
-  typeof CountrySelectDropdown,
-  CountrySelectDropdownPropsT
+  any,
+  ComponentProps<typeof CountrySelectDropdown>
 >((props, ref) => <CountrySelectDropdown {...props} $forwardedRef={ref} />);

@@ -8,7 +8,7 @@ import {styled} from '../styles/index';
 
 import {SharedPropsT} from './types';
 
-export const StyledRoot = styled<SharedPropsT>('nav', props => {
+export const StyledRoot = styled<'nav', SharedPropsT>('nav', props => {
   const {
     $theme: {colors, typography},
   } = props;
@@ -34,7 +34,7 @@ export const StyledNavLink = styled('a', {
   textDecoration: 'none',
 });
 
-export const StyledNavItem = styled<SharedPropsT>('div', props => {
+export const StyledNavItem = styled<'div', SharedPropsT>('div', props => {
   const {
     $active,
     $selectable,

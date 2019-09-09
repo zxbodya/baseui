@@ -30,7 +30,7 @@ export type OverridesT = {
   Label?: OverrideT<SharedStylePropsArgT>;
 };
 
-type ChildrenT = Array<React.ReactNode>;
+type ChildrenT = Array<React.ReactNode> | React.ReactNode;
 
 // Props shared by all flavors of component
 export type ListPropsT = {

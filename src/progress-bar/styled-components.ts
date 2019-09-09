@@ -8,13 +8,13 @@ import {styled, hexToRgb} from '../styles/index';
 
 import {StylePropsT} from './types';
 
-export const Root = styled<StylePropsT>('div', props => {
+export const Root = styled<'div', StylePropsT>('div', props => {
   return {
     width: '100%',
   };
 });
 
-export const Bar = styled<StylePropsT>('div', props => {
+export const Bar = styled<'div', StylePropsT>('div', props => {
   const {$theme} = props;
   const {colors, sizing, borders} = $theme;
   const borderRadius = borders.useRoundedCorners ? sizing.scale0 : 0;
@@ -32,7 +32,7 @@ export const Bar = styled<StylePropsT>('div', props => {
   } as {};
 });
 
-export const BarProgress = styled<StylePropsT>('div', props => {
+export const BarProgress = styled<'div', StylePropsT>('div', props => {
   const {$theme, $value, $successValue} = props;
   const {colors, sizing, borders} = $theme;
   const width = `${($value / $successValue) * 100}%`;
@@ -49,7 +49,7 @@ export const BarProgress = styled<StylePropsT>('div', props => {
   };
 });
 
-export const Label = styled<StylePropsT>('div', props => {
+export const Label = styled<'div', StylePropsT>('div', props => {
   return {
     textAlign: 'center',
     ...props.$theme.typography.font250,

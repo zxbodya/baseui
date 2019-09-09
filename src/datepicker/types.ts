@@ -330,13 +330,7 @@ export type TimezonePickerPropsT = {
    */
   mapLabels?: (a: OptionT) => React.ReactNode;
   /** Callback for when the timezone selection changes. */
-  onChange?: (
-    value?: {
-      id: string;
-      label: string;
-      offset: number;
-    } | null,
-  ) => unknown;
+  onChange?: (value?: {id: string; label: string; offset: number}) => unknown;
   overrides?: {
     Select?: OverrideT<any>;
   };

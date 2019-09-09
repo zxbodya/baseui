@@ -17,8 +17,6 @@ import {
   StateReducerFnT,
 } from './types';
 
-import {MouseEvent} from 'react';
-
 export default class MenuStatefulContainer extends React.Component<
   StatefulContainerPropsT,
   StatefulContainerStateT
@@ -99,7 +97,7 @@ export default class MenuStatefulContainer extends React.Component<
   }
 
   // One array to hold all of list item refs
-  refList: Array<React$ElementRef<any>> = [];
+  refList: Array<React.RefObject<any>> = [];
 
   // Internal set state function that will also invoke stateReducer
   internalSetState(
@@ -185,7 +183,7 @@ export default class MenuStatefulContainer extends React.Component<
     activedescendantId: string | undefined | null,
     index: number,
     item: any,
-    event: MouseEvent<HTMLElement>,
+    event: React.MouseEvent<HTMLElement>,
   ) => {
     if (this.props.onItemSelect && !item.disabled) {
       this.props.onItemSelect({item, event});

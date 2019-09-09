@@ -208,6 +208,7 @@ class Modal extends React.Component<ModalPropsT, ModalStateT> {
 
   getChildren() {
     const {children} = this.props;
+    // @ts-ignore
     return typeof children === 'function' ? children() : children;
   }
 

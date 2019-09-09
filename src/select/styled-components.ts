@@ -81,7 +81,7 @@ function getControlPadding(props, emptyValue?) {
   }[$size];
 }
 
-export const StyledDropdownContainer = styled<SharedStylePropsArgT>(
+export const StyledDropdownContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     return {
@@ -94,7 +94,7 @@ export const StyledDropdown = StyledList;
 
 export const StyledDropdownListItem = StyledListItem;
 
-export const StyledOptionContent = styled<SharedStylePropsArgT>(
+export const StyledOptionContent = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {$isHighlighted, $selected, $disabled, $theme} = props;
@@ -108,7 +108,7 @@ export const StyledOptionContent = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
+export const StyledRoot = styled<'div', SharedStylePropsArgT>('div', props => {
   const {
     $theme: {typography},
     $size,
@@ -167,7 +167,7 @@ function getControlContainerColors(
   };
 }
 
-export const StyledControlContainer = styled<SharedStylePropsArgT>(
+export const StyledControlContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {
@@ -212,7 +212,7 @@ export const StyledControlContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledValueContainer = styled<SharedStylePropsArgT>(
+export const StyledValueContainer = styled<'span', SharedStylePropsArgT>(
   'span',
   props => {
     const padding = getControlPadding(props);
@@ -231,48 +231,54 @@ export const StyledValueContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledPlaceholder = styled<SharedStylePropsArgT>('div', props => {
-  const {
-    $disabled,
-    $theme: {colors},
-  } = props;
-  return {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
-    maxWidth: '100%',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    ...getControlPadding(props, true),
-  };
-});
+export const StyledPlaceholder = styled<'div', SharedStylePropsArgT>(
+  'div',
+  props => {
+    const {
+      $disabled,
+      $theme: {colors},
+    } = props;
+    return {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+      color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
+      maxWidth: '100%',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      ...getControlPadding(props, true),
+    };
+  },
+);
 
-export const StyledSingleValue = styled<SharedStylePropsArgT>('div', props => {
-  const {
-    $searchable,
-    $size,
-    $theme,
-    $theme: {typography},
-  } = props;
-  const font = getFont($size, typography);
-  return {
-    lineHeight: !$searchable ? font.lineHeight : 'inherit',
-    boxSizing: 'border-box',
-    position: 'absolute',
-    top: 0,
-    [$theme.direction === 'rtl' ? 'right' : 'left']: 0,
-    height: '100%',
-    maxWidth: '100%',
-    ...ellipsisText,
-    ...getControlPadding(props),
-  };
-});
+export const StyledSingleValue = styled<'div', SharedStylePropsArgT>(
+  'div',
+  props => {
+    const {
+      $searchable,
+      $size,
+      $theme,
+      $theme: {typography},
+    } = props;
+    const font = getFont($size, typography);
+    return {
+      lineHeight: !$searchable ? font.lineHeight : 'inherit',
+      boxSizing: 'border-box',
+      position: 'absolute',
+      top: 0,
+      [$theme.direction === 'rtl' ? 'right' : 'left']: 0,
+      height: '100%',
+      maxWidth: '100%',
+      ...ellipsisText,
+      ...getControlPadding(props),
+    };
+  },
+);
 
-export const StyledInputContainer = styled<SharedStylePropsArgT>(
+export const StyledInputContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {
@@ -304,36 +310,39 @@ export const StyledInputContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledInput = styled<SharedStylePropsArgT>('input', props => {
-  const {
-    $theme: {typography},
-    $size,
-    $disabled,
-    $searchable,
-    $width,
-  } = props;
-  return {
-    ...getFont($size, typography),
-    boxSizing: 'content-box',
-    width: $disabled || !$searchable ? '1px' : $width || '100%',
-    maxWidth: '100%',
-    background: 'transparent',
-    border: 'none',
-    boxShadow: 'none',
-    display: 'inline-block',
-    outline: 'none',
-    marginTop: '0',
-    marginBottom: '0',
-    marginLeft: '0',
-    marginRight: '0',
-    paddingTop: '0',
-    paddingBottom: '0',
-    paddingLeft: '0',
-    paddingRight: '0',
-  };
-});
+export const StyledInput = styled<'input', SharedStylePropsArgT>(
+  'input',
+  props => {
+    const {
+      $theme: {typography},
+      $size,
+      $disabled,
+      $searchable,
+      $width,
+    } = props;
+    return {
+      ...getFont($size, typography),
+      boxSizing: 'content-box',
+      width: $disabled || !$searchable ? '1px' : $width || '100%',
+      maxWidth: '100%',
+      background: 'transparent',
+      border: 'none',
+      boxShadow: 'none',
+      display: 'inline-block',
+      outline: 'none',
+      marginTop: '0',
+      marginBottom: '0',
+      marginLeft: '0',
+      marginRight: '0',
+      paddingTop: '0',
+      paddingBottom: '0',
+      paddingLeft: '0',
+      paddingRight: '0',
+    };
+  },
+);
 
-export const StyledInputSizer = styled<SharedStylePropsArgT>(
+export const StyledInputSizer = styled<'div', SharedStylePropsArgT>(
   'div',
   ({$size, $theme, $theme: {typography}}) => ({
     ...getFont($size, typography),
@@ -347,7 +356,7 @@ export const StyledInputSizer = styled<SharedStylePropsArgT>(
   }),
 );
 
-export const StyledIconsContainer = styled<SharedStylePropsArgT>(
+export const StyledIconsContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   ({$theme, $theme: {sizing}}) => {
     return {
@@ -374,25 +383,31 @@ function getSvgStyles({$theme}) {
   };
 }
 
-export const StyledSelectArrow = styled<SharedStylePropsArgT>('svg', props => {
-  const {$theme, $disabled} = props;
-  const {colors} = $theme;
-  return {
-    ...getSvgStyles({$theme}),
-    color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
-    cursor: $disabled ? 'not-allowed' : 'pointer',
-  };
-});
+export const StyledSelectArrow = styled<'svg', SharedStylePropsArgT>(
+  'svg',
+  props => {
+    const {$theme, $disabled} = props;
+    const {colors} = $theme;
+    return {
+      ...getSvgStyles({$theme}),
+      color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
+      cursor: $disabled ? 'not-allowed' : 'pointer',
+    };
+  },
+);
 
-export const StyledClearIcon = styled<SharedStylePropsArgT>('svg', props => {
-  const {$theme} = props;
-  const {colors} = $theme;
-  return {
-    ...getSvgStyles({$theme}),
-    color: colors.foregroundAlt,
-    cursor: 'pointer',
-  };
-});
+export const StyledClearIcon = styled<'svg', SharedStylePropsArgT>(
+  'svg',
+  props => {
+    const {$theme} = props;
+    const {colors} = $theme;
+    return {
+      ...getSvgStyles({$theme}),
+      color: colors.foregroundAlt,
+      cursor: 'pointer',
+    };
+  },
+);
 
 export const getLoadingIconStyles = (props: {$theme: ThemeT}) => {
   const {$theme} = props;
@@ -403,17 +418,20 @@ export const getLoadingIconStyles = (props: {$theme: ThemeT}) => {
   };
 };
 
-export const StyledSearchIcon = styled<SharedStylePropsArgT>('div', props => {
-  const {$disabled, $theme} = props;
-  const {colors, sizing} = $theme;
-  return {
-    ...getSvgStyles(props),
-    color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
-    cursor: $disabled ? 'not-allowed' : 'pointer',
-    position: 'absolute',
-    [$theme.direction === 'rtl' ? 'right' : 'left']: sizing.scale500,
-    display: 'flex',
-    alignItems: 'center',
-    height: '100%',
-  };
-});
+export const StyledSearchIcon = styled<'div', SharedStylePropsArgT>(
+  'div',
+  props => {
+    const {$disabled, $theme} = props;
+    const {colors, sizing} = $theme;
+    return {
+      ...getSvgStyles(props),
+      color: $disabled ? colors.inputTextDisabled : colors.foregroundAlt,
+      cursor: $disabled ? 'not-allowed' : 'pointer',
+      position: 'absolute',
+      [$theme.direction === 'rtl' ? 'right' : 'left']: sizing.scale500,
+      display: 'flex',
+      alignItems: 'center',
+      height: '100%',
+    };
+  },
+);

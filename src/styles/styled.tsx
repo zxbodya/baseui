@@ -15,6 +15,7 @@ import {StyleObject} from 'styletron-standard';
 import {ThemeT} from './types';
 
 import {ThemeContext} from './theme-provider';
+import {Ref} from 'react';
 
 type $Call1<F extends (...args: any) => any, A> = F extends (
   a: A,
@@ -33,50 +34,61 @@ const wrapper = StyledComponent => {
 
 /* eslint-disable flowtype/generic-spacing */
 /* eslint-disable flowtype/no-weak-types */
-export type StyletronComponent<Props> = React.FunctionComponent<Props> & {
+export type StyletronComponent<Props> = React.FunctionComponent<
+  Props & {
+    // todo: can be specific component
+    ref?: Ref<any>;
+  }
+> & {
   __STYLETRON__: any;
 };
 
 type StyleFn<Theme> = {
-  (a: string): StyletronComponent<{}>;
-  (b: string, a: StyleObject): StyletronComponent<{}>;
-  <Props>(
-    b: string,
-    a: (
-      a: {
-        $theme: Theme;
-      } & Props,
-    ) => StyleObject,
-  ): StyletronComponent<Props>;
-  <Base extends React.ComponentType<any>>(
-    b: Base,
-    a: StyleObject,
-  ): StyletronComponent<Omit<React.ComponentProps<Base>, 'className'>>;
-  <Base extends React.ComponentType<any>, Props>(
-    b: Base,
-    a: (
-      a: {
-        $theme: Theme;
-      } & Props,
-    ) => StyleObject,
-  ): StyletronComponent<Omit<React.ComponentProps<Base>, 'className'> & Props>;
+  <
+    C extends keyof JSX.IntrinsicElements | React.ComponentType<any>,
+    P extends object
+  >(
+    component: C,
+    style:
+      | StyleObject
+      | ((
+          props: P & {
+            $theme: Theme;
+          },
+        ) => StyleObject),
+  ): StyletronComponent<
+    Pick<
+      React.ComponentProps<C>,
+      Exclude<keyof React.ComponentProps<C>, {className: string}>
+    > &
+      P
+  >;
+  <C extends keyof JSX.IntrinsicElements | React.ComponentType<any>>(
+    component: C,
+    style: StyleObject,
+  ): StyletronComponent<
+    Pick<
+      React.ComponentProps<C>,
+      Exclude<keyof React.ComponentProps<C>, {className: string}>
+    >
+  >;
 };
 
-type ExtractPropTypes = <T>(a: StyletronComponent<T>) => T;
-
 type WithStyleFn<Theme> = {
-  <Base extends StyletronComponent<any>, Props>(
-    b: Base,
-    a: (
-      a: Props & {
-        $theme: Theme;
-      },
-    ) => StyleObject,
-  ): StyletronComponent<$Call1<ExtractPropTypes, Base> & Props>;
-  <Base extends StyletronComponent<any>>(
-    b: Base,
-    a: StyleObject,
-  ): StyletronComponent<$Call1<ExtractPropTypes, Base>>;
+  <C extends StyletronComponent<any>, P extends object>(
+    component: C,
+    style:
+      | ((
+          props: P & {
+            $theme: Theme;
+          },
+        ) => StyleObject)
+      | StyleObject,
+  ): StyletronComponent<React.ComponentProps<C> & P>;
+  <C extends StyletronComponent<any>>(
+    component: C,
+    style: StyleObject,
+  ): StyletronComponent<React.ComponentProps<C>>;
 };
 
 /* eslint-enable flowtype/generic-spacing */

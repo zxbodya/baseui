@@ -44,9 +44,10 @@ import {CalendarPropsT} from '../types';
 
 // ** Date Formatting **
 // eslint-disable-next-line flowtype/no-weak-types
-export function formatDate(date: Date, formatStr: string, locale: any) {
+export function formatDate(date: Date, formatStr: string, locale?: any) {
   return format(date, formatStr, {
     ...(locale ? {locale} : {}),
+    // @ts-ignore todo: not existing property
     awareOfUnicodeTokens: true,
   });
 }
@@ -144,11 +145,11 @@ export function isDayDisabled(
     includeDates,
     filterDate,
   }: {
-    minDate: Date | undefined | null;
-    maxDate: Date | undefined | null;
-    excludeDates: Array<Date> | undefined | null;
-    includeDates: Array<Date> | undefined | null;
-    filterDate: ((day: Date) => boolean) | undefined | null;
+    minDate?: Date;
+    maxDate?: Date;
+    excludeDates?: Array<Date>;
+    includeDates?: Array<Date>;
+    filterDate?: (day: Date) => boolean;
   } = {},
 ) {
   return (
@@ -168,8 +169,8 @@ export function isOutOfBounds(
     minDate,
     maxDate,
   }: {
-    minDate: Date | undefined | null;
-    maxDate: Date | undefined | null;
+    minDate?: Date;
+    maxDate?: Date;
   } = {},
 ) {
   return (
@@ -184,8 +185,8 @@ export function monthDisabledBefore(
     minDate,
     includeDates,
   }: {
-    minDate: Date | undefined | null;
-    includeDates: Array<Date> | undefined | null;
+    minDate?: Date;
+    includeDates?: Array<Date>;
   } = {},
 ) {
   const previousMonth = subMonths(day, 1);

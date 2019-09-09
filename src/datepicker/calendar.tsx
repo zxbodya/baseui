@@ -78,8 +78,8 @@ export default class Calendar extends React.Component<
     trapTabbing: false,
   };
 
-  root: React.RefObject<any>;
-  calendar: React.RefObject<any>;
+  root: any;
+  calendar: any;
 
   constructor(props: CalendarPropsT) {
     super(props);

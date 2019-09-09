@@ -8,7 +8,7 @@ import {styled} from '../styles/index';
 import {SharedStylePropsT} from './types';
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Root = styled<SharedStylePropsT>('div', props => {
+export const Root = styled<'div', SharedStylePropsT>('div', props => {
   const {$prop, $theme} = props;
   return {
     color: $prop ? $theme.colors.primary400 : $theme.colors.positive400,

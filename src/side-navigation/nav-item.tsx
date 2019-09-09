@@ -68,4 +68,4 @@ function compare(prevProps, nextProps) {
   return false;
 }
 
-export default React.memo<NavItemPropsT>(NavItem, compare);
+export default React.memo(NavItem, compare);

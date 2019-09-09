@@ -6,14 +6,14 @@ LICENSE file in the root directory of this source tree.
 */
 import {styled} from '../styles/index';
 
-export const StyledRoot = styled<{}>('div', ({$theme}) => ({
+export const StyledRoot = styled('div', ({$theme}) => ({
   display: 'flex',
   alignItems: 'center',
   color: $theme.colors.backgroundInv,
   ...$theme.typography.font450,
 }));
 
-export const StyledMaxLabel = styled<{}>('span', ({$theme}) => ({
+export const StyledMaxLabel = styled('span', ({$theme}) => ({
   [$theme.direction === 'rtl' ? 'marginRight' : 'marginLeft']: $theme.sizing
     .scale300,
 
@@ -21,7 +21,7 @@ export const StyledMaxLabel = styled<{}>('span', ({$theme}) => ({
     .scale600,
 }));
 
-export const StyledDropdownContainer = styled<{}>('div', ({$theme}) => ({
+export const StyledDropdownContainer = styled('div', ({$theme}) => ({
   position: 'relative',
 
   [$theme.direction === 'rtl' ? 'marginRight' : 'marginLeft']: $theme.sizing

@@ -7,11 +7,11 @@ LICENSE file in the root directory of this source tree.
 
 import {styled} from '../styles/index';
 
-export const Action = styled<{}>('div', ({$theme: {typography}}) => ({
+export const Action = styled('div', ({$theme: {typography}}) => ({
   ...typography.font450,
 }));
 
-export const Body = styled<{}>('div', ({$theme}) => {
+export const Body = styled('div', ({$theme}) => {
   const {colors, sizing, typography} = $theme;
   return {
     marginBottom: sizing.scale600,
@@ -20,7 +20,7 @@ export const Body = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const Contents = styled<{}>('div', ({$theme}) => {
+export const Contents = styled('div', ({$theme}) => {
   const {sizing} = $theme;
   return {
     marginLeft: sizing.scale800,
@@ -30,7 +30,7 @@ export const Contents = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const HeaderImage = styled<{}>('img', ({$theme: {borders}}) => {
+export const HeaderImage = styled('img', ({$theme: {borders}}) => {
   return {
     borderTopLeftRadius: borders.surfaceBorderRadius,
     borderTopRightRadius: borders.surfaceBorderRadius,
@@ -39,7 +39,7 @@ export const HeaderImage = styled<{}>('img', ({$theme: {borders}}) => {
   };
 });
 
-export const Root = styled<{}>('div', ({$theme}) => {
+export const Root = styled('div', ({$theme}) => {
   const {borders, lighting, colors} = $theme;
   return {
     ...borders.border300,
@@ -52,7 +52,7 @@ export const Root = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const Thumbnail = styled<{}>('img', props => {
+export const Thumbnail = styled('img', props => {
   const {
     $theme: {borders, sizing},
   } = props;
@@ -70,7 +70,7 @@ export const Thumbnail = styled<{}>('img', props => {
   };
 });
 
-export const Title = styled<{}>('h1', ({$theme}) => {
+export const Title = styled('h1', ({$theme}) => {
   const {colors, sizing, typography} = $theme;
   return {
     ...typography.font500,

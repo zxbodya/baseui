@@ -8,9 +8,11 @@ import * as React from 'react';
 import {StyledInput, StyledInputSizer} from './styled-components';
 import {getOverrides} from '../helpers/overrides';
 import {AutosizeInputPropsT, AutosizeInputStateT} from './types';
+import {ComponentProps} from 'react';
 
 export default class AutosizeInput extends React.Component<
-  AutosizeInputPropsT,
+  AutosizeInputPropsT &
+    Omit<ComponentProps<typeof StyledInput>, keyof AutosizeInputPropsT>,
   AutosizeInputStateT
 > {
   mounted: boolean;

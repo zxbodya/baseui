@@ -47,7 +47,7 @@ const NumericalCell = React.forwardRef<HTMLDivElement, NumericalCellPropsT>(
   (props, ref) => {
     const [useCss, theme] = useStyletron();
 
-    let value = props.value;
+    let value: string | number = props.value;
     switch (props.format) {
       case NUMERICAL_FORMATS.ACCOUNTING: {
         const abs = Math.abs(value);
@@ -94,22 +94,24 @@ function NumericalColumn(options: OptionsT): NumericalColumnT {
     title: options.title,
     sortable: options.sortable === undefined ? true : options.sortable,
     filterable: options.filterable === undefined ? true : options.filterable,
-    renderCell: React.forwardRef((props, ref) => {
-      return (
-        <NumericalCell
-          {...props}
-          ref={ref}
-          format={options.format || NUMERICAL_FORMATS.DEFAULT}
-          highlight={
-            options.highlight ||
-            (options.format === NUMERICAL_FORMATS.ACCOUNTING
-              ? n => n < 0
-              : () => false)
-          }
-          precision={options.precision || 2}
-        />
-      );
-    }),
+    renderCell: React.forwardRef<HTMLDivElement, {value: number}>(
+      (props, ref) => {
+        return (
+          <NumericalCell
+            {...props}
+            ref={ref}
+            format={options.format || NUMERICAL_FORMATS.DEFAULT}
+            highlight={
+              options.highlight ||
+              (options.format === NUMERICAL_FORMATS.ACCOUNTING
+                ? n => n < 0
+                : () => false)
+            }
+            precision={options.precision || 2}
+          />
+        );
+      },
+    ),
     renderFilter: NumericalFilter,
     buildFilter: function(params) {
       return function(data) {

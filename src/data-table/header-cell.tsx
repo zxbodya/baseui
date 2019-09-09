@@ -23,8 +23,8 @@ type HeaderCellPropsT = {
   index: number;
   isHovered: boolean;
   isMeasured?: boolean;
-  onMouseEnter: (a: number) => void;
-  onMouseLeave: (a: number) => void;
+  onMouseEnter: (a: any) => void;
+  onMouseLeave: (a: any) => void;
   onSort: (a: number) => void;
   sortable: boolean;
   sortDirection: SortDirectionsT;
@@ -63,7 +63,7 @@ const HeaderCell = React.forwardRef<HTMLDivElement, HeaderCellPropsT>(
     return (
       <div
         role="button"
-        tabIndex="0"
+        tabIndex={0 /* todo: bug string in js */}
         ref={r => {
           if (typeof ref === 'function') {
             ref(r);
@@ -92,6 +92,7 @@ const HeaderCell = React.forwardRef<HTMLDivElement, HeaderCellPropsT>(
         }}
         onClick={event => {
           if (
+            // @ts-ignore todo: likely a bug
             event.target.isSameNode(sortRef.current) ||
             (sortRef.current && sortRef.current.contains(event.target))
           ) {

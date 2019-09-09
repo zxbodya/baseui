@@ -40,7 +40,7 @@ export type ComponentRenderPropT = (props: {
 
 export type ChildT = React.ReactNode;
 
-export type ChildrenT = React.ChildrenArray<ChildT>;
+export type ChildrenT = Array<ChildT> | ChildT;
 
 export type ToastPrivateStateT = {
   isVisible: boolean;

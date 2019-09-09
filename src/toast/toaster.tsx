@@ -22,10 +22,7 @@ import {
   ToastPropsT,
 } from './types';
 
-let toasterRef:
-  | React.RefObject<typeof ToasterContainer>
-  | undefined
-  | null = null;
+let toasterRef: ToasterContainer | undefined;
 
 export class ToasterContainer extends React.Component<
   Partial<ToasterPropsT>,
@@ -67,6 +64,7 @@ export class ToasterContainer extends React.Component<
     return {autoHideDuration, ...props, key};
   };
 
+  // @ts-ignore todo: default value does not look correct and also probably do is never used
   show = (props: ToastPropsT = {}): React.Key => {
     const toastProps = this.getToastProps(props);
     this.setState(({toasts}) => {
@@ -205,10 +203,7 @@ export class ToasterContainer extends React.Component<
 }
 
 const toaster = {
-  getRef: function():
-    | React.RefObject<typeof ToasterContainer>
-    | undefined
-    | null {
+  getRef: function(): ToasterContainer | undefined {
     return toasterRef;
   },
   show: function(

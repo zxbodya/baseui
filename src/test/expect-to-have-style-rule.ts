@@ -30,7 +30,7 @@ const getStyles = received => {
   );
 };
 
-const toHaveStyleRule: JestMatcher = function _toHaveStyleRule(
+const toHaveStyleRule = function _toHaveStyleRule(
   /* eslint-disable-next-line flowtype/no-weak-types */
   actual: unknown,
   ...args

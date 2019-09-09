@@ -29,7 +29,7 @@ export function styled(ElementName: string, objOrFn: ObjOrFnT = {}) {
   class MockStyledComponent extends React.Component<PropsT, StateT> {
     static displayName = 'MockStyledComponent';
 
-    state = {};
+    state = {} as StateT;
 
     static getDerivedStateFromProps(props: PropsT) {
       const styleFnArg = {
@@ -65,6 +65,7 @@ export function styled(ElementName: string, objOrFn: ObjOrFnT = {}) {
 
     render() {
       return (
+        // @ts-ignore
         <ElementName
           ref={this.props.forwardedRef}
           styled-component="true"
@@ -75,7 +76,7 @@ export function styled(ElementName: string, objOrFn: ObjOrFnT = {}) {
     }
   }
 
-  // $FlowFixMe
+  // @ts-ignore
   MockStyledComponent.__STYLETRON__ = {
     getInitialStyle,
     wrapper: IDENTITY,

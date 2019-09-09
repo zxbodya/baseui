@@ -92,7 +92,7 @@ function getAnchorStyles(props: SharedStylePropsArgT) {
   }
 }
 
-export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
+export const StyledRoot = styled<'div', SharedStylePropsArgT>('div', props => {
   return {
     position: 'fixed',
     overflow: 'auto',
@@ -103,7 +103,7 @@ export const StyledRoot = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledBackdrop = styled<SharedStylePropsArgT>('div', props => {
+export const StyledBackdrop = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$animating, $isOpen, $isVisible, $theme} = props;
   return {
     position: 'fixed',
@@ -127,7 +127,7 @@ export const StyledBackdrop = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledDrawerContainer = styled<SharedStylePropsArgT>(
+export const StyledDrawerContainer = styled<'div', SharedStylePropsArgT>(
   'div',
   props => {
     const {$animating, $isOpen, $isVisible, $theme} = props;
@@ -154,7 +154,7 @@ export const StyledDrawerContainer = styled<SharedStylePropsArgT>(
   },
 );
 
-export const StyledDrawerBody = styled<SharedStylePropsArgT>('div', props => {
+export const StyledDrawerBody = styled<'div', SharedStylePropsArgT>('div', props => {
   const {$theme} = props;
   return {
     ...$theme.typography.font300,
@@ -168,7 +168,7 @@ export const StyledDrawerBody = styled<SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const StyledClose = styled<SharedStylePropsArgT>('button', props => {
+export const StyledClose = styled<'button', SharedStylePropsArgT>('button', props => {
   const {$theme} = props;
   return {
     // Reset button styles

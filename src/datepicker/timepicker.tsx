@@ -30,7 +30,7 @@ function secondsToHourMinute(seconds) {
   return [d.getUTCHours(), d.getUTCMinutes()];
 }
 
-function secondsToLabel(seconds, format) {
+function secondsToLabel(seconds, format?) {
   let [hours, minutes] = secondsToHourMinute(seconds);
   const zeroPrefix = n => (n < 10 ? `0${n}` : n);
 
@@ -203,10 +203,10 @@ class TimePicker extends React.Component<TimePickerPropsT, TimePickerStateT> {
     );
     const selectOverrides = mergeOverrides(
       {Dropdown: {style: {maxHeight: '126px'}}},
-      // $FlowFixMe
+      // @ts-ignore
       selectProps.overrides,
     );
-    // $FlowFixMe
+    // @ts-ignore
     selectProps.overrides = selectOverrides;
 
     const value =

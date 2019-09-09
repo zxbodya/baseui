@@ -10,14 +10,14 @@ import {SharedStylePropsArgT} from './types';
 /**
  * Main component container element
  */
-export const Root = styled<SharedStylePropsArgT>('div', ({$theme}) => {
+export const Root = styled<'div', SharedStylePropsArgT>('div', ({$theme}) => {
   return {
     width: '100%',
   };
 });
 Root.displayName = 'StyledRoot';
 
-export const List = styled<SharedStylePropsArgT>('ul', ({$isDragged}) => {
+export const List = styled<'ul', SharedStylePropsArgT>('ul', ({$isDragged}) => {
   return {
     paddingLeft: 0,
     cursor: $isDragged ? 'grabbing' : null,
@@ -25,7 +25,7 @@ export const List = styled<SharedStylePropsArgT>('ul', ({$isDragged}) => {
 });
 List.displayName = 'StyledList';
 
-export const Item = styled<SharedStylePropsArgT>(
+export const Item = styled<'li', SharedStylePropsArgT>(
   'li',
   ({$isDragged, $isSelected, $theme}) => {
     return {
@@ -79,17 +79,20 @@ export const Item = styled<SharedStylePropsArgT>(
 );
 List.displayName = 'StyledItem';
 
-export const DragHandle = styled<SharedStylePropsArgT>('div', ({$theme}) => ({
-  [$theme.direction === 'rtl' ? 'marginLeft' : 'marginRight']: $theme.sizing
-    .scale600,
+export const DragHandle = styled<'div', SharedStylePropsArgT>(
+  'div',
+  ({$theme}) => ({
+    [$theme.direction === 'rtl' ? 'marginLeft' : 'marginRight']: $theme.sizing
+      .scale600,
 
-  width: $theme.sizing.scale800,
-  display: 'flex',
-  alignItems: 'center',
-}));
+    width: $theme.sizing.scale800,
+    display: 'flex',
+    alignItems: 'center',
+  }),
+);
 DragHandle.displayName = 'StyledDragHandle';
 
-export const CloseHandle = styled<SharedStylePropsArgT>(
+export const CloseHandle = styled<'button', SharedStylePropsArgT>(
   'button',
   ({$theme}) => ({
     border: 'none',
@@ -111,7 +114,7 @@ export const CloseHandle = styled<SharedStylePropsArgT>(
 );
 CloseHandle.displayName = 'StyledCloseHandle';
 
-export const Label = styled<SharedStylePropsArgT>('div', ({$theme}) => ({
+export const Label = styled<'div', SharedStylePropsArgT>('div', ({$theme}) => ({
   flexGrow: 1,
   ...$theme.typography.font400,
 }));

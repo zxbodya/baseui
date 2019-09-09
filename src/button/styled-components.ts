@@ -7,8 +7,9 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {KIND, SIZE, SHAPE} from './constants';
 import {SharedStylePropsT} from './types';
+import {StyleObject} from 'styletron-standard';
 
-export const BaseButton = styled<SharedStylePropsT>(
+export const BaseButton = styled<'button', SharedStylePropsT>(
   'button',
   ({$theme, $size, $kind, $shape, $isLoading, $isSelected, $disabled}) => ({
     display: 'inline-flex',
@@ -43,28 +44,34 @@ export const BaseButton = styled<SharedStylePropsT>(
   }),
 );
 
-export const EndEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => ({
-  display: 'flex',
+export const EndEnhancer = styled<'div', SharedStylePropsT>(
+  'div',
+  ({$theme}) => ({
+    display: 'flex',
 
-  [$theme.direction === 'rtl' ? 'marginRight' : 'marginLeft']: $theme.sizing
-    .scale500,
-}));
+    [$theme.direction === 'rtl' ? 'marginRight' : 'marginLeft']: $theme.sizing
+      .scale500,
+  }),
+);
 
-export const StartEnhancer = styled<SharedStylePropsT>('div', ({$theme}) => ({
-  display: 'flex',
+export const StartEnhancer = styled<'div', SharedStylePropsT>(
+  'div',
+  ({$theme}) => ({
+    display: 'flex',
 
-  [$theme.direction === 'rtl' ? 'marginLeft' : 'marginRight']: $theme.sizing
-    .scale500,
-}));
+    [$theme.direction === 'rtl' ? 'marginLeft' : 'marginRight']: $theme.sizing
+      .scale500,
+  }),
+);
 
 export const LoadingSpinnerContainer = styled('div', {
   // To center within parent
   position: 'absolute',
 });
 
-export const LoadingSpinner = styled<SharedStylePropsT>(
+export const LoadingSpinner = styled<'div', SharedStylePropsT>(
   'div',
-  ({$theme, $kind, $disabled}) => {
+  ({$theme, $kind, $disabled}): StyleObject => {
     const {foreground, background} = getLoadingSpinnerColors({
       $theme,
       $kind,
@@ -94,7 +101,7 @@ export const LoadingSpinner = styled<SharedStylePropsT>(
           transform: 'rotate(0deg)',
         },
       },
-    };
+    } as StyleObject;
   },
 );
 

@@ -16,12 +16,13 @@ import {defaultProps} from './default-props';
 import {getOverrides} from '../helpers/overrides';
 
 import {ButtonPropsT} from './types';
+import {ComponentProps} from 'react';
 
 // eslint-disable-next-line flowtype/no-weak-types
 class Button extends React.Component<
   ButtonPropsT & {
-    forwardedRef: any;
-  }
+    forwardedRef?: any;
+  } & Omit<ComponentProps<'button'>, keyof ButtonPropsT | 'ref'>
 > {
   static defaultProps = defaultProps;
 
@@ -94,8 +95,8 @@ class Button extends React.Component<
   }
 }
 
-const ForwardedButton = React.forwardRef<HTMLButtonElement, ButtonPropsT>(
-  (props: ButtonPropsT, ref) => <Button forwardedRef={ref} {...props} />,
+const ForwardedButton = React.forwardRef<any, ComponentProps<typeof Button>>(
+  (props, ref) => <Button {...props} forwardedRef={ref} />,
 );
 ForwardedButton.displayName = 'Button';
 export default ForwardedButton;

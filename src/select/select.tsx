@@ -73,15 +73,11 @@ class Select extends React.Component<PropsT, SelectStateT> {
 
   // anchor is a ref that refers to the outermost element rendered when the dropdown menu is not
   // open. This is required so that we can check if clicks are on/off the anchor element.
-  anchor: {
-    current: HTMLElement | null;
-  } = React.createRef();
+  anchor = React.createRef<HTMLElement>();
   // dropdown is a ref that refers to the popover element. This is required so that we can check if
   // clicks are on/off the dropdown element.
-  dropdown: {
-    current: HTMLElement | null;
-  } = React.createRef();
-  input: React.RefObject<any>;
+  dropdown = React.createRef<HTMLElement>();
+  input: any;
   // dragging is a flag to track whether a mobile device in currently scrolling versus clicking.
   dragging: boolean;
   // focusAfterClear is a flag to indicate that the dropdowm menu should open after a selected
@@ -103,7 +99,7 @@ class Select extends React.Component<PropsT, SelectStateT> {
     isFocused: false,
     isOpen: this.props.startOpen,
     isPseudoFocused: false,
-  };
+  } as SelectStateT;
 
   componentDidMount() {
     if (this.props.autoFocus) {
@@ -265,7 +261,7 @@ class Select extends React.Component<PropsT, SelectStateT> {
     this.openAfterFocus = false;
   };
 
-  handleBlur = (event: Event) => {
+  handleBlur = (event: React.FocusEvent | MouseEvent) => {
     if (containsNode(this.anchor.current, event.target)) {
       return;
     }
@@ -284,6 +280,7 @@ class Select extends React.Component<PropsT, SelectStateT> {
       onBlurredState.inputValue = '';
     }
 
+    // @ts-ignore weird
     this.setState(onBlurredState);
 
     if (__BROWSER__) {
@@ -609,7 +606,9 @@ class Select extends React.Component<PropsT, SelectStateT> {
             {...sharedProps}
             $disabled={disabled}
           >
-            {renderLabel({option: value, index: i})}
+            {
+              // @ts-ignore todo: index is not in function signature
+            renderLabel({option: value, index: i})}
           </MultiValue>
         );
       });
@@ -781,7 +780,7 @@ class Select extends React.Component<PropsT, SelectStateT> {
             filterValue.toLowerCase().trim(),
         )
     ) {
-      // $FlowFixMe
+      // @ts-ignore
       options.push({
         id: filterValue,
         [this.props.labelKey]: filterValue,

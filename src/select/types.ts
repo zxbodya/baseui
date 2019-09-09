@@ -132,7 +132,7 @@ export type PropsT = {
   multi: boolean;
   /** Message to be displayed if no options is found for a search query. */
   noResultsMsg?: React.ReactNode;
-  onBlur: (e: Event) => unknown;
+  onBlur: (e: React.FocusEvent | MouseEvent) => unknown;
   /** Defines if the input value is reset to an empty string when a blur event happens on the select. */
   onBlurResetsInput: boolean;
   /** change handler of the select to be called when a value is changed. */
@@ -246,7 +246,7 @@ export type AutosizeInputOverridesT = {
 export type AutosizeInputPropsT = {
   value: string;
   defaultValue?: string;
-  inputRef: () => void;
+  inputRef: (ref: any) => any;
   overrides: AutosizeInputOverridesT;
   $size: SizeT;
 };

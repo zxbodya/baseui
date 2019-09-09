@@ -113,7 +113,7 @@ function getLabelColor(props) {
   return $disabled ? colors.foregroundAlt : colors.foreground;
 }
 
-export const RadioGroupRoot = styled<StylePropsT>('div', props => {
+export const RadioGroupRoot = styled<'div', StylePropsT>('div', props => {
   const {$disabled, $align} = props;
   return {
     flexDirection: $align === 'horizontal' ? 'row' : 'column',
@@ -123,7 +123,7 @@ export const RadioGroupRoot = styled<StylePropsT>('div', props => {
   };
 });
 
-export const Root = styled<StylePropsT>('label', props => {
+export const Root = styled<'label', StylePropsT>('label', props => {
   const {$disabled, $hasDescription, $labelPlacement, $theme} = props;
   const {sizing} = $theme;
   return {
@@ -139,7 +139,7 @@ export const Root = styled<StylePropsT>('label', props => {
   } as {};
 });
 
-export const RadioMarkInner = styled<StylePropsT>('div', props => {
+export const RadioMarkInner = styled<'div', StylePropsT>('div', props => {
   const {animation, sizing} = props.$theme;
 
   return {
@@ -155,7 +155,7 @@ export const RadioMarkInner = styled<StylePropsT>('div', props => {
   };
 });
 
-export const RadioMarkOuter = styled<StylePropsT>('div', props => {
+export const RadioMarkOuter = styled<'div', StylePropsT>('div', props => {
   const {sizing} = props.$theme;
 
   return {
@@ -178,7 +178,7 @@ export const RadioMarkOuter = styled<StylePropsT>('div', props => {
   } as {};
 });
 
-export const Label = styled<StylePropsT>('div', props => {
+export const Label = styled<'div', StylePropsT>('div', props => {
   const {
     $theme: {typography},
   } = props;
@@ -200,7 +200,7 @@ export const Input = styled('input', {
   position: 'absolute',
 });
 
-export const Description = styled<StylePropsT>('div', props => {
+export const Description = styled<'div', StylePropsT>('div', props => {
   return {
     ...props.$theme.typography.font300,
     color: props.$theme.colors.colorSecondary,

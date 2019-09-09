@@ -9,11 +9,15 @@ import {ThemeT} from '../styles/types';
 import {ADJOINED, ENHANCER_POSITION, SIZE} from './constants';
 import {SharedPropsT, SizeT} from './types';
 import DeleteAlt from '../icon/delete-alt';
+import {StyleObject} from 'styletron-standard';
 
-export const StyledClearIconContainer = styled<{
-  $alignTop: boolean;
-  $theme: ThemeT;
-}>('div', ({$alignTop = false, $theme}) => {
+export const StyledClearIconContainer = styled<
+  'div',
+  {
+    $alignTop: boolean;
+    $theme: ThemeT;
+  }
+>('div', ({$alignTop = false, $theme}) => {
   return {
     display: 'flex',
     alignItems: $alignTop ? 'flex-start' : 'center',
@@ -59,7 +63,7 @@ function getFont(size, typography) {
   }[size];
 }
 
-export const Root = styled<SharedPropsT>('div', props => {
+export const Root = styled<'div', SharedPropsT>('div', props => {
   const {
     $size,
     $theme: {colors, typography},
@@ -149,7 +153,7 @@ function getInputEnhancerColors(
   };
 }
 
-export const InputEnhancer = styled<SharedPropsT>('div', props => {
+export const InputEnhancer = styled<'div', SharedPropsT>('div', props => {
   const {
     $position,
     $size,
@@ -175,33 +179,37 @@ export const InputEnhancer = styled<SharedPropsT>('div', props => {
 
 // InputContainer
 
-function getInputContainerBorderRadius(adjoined, radius) {
-  return {
-    [ADJOINED.none]: {
-      borderTopLeftRadius: radius,
-      borderBottomLeftRadius: radius,
-      borderTopRightRadius: radius,
-      borderBottomRightRadius: radius,
-    },
-    [ADJOINED.left]: {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      borderTopRightRadius: radius,
-      borderBottomRightRadius: radius,
-    },
-    [ADJOINED.right]: {
-      borderTopLeftRadius: radius,
-      borderBottomLeftRadius: radius,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-    [ADJOINED.both]: {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-  }[adjoined];
+function getInputContainerBorderRadius(adjoined, radius): StyleObject {
+  switch (adjoined) {
+    case ADJOINED.none:
+      return {
+        borderTopLeftRadius: radius,
+        borderBottomLeftRadius: radius,
+        borderTopRightRadius: radius,
+        borderBottomRightRadius: radius,
+      };
+    case ADJOINED.left:
+      return {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+        borderTopRightRadius: radius,
+        borderBottomRightRadius: radius,
+      };
+    case ADJOINED.right:
+      return {
+        borderTopLeftRadius: radius,
+        borderBottomLeftRadius: radius,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      };
+    case ADJOINED.both:
+      return {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      };
+  }
 }
 
 function getInputContainerColors(
@@ -210,7 +218,7 @@ function getInputContainerColors(
   $error,
   $positive,
   colors,
-) {
+): StyleObject {
   if ($disabled) {
     return {
       color: colors.inputTextDisabled,
@@ -252,13 +260,13 @@ function getInputContainerColors(
 
 export const getInputContainerStyles = (props: {
   $adjoined: keyof typeof ADJOINED;
-  $isFocused: boolean;
-  $error: boolean;
-  $disabled: boolean;
-  $positive: boolean;
+  $isFocused?: boolean;
+  $error?: boolean;
+  $disabled?: boolean;
+  $positive?: boolean;
   $size: SizeT;
   $theme: ThemeT;
-}) => {
+}): StyleObject => {
   const {
     $isFocused,
     $adjoined,
@@ -289,12 +297,12 @@ export const getInputContainerStyles = (props: {
   };
 };
 
-export const InputContainer = styled<SharedPropsT>(
+export const InputContainer = styled<'div', SharedPropsT>(
   'div',
   getInputContainerStyles,
 );
 
-function getInputColors($disabled, $isFocused, $error, colors) {
+function getInputColors($disabled, $isFocused, $error, colors): StyleObject {
   if ($disabled) {
     return {
       color: colors.foregroundAlt,
@@ -318,7 +326,7 @@ export const getInputStyles = (
   props: SharedPropsT & {
     $theme: ThemeT;
   },
-) => {
+): StyleObject => {
   const {
     $disabled,
     $isFocused,
@@ -346,4 +354,4 @@ export const getInputStyles = (
   };
 };
 
-export const Input = styled<SharedPropsT>('input', getInputStyles);
+export const Input = styled<'input', SharedPropsT>('input', getInputStyles);

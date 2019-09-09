@@ -46,7 +46,7 @@ export default class SideNav extends React.Component<NavPropsT> {
       StyledSubNavContainer,
     );
 
-    const renderNavItem = (item: Item, level: number, index, mapItem) => {
+    const renderNavItem = (item: Item, level: number, index, mapItem?) => {
       if (typeof mapItem === 'function') {
         const recMapItem = item => {
           let subNav = [];

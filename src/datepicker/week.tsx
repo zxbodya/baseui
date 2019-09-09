@@ -33,6 +33,7 @@ export default class Week extends React.Component<WeekPropsT> {
         const day = addDays(startOfWeek, offset);
         return (
           // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+          // @ts-ignore todo: excludeDates looks to be an error
           <Day
             date={day}
             disabled={isDayDisabled(day, this.props)}
