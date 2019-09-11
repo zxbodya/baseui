@@ -23,7 +23,7 @@
     "noEmit": true /* Do not emit outputs. */,
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     "downlevelIteration": true /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */,
-    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "isolatedModules": false,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
     //    "strict": true,                           /* Enable all strict type-checking options. */
@@ -67,7 +67,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "exclude": [
-    "documentation-site",
+    "documentation-site/examples/datepicker/**/*",
     "src/codemods/__testfixtures__/**/*",
     "src/codemods/__tests__/**/*",
     "src/*/__tests__/**/*"

@@ -8,8 +8,9 @@ import * as React from 'react';
 
 import Block from '../block/block';
 import {BlockPropsT} from '../block/types';
+import {ComponentProps} from 'react';
 
-export const AspectRatioBoxBody: React.FC<BlockPropsT> = ({
+export const AspectRatioBoxBody: React.FC<ComponentProps<typeof Block>> = ({
   position,
   top,
   bottom,

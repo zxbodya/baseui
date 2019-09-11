@@ -6,7 +6,7 @@ import {
   darkThemePrimitives,
   ThemeProvider,
 } from 'baseui';
-import {Theme} from 'baseui/theme';
+import {ThemeT as Theme} from 'baseui';
 import Router, {withRouter} from 'next/router';
 import {Button, KIND, SIZE} from 'baseui/button';
 import {StatefulTabs, Tab} from 'baseui/tabs';

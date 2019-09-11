@@ -9,6 +9,7 @@ import {defaultProps} from '../button/default-props';
 import {Button} from '../button/index';
 import {ButtonPropsT} from '../button/types';
 import {mergeOverrides} from '../helpers/overrides';
+import {ComponentProps} from 'react';
 
 // ModalButtons should have some margin pre-applied
 const overrides = {
@@ -19,7 +20,7 @@ const overrides = {
   },
 };
 
-export default class ModalButton extends React.Component<ButtonPropsT> {
+export default class ModalButton extends React.Component<ComponentProps<typeof Button>> {
   static defaultProps = defaultProps;
 
   render() {

@@ -190,7 +190,6 @@ export class ToasterContainer extends React.Component<
         if (__BROWSER__) {
           return ReactDOM.createPortal(
             root,
-            // $FlowFixMe
             document.body,
           );
         }

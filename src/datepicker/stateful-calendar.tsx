@@ -9,7 +9,7 @@ import StatefulContainer from './stateful-container';
 import Calendar from './calendar';
 import {CalendarPropsT, StatefulDatepickerPropsT} from './types';
 
-function StatefulComponent(props: StatefulDatepickerPropsT<CalendarPropsT>) {
+function StatefulComponent(props: StatefulDatepickerPropsT<CalendarPropsT> & Omit<CalendarPropsT, keyof StatefulDatepickerPropsT<CalendarPropsT>>) {
   return (
     <StatefulContainer {...props}>
       {extendedProps => <Calendar {...extendedProps} />}

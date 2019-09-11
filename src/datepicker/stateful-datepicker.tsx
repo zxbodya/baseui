@@ -10,7 +10,7 @@ import Datepicker from './datepicker';
 import {StatefulDatepickerPropsT, DatepickerPropsT} from './types';
 
 const StatefulComponent: React.FC<
-  StatefulDatepickerPropsT<DatepickerPropsT>
+  StatefulDatepickerPropsT<DatepickerPropsT> & Omit<DatepickerPropsT, keyof StatefulDatepickerPropsT<DatepickerPropsT>>
 > = props => (
   <StatefulContainer {...props}>
     {extendedProps => <Datepicker {...extendedProps} />}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {withStyle} from 'baseui';
-import {Select, StyledDropdownListItem, Value} from 'baseui/select';
+import {Select, StyledDropdownListItem, ValueT as Value} from 'baseui/select';
 import {StyledList} from 'baseui/menu';
 
 import {List, AutoSizer} from 'react-virtualized';
@@ -14,7 +14,7 @@ const ListItem = withStyle(StyledDropdownListItem, {
 
 const Container = withStyle(StyledList, {height: '500px'});
 
-const VirtualList = React.forwardRef((props: any, ref) => {
+const VirtualList = React.forwardRef<any, any>((props, ref) => {
   const children = React.Children.toArray(props.children);
   return (
     <Container ref={ref}>

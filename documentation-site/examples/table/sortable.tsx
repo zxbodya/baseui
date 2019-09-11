@@ -33,7 +33,7 @@ const DATA = [
   ['Neil', 27],
 ];
 
-type DirectionT = SORT_DIRECTION | null;
+type DirectionT = keyof typeof SORT_DIRECTION | null;
 
 export default class SortableTable extends React.Component<
   {},

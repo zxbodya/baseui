@@ -313,4 +313,4 @@ export const COUNTRIES = {
   ZM: {label: 'Zambia', id: 'ZM', dialCode: '+260'},
   ZW: {label: 'Zimbabwe', id: 'ZW', dialCode: '+263'},
   AX: {label: 'Åland Islands', id: 'AX', dialCode: '+358'},
-};
+} as const;

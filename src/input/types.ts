@@ -78,72 +78,68 @@ export type InputComponentsT = {
 
 export type BaseInputPropsT<T> = {
   /** Sets aria-label attribute. */
-  'aria-label': string | undefined | null;
+  'aria-label'?: string;
   /** Sets aria-labelledby attribute. */
-  'aria-labelledby': string | undefined | null;
+  'aria-labelledby'?: string;
   /** Sets aria-describedby attribute. */
-  'aria-describedby': string | undefined | null;
+  'aria-describedby'?: string;
   /** Defines styles for inputs that are grouped with other controls. */
-  adjoined: AdjoinedT;
+  adjoined?: AdjoinedT;
   /** Determines if browser should provide value suggestions. */
-  autoComplete: string;
+  autoComplete?: string;
   /** If true the input will be focused on the first mount. */
-  autoFocus: boolean;
+  autoFocus?: boolean;
   /** Renders component in 'disabled' state. */
-  disabled: boolean;
+  disabled?: boolean;
   /** Renders component in 'error' state. */
-  error: boolean;
+  error?: boolean;
   /** Renders component in 'positive' state. */
   positive?: boolean;
   /** A regex that is used to validate the value of the input on form submission. */
-  pattern: string | undefined | null;
+  pattern?: string;
   /** Id attribute value to be added to the input element and as a label's for attribute value. */
-  id: string;
+  id?: string;
   'data-baseweb'?: string;
   /** A  hint as to the type of data that might be entered by the user while editing the element or its contents. */
-  inputMode: string;
+  inputMode?: string;
   /** A ref to access an input element. */
   inputRef?: React.RefObject<any>;
-  name: string;
-  onBlur: (e: FocusEvent<T>) => unknown;
+  name?: string;
+  onBlur?: (e: FocusEvent<T>) => unknown;
   onChange?: (e: ChangeEvent<T>) => unknown;
   onKeyDown?: (e: KeyboardEvent<T>) => unknown;
   onKeyPress?: (e: KeyboardEvent<T>) => unknown;
   onKeyUp?: (e: KeyboardEvent<T>) => unknown;
-  onFocus: (e: FocusEvent<T>) => unknown;
+  onFocus?: (e: FocusEvent<T>) => unknown;
   /** If true, adds a clear value icon button to the end of the input container. */
-  clearable: boolean;
-  overrides: BaseInputComponentsT;
-  placeholder: string;
+  clearable?: boolean;
+  overrides?: BaseInputComponentsT;
+  placeholder?: string;
   /** Renders component in 'required' state. */
-  required: boolean;
+  required?: boolean;
   /** Renders component in provided size. */
-  size: SizeT;
+  size?: SizeT;
   /** Input type attribute. */
-  type: string;
+  type?: string;
   /** Input value attribute. */
   value?: string;
   rows?: number;
 };
 
 export type InputPropsT = {
-  overrides: InputComponentsT;
+  overrides?: InputComponentsT;
   /** An input helper rendered before and attached to the input field. */
-  startEnhancer:
+  startEnhancer?:
     | React.ReactNode
-    | ((props: PropsT) => React.ReactNode)
-    | undefined
-    | null;
+    | ((props: PropsT) => React.ReactNode);
   /** An input helper rendered after and attached to the input field. */
-  endEnhancer:
+  endEnhancer?:
     | React.ReactNode
-    | ((props: PropsT) => React.ReactNode)
-    | undefined
-    | null;
+    | ((props: PropsT) => React.ReactNode);
   /** Handler for the `focus` event. */
-  onFocus: (e: FocusEvent<HTMLInputElement>) => unknown;
+  onFocus?: (e: FocusEvent<HTMLInputElement>) => unknown;
   /** Handler for the `blur` event. */
-  onBlur: (e: FocusEvent<HTMLInputElement>) => unknown;
+  onBlur?: (e: FocusEvent<HTMLInputElement>) => unknown;
 } & BaseInputPropsT<HTMLInputElement>;
 
 export type MaskedInputPropsT = {
@@ -158,8 +154,8 @@ export type StatefulContainerPropsT<T> = {
   /** Initial state of an uncontrolled input component. */
   initialState?: StateT;
   /** A state change handler. Used to override default state transitions. */
-  stateReducer: StateReducerT;
-  onChange: (e: ChangeEvent<T>) => unknown;
+  stateReducer?: StateReducerT;
+  onChange?: (e: ChangeEvent<T>) => unknown;
   /** If true, adds a clear value icon button to the end of the input container. */
   clearable?: boolean;
 };

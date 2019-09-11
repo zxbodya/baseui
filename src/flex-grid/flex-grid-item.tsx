@@ -154,7 +154,7 @@ export const flexGridItemStyle = ({
   }, baseFlexGridItemStyle);
 };
 
-const FlexGridItem = ({
+const FlexGridItem: React.FC<FlexGridItemPropsT> = ({
   children,
   as,
   overrides,
@@ -162,7 +162,7 @@ const FlexGridItem = ({
   flexGridColumnGap,
   flexGridRowGap,
   ...restProps
-}: FlexGridItemPropsT): React.ReactNode => {
+}) => {
   const flexGridItemOverrides = {
     Block: {
       style: flexGridItemStyle,

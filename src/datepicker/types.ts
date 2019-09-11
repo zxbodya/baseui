@@ -247,9 +247,9 @@ export type NavigationContainerStateReducerT = (
 export type StatefulContainerPropsT<T> = {
   children: (a: T) => React.ReactNode;
   /** Initial state of an uncontrolled datepicker component. */
-  initialState: ContainerStateT;
+  initialState?: ContainerStateT;
   /** A state change handler. */
-  stateReducer: StateReducerT;
+  stateReducer?: StateReducerT;
   /** Event handler that is called when a date/time is selected. */
   onChange?: onChangeT;
   /** Should the date value be stored as an array or single value. */

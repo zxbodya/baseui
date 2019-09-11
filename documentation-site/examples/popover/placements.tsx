@@ -23,16 +23,16 @@ export default () => {
       {Object.keys(PLACEMENT).map((key, index) => (
         <div style={{padding: theme.sizing.scale700}} key={index}>
           <StatefulPopover
-            placement={PLACEMENT[key as keyof PLACEMENT]}
+            placement={PLACEMENT[key]}
             triggerType={TRIGGER_TYPE.hover}
             content={
               <Paragraph1 padding="scale300">{`PLACEMENT.${
-                PLACEMENT[key as keyof PLACEMENT]
+                PLACEMENT[key]
               }`}</Paragraph1>
             }
             accessibilityType={'tooltip'}
           >
-            <Button>{PLACEMENT[key as keyof PLACEMENT]}</Button>
+            <Button>{PLACEMENT[key]}</Button>
           </StatefulPopover>
         </div>
       ))}

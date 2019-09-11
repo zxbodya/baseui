@@ -82,7 +82,6 @@ const Knob: React.SFC<{
         <Spacing>
           <Label tooltip={getTooltip(description, type, name)}>{name}</Label>
           <Input
-            //@ts-ignore
             onChange={event => set(event.target.value)}
             placeholder={placeholder}
             size="compact"
@@ -120,7 +119,6 @@ const Knob: React.SFC<{
                 }),
               },
             }}
-            //@ts-ignore
             onChange={e => set(e.target.value)}
             value={val}
           >
@@ -153,7 +151,6 @@ const Knob: React.SFC<{
         <Spacing>
           <Label tooltip={getTooltip(description, type, name)}>{name}</Label>
           <Textarea
-            //@ts-ignore
             onChange={event => set(event.target.value)}
             value={val}
             size="compact"

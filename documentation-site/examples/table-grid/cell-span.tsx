@@ -41,9 +41,9 @@ export default function() {
           return (
             <React.Fragment>
               <StyledBodyCell $gridRow={`span ${row[2].length}`}>
-                <StyledLink href={row[1]}>{row[0]}</StyledLink>
+                <StyledLink href={row[1] as string}>{row[0]}</StyledLink>
               </StyledBodyCell>
-              {(row[2] as Array<any>).map(
+              {(row[2] as any[]).map(
                 (event: [Date, string], index: number) => {
                   const striped = index % 2 === 0;
                   return (

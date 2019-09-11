@@ -42,7 +42,7 @@ export const StyledTable = (React.forwardRef<
     />
   );
   // eslint-disable-next-line flowtype/no-weak-types
-}) as any) as StyletronComponent<{}>;
+}) as any) as StyletronComponent<ComponentProps<typeof StyledTableElement>>;
 StyledTable.__STYLETRON__ = StyledTableElement.__STYLETRON__;
 StyledTable.displayName = 'StyledTable';
 

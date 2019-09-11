@@ -9,6 +9,7 @@ import {
   createStyled,
   withStyle as styletronWithStyle,
   useStyletron as styletronUseStyletron,
+  StyletronComponentInjectedProps,
 } from 'styletron-react';
 import {driver, getInitialStyle} from 'styletron-standard';
 import {StyleObject} from 'styletron-standard';
@@ -34,11 +35,11 @@ const wrapper = StyledComponent => {
 
 /* eslint-disable flowtype/generic-spacing */
 /* eslint-disable flowtype/no-weak-types */
-export type StyletronComponent<Props> = React.FunctionComponent<
+export type StyletronComponent<Props extends object> = React.FunctionComponent<
   Props & {
     // todo: can be specific component
     ref?: Ref<any>;
-  }
+  } & StyletronComponentInjectedProps<Props>
 > & {
   __STYLETRON__: any;
 };

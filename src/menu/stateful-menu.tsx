@@ -11,10 +11,10 @@ import Menu from './menu';
 import {NestedMenuContext} from './nested-menus';
 import StatefulContainer from './stateful-container';
 
-import {StatefulMenuPropsT} from './types';
+import {StatefulMenuPropsT, StatelessMenuPropsT} from './types';
 
 export default class StatefulMenu extends React.PureComponent<
-  StatefulMenuPropsT
+  StatefulMenuPropsT & Omit<StatelessMenuPropsT, keyof StatefulMenuPropsT>
 > {
   render() {
     const {overrides, ...props} = this.props;
