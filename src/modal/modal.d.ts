@@ -2,8 +2,8 @@ import * as React from 'react';
 import type { ModalPropsT, ModalStateT, SharedStylePropsArgT, CloseSourceT, ElementRefT } from './types';
 declare class Modal extends React.Component<ModalPropsT, ModalStateT> {
     static defaultProps: Partial<ModalPropsT>;
-    animateOutTimer: TimeoutID | undefined | null;
-    animateStartTimer: AnimationFrameID | undefined | null;
+    animateOutTimer: any | undefined | null;
+    animateStartTimer: any | undefined | null;
     lastFocus: HTMLElement | undefined | null;
     lastMountNodeOverflowStyle: string | undefined | null;
     _refs: {

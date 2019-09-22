@@ -2,9 +2,9 @@ import * as React from 'react';
 import type { ToastPropsT, ToastPropsShapeT, ToastPrivateStateT, SharedStylePropsArgT } from './types';
 declare class Toast extends React.Component<ToastPropsT, ToastPrivateStateT> {
     static defaultProps: ToastPropsShapeT;
-    autoHideTimeout: TimeoutID | undefined | null;
-    animateInTimer: TimeoutID | undefined | null;
-    animateOutCompleteTimer: TimeoutID | undefined | null;
+    autoHideTimeout: any | undefined | null;
+    animateInTimer: any | undefined | null;
+    animateOutCompleteTimer: any | undefined | null;
     closeRef: {
         current: SVGElement | HTMLElement | undefined | null;
     } | undefined | null;

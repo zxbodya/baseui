@@ -3,11 +3,11 @@ import type { AnchorPropsT, PopoverPropsT, PopoverPrivateStateT, SharedStyleProp
 import type { PopperDataObjectT, NormalizedOffsetsT } from '../layer/types';
 declare class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     static defaultProps: Partial<PopoverPropsT>;
-    animateInTimer?: TimeoutID;
-    animateOutTimer?: TimeoutID;
-    animateOutCompleteTimer?: TimeoutID;
-    onMouseEnterTimer?: TimeoutID;
-    onMouseLeaveTimer?: TimeoutID;
+    animateInTimer?: any;
+    animateOutTimer?: any;
+    animateOutCompleteTimer?: any;
+    onMouseEnterTimer?: any;
+    onMouseLeaveTimer?: any;
     generatedId: string;
     anchorRef: {
         current: any;

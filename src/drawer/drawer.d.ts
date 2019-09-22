@@ -2,8 +2,8 @@ import * as React from 'react';
 import type { DrawerPropsT, DrawerStateT, SharedStylePropsArgT, CloseSourceT, ElementRefT } from './types';
 declare class Drawer extends React.Component<DrawerPropsT, DrawerStateT> {
     static defaultProps: Partial<DrawerPropsT>;
-    animateOutTimer: TimeoutID | undefined | null;
-    animateStartTimer: AnimationFrameID | undefined | null;
+    animateOutTimer: any | undefined | null;
+    animateStartTimer: any | undefined | null;
     lastFocus: HTMLElement | undefined | null;
     lastMountNodeOverflowStyle: string | undefined | null;
     _refs: {
