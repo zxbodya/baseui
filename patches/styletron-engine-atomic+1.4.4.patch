@@ -1,0 +1,959 @@
+diff --git a/node_modules/styletron-engine-atomic/src/__tests__/test.node.js b/node_modules/styletron-engine-atomic/src/__tests__/test.node.js
+new file mode 100644
+index 0000000..23e520d
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/__tests__/test.node.js
+@@ -0,0 +1,148 @@
++// @flow
++
++import test from "tape";
++
++import {validateNoMixedHand} from "../validate-no-mixed-hand.js";
++
++import sortMq from "../sort-css-media-queries.js";
++
++test("validateNoMixedHand", t => {
++  t.deepEqual(
++    validateNoMixedHand({
++      border: "red",
++      borderColor: "blue",
++      borderTopColor: "green",
++    }),
++    [
++      {
++        shorthand: {property: "border", value: "red"},
++        longhand: {property: "borderTopColor", value: "green"},
++      },
++      {
++        shorthand: {property: "border", value: "red"},
++        longhand: {property: "borderColor", value: "blue"},
++      },
++      {
++        shorthand: {property: "borderColor", value: "blue"},
++        longhand: {property: "borderTopColor", value: "green"},
++      },
++    ],
++  );
++  t.end();
++});
++
++test("sortMq simple", t => {
++  const receivedOrder = [
++    "screen and (max-width: 640px)",
++    "screen and (min-width: 980px)",
++    "screen and (max-width: 980px)",
++    "screen and (max-width: 768px)",
++    "screen and (min-width: 640px)",
++    "screen and (min-width: 1280px)",
++    "screen and (min-width: 768px)",
++    "screen and (max-width: 1280px)",
++  ];
++
++  const expectedOrder = [
++    "screen and (min-width: 640px)",
++    "screen and (min-width: 768px)",
++    "screen and (min-width: 980px)",
++    "screen and (min-width: 1280px)",
++    "screen and (max-width: 1280px)",
++    "screen and (max-width: 980px)",
++    "screen and (max-width: 768px)",
++    "screen and (max-width: 640px)",
++  ];
++  t.deepEqual(receivedOrder.sort(sortMq), expectedOrder);
++  t.end();
++});
++
++test("sortMq simple 2", t => {
++  const receivedOrder = [
++    "screen and (max-width: 640px)",
++    "screen and (max-width: 640px)",
++    "screen and (min-width: 1280px)",
++    "screen and (max-width: 640px)",
++  ];
++
++  const expectedOrder = [
++    "screen and (min-width: 1280px)",
++    "screen and (max-width: 640px)",
++    "screen and (max-width: 640px)",
++    "screen and (max-width: 640px)",
++  ];
++  t.deepEqual(receivedOrder.sort(sortMq), expectedOrder);
++  t.end();
++});
++
++test("sortMq no media type", t => {
++  const receivedOrder = [
++    "(min-width: 980px)",
++    "(min-width: 640px)",
++    "(min-width: 768px)",
++  ];
++
++  const expectedOrder = [
++    "(min-width: 640px)",
++    "(min-width: 768px)",
++    "(min-width: 980px)",
++  ];
++  t.deepEqual(receivedOrder.sort(sortMq), expectedOrder);
++  t.end();
++});
++
++test("sortMq without dimension", t => {
++  const receivedOrder = [
++    "tv",
++    "print and (orientation: landscape)",
++    "print and (orientation: portrait)",
++    "print and (orientation: portrait)",
++    "screen and (orientation: landscape)",
++    "print",
++    "screen and (orientation: portrait)",
++    "print and (orientation: landscape)",
++    "print and (orientation: portrait)",
++  ];
++  const expectedOrder = [
++    "screen and (orientation: landscape)",
++    "screen and (orientation: portrait)",
++    "tv",
++    "print",
++    "print and (orientation: landscape)",
++    "print and (orientation: landscape)",
++    "print and (orientation: portrait)",
++    "print and (orientation: portrait)",
++    "print and (orientation: portrait)",
++  ];
++  t.deepEqual(receivedOrder.sort(sortMq), expectedOrder);
++  t.end();
++});
++
++test("mixed", t => {
++  const receivedOrder = [
++    "tv",
++    "print and (orientation: landscape)",
++    "screen and (min-width: 1280px)",
++    "screen and (max-width: 640px)",
++    "screen and (orientation: landscape)",
++    "print",
++    "screen and (orientation: portrait)",
++    "screen and (min-width: 768px)",
++    "screen and (max-width: 1280px)",
++    "print and (orientation: portrait)",
++  ];
++  const expectedOrder = [
++    "screen and (min-width: 768px)",
++    "screen and (min-width: 1280px)",
++    "screen and (max-width: 1280px)",
++    "screen and (max-width: 640px)",
++    "screen and (orientation: landscape)",
++    "screen and (orientation: portrait)",
++    "tv",
++    "print",
++    "print and (orientation: landscape)",
++    "print and (orientation: portrait)",
++  ];
++  t.deepEqual(receivedOrder.sort(sortMq), expectedOrder);
++  t.end();
++});
+diff --git a/node_modules/styletron-engine-atomic/src/cache.d.ts b/node_modules/styletron-engine-atomic/src/cache.d.ts
+new file mode 100644
+index 0000000..6a2c711
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/cache.d.ts
+@@ -0,0 +1,26 @@
++import SequentialIDGenerator from "./sequential-id-generator";
++declare type OnNewCacheFn<T> = (c: string, b: Cache<T>, a?: string | null) => any;
++declare type OnNewValueFn<T> = (cache: Cache<T>, id: string, value: T) => any;
++export declare class MultiCache<T> {
++    caches: {
++        [x: string]: Cache<T>;
++    };
++    idGenerator: SequentialIDGenerator;
++    onNewCache: OnNewCacheFn<T>;
++    onNewValue: OnNewValueFn<T>;
++    sortedCacheKeys: string[];
++    constructor(idGenerator: SequentialIDGenerator, onNewCache: OnNewCacheFn<T>, onNewValue: OnNewValueFn<T>);
++    getCache(key: string): Cache<T>;
++    getSortedCacheKeys(): string[];
++}
++export declare class Cache<T> {
++    cache: {
++        [x: string]: string;
++    };
++    idGenerator: SequentialIDGenerator;
++    key: string;
++    onNewValue: (cache: Cache<T>, id: string, value: any) => any;
++    constructor(idGenerator: SequentialIDGenerator, onNewValue: (cache: Cache<T>, id: string, value: any) => any);
++    addValue(key: string, value: T): string;
++}
++export {};
+diff --git a/node_modules/styletron-engine-atomic/src/client/__tests__/client.browser.js b/node_modules/styletron-engine-atomic/src/client/__tests__/client.browser.js
+new file mode 100644
+index 0000000..9f0a562
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/client/__tests__/client.browser.js
+@@ -0,0 +1,337 @@
++// @flow
++
++/* eslint-env browser */
++
++import StyletronServer from "../../server/server.js";
++import StyletronClient from "../client.js";
++import test from "tape";
++const reduce = Array.prototype.reduce;
++const map = Array.prototype.map;
++
++test("container config", t => {
++  const instance = new StyletronClient();
++  t.strictEqual(
++    instance.container,
++    document.head,
++    "container defaults to document.head",
++  );
++  t.end();
++});
++
++test("automatic stylesheet insertion", t => {
++  const container = document.createElement("div");
++  document.body && document.body.appendChild(container);
++  const instance = new StyletronClient({container});
++  t.strictEqual(instance.container, container, "uses container config");
++  // lazy instantiation
++  t.equal(document.styleSheets.length, 0, "sheet not yet instantiated");
++  t.equal(
++    instance.renderStyle({color: "purple"}),
++    "ae",
++    "new unique class returned",
++  );
++  t.equal(document.styleSheets.length, 1, "sheet added");
++  instance.container.remove();
++  t.equal(document.styleSheets.length, 0, "no sheets after container removed");
++  t.end();
++});
++
++test("rendering", t => {
++  const container = document.createElement("div");
++  document.body && document.body.appendChild(container);
++  const instance = new StyletronClient({container});
++  t.equal(
++    instance.renderStyle({color: "purple"}),
++    "ae",
++    "new unique class returned",
++  );
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {media: "", rules: [".ae { color: purple; }"]},
++  ]);
++  t.equal(
++    instance.renderStyle({
++      "@media (min-width: 800px)": {color: "purple"},
++    }),
++    "af",
++    "new unique class returned",
++  );
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {media: "", rules: [".ae { color: purple; }"]},
++    {media: "(min-width: 800px)", rules: [".af { color: purple; }"]},
++  ]);
++  instance.renderStyle({
++    userSelect: "none",
++  });
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {
++      media: "",
++      rules: [".ae { color: purple; }", ".ag { user-select: none; }"],
++    },
++    {media: "(min-width: 800px)", rules: [".af { color: purple; }"]},
++  ]);
++  instance.renderStyle({
++    display: "flex",
++  });
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {
++      media: "",
++      rules: [
++        ".ae { color: purple; }",
++        ".ag { user-select: none; }",
++        ".ah { display: flex; }",
++      ],
++    },
++    {media: "(min-width: 800px)", rules: [".af { color: purple; }"]},
++  ]);
++  instance.renderStyle({
++    "@media (min-width: 600px)": {
++      color: "red",
++    },
++  });
++  t.deepEqual(
++    sheetsToRules(document.styleSheets),
++    [
++      {
++        media: "",
++        rules: [
++          ".ae { color: purple; }",
++          ".ag { user-select: none; }",
++          ".ah { display: flex; }",
++        ],
++      },
++      {media: "(min-width: 600px)", rules: [".ai { color: red; }"]},
++      {media: "(min-width: 800px)", rules: [".af { color: purple; }"]},
++    ],
++    "media queries are mobile first sorted",
++  );
++  instance.container.remove();
++  t.end();
++});
++
++test("prefix", t => {
++  const container = document.createElement("div");
++  document.body && document.body.appendChild(container);
++  const instance = new StyletronClient({container, prefix: "foo_"});
++  t.equal(
++    instance.renderStyle({color: "purple"}),
++    "foo_ae",
++    "new unique class returned",
++  );
++  t.equal(
++    instance.renderFontFace({src: "url(blah)"}),
++    "foo_ae",
++    "new unique font family returned",
++  );
++  t.equal(
++    instance.renderKeyframes({from: {color: "red"}, to: {color: "blue"}}),
++    "foo_ae",
++    "new unique animation name returned",
++  );
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {
++      media: "",
++      rules: [
++        ".foo_ae { color: purple; }",
++        `@font-face { font-family: foo_ae; src: url("blah"); }`,
++        "@keyframes foo_ae { \n  0% { color: red; }\n  100% { color: blue; }\n}",
++      ],
++    },
++  ]);
++  instance.container.remove();
++  t.end();
++});
++
++test("hydration", t => {
++  const {getSheets, cleanup, container} = setup();
++
++  // SSR
++  const server = new StyletronServer();
++  injectFixtureStyles(server);
++  container.innerHTML = server.getStylesheetsHtml();
++
++  // Hydration
++  const instance = new StyletronClient({
++    hydrate: getSheets(),
++  });
++
++  const beforeSheetLength = document.styleSheets.length;
++  const beforeRules = elementsToRules(getSheets());
++  injectFixtureStyles(instance);
++  const afterSheetLength = document.styleSheets.length;
++  const afterRules = elementsToRules(getSheets());
++  t.equal(
++    beforeSheetLength,
++    afterSheetLength,
++    "number of stylesheets should not have changed",
++  );
++  t.deepEqual(
++    afterRules,
++    beforeRules,
++    "CSSStylesheet rules not changed after rendering hydrated styles",
++  );
++  cleanup();
++  t.end();
++});
++
++test("sort client media queries", t => {
++  const {cleanup, container} = setup();
++
++  const styletron = new StyletronClient({container});
++
++  styletron.renderStyle({
++    "@media (min-width: 700px)": {
++      color: "pink",
++    },
++  });
++
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {media: "", rules: []},
++    {media: "(min-width: 700px)", rules: [".ae { color: pink; }"]},
++  ]);
++
++  cleanup();
++  t.end();
++});
++
++test("sort a new media query after hydration", t => {
++  const {getSheets, cleanup, container} = setup();
++
++  // SSR
++  const server = new StyletronServer();
++  injectFixtureStyles(server);
++  container.innerHTML = server.getStylesheetsHtml();
++
++  //Hydration
++  const instance = new StyletronClient({
++    hydrate: getSheets(),
++    container,
++  });
++
++  //render a client-only and unique media query (mid position)
++  instance.renderStyle({
++    "@media (min-width: 700px)": {
++      color: "pink",
++    },
++  });
++
++  //render a client-only and unique media query (end position)
++  instance.renderStyle({
++    "@media (min-width: 1000px)": {
++      color: "black",
++    },
++  });
++
++  t.deepEqual(sheetsToRules(document.styleSheets), [
++    {
++      media: "",
++      rules: [
++        "@keyframes ae { \n  0% { color: red; }\n  100% { color: blue; }\n}",
++      ],
++    },
++    {media: "", rules: ['@font-face { font-family: ae; src: url("blah"); }']},
++    {
++      media: "",
++      rules: [
++        ".ae { color: red; }",
++        ".af { color: green; }",
++        ".aj:hover { display: none; }",
++        ".ak { user-select: none; }",
++        ".al { display: flex; }",
++      ],
++    },
++    {media: "(min-width: 600px)", rules: [".ah { color: red; }"]},
++    {media: "(min-width: 700px)", rules: [".am { color: pink; }"]},
++    {
++      media: "(min-width: 800px)",
++      rules: [".ag { color: green; }", ".ai:hover { color: green; }"],
++    },
++    {media: "(min-width: 1000px)", rules: [".an { color: black; }"]},
++  ]);
++
++  cleanup();
++  t.end();
++});
++
++function injectFixtureStyles(styletron) {
++  styletron.renderStyle({color: "red"});
++  styletron.renderStyle({color: "green"});
++  styletron.renderStyle({
++    "@media (min-width: 800px)": {
++      color: "green",
++    },
++  });
++  styletron.renderStyle({
++    "@media (min-width: 600px)": {
++      color: "red",
++    },
++  });
++  styletron.renderStyle({
++    "@media (min-width: 800px)": {
++      ":hover": {
++        color: "green",
++      },
++    },
++  });
++  styletron.renderStyle({
++    ":hover": {
++      display: "none",
++    },
++  });
++  styletron.renderStyle({
++    userSelect: "none",
++  });
++  styletron.renderStyle({
++    display: "flex",
++  });
++  styletron.renderFontFace({src: "url(blah)"});
++  styletron.renderKeyframes({from: {color: "red"}, to: {color: "blue"}});
++}
++
++function setup() {
++  const container = document.createElement("div");
++  if (document.body === void 0) {
++    throw new Error("no body");
++  }
++
++  if (document.body === null) {
++    throw new Error("body is null");
++  }
++  document.body.appendChild(container);
++
++  return {
++    container,
++    getSheets() {
++      return ((container.children: any): HTMLCollection<HTMLStyleElement>);
++    },
++    cleanup() {
++      container.remove();
++    },
++  };
++}
++
++function sheetToRules(sheet) {
++  return reduce.call(
++    sheet.cssRules,
++    (acc, rule) => {
++      return [...acc, rule.cssText];
++    },
++    [],
++  );
++}
++
++function elementsToRules(elements) {
++  return sheetsToRules(map.call(elements, el => el.sheet));
++}
++
++function sheetsToRules(sheets) {
++  return reduce.call(
++    sheets,
++    (acc, sheet) => {
++      return [
++        ...acc,
++        {media: sheet.media.mediaText, rules: sheetToRules(sheet)},
++      ];
++    },
++    [],
++  );
++}
+diff --git a/node_modules/styletron-engine-atomic/src/client/client.d.ts b/node_modules/styletron-engine-atomic/src/client/client.d.ts
+new file mode 100644
+index 0000000..d884e63
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/client/client.d.ts
+@@ -0,0 +1,27 @@
++import { StandardEngine, KeyframesObject, FontFaceObject, StyleObject } from "styletron-standard";
++import { Cache, MultiCache } from "../cache";
++declare type hydrateT = HTMLCollectionOf<HTMLStyleElement> | Array<HTMLStyleElement> | NodeListOf<HTMLStyleElement>;
++declare type optionsT = {
++    hydrate?: hydrateT;
++    container?: Element;
++    prefix?: string;
++};
++declare class StyletronClient implements StandardEngine {
++    container: Element;
++    styleElements: {
++        [x: string]: HTMLStyleElement;
++    };
++    fontFaceSheet: HTMLStyleElement;
++    keyframesSheet: HTMLStyleElement;
++    styleCache: MultiCache<{
++        pseudo: string;
++        block: string;
++    }>;
++    keyframesCache: Cache<KeyframesObject>;
++    fontFaceCache: Cache<FontFaceObject>;
++    constructor(opts?: optionsT);
++    renderStyle(style: StyleObject): string;
++    renderFontFace(fontFace: FontFaceObject): string;
++    renderKeyframes(keyframes: KeyframesObject): string;
++}
++export default StyletronClient;
+diff --git a/node_modules/styletron-engine-atomic/src/client/client.js b/node_modules/styletron-engine-atomic/src/client/client.js
+index 4be8d96..e574a41 100644
+--- a/node_modules/styletron-engine-atomic/src/client/client.js
++++ b/node_modules/styletron-engine-atomic/src/client/client.js
+@@ -185,7 +185,7 @@ class StyletronClient implements StandardEngine {
+ 
+       for (let i = 0; i < opts.hydrate.length; i++) {
+         const element = opts.hydrate[i];
+-        const hydrateType = element.dataset.hydrate;
++        const hydrateType = element.getAttribute("data-hydrate");
+         if (hydrateType === "font-face") {
+           hydrate(this.fontFaceCache, FONT_FACE_HYDRATOR, element.textContent);
+           continue;
+diff --git a/node_modules/styletron-engine-atomic/src/css.d.ts b/node_modules/styletron-engine-atomic/src/css.d.ts
+new file mode 100644
+index 0000000..9cd3f1b
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/css.d.ts
+@@ -0,0 +1,8 @@
++export declare function atomicSelector(id: string, pseudo: string): string;
++export declare function keyframesToBlock(keyframes: {
++    [x: string]: any;
++}): string;
++export declare function declarationsToBlock(style: any): string;
++export declare function keyframesBlockToRule(id: string, block: string): string;
++export declare function fontFaceBlockToRule(id: string, block: string): string;
++export declare function styleBlockToRule(selector: string, block: string): string;
+diff --git a/node_modules/styletron-engine-atomic/src/dev-tool.d.ts b/node_modules/styletron-engine-atomic/src/dev-tool.d.ts
+new file mode 100644
+index 0000000..584837a
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/dev-tool.d.ts
+@@ -0,0 +1,2 @@
++export declare const insertRuleIntoDevtools: (selector: any, block: any) => void;
++export declare const hydrateDevtoolsRule: (cssString: any) => void;
+diff --git a/node_modules/styletron-engine-atomic/src/hyphenate-style-name.d.ts b/node_modules/styletron-engine-atomic/src/hyphenate-style-name.d.ts
+new file mode 100644
+index 0000000..fe789f4
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/hyphenate-style-name.d.ts
+@@ -0,0 +1 @@
++export default function hyphenateStyleName(prop: string): string;
+diff --git a/node_modules/styletron-engine-atomic/src/index.d.ts b/node_modules/styletron-engine-atomic/src/index.d.ts
+new file mode 100644
+index 0000000..6b74d9f
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/index.d.ts
+@@ -0,0 +1,7 @@
++declare global {
++    interface Window {
++        __STYLETRON_DEVTOOLS__: any;
++    }
++}
++export { default as Client } from "./client/client";
++export { default as Server } from "./server/server";
+diff --git a/node_modules/styletron-engine-atomic/src/inject-style-prefixed.d.ts b/node_modules/styletron-engine-atomic/src/inject-style-prefixed.d.ts
+new file mode 100644
+index 0000000..fc4cfff
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/inject-style-prefixed.d.ts
+@@ -0,0 +1,6 @@
++import { StyleObject } from "styletron-standard";
++import { MultiCache } from "./cache";
++export default function injectStylePrefixed(styleCache: MultiCache<{
++    pseudo: string;
++    block: string;
++}>, styles: StyleObject, media: string, pseudo: string): string;
+diff --git a/node_modules/styletron-engine-atomic/src/sequential-id-generator.d.ts b/node_modules/styletron-engine-atomic/src/sequential-id-generator.d.ts
+new file mode 100644
+index 0000000..495c994
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/sequential-id-generator.d.ts
+@@ -0,0 +1,10 @@
++export default class SequentialIDGenerator {
++    prefix: string;
++    count: number;
++    offset: number;
++    msb: number;
++    power: number;
++    constructor(prefix?: string);
++    next(): string;
++    increment(): number;
++}
+diff --git a/node_modules/styletron-engine-atomic/src/server/__tests__/tests.node.js b/node_modules/styletron-engine-atomic/src/server/__tests__/tests.node.js
+new file mode 100644
+index 0000000..411f875
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/server/__tests__/tests.node.js
+@@ -0,0 +1,194 @@
++// @flow
++
++import test from "tape";
++import Styletron from "../server.js";
++
++test("StyletronServer toCss", t => {
++  const styletron = new Styletron();
++  t.equal(styletron.getCss(), "", "returns empty string when no styles");
++  injectFixtureStyles(styletron);
++  t.equal(
++    styletron.getCss(),
++    ".ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}@media (min-width: 600px){.ah{color:red}}@media (min-width: 800px){.ag{color:green}.ai:hover{color:green}}",
++  );
++  injectFixtureStyles(styletron);
++  t.equal(
++    styletron.getCss(),
++    ".ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}@media (min-width: 600px){.ah{color:red}}@media (min-width: 800px){.ag{color:green}.ai:hover{color:green}}",
++  );
++  injectFixtureKeyframes(styletron);
++  t.equal(
++    styletron.getCss(),
++    "@keyframes ae{from{color:purple}50%{color:yellow}to{color:orange}}.ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}@media (min-width: 600px){.ah{color:red}}@media (min-width: 800px){.ag{color:green}.ai:hover{color:green}}",
++  );
++  t.end();
++});
++
++test("StyletronServer getStylesheets", t => {
++  const styletron = new Styletron();
++  t.deepEqual(
++    styletron.getStylesheets(),
++    [{css: "", attrs: {}}],
++    "no styles yields array with single empty stylesheet",
++  );
++  injectFixtureStyles(styletron);
++  t.deepEqual(styletron.getStylesheets(), [
++    {
++      css:
++        ".ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}",
++      attrs: {},
++    },
++    {css: ".ah{color:red}", attrs: {media: "(min-width: 600px)"}},
++    {
++      css: ".ag{color:green}.ai:hover{color:green}",
++      attrs: {media: "(min-width: 800px)"},
++    },
++  ]);
++  injectFixtureKeyframes(styletron);
++  t.deepEqual(styletron.getStylesheets(), [
++    {
++      css: "@keyframes ae{from{color:purple}50%{color:yellow}to{color:orange}}",
++      attrs: {"data-hydrate": "keyframes"},
++    },
++    {
++      css:
++        ".ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}",
++      attrs: {},
++    },
++    {css: ".ah{color:red}", attrs: {media: "(min-width: 600px)"}},
++    {
++      css: ".ag{color:green}.ai:hover{color:green}",
++      attrs: {media: "(min-width: 800px)"},
++    },
++  ]);
++  injectFixtureFontFace(styletron);
++  t.deepEqual(styletron.getStylesheets(), [
++    {
++      css: "@keyframes ae{from{color:purple}50%{color:yellow}to{color:orange}}",
++      attrs: {"data-hydrate": "keyframes"},
++    },
++    {
++      css: "@font-face{font-family:ae;src:local('Roboto')}",
++      attrs: {"data-hydrate": "font-face"},
++    },
++    {
++      css:
++        ".ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}",
++      attrs: {},
++    },
++    {css: ".ah{color:red}", attrs: {media: "(min-width: 600px)"}},
++    {
++      css: ".ag{color:green}.ai:hover{color:green}",
++      attrs: {media: "(min-width: 800px)"},
++    },
++  ]);
++  t.end();
++});
++
++test("StyletronServer getStylesheetsHtml ", t => {
++  const styletron = new Styletron();
++  t.equal(
++    styletron.getStylesheetsHtml(),
++    '<style class="_styletron_hydrate_"></style>',
++    "returns single empty stylesheet when no styles",
++  );
++
++  injectFixtureStyles(styletron);
++  t.equal(
++    styletron.getStylesheetsHtml(),
++    '<style class="_styletron_hydrate_">.ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}</style><style class="_styletron_hydrate_" media="(min-width: 600px)">.ah{color:red}</style><style class="_styletron_hydrate_" media="(min-width: 800px)">.ag{color:green}.ai:hover{color:green}</style>',
++  );
++  injectFixtureKeyframes(styletron);
++  t.equal(
++    styletron.getStylesheetsHtml(),
++    '<style class="_styletron_hydrate_" data-hydrate="keyframes">@keyframes ae{from{color:purple}50%{color:yellow}to{color:orange}}</style><style class="_styletron_hydrate_">.ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}</style><style class="_styletron_hydrate_" media="(min-width: 600px)">.ah{color:red}</style><style class="_styletron_hydrate_" media="(min-width: 800px)">.ag{color:green}.ai:hover{color:green}</style>',
++  );
++  injectFixtureFontFace(styletron);
++  t.equal(
++    styletron.getStylesheetsHtml(),
++    '<style class="_styletron_hydrate_" data-hydrate="keyframes">@keyframes ae{from{color:purple}50%{color:yellow}to{color:orange}}</style><style class="_styletron_hydrate_" data-hydrate="font-face">@font-face{font-family:ae;src:local(\'Roboto\')}</style><style class="_styletron_hydrate_">.ae{color:red}.af{color:green}.aj:hover{display:none}.ak{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.al{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex}</style><style class="_styletron_hydrate_" media="(min-width: 600px)">.ah{color:red}</style><style class="_styletron_hydrate_" media="(min-width: 800px)">.ag{color:green}.ai:hover{color:green}</style>',
++  );
++  t.end();
++});
++
++test("StyletronServer prefix option", t => {
++  const styletron = new Styletron({prefix: "foo_"});
++  t.equal(styletron.renderStyle({color: "red"}), "foo_ae");
++  t.equal(injectFixtureFontFace(styletron), "foo_ae");
++  t.equal(injectFixtureKeyframes(styletron), "foo_ae");
++  t.deepEqual(styletron.getStylesheets(), [
++    {
++      css:
++        "@keyframes foo_ae{from{color:purple}50%{color:yellow}to{color:orange}}",
++      attrs: {"data-hydrate": "keyframes"},
++    },
++    {
++      css: "@font-face{font-family:foo_ae;src:local('Roboto')}",
++      attrs: {"data-hydrate": "font-face"},
++    },
++    {css: ".foo_ae{color:red}", attrs: {}},
++  ]);
++  t.end();
++});
++
++function injectFixtureStyles(styletron) {
++  styletron.renderStyle({color: "red"});
++  styletron.renderStyle({color: "green"});
++  styletron.renderStyle({
++    "@media (min-width: 800px)": {
++      color: "green",
++    },
++  });
++  // should be added before "min-width: 800px" query
++  // test that Styletron properly sort media queries
++  styletron.renderStyle({
++    "@media (min-width: 600px)": {
++      color: "red",
++    },
++  });
++  styletron.renderStyle({
++    "@media (min-width: 800px)": {
++      ":hover": {
++        color: "green",
++      },
++    },
++  });
++  styletron.renderStyle({
++    zIndex: void 0, // Should be silently ignored
++  });
++  styletron.renderStyle({
++    // null values were historically supported (albeit erronesouly)
++    opacity: null, // Should be silently ignored
++  });
++  styletron.renderStyle({
++    ":hover": {
++      display: "none",
++    },
++  });
++  styletron.renderStyle({
++    userSelect: "none",
++  });
++  styletron.renderStyle({
++    display: "flex",
++  });
++}
++
++function injectFixtureKeyframes(styletron) {
++  return styletron.renderKeyframes({
++    from: {
++      color: "purple",
++    },
++    "50%": {
++      color: "yellow",
++    },
++    to: {
++      color: "orange",
++    },
++  });
++}
++
++function injectFixtureFontFace(styletron) {
++  return styletron.renderFontFace({
++    src: "local('Roboto')",
++  });
++}
+diff --git a/node_modules/styletron-engine-atomic/src/server/server.d.ts b/node_modules/styletron-engine-atomic/src/server/server.d.ts
+new file mode 100644
+index 0000000..1723458
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/server/server.d.ts
+@@ -0,0 +1,37 @@
++import { StandardEngine } from "styletron-standard";
++import { Cache, MultiCache } from "../cache";
++import { StyleObject, FontFaceObject, KeyframesObject } from "styletron-standard";
++export declare type attrsT = {
++    "data-hydrate"?: "keyframes" | "font-face";
++    media?: string;
++    class?: string;
++};
++export declare type sheetT = {
++    css: string;
++    attrs: attrsT;
++};
++declare type optionsT = {
++    prefix?: string;
++};
++declare class StyletronServer implements StandardEngine {
++    styleCache: MultiCache<{
++        pseudo: string;
++        block: string;
++    }>;
++    keyframesCache: Cache<KeyframesObject>;
++    fontFaceCache: Cache<FontFaceObject>;
++    styleRules: {
++        [x: string]: string;
++    };
++    keyframesRules: string;
++    fontFaceRules: string;
++    constructor(opts?: optionsT);
++    renderStyle(style: StyleObject): string;
++    renderFontFace(fontFace: FontFaceObject): string;
++    renderKeyframes(keyframes: KeyframesObject): string;
++    getStylesheets(): Array<sheetT>;
++    getStylesheetsHtml(className?: string): string;
++    getCss(): string;
++}
++export declare function generateHtmlString(sheets: Array<sheetT>, className: string): string;
++export default StyletronServer;
+diff --git a/node_modules/styletron-engine-atomic/src/server/server.js b/node_modules/styletron-engine-atomic/src/server/server.js
+index 9aa2300..1d096bc 100644
+--- a/node_modules/styletron-engine-atomic/src/server/server.js
++++ b/node_modules/styletron-engine-atomic/src/server/server.js
+@@ -23,9 +23,15 @@ import {
+   fontFaceBlockToRule,
+ } from "../css.js";
+ 
++export type attrsT = {
++  "data-hydrate"?: "keyframes" | "font-face",
++  media?: string,
++  class?: string,
++};
++
+ export type sheetT = {|
+   css: string,
+-  attrs: {[string]: string},
++  attrs: attrsT,
+ |};
+ 
+ type optionsT = {
+@@ -137,14 +143,14 @@ export function generateHtmlString(sheets: Array<sheetT>, className: string) {
+       class: originalClassName
+         ? `${className} ${originalClassName}`
+         : className,
+-      ...rest,
++      ...(rest: attrsT),
+     };
+     html += `<style${attrsToString(attrs)}>${sheet.css}</style>`;
+   }
+   return html;
+ }
+ 
+-function attrsToString(attrs) {
++function attrsToString(attrs: attrsT) {
+   let result = "";
+   for (const attr in attrs) {
+     const value = attrs[attr];
+@@ -170,7 +176,7 @@ function stringify(styleRules, sortedCacheKeys) {
+   return result;
+ }
+ 
+-function sheetify(styleRules, sortedCacheKeys) {
++function sheetify(styleRules, sortedCacheKeys): Array<sheetT> {
+   if (sortedCacheKeys.length === 0) {
+     return [{css: "", attrs: {}}];
+   }
+diff --git a/node_modules/styletron-engine-atomic/src/sort-css-media-queries.d.ts b/node_modules/styletron-engine-atomic/src/sort-css-media-queries.d.ts
+new file mode 100644
+index 0000000..79ab991
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/sort-css-media-queries.d.ts
+@@ -0,0 +1 @@
++export default function sortCSSmq(a: string, b: string): number;
+diff --git a/node_modules/styletron-engine-atomic/src/validate-keyframes-object.d.ts b/node_modules/styletron-engine-atomic/src/validate-keyframes-object.d.ts
+new file mode 100644
+index 0000000..dc84f4b
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/validate-keyframes-object.d.ts
+@@ -0,0 +1 @@
++export default function validateKeyframesObject(keyframes: any): void;
+diff --git a/node_modules/styletron-engine-atomic/src/validate-no-mixed-hand.d.ts b/node_modules/styletron-engine-atomic/src/validate-no-mixed-hand.d.ts
+new file mode 100644
+index 0000000..5c14910
+--- /dev/null
++++ b/node_modules/styletron-engine-atomic/src/validate-no-mixed-hand.d.ts
+@@ -0,0 +1,4 @@
++/**
++ * Adapted from https://github.com/gilmoreorless/css-shorthand-properties
++ */
++export declare function validateNoMixedHand(style: any): any[];

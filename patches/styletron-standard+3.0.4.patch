@@ -1,0 +1,87 @@
+diff --git a/node_modules/styletron-standard/src/__tests__/core.node.js b/node_modules/styletron-standard/src/__tests__/core.node.js
+new file mode 100644
+index 0000000..6736ceb
+--- /dev/null
++++ b/node_modules/styletron-standard/src/__tests__/core.node.js
+@@ -0,0 +1,35 @@
++// @flow
++import test from "tape";
++import {Server} from "styletron-engine-atomic";
++import {driver} from "../index";
++
++test("driver", t => {
++  let cssString;
++  const instance = new Server();
++  const styleObject = {
++    color: "red",
++  };
++  driver(styleObject, instance);
++  cssString = ".ae{color:red}";
++  t.strictEqual(instance.getCss(), cssString, "injects basic style");
++  const fontFallback = {
++    fontFamily: ["Arial", "sans-serif"],
++  };
++  driver(fontFallback, instance);
++  cssString = `${cssString}.af{font-family:Arial,sans-serif}`;
++  t.strictEqual(instance.getCss(), cssString, "injects font fallbacks - basic");
++  const fontFace = {
++    src: "url(some-awesome-font.ttf)",
++  };
++  const declaredFontFaceFallback = {
++    fontFamily: [fontFace, "cursive"],
++  };
++  driver(declaredFontFaceFallback, instance);
++  cssString = `@font-face{font-family:ae;src:url(some-awesome-font.ttf)}${cssString}.ag{font-family:ae,cursive}`;
++  t.strictEqual(
++    instance.getCss(),
++    cssString,
++    "injects font fallbacks - declared",
++  );
++  t.end();
++});
+diff --git a/node_modules/styletron-standard/src/index.d.ts b/node_modules/styletron-standard/src/index.d.ts
+new file mode 100644
+index 0000000..b98fb5c
+--- /dev/null
++++ b/node_modules/styletron-standard/src/index.d.ts
+@@ -0,0 +1,14 @@
++import { Properties, FontFace as FontFaceObject, KeyframesObject } from "./style-types";
++export { FontFaceObject, KeyframesObject };
++export interface NestedStyleObject {
++    [x: string]: StyleObject;
++}
++export declare type StyleObject = NestedStyleObject | Properties;
++export interface StandardEngine {
++    renderStyle(style: StyleObject): string;
++    renderKeyframes(keyframes: KeyframesObject): string;
++    renderFontFace(fontFace: FontFaceObject): string;
++}
++export declare function driver(style: StyleObject, styletron: StandardEngine): string;
++export declare function getInitialStyle(): StyleObject;
++export declare function renderDeclarativeRules(style: StyleObject, styletron: StandardEngine): StyleObject;
+diff --git a/node_modules/styletron-standard/src/style-types.d.ts b/node_modules/styletron-standard/src/style-types.d.ts
+new file mode 100644
+index 0000000..fb6b8cd
+--- /dev/null
++++ b/node_modules/styletron-standard/src/style-types.d.ts
+@@ -0,0 +1,20 @@
++import { StandardProperties, VendorProperties, ObsoleteProperties, SvgProperties, AnimationNameProperty as CTAnimationNameProperty, FontFamilyProperty as CTFontFamilyProperty, FontFace as CTFontFace } from "csstype";
++export interface KeyframesPercentageObject {
++    [key: string]: Properties;
++}
++export declare type KeyframesObject = KeyframesPercentageObject & {
++    from?: Properties;
++    to?: Properties;
++};
++export declare type AnimationNameProperty = CTAnimationNameProperty | KeyframesObject;
++export declare type FontFace = CTFontFace;
++export declare type FontFamilyProperty = CTFontFamilyProperty | FontFace;
++declare type TLength = string | 0;
++export declare type Properties = {
++    animationName?: AnimationNameProperty;
++    fontFamily?: FontFamilyProperty | FontFamilyProperty[];
++    MozAnimationName?: AnimationNameProperty;
++    WebkitAnimationName?: AnimationNameProperty;
++    OAnimationName?: AnimationNameProperty;
++} & Omit<StandardProperties<TLength> & VendorProperties<TLength> & ObsoleteProperties<TLength> & SvgProperties<TLength>, 'animationName' | 'fontFamily' | 'MozAnimationName' | 'WebkitAnimationName' | 'OAnimationName'>;
++export {};
