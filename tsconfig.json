@@ -71,7 +71,6 @@
     "src/codemods/__testfixtures__/**/*",
     "src/codemods/__tests__/**/*",
     "src/*/__tests__/**/*",
-    "packages/**/*",
-    "documentation-site"
+    "packages/**/*"
   ]
 }
