@@ -55,7 +55,8 @@
     "next:build": "NODE_OPTIONS=--max_old_space_size=4096 next build documentation-site",
     "next:export": "next export documentation-site -o public",
     "tsc": "tsc --skipLibCheck",
-    "validate:examples": "node ./scripts/validate-examples.js"
+    "validate:examples": "node ./scripts/validate-examples.js",
+    "postinstall": "node ./node_modules/.bin/patch-package"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -158,6 +159,8 @@
     "node-fetch": "^2.6.1",
     "now": "16.5.2",
     "npm-run-all": "^4.1.5",
+    "patch-package": "^6.2.1",
+    "postinstall-postinstall": "^2.0.0",
     "prettier": "^1.18.2",
     "pretty-proptypes": "^1.0.5",
     "pretty-quick": "^1.4.1",
