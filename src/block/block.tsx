@@ -12,8 +12,8 @@ import {getOverrides} from '../helpers/overrides';
 import type {ComponentProps} from 'react';
 
 const Block: React.FC<
-  BlockPropsT & {forwardedRef?: any} & Omit<
-      ComponentProps<'div'>,
+  BlockPropsT & {forwardedRef?: React.Ref<HTMLElement>} & Omit<
+      ComponentProps<typeof StyledBlock>,
       keyof BlockPropsT
     >
 > = ({
@@ -174,7 +174,7 @@ const Block: React.FC<
   );
 };
 
-const BlockComponent = React.forwardRef<unknown, ComponentProps<typeof Block>>(
+const BlockComponent = React.forwardRef<HTMLElement, ComponentProps<typeof Block>>(
   (props, ref) => <Block {...props} forwardedRef={ref} />,
 );
 BlockComponent.displayName = 'Block';

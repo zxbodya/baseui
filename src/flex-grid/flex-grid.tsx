@@ -11,8 +11,9 @@ import {flattenFragments} from '../helpers/react-helpers';
 import {getOverrides} from '../helpers/overrides';
 import type {BlockPropsT} from '../block/types';
 import type {FlexGridPropsT} from './types';
+import type {ComponentProps} from 'react';
 
-export const BaseFlexGrid = React.forwardRef<HTMLElement, BlockPropsT>(
+export const BaseFlexGrid = React.forwardRef<HTMLElement, ComponentProps<typeof Block>>(
   ({display, flexWrap, ...restProps}, ref) => (
     <Block
       display={display || 'flex'}
@@ -24,7 +25,7 @@ export const BaseFlexGrid = React.forwardRef<HTMLElement, BlockPropsT>(
   ),
 );
 
-const FlexGrid: React.FC<FlexGridPropsT & {forwardedRef:React.Ref<HTMLElement>}> = ({
+const FlexGrid: React.FC<ComponentProps<typeof BaseFlexGrid> & FlexGridPropsT & {forwardedRef:React.Ref<HTMLElement>}> = ({
   forwardedRef,
   children,
   as,

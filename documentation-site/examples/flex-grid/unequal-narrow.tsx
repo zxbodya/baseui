@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
-import {BlockPropsT as BlockProps} from 'baseui/block';
 import {LightTheme} from 'baseui';
+import type {ComponentProps} from 'react';
 
-const itemProps: BlockProps = {
+const itemProps: ComponentProps<typeof FlexGridItem> = {
   backgroundColor: 'mono300',
   height: 'scale1000',
   display: 'flex',

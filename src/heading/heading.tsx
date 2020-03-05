@@ -8,7 +8,7 @@ import * as React from 'react';
 import Block from '../block/block';
 import {LevelContext} from './heading-level';
 import type {HeadingPropsT} from './types';
-import type {ElementType} from 'react';
+import type {ComponentProps, ElementType} from 'react';
 
 const FONTS = [
   '',
@@ -20,7 +20,7 @@ const FONTS = [
   'font550',
 ];
 
-const Heading = ({styleLevel, ...restProps}: HeadingPropsT) => (
+const Heading: React.FC<HeadingPropsT & ComponentProps<typeof Block>> = ({styleLevel, ...restProps}) => (
   <LevelContext.Consumer>
     {level => {
       if (level === 0) {
