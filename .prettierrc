@@ -2,6 +2,7 @@
   "singleQuote": true,
   "bracketSpacing": false,
   "trailingComma": "all",
+  "arrowParens": "avoid",
   "overrides": [
     {
       "files": "*.js",
