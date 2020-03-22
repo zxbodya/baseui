@@ -15,7 +15,6 @@ import type {
   TimePickerStateT as TimePickerStateTBase,
 } from '../timepicker/types';
 
-import type {OptionT} from '../select/index';
 
 // eslint-disable-next-line flowtype/no-weak-types
 type LocaleT = any; // see https://github.com/date-fns/date-fns/blob/master/src/locale/index.js.flow

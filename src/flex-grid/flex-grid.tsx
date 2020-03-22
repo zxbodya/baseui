@@ -9,7 +9,6 @@ import * as React from 'react';
 import {Block} from '../block/index';
 import {flattenFragments} from '../helpers/react-helpers';
 import {getOverrides} from '../helpers/overrides';
-import type {BlockPropsT} from '../block/types';
 import type {FlexGridPropsT} from './types';
 import type {ComponentProps} from 'react';
 
