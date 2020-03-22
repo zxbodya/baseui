@@ -1,0 +1,20 @@
+import * as React from 'react';
+import type { SortDirectionsT } from './types';
+declare type HeaderCellPropsT = {
+    index: number;
+    isHovered: boolean;
+    isMeasured?: boolean;
+    isSelectable: boolean;
+    isSelectedAll: boolean;
+    isSelectedIndeterminate: boolean;
+    onMouseEnter: (a: any) => void;
+    onMouseLeave: (a: any) => void;
+    onSelectAll: () => void;
+    onSelectNone: () => void;
+    onSort: (a: number) => void;
+    sortable: boolean;
+    sortDirection: SortDirectionsT;
+    title: string;
+};
+declare const HeaderCell: React.ForwardRefExoticComponent<HeaderCellPropsT & React.RefAttributes<HTMLDivElement>>;
+export default HeaderCell;

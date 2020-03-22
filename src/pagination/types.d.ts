@@ -1,0 +1,67 @@
+import type { OverrideT } from '../helpers/overrides';
+import { STATE_CHANGE_TYPE } from './constants';
+import { SIZE } from '../input/constants';
+export declare type LabelsT = {
+    prevButton?: string;
+    nextButton?: string;
+    preposition?: string;
+};
+export declare type SizeT = keyof typeof SIZE;
+export declare type CallbacksT = {
+    /** Callback for prev button click. */
+    onPrevClick?: (a: {
+        event: any;
+    }) => any;
+    /** Callback for next button click. */
+    onNextClick?: (a: {
+        event: any;
+    }) => any;
+    /** Callback for when page changes. */
+    onPageChange?: (a: {
+        nextPage: number;
+        prevPage: number;
+    }) => any;
+};
+export declare type StateReducerFnT = (changeType: keyof typeof STATE_CHANGE_TYPE, changes: StatefulContainerStateT, currentState: StatefulContainerStateT) => StatefulContainerStateT;
+export declare type OverridesT = {
+    Root?: OverrideT<any>;
+    PrevButton?: OverrideT<any>;
+    NextButton?: OverrideT<any>;
+    MaxLabel?: OverrideT<any>;
+    DropdownContainer?: OverrideT<any>;
+    Select?: OverrideT<any>;
+};
+export declare type PaginationPropsT = CallbacksT & {
+    /** Max number of pages. */
+    numPages: number;
+    /** The current page. */
+    currentPage: number;
+    /** Set of labels to use for the buttons and preposition. */
+    labels?: LabelsT;
+    overrides?: OverridesT;
+    size?: SizeT;
+};
+export declare type StatefulPaginationPropsT = CallbacksT & {
+    /** Max number of pages. */
+    numPages: number;
+    /** Set of labels to use for the buttons and preposition. */
+    labels?: LabelsT;
+    /** Reducer function to manipulate internal state updates. */
+    stateReducer?: StateReducerFnT;
+    /** Initial state populated into the component */
+    initialState?: StatefulContainerStateT;
+    overrides?: OverridesT;
+};
+export declare type StatefulContainerPropsT = {
+    children: any;
+    numPages: number;
+    /** Reducer function to manipulate internal state updates. */
+    stateReducer?: StateReducerFnT;
+    /** Initial state populated into the component */
+    initialState?: StatefulContainerStateT;
+    /** Callback for when page changes. */
+    onPageChange?: CallbacksT['onPageChange'];
+};
+export declare type StatefulContainerStateT = {
+    currentPage: number;
+};
