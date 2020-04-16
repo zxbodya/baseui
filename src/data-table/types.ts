@@ -81,7 +81,7 @@ export type BatchActionT = {
   }) => unknown;
   renderIcon?: React.ComponentType<{
     size: number;
-  }>;
+  } & any>;
 };
 
 export type RowActionT = {
@@ -92,7 +92,7 @@ export type RowActionT = {
   }) => unknown;
   renderIcon: React.ComponentType<{
     size: number;
-  }>;
+  } & any>;
 };
 
 export type StatefulDataTablePropsT = {

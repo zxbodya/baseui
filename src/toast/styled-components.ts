@@ -147,7 +147,7 @@ export const Body = styled<'div', SharedStylePropsArgT>('div', props => {
   };
 });
 
-export const CloseIconSvg = styled<'svg', SharedStylePropsArgT>('svg', props => {
+export const CloseIconSvg = styled<'svg', SharedStylePropsArgT & {$size?: string}>('svg', props => {
   return {
     ...getSvgStyles(props),
     cursor: 'pointer',

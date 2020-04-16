@@ -8,7 +8,7 @@ import {styled, withStyle} from '../styles/index';
 import {StyledListItem} from '../menu/index';
 import {KIND} from './constants';
 
-const StyledButton = styled<{
+const StyledButton = styled<'button', {
   $isFocusVisible: boolean;
 }>('button', ({$theme, $isFocusVisible}) => ({
   boxSizing: 'border-box',
@@ -37,7 +37,7 @@ const StyledButton = styled<{
   cursor: 'pointer',
 }));
 
-export const StyledRoot = styled<{}>('div', props => {
+export const StyledRoot = styled('div', props => {
   const {$theme} = props;
   return {
     ...$theme.typography.font300,
@@ -48,14 +48,14 @@ export const StyledRoot = styled<{}>('div', props => {
   };
 });
 
-export const StyledSubnavContainer = styled<{}>('div', ({$theme}) => {
+export const StyledSubnavContainer = styled('div', ({$theme}) => {
   return {
     boxSizing: 'border-box',
     boxShadow: '0px -1px 0px rgba(0, 0, 0, 0.08)',
   };
 });
 
-export const StyledSpacing = styled<{}>('div', props => {
+export const StyledSpacing = styled('div', props => {
   const {$theme} = props;
   return {
     boxSizing: 'border-box',
@@ -71,7 +71,7 @@ export const StyledSpacing = styled<{}>('div', props => {
   };
 });
 
-export const StyledAppName = styled<{}>('div', ({$theme}) => ({
+export const StyledAppName = styled('div', ({$theme}) => ({
   ...$theme.typography.font550,
   color: $theme.colors.primary,
   textDecoration: 'none',
@@ -93,7 +93,7 @@ export const StyledSideMenuButton = withStyle<typeof StyledButton, {}>(
   }),
 );
 
-export const StyledPrimaryMenuContainer = styled<{}>('div', ({$theme}) => {
+export const StyledPrimaryMenuContainer = styled('div', ({$theme}) => {
   return {
     boxSizing: 'border-box',
     height: '100%',
@@ -105,7 +105,7 @@ export const StyledPrimaryMenuContainer = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const StyledMainMenuItem = styled<{
+export const StyledMainMenuItem = styled<'div', {
   $active?: boolean;
   $isFocusVisible: boolean;
   $kind: typeof KIND[keyof typeof KIND];
@@ -145,7 +145,7 @@ export const StyledMainMenuItem = styled<{
   };
 });
 
-export const StyledSecondaryMenuContainer = styled<{}>('div', ({$theme}) => {
+export const StyledSecondaryMenuContainer = styled('div', ({$theme}) => {
   return {
     boxSizing: 'border-box',
     height: '100%',
@@ -169,7 +169,7 @@ export const StyledUserMenuProfileListItem = withStyle<
   ...($theme.direction === 'rtl' ? {paddingLeft: '0'} : {paddingRight: '0'}),
 }));
 
-export const StyledUserProfileTileContainer = styled<{}>('div', ({$theme}) => {
+export const StyledUserProfileTileContainer = styled('div', ({$theme}) => {
   return {
     boxSizing: 'border-box',
     height: '100%',
@@ -182,7 +182,7 @@ export const StyledUserProfileTileContainer = styled<{}>('div', ({$theme}) => {
   };
 });
 
-export const StyledUserProfilePictureContainer = styled<{}>(
+export const StyledUserProfilePictureContainer = styled(
   'div',
   ({$theme}) => {
     return {
@@ -193,7 +193,7 @@ export const StyledUserProfilePictureContainer = styled<{}>(
   },
 );
 
-export const StyledUserProfileInfoContainer = styled<{}>('div', ({$theme}) => {
+export const StyledUserProfileInfoContainer = styled('div', ({$theme}) => {
   return {
     boxSizing: 'border-box',
     alignSelf: 'center',

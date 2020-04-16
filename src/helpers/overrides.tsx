@@ -27,7 +27,11 @@ export type OverrideObjectT = {
 };
 
 // eslint-disable-next-line flowtype/no-weak-types
-export type OverrideT = OverrideObjectT | React.ComponentType<any>;
+export type OverrideT = OverrideObjectT | React.ComponentType<any> & {
+  component?: undefined,
+  props?: undefined,
+  style?: undefined,
+};
 
 export type OverridesT = {
   [x: string]: OverrideT;
