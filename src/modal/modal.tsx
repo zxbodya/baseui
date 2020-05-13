@@ -149,7 +149,7 @@ class Modal extends React.Component<ModalPropsT, ModalStateT> {
     this.triggerClose(CLOSE_SOURCE.escape);
   };
 
-  onDocumentClick = (e: MouseEvent) => {
+  onDocumentClick = (e: React.MouseEvent) => {
     if (
       e.target &&
       e.target instanceof HTMLElement &&

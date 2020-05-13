@@ -208,7 +208,7 @@ export type DatepickerPropsT<T = Date> = CalendarPropsT<T> & {
     date: T | undefined | null | Array<T>,
     formatString: string,
   ) => string;
-  formatString: string;
+  formatString?: string;
   /** Where to mount the popover */
   mountNode?: HTMLElement;
   /** Called when calendar is closed */

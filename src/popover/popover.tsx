@@ -168,13 +168,13 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     });
   }
 
-  onAnchorClick = (e: Event) => {
+  onAnchorClick = (e: React.MouseEvent) => {
     if (this.props.onClick) {
       this.props.onClick(e);
     }
   };
 
-  onAnchorMouseEnter = (e: Event) => {
+  onAnchorMouseEnter = (e: React.MouseEvent) => {
     // First clear any existing close timers, this ensures that the user can
     // move their mouse from the popover back to anchor without it hiding
     if (this.onMouseLeaveTimer) {
@@ -184,7 +184,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     this.triggerOnMouseEnterWithDelay(e);
   };
 
-  onAnchorMouseLeave = (e: Event) => {
+  onAnchorMouseLeave = (e: React.MouseEvent) => {
     // Clear any existing open timer, otherwise popover could be stuck open
     if (this.onMouseEnterTimer) {
       clearTimeout(this.onMouseEnterTimer);
@@ -198,7 +198,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     }
   };
 
-  onPopoverMouseLeave = (e: Event) => {
+  onPopoverMouseLeave = (e: React.MouseEvent<any>) => {
     this.triggerOnMouseLeaveWithDelay(e);
   };
 
@@ -219,7 +219,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     return data;
   };
 
-  triggerOnMouseLeaveWithDelay(e: Event) {
+  triggerOnMouseLeaveWithDelay(e: React.MouseEvent) {
     const {onMouseLeaveDelay} = this.props;
     if (onMouseLeaveDelay) {
       this.onMouseLeaveTimer = setTimeout(
@@ -231,13 +231,13 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     this.triggerOnMouseLeave(e);
   }
 
-  triggerOnMouseLeave = (e: Event) => {
+  triggerOnMouseLeave = (e: React.MouseEvent) => {
     if (this.props.onMouseLeave) {
       this.props.onMouseLeave(e);
     }
   };
 
-  triggerOnMouseEnterWithDelay(e: Event) {
+  triggerOnMouseEnterWithDelay(e: React.MouseEvent) {
     const {onMouseEnterDelay} = this.props;
     if (onMouseEnterDelay) {
       this.onMouseEnterTimer = setTimeout(
@@ -249,14 +249,14 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     this.triggerOnMouseEnter(e);
   }
 
-  triggerOnMouseEnter = (e: Event) => {
+  triggerOnMouseEnter = (e: React.MouseEvent) => {
     if (this.props.onMouseEnter) {
       this.props.onMouseEnter(e);
     }
   };
 
-  onDocumentClick = (evt: MouseEvent) => {
-    //$FlowFixMe
+  onDocumentClick = (evt: React.MouseEvent) => {
+    //@ts-expect-error todo(flow->ts) $FlowFixMe
     const target = evt.composedPath ? evt.composedPath()[0] : evt.target;
     const popper = this.popperRef.current;
     const anchor = this.anchorRef.current;

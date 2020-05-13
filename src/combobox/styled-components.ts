@@ -11,7 +11,7 @@ export const StyledRoot = styled('div', {});
 
 export const StyledInputContainer = styled('div', {});
 
-export const StyledListBox = styled<{
+export const StyledListBox = styled<'ul', {
   $width: string;
 }>('ul', ({$theme, $width}) => {
   return {
@@ -57,7 +57,7 @@ function buildStylesForSize(size, theme) {
   }
 }
 
-export const StyledListItem = styled<{
+export const StyledListItem = styled<'li', {
   $isSelected: boolean;
   $size: keyof typeof SIZE;
 }>('li', ({$isSelected, $theme, $size}) => {

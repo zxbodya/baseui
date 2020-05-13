@@ -73,17 +73,17 @@ export type BasePopoverPropsT = {
   /** Where to mount the popover */
   mountNode?: HTMLElement;
   /** Handler for blur events on trigger element. */
-  onBlur?: (e: Event) => unknown;
+  onBlur?: (e: React.FocusEvent) => unknown;
   /** Handler for click events on trigger element. */
-  onClick?: (e: Event) => unknown;
+  onClick?: (e: React.SyntheticEvent) => unknown;
   /** Handler for 'Esc' keypress events */
-  onFocus?: (e: Event) => unknown;
+  onFocus?: (e: React.FocusEvent) => unknown;
   /** Handler for mouseenter events on trigger element. */
-  onMouseEnter?: (e: Event) => unknown;
+  onMouseEnter?: (e: React.MouseEvent) => unknown;
   /** Number of milliseconds to wait before showing the popover after mouse enters the trigger element (for triggerType `hover`). */
   onMouseEnterDelay?: number;
   /** Handler for mouseleave events on trigger element. */
-  onMouseLeave?: (e: Event) => unknown;
+  onMouseLeave?: (e: React.MouseEvent) => unknown;
   /** Number of milliseconds to wait before showing the popover after mouse leaves the trigger element (for triggerType `hover`). */
   onMouseLeaveDelay?: number;
   overrides?: OverridesT;
@@ -119,7 +119,7 @@ export type PopoverPropsT = BasePopoverPropsT & {
   /** Whether or not to show the popover. */
   isOpen: boolean;
   /** Handler for clicks outside the anchor/popover elements. */
-  onClickOutside?: (event: MouseEvent) => unknown;
+  onClickOutside?: (event: React.MouseEvent) => unknown;
   /** Handler for click events on trigger element. */
   onEsc?: () => unknown;
 };
@@ -201,11 +201,11 @@ export type AnchorPropsT = {
   'aria-haspopup'?: string;
   'aria-owns'?: string | null;
   id?: string | null;
-  onBlur?: (e: Event) => unknown;
-  onClick?: (e: Event) => unknown;
-  onFocus?: (e: Event) => unknown;
-  onMouseEnter?: (e: Event) => unknown;
-  onMouseLeave?: (e: Event) => unknown;
+  onBlur?: (e: React.FocusEvent) => unknown;
+  onClick?: (e: React.SyntheticEvent) => unknown;
+  onFocus?: (e: React.FocusEvent) => unknown;
+  onMouseEnter?: (e: React.MouseEvent) => unknown;
+  onMouseLeave?: (e: React.MouseEvent) => unknown;
   ref?: React.Ref<any>;
   tabIndex?: number;
 };
