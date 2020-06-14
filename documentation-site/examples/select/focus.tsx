@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useStyletron} from 'baseui';
-import {Select, Value} from 'baseui/select';
+import {Select, ValueT as Value} from 'baseui/select';
 import {Button} from 'baseui/button';
 
 export default function Example() {
