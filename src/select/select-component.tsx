@@ -482,12 +482,13 @@ class Select extends React.Component<PropsT, SelectStateT> {
     }
   };
 
-  handleInputRef = (input: React.RefObject<any>) => {
+  handleInputRef = (input: HTMLInputElement) => {
     this.input = input;
     if (this.props.controlRef) {
       if (typeof this.props.controlRef === 'function') {
         this.props.controlRef(input);
       } else {
+        // @ts-ignore todo(flow->ts): controlRef.current should be readonly
         this.props.controlRef.current = input;
       }
     }
