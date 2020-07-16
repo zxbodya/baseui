@@ -28,7 +28,7 @@ export default class Calendar<T = Date> extends React.Component<
   CalendarPropsT<T>,
   CalendarInternalState<T>
 > {
-  static defaultProps: {
+  static defaultProps: CalendarPropsT<unknown> & {
     adapter: DateIOAdapter<Date>;
   } = {
     autoFocusCalendar: false,

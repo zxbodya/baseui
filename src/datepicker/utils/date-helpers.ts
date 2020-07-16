@@ -118,7 +118,7 @@ class DateHelpers<T> {
     return yearDiff * 12 + monthDiff;
   };
   // eslint-disable-next-line flowtype/no-weak-types
-  getStartOfWeek: (b: T, a: any) => T = (date, locale) => {
+  getStartOfWeek: (b: T, a?: any) => T = (date, locale) => {
     const adapter = locale
       ? this.getAdapterWithNewLocale(locale)
       : this.adapter;
@@ -225,8 +225,8 @@ class DateHelpers<T> {
     });
   };
   getEffectiveMinDate: (a: {
-    minDate: T | undefined | null;
-    includeDates: Array<T> | undefined | null;
+    minDate?: T;
+    includeDates?: Array<T>;
   }) => T = ({minDate, includeDates}) => {
     if (includeDates && minDate) {
       let minDates = includeDates.filter(includeDate =>
@@ -243,8 +243,8 @@ class DateHelpers<T> {
     return this.adapter.date();
   };
   getEffectiveMaxDate: (a: {
-    maxDate: T | undefined | null;
-    includeDates: Array<T> | undefined | null;
+    maxDate?: T;
+    includeDates?: Array<T>;
   }) => T = ({maxDate, includeDates}) => {
     if (includeDates && maxDate) {
       let maxDates = includeDates.filter(includeDate =>

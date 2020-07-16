@@ -9,7 +9,8 @@ import StatefulContainer from './stateful-container';
 import Datepicker from './datepicker';
 import type {StatefulDatepickerPropsT, DatepickerPropsT} from './types';
 
-type PropsT<T> = StatefulDatepickerPropsT<DatepickerPropsT<T>, T>;
+type PropsT<T> = StatefulDatepickerPropsT<DatepickerPropsT<T>, T>
+  & Omit<DatepickerPropsT<T>, keyof StatefulDatepickerPropsT<DatepickerPropsT<T>, T>>;
 
 class StatefulComponent<T = Date> extends React.Component<PropsT<T>> {
   static defaultProps: PropsT<any> = {

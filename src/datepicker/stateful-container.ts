@@ -23,8 +23,8 @@ class StatefulContainer<T = Date> extends React.Component<
   ContainerStateT<T>
 > {
   static defaultProps: {
-    stateReducer: StateReducerT<T>;
-  } = {
+    stateReducer: StateReducerT<unknown>;
+  } & Partial<PropsT<unknown>> = {
     initialState: {},
     stateReducer: (type, nextState) => nextState,
     onChange: () => {},
@@ -51,6 +51,7 @@ class StatefulContainer<T = Date> extends React.Component<
 
   render() {
     const {children, initialState, stateReducer, ...restProps} = this.props;
+    // @ts-ignore todo(flow->ts) flow error was ignored as well
     return this.props.children({
       ...restProps,
       value: this.state.value,
