@@ -138,7 +138,7 @@ export function Tabs({
   }, [activeKey]);
 
   // Positioning the highlight.
-  const activeTabRef = React.useRef();
+  const activeTabRef = React.useRef<HTMLElement>();
   const [highlightLayout, setHighlightLayout] = React.useState({
     length: 0,
     distance: 0,
@@ -163,9 +163,13 @@ export function Tabs({
     if (activeTabRef.current) {
       if (
         isHorizontal(orientation)
+          // @ts-ignore todo(flow->ts) maybe parentElement?
           ? activeTabRef.current.parentNode.scrollWidth >
+          // @ts-ignore todo(flow->ts) maybe parentElement?
             activeTabRef.current.parentNode.clientWidth
+          // @ts-ignore todo(flow->ts) maybe parentElement?
           : activeTabRef.current.parentNode.scrollHeight >
+          // @ts-ignore todo(flow->ts) maybe parentElement?
             activeTabRef.current.parentNode.clientHeight
       ) {
         if (keyUpdated > 1) {
@@ -235,7 +239,8 @@ export function Tabs({
         {...sharedStylingProps}
         {...TabListProps}
       >
-        {React.Children.map(children, (child, index) => {
+        {/*todo(flow->ts): children might be other the ReactElement*/}
+        {React.Children.map(children, (child: React.ReactElement, index) => {
           if (!child) return;
           return (
             <InternalTab
@@ -274,7 +279,8 @@ export function Tabs({
         {...sharedStylingProps}
         {...TabBorderProps}
       />
-      {React.Children.map(children, (child, index) => {
+      {/*todo(flow->ts): children might be other the ReactElement*/}
+      {React.Children.map(children, (child:React.ReactElement, index) => {
         if (!child) return;
         return (
           <InternalTabPanel
@@ -389,6 +395,7 @@ function InternalTab({
   );
 
   // Keyboard focus management
+  // @ts-ignore todo: deps are required
   const handleKeyDown = React.useCallback(event => {
     // WAI-ARIA 1.1
     // https://www.w3.org/TR/wai-aria-practices-1.1/#tabpanel

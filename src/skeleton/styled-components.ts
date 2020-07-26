@@ -5,6 +5,7 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 import {styled} from '../styles/index';
+import type { StyleObject } from 'styletron-standard';
 
 function getAnimationColor(props) {
   const {$theme} = props;
@@ -24,7 +25,7 @@ function getAnimationColor(props) {
     ${$theme.colors.backgroundTertiary})`;
 }
 
-const animationStyle = {
+const animationStyle: StyleObject = {
   animationTimingFunction: 'ease-out',
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
@@ -39,7 +40,7 @@ const animationStyle = {
   },
 };
 
-export const StyledRoot = styled<{
+export const StyledRoot = styled<'div', {
   $rows?: number;
   $animation?: boolean;
   $height?: string;
@@ -63,7 +64,7 @@ export const StyledRoot = styled<{
   };
 });
 
-export const StyledRow = styled<{
+export const StyledRow = styled<'div', {
   $animation?: boolean;
   $isLastRow: boolean;
 }>('div', props => {

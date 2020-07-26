@@ -24,7 +24,7 @@ const getInitialState = (
   } else {
     const firstKey = React.Children.map(
       children,
-      (child, index) => child.key || String(index),
+      (child, index) => (child as React.ReactElement).key || String(index),
     )[0];
     return {activeKey: firstKey};
   }
