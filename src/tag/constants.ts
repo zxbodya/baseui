@@ -8,7 +8,7 @@ export const SIZE = {
   small: 'small',
   medium: 'medium',
   large: 'large',
-};
+} as const;
 
 export const VARIANT = Object.freeze({
   solid: 'solid',

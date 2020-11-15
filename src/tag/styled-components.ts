@@ -256,7 +256,7 @@ const getColorStateFromProps = props => {
 };
 
 // $FlowFixMe https://github.com/facebook/flow/issues/7745
-export const Action = styled<SharedPropsArgT>('span', props => {
+export const Action = styled<'span', SharedPropsArgT>('span', props => {
   const {$theme, $disabled, $size = SIZE.small} = props;
   const bottomRadiusDir: string =
     $theme.direction === 'rtl'

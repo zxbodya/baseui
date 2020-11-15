@@ -186,13 +186,13 @@ function getRootBorderRadius(radius) {
 
 export const getRootStyles = (props: {
   $adjoined: keyof typeof ADJOINED;
-  $isFocused: boolean;
-  $error: boolean;
-  $disabled: boolean;
-  $positive: boolean;
+  $isFocused?: boolean;
+  $error?: boolean;
+  $disabled?: boolean;
+  $positive?: boolean;
   $size: SizeT;
   $theme: ThemeT;
-  $hasIconTrailing: boolean;
+  $hasIconTrailing?: boolean;
 }): StyleObject => {
   const {
     $isFocused,
@@ -371,10 +371,10 @@ function getInputContainerColors(
 }
 
 export const getInputContainerStyles = (props: {
-  $isFocused: boolean;
-  $error: boolean;
-  $disabled: boolean;
-  $positive: boolean;
+  $isFocused?: boolean;
+  $error?: boolean;
+  $disabled?: boolean;
+  $positive?: boolean;
   $size: SizeT;
   $theme: ThemeT;
 }): StyleObject => {

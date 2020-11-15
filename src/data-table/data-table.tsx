@@ -622,8 +622,8 @@ InnerTableElement.displayName = 'InnerTableElement';
 
 function MeasureScrollbarWidth(props) {
   const [css] = useStyletron();
-  const outerRef = React.useRef();
-  const innerRef = React.useRef();
+  const outerRef = React.useRef<HTMLDivElement>(null);
+  const innerRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     if (outerRef.current && innerRef.current) {
       const width = outerRef.current.offsetWidth - innerRef.current.offsetWidth;

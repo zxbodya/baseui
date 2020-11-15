@@ -10,8 +10,9 @@ import {styled, withStyle} from '../styles/index';
 
 import {PLACEMENT} from './constants';
 import type {PlacementT} from './types';
+import type { StyleObject } from 'styletron-standard';
 
-export const StyledRoot = styled<{}>('div', ({$theme}) => {
+export const StyledRoot = styled<'div', {}>('div', ({$theme}) => {
   return {
     backgroundColor: $theme.colors.backgroundInverseSecondary,
     borderTopLeftRadius: $theme.sizing.scale600,
@@ -32,7 +33,7 @@ export const StyledContent = styled('div', {
   width: '100%',
 });
 
-export const StyledStartEnhancerContainer = styled<{}>('span', ({$theme}) => {
+export const StyledStartEnhancerContainer = styled<'span', {}>('span', ({$theme}) => {
   const paddingDir =
     $theme.direction === 'rtl' ? 'paddingRight' : 'paddingLeft';
   return {
@@ -56,7 +57,7 @@ export const StyledSpinner = withStyle<
   };
 });
 
-export const StyledMessage = styled<{
+export const StyledMessage = styled<'p', {
   $hasSuffix: boolean;
 }>(
   'p', // $FlowFixMe - suppressing due to webkit properties
@@ -86,14 +87,14 @@ export const StyledWrapActionButtonContainer = styled('div', {
   justifyContent: 'flex-end',
 });
 
-export const StyledActionButtonContainer = styled<{}>('div', ({$theme}) => {
+export const StyledActionButtonContainer = styled<'div', {}>('div', ({$theme}) => {
   const marginDir = $theme.direction === 'rtl' ? 'marginRight' : 'marginLeft';
   return {
     [marginDir]: 'auto',
   };
 });
 
-function placementRules(placement) {
+function placementRules(placement): StyleObject {
   switch (placement) {
     case PLACEMENT.topLeft:
       return {
@@ -135,11 +136,11 @@ function placementRules(placement) {
   }
 }
 
-export const StyledPlacementContainer = styled<{
+export const StyledPlacementContainer = styled<'div', {
   $animating: boolean;
   $placement: PlacementT;
   $translateHeight: number;
-}>('div', ({$animating, $placement, $translateHeight, $theme}) => {
+}>('div', ({$animating, $placement, $translateHeight, $theme}): StyleObject => {
   return {
     ...placementRules($placement),
     display: 'flex',

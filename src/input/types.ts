@@ -64,7 +64,7 @@ export type SharedPropsT = {
   $required?: boolean;
   $position?: keyof typeof ENHANCER_POSITION;
   /** Defines if has a clearable or MaskToggleButton at the end */
-  $hasIconTrailing: boolean;
+  $hasIconTrailing?: boolean;
 };
 
 export type PropsT = any;

@@ -6,7 +6,6 @@ LICENSE file in the root directory of this source tree.
 */
 import * as React from 'react';
 import {Button} from '../button/index';
-import type {ButtonPropsT} from '../button/types';
 import {mergeOverrides} from '../helpers/overrides';
 import type {ComponentProps} from 'react';
 
@@ -25,7 +24,7 @@ const overrides = {
   },
 };
 
-const ModalButton = React.forwardRef<HTMLElement, ButtonPropsT>(
+const ModalButton = React.forwardRef<typeof Button, ComponentProps<typeof Button>>(
   (props, ref) => (
     <Button
       ref={ref}

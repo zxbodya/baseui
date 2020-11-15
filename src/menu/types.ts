@@ -124,7 +124,7 @@ export type StatefulContainerPropsT = {
   /** Ref for the menu container element. Used to capture key events for navigation */
   rootRef?: RootRefT;
   /** Node for menu's keyboard listener. Default is null and keyboard handlers will listen on menu root. */
-  keyboardControlNode: React$ElementRef<any>;
+  keyboardControlNode: React.RefObject<any>;
   /** whether has keyboard type-ahead function */
   typeAhead: boolean;
   /** Child as function pattern. */

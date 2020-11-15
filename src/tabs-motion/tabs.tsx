@@ -343,7 +343,9 @@ function InternalTab({
   // We need to potentially update the active tab highlight when the width or
   // placement changes for a tab so we listen for resize updates in each tab.
   React.useEffect(() => {
+    // @ts-ignore todo not yet standard DOM types
     if (window.ResizeObserver) {
+      // @ts-ignore todo not yet standard DOM types
       const observer = new window.ResizeObserver(entries => {
         if (entries[0] && entries[0].target) {
           const tabLayoutParamsAfterResize = getLayoutParams(

@@ -31,6 +31,7 @@ function fallbackHandler() {
   }
 }
 
+// @ts-ignore todo default value does not have required type
 export const SnackbarContext: React.Context<ContextT> = React.createContext({
   enqueue: fallbackHandler,
   dequeue: fallbackHandler,
@@ -119,7 +120,9 @@ export default function SnackbarProvider({
 
   React.useEffect(() => {
     if (__BROWSER__) {
+      // @ts-ignore todo not yet standard DOM types
       if (window.ResizeObserver) {
+        // @ts-ignore todo not yet standard DOM types
         const observer = new window.ResizeObserver(([entry]) =>
           setContainerHeight(entry.contentRect.height),
         );

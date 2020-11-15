@@ -71,7 +71,7 @@ export const StyledArtworkContainer = styled<'div', StyledArtworkContainerPropsT
   },
 );
 
-export const StyledLabelContent = styled<{}>('p', ({$theme}) => {
+export const StyledLabelContent = styled<'p', {}>('p', ({$theme}) => {
   return {
     ...$theme.typography.LabelMedium,
     color: $theme.colors.contentPrimary,
@@ -80,7 +80,7 @@ export const StyledLabelContent = styled<{}>('p', ({$theme}) => {
   };
 });
 
-export const StyledLabelDescription = styled<{}>('p', ({$theme}) => {
+export const StyledLabelDescription = styled<'p', {}>('p', ({$theme}) => {
   return {
     ...$theme.typography.ParagraphSmall,
     color: $theme.colors.contentPrimary,
@@ -89,7 +89,7 @@ export const StyledLabelDescription = styled<{}>('p', ({$theme}) => {
   };
 });
 
-export const StyledLabelSublistContent = styled<{}>('p', ({$theme}) => {
+export const StyledLabelSublistContent = styled<'p', {}>('p', ({$theme}) => {
   return {
     ...$theme.typography.ParagraphMedium,
     color: $theme.colors.contentPrimary,

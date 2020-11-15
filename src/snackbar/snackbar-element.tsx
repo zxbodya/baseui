@@ -22,7 +22,8 @@ import {
 } from './styled-components';
 import type {SnackbarElementPropsT} from './types';
 
-const ActionButton = React.forwardRef(
+// todo: types
+const ActionButton = React.forwardRef<any, any>(
   ({onClick, message, overrides = {}}, ref) => {
     const [, theme] = useStyletron();
     const [ActionButtonContainer, actionButtonContainerProps] = getOverrides(
@@ -78,7 +79,9 @@ export default function SnackbarElement({
   const [rootWidth, setRootWidth] = React.useState(0);
   React.useEffect(() => {
     if (__BROWSER__) {
+      // @ts-ignore todo not yet standard DOM types
       if (window.ResizeObserver) {
+        // @ts-ignore todo not yet standard DOM types
         const observer = new window.ResizeObserver(([entry]) =>
           setRootWidth(entry.contentRect.width),
         );
@@ -94,7 +97,9 @@ export default function SnackbarElement({
   const [actionMeasureWidth, setActionMeasureWidth] = React.useState(0);
   React.useEffect(() => {
     if (__BROWSER__) {
+      // @ts-ignore todo not yet standard DOM types
       if (window.ResizeObserver) {
+        // @ts-ignore todo not yet standard DOM types
         const observer = new window.ResizeObserver(([entry]) =>
           setActionMeasureWidth(entry.contentRect.width),
         );
