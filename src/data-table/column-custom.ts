@@ -26,6 +26,7 @@ type OptionsT<ValueT, FilterParamsT> = {
 function CustomColumn<ValueT, FilterParamsT>(
   options: OptionsT<ValueT, FilterParamsT>,
 ): ColumnT<ValueT, FilterParamsT> {
+  // @ts-expect-error todo(flow->ts) types does not much
   return Column({kind: COLUMNS.CUSTOM, ...options});
 }
 

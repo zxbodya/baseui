@@ -26,7 +26,8 @@ function Column<ValueT, FilterParamsT>(
     mapDataToValue: options.mapDataToValue,
     maxWidth: options.maxWidth,
     minWidth: options.minWidth,
-    renderCell: React.forwardRef((props, ref) => {
+    // todo(flow->ts) add proper type annotation
+    renderCell: React.forwardRef((props, ref: any) => {
       const [css, theme] = useStyletron();
       const ProvidedCell = options.renderCell;
 
