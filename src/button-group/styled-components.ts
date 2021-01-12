@@ -7,7 +7,7 @@ LICENSE file in the root directory of this source tree.
 import {styled} from '../styles/index';
 import {SHAPE} from '../button/index';
 
-export const StyledRoot = styled<{
+export const StyledRoot = styled<'div', {
   $shape: string;
   $length: number;
 }>('div', ({$shape, $length, $theme}) => {
