@@ -19,7 +19,7 @@ type PropsT = {
   item: any;
   resetParentMenu: () => void;
   renderAll?: boolean;
-  onClick?: (event: MouseEvent) => unknown;
+  onClick?: (event: React.MouseEvent) => unknown;
   overrides?: {
     ChildMenuPopover?: OverrideT;
   };

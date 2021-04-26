@@ -29,7 +29,7 @@ export type PropsT<OptionT = unknown> = {
   id?: string;
   name?: string;
   // A ref to access the inner Input component.
-  inputRef?: React.RefObject<any>;
+  inputRef?: React.Ref<any>;
   // Called when input loses focus.
   onBlur?: (a: ChangeEvent<HTMLInputElement>) => unknown;
   // Called when input value changes or option is selected. If user selects a

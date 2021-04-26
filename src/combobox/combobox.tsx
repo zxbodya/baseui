@@ -204,6 +204,7 @@ function Combobox<OptionT>(props: PropsT<OptionT>) {
       if (typeof forwardInputRef === 'function') {
         forwardInputRef(input);
       } else {
+        // @ts-expect-error todo(flow->ts)
         forwardInputRef.current = input;
       }
     }
