@@ -4,21 +4,22 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 import {
   Action as StyledAction,
   Root as StyledRoot,
   ActionIcon as StyledActionIcon,
   Text as StyledText,
-} from './styled-components.js';
-import {KIND, VARIANT, SIZE} from './constants.js';
-import {getTextFromChildren} from './utils.js';
-import type {PropsT, SharedPropsArgT} from './types.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import {KIND, VARIANT, SIZE} from './constants';
+import {getTextFromChildren} from './utils';
+import type {PropsT, SharedPropsArgT} from './types';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
 
-const Tag = React.forwardRef<PropsT, HTMLSpanElement>((props, ref) => {
+import type {SyntheticEvent} from 'react';
+
+const Tag = React.forwardRef<HTMLSpanElement, PropsT>((props, ref) => {
   const {
     children,
     closeable = true,
@@ -38,13 +39,13 @@ const Tag = React.forwardRef<PropsT, HTMLSpanElement>((props, ref) => {
   } = props;
   const [focusVisible, setFocusVisible] = React.useState(false);
 
-  function handleFocus(event: SyntheticEvent<>) {
+  function handleFocus(event: SyntheticEvent) {
     if (isFocusVisible(event)) {
       setFocusVisible(true);
     }
   }
 
-  function handleBlur(event: SyntheticEvent<>) {
+  function handleBlur(event: SyntheticEvent) {
     if (focusVisible !== false) {
       setFocusVisible(false);
     }
@@ -112,7 +113,7 @@ const Tag = React.forwardRef<PropsT, HTMLSpanElement>((props, ref) => {
   return (
     <Root
       // eslint-disable-next-line flowtype/no-weak-types
-      ref={(ref: any)}
+      ref={ref as any}
       data-baseweb="tag"
       aria-label={
         isButton && closeable

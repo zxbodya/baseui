@@ -4,30 +4,25 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
+import {getOverrides} from '../helpers/overrides';
 
 import {
   Avatar as StyledAvatar,
   Initials as StyledInitials,
   Root as StyledRoot,
-} from './styled-components.js';
-import type {PropsT, StateT} from './types.js';
+} from './styled-components';
+import type {PropsT, StateT} from './types';
 
 function getInitials(name) {
   const words = name.split(' ');
   const initials = words.map(word => word[0]);
-  return initials
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
+  return initials.slice(0, 2).join('').toUpperCase();
 }
 
 export default class Avatar extends React.Component<PropsT, StateT> {
-  static defaultProps: $Shape<PropsT> = {
+  static defaultProps: Partial<PropsT> = {
     overrides: {},
     size: 'scale1000',
   };

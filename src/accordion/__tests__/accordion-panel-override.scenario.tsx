@@ -4,14 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {Accordion, Panel} from '../index.js';
+import {Accordion, Panel} from '../index';
 
-import {createTheme, lightThemePrimitives} from '../../index.js';
-import {ThemeProvider} from '../../index.js';
+import {createTheme, lightThemePrimitives} from '../../index';
+import {ThemeProvider} from '../../index';
 
 const themeWithIcons = createTheme(
   {
@@ -33,7 +31,7 @@ export default function Scenario() {
       <Accordion
         overrides={{
           // eslint-disable-next-line react/display-name
-          ToggleIcon: function(props) {
+          ToggleIcon: function (props) {
             if (props.$expanded) {
               return <div>collapse(override)</div>;
             }

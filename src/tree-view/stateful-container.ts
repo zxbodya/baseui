@@ -4,18 +4,17 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import type {StatefulContainerPropsT, TreeNodeT} from './types.js';
+import type {StatefulContainerPropsT, TreeNodeT} from './types';
 
-type StateType = {|
-  data: TreeNodeT<>[],
-|};
+type StateType = {
+  data: TreeNodeT[];
+};
 
 const findSiblings = (
-  node: TreeNodeT<>,
-  children: TreeNodeT<>[],
-): ?(TreeNodeT<>[]) => {
+  node: TreeNodeT,
+  children: TreeNodeT[],
+): TreeNodeT[] | undefined | null => {
   if (children.indexOf(node) !== -1) {
     return children;
   }
@@ -32,7 +31,7 @@ const findSiblings = (
 
 export default class StatefulContainer extends React.Component<
   StatefulContainerPropsT,
-  StateType,
+  StateType
 > {
   state: StateType;
 
@@ -41,7 +40,7 @@ export default class StatefulContainer extends React.Component<
     this.state = {data: this.props.data};
   }
 
-  onToggle = (node: TreeNodeT<>) => {
+  onToggle = (node: TreeNodeT) => {
     const {onToggle, singleExpanded} = this.props;
     this.setState(
       prevState => {

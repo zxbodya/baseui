@@ -4,10 +4,9 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {LocaleContext} from '../locale/index.js';
-import {getOverrides} from '../helpers/overrides.js';
+import {LocaleContext} from '../locale/index';
+import {getOverrides} from '../helpers/overrides';
 import {
   PanelContainer as StyledPanelContainer,
   Header as StyledHeader,
@@ -15,10 +14,12 @@ import {
   ToggleIcon as StyledToggleIcon,
   ToggleIconGroup as StyledToggleIconGroup,
   ContentAnimationContainer as StyledContentAnimationContainer,
-} from './styled-components.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
 
-import type {PanelPropsT} from './types.js';
+import type {PanelPropsT} from './types';
+
+import type {SyntheticEvent} from 'react';
 
 const Panel = ({
   'aria-controls': ariaControls,
@@ -40,7 +41,7 @@ const Panel = ({
     animationInProgress: false,
   });
   const handleFocus = React.useCallback(
-    (event: SyntheticEvent<>) => {
+    (event: SyntheticEvent) => {
       if (isFocusVisible(event)) {
         setLocalState({...localState, isFocusVisible: true});
       }
@@ -48,7 +49,7 @@ const Panel = ({
     [localState],
   );
   const handleBlur = React.useCallback(
-    (event: SyntheticEvent<>) => {
+    (event: SyntheticEvent) => {
       if (localState.isFocusVisible) {
         setLocalState({...localState, isFocusVisible: false});
       }

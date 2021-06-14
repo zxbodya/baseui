@@ -4,30 +4,27 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import {SIZE} from '../input/index.js';
-import {styled} from '../styles/index.js';
+import {SIZE} from '../input/index';
+import {styled} from '../styles/index';
 
 export const StyledRoot = styled('div', {});
 
 export const StyledInputContainer = styled('div', {});
 
-export const StyledListBox = styled<{|$width: string|}>(
-  'ul',
-  ({$theme, $width}) => {
-    return {
-      backgroundColor: $theme.colors.backgroundPrimary,
-      marginBlockStart: 'unset',
-      marginBlockEnd: 'unset',
-      maxHeight: '200px',
-      overflowY: 'auto',
-      outline: 'none',
-      paddingInlineStart: 'unset',
-      width: $width,
-    };
-  },
-);
+export const StyledListBox = styled<{
+  $width: string;
+}>('ul', ({$theme, $width}) => {
+  return {
+    backgroundColor: $theme.colors.backgroundPrimary,
+    marginBlockStart: 'unset',
+    marginBlockEnd: 'unset',
+    maxHeight: '200px',
+    overflowY: 'auto',
+    outline: 'none',
+    paddingInlineStart: 'unset',
+    width: $width,
+  };
+});
 
 function buildStylesForSize(size, theme) {
   const paddingDir = theme.direction === 'rtl' ? 'paddingRight' : 'paddingLeft';
@@ -60,10 +57,10 @@ function buildStylesForSize(size, theme) {
   }
 }
 
-export const StyledListItem = styled<{|
-  $isSelected: boolean,
-  $size: $Keys<typeof SIZE>,
-|}>('li', ({$isSelected, $theme, $size}) => {
+export const StyledListItem = styled<{
+  $isSelected: boolean;
+  $size: keyof typeof SIZE;
+}>('li', ({$isSelected, $theme, $size}) => {
   return {
     ...buildStylesForSize($size, $theme),
     alignItems: 'center',

@@ -4,14 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {SORT_DIRECTIONS} from './constants.js';
-import type {ColumnT, StatefulContainerPropsT} from './types.js';
+import {SORT_DIRECTIONS} from './constants';
+import type {ColumnT, StatefulContainerPropsT} from './types';
 
-function useDuplicateColumnTitleWarning(columns: ColumnT<>[]) {
+function useDuplicateColumnTitleWarning(columns: ColumnT[]) {
   React.useEffect(() => {
     if (__DEV__) {
       const titles = columns.reduce(
@@ -29,9 +27,8 @@ function useDuplicateColumnTitleWarning(columns: ColumnT<>[]) {
 
 function useSortParameters(initialSortIndex = -1, initialSortDirection = null) {
   const [sortIndex, setSortIndex] = React.useState(initialSortIndex);
-  const [sortDirection, setSortDirection] = React.useState(
-    initialSortDirection,
-  );
+  const [sortDirection, setSortDirection] =
+    React.useState(initialSortDirection);
 
   function handleSort(columnIndex) {
     if (columnIndex === sortIndex) {

@@ -4,17 +4,18 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import type {InputPropsT, InternalStateT, AdjoinedT} from './types.js';
-import {getSharedProps} from './utils.js';
-import BaseInput from './base-input.js';
+import {getOverrides} from '../helpers/overrides';
+import type {InputPropsT, InternalStateT, AdjoinedT} from './types';
+import {getSharedProps} from './utils';
+import BaseInput from './base-input';
 import {
   Root as StyledRoot,
   InputEnhancer as StyledInputEnhancer,
-} from './styled-components.js';
-import {SIZE, ADJOINED, ENHANCER_POSITION} from './constants.js';
+} from './styled-components';
+import {SIZE, ADJOINED, ENHANCER_POSITION} from './constants';
+
+import type {FocusEvent} from 'react';
 
 class Input extends React.Component<InputPropsT, InternalStateT> {
   static defaultProps = {
@@ -42,12 +43,12 @@ class Input extends React.Component<InputPropsT, InternalStateT> {
     isFocused: this.props.autoFocus || false,
   };
 
-  onFocus = (e: SyntheticFocusEvent<HTMLInputElement>) => {
+  onFocus = (e: FocusEvent<HTMLInputElement>) => {
     this.setState({isFocused: true});
     this.props.onFocus(e);
   };
 
-  onBlur = (e: SyntheticFocusEvent<HTMLInputElement>) => {
+  onBlur = (e: FocusEvent<HTMLInputElement>) => {
     this.setState({isFocused: false});
     this.props.onBlur(e);
   };

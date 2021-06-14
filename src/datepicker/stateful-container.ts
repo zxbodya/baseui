@@ -4,9 +4,8 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import {STATE_CHANGE_TYPE} from './constants';
 import type {
   CalendarPropsT,
   ContainerStateT,
@@ -14,17 +13,18 @@ import type {
   StatefulContainerPropsT,
   StateChangeTypeT,
   StateReducerT,
-} from './types.js';
+} from './types';
 
 type InputProps<T> = CalendarPropsT<T> | DatepickerPropsT<T>;
-
 type PropsT<T> = StatefulContainerPropsT<InputProps<T>, T>;
 
 class StatefulContainer<T = Date> extends React.Component<
   PropsT<T>,
-  ContainerStateT<T>,
+  ContainerStateT<T>
 > {
-  static defaultProps: {stateReducer: StateReducerT<T>} = {
+  static defaultProps: {
+    stateReducer: StateReducerT<T>;
+  } = {
     initialState: {},
     stateReducer: (type, nextState) => nextState,
     onChange: () => {},
@@ -32,11 +32,11 @@ class StatefulContainer<T = Date> extends React.Component<
 
   constructor(props: PropsT<T>) {
     super(props);
-    const value = props.range ? [] : (null: ?T);
+    const value = props.range ? [] : (null as T | undefined | null);
     this.state = {value, ...props.initialState};
   }
 
-  onChange: ({date: ?T | Array<T>}) => mixed = data => {
+  onChange: (a: {date: T | undefined | null | Array<T>}) => unknown = data => {
     const {date} = data;
     this.internalSetState(STATE_CHANGE_TYPE.change, {value: date});
     if (typeof this.props.onChange === 'function') {

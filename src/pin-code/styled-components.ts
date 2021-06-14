@@ -4,15 +4,13 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import {styled, withStyle} from '../styles/index.js';
+import {styled, withStyle} from '../styles/index';
 import {
   Root as StyledInputRoot,
   Input as StyledInputInput,
-} from '../input/styled-components.js';
-import type {SizeT} from '../input/types.js';
-import {SIZE} from '../input/constants.js';
+} from '../input/styled-components';
+import type {SizeT} from '../input/types';
+import {SIZE} from '../input/constants';
 
 export const StyledRoot = styled('div', {
   display: 'flex',
@@ -21,7 +19,9 @@ export const StyledRoot = styled('div', {
 
 export const StyledInputOverrideRoot = withStyle<
   typeof StyledInputRoot,
-  {$size: SizeT},
+  {
+    $size: SizeT;
+  }
 >(StyledInputRoot, ({$size = SIZE.default}) => {
   const width = {
     [SIZE.mini]: '32px',

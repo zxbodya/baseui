@@ -4,15 +4,14 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import {styled} from '../styles/index.js';
-import {getSvgStyles} from '../icon/styled-components.js';
-import type {SizeT} from './types.js';
-import {SIZE} from './constants.js';
+import {styled} from '../styles/index';
+import {getSvgStyles} from '../icon/styled-components';
+import type {SizeT} from './types';
+import {SIZE} from './constants';
 
 type StylePropsT = {
-  $size?: number | string,
-  $color?: string,
+  $size?: number | string;
+  $color?: string;
 };
 
 const spin = {
@@ -50,44 +49,43 @@ export const StyledActivePath = styled<StylePropsT>('path', props => ({
 }));
 
 // TODO(v11): Replace Spinner with SpinnerNext
-export const StyledSpinnerNext = styled<{$size?: SizeT}>(
-  'div',
-  ({$theme, $size = SIZE.medium}) => {
-    const borderWidth = {
-      large: $theme.sizing.scale300,
-      medium: $theme.sizing.scale100,
-      small: $theme.sizing.scale0,
-    }[$size];
-    return {
-      display: 'block',
-      animationName: spin,
-      animationDuration: $theme.animation.timing1000,
-      animationIterationCount: 'infinite',
-      animationTimingFunction: 'linear',
-      borderLeftStyle: 'solid',
-      borderRightStyle: 'solid',
-      borderTopStyle: 'solid',
-      borderBottomStyle: 'solid',
-      borderRadius: '50%',
-      borderTopColor: $theme.colors.contentAccent,
-      borderRightColor: $theme.colors.backgroundTertiary,
-      borderBottomColor: $theme.colors.backgroundTertiary,
-      borderLeftColor: $theme.colors.backgroundTertiary,
-      borderLeftWidth: borderWidth,
-      borderRightWidth: borderWidth,
-      borderTopWidth: borderWidth,
-      borderBottomWidth: borderWidth,
-      width: {
-        large: $theme.sizing.scale1000,
-        medium: $theme.sizing.scale900,
-        small: $theme.sizing.scale800,
-      }[$size],
-      height: {
-        large: $theme.sizing.scale1000,
-        medium: $theme.sizing.scale900,
-        small: $theme.sizing.scale800,
-      }[$size],
-      cursor: 'wait',
-    };
-  },
-);
+export const StyledSpinnerNext = styled<{
+  $size?: SizeT;
+}>('div', ({$theme, $size = SIZE.medium}) => {
+  const borderWidth = {
+    large: $theme.sizing.scale300,
+    medium: $theme.sizing.scale100,
+    small: $theme.sizing.scale0,
+  }[$size];
+  return {
+    display: 'block',
+    animationName: spin,
+    animationDuration: $theme.animation.timing1000,
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear',
+    borderLeftStyle: 'solid',
+    borderRightStyle: 'solid',
+    borderTopStyle: 'solid',
+    borderBottomStyle: 'solid',
+    borderRadius: '50%',
+    borderTopColor: $theme.colors.contentAccent,
+    borderRightColor: $theme.colors.backgroundTertiary,
+    borderBottomColor: $theme.colors.backgroundTertiary,
+    borderLeftColor: $theme.colors.backgroundTertiary,
+    borderLeftWidth: borderWidth,
+    borderRightWidth: borderWidth,
+    borderTopWidth: borderWidth,
+    borderBottomWidth: borderWidth,
+    width: {
+      large: $theme.sizing.scale1000,
+      medium: $theme.sizing.scale900,
+      small: $theme.sizing.scale800,
+    }[$size],
+    height: {
+      large: $theme.sizing.scale1000,
+      medium: $theme.sizing.scale900,
+      small: $theme.sizing.scale800,
+    }[$size],
+    cursor: 'wait',
+  };
+});

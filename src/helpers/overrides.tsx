@@ -4,13 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-disable cup/no-undef */
 import * as React from 'react';
 import {isValidElementType} from 'react-is';
-import deepMerge from '../utils/deep-merge.js';
+import deepMerge from '../utils/deep-merge';
 
-export type ConfigurationOverrideFunctionT = ({}) => ?{};
+export type ConfigurationOverrideFunctionT = (a: {}) => {} | undefined | null;
 export type ConfigurationOverrideObjectT = {};
 
 export type ConfigurationOverrideT =
@@ -19,18 +18,18 @@ export type ConfigurationOverrideT =
 
 export type StyleOverrideT = ConfigurationOverrideT;
 
-export type OverrideObjectT = {|
+export type OverrideObjectT = {
   // eslint-disable-next-line flowtype/no-weak-types
-  component?: ?React.ComponentType<any>,
-  props?: ?ConfigurationOverrideT,
-  style?: ?ConfigurationOverrideT,
-|};
+  component?: React.ComponentType<any> | null;
+  props?: ConfigurationOverrideT | null;
+  style?: ConfigurationOverrideT | null;
+};
 
 // eslint-disable-next-line flowtype/no-weak-types
 export type OverrideT = OverrideObjectT | React.ComponentType<any>;
 
 export type OverridesT = {
-  [string]: OverrideT,
+  [x: string]: OverrideT;
 };
 
 /**
@@ -47,7 +46,7 @@ export function getOverride(override: any): any {
     // Remove this 'any' once this flow issue is fixed:
     // https://github.com/facebook/flow/issues/6666
     // eslint-disable-next-line flowtype/no-weak-types
-    return (override: any).component;
+    return (override as any).component;
   }
 
   // null/undefined
@@ -58,7 +57,7 @@ export function getOverride(override: any): any {
  * Given an override argument, returns the override props that should be passed
  * to the component when rendering it.
  */
-export function getOverrideProps(override: ?OverrideT) {
+export function getOverrideProps(override?: OverrideT | null) {
   if (override && typeof override === 'object') {
     if (typeof override.props === 'object') {
       return {
@@ -82,7 +81,7 @@ export function toObjectOverride<T>(override: OverrideT): OverrideObjectT {
   if (isValidElementType(override)) {
     return {
       // eslint-disable-next-line flowtype/no-weak-types
-      component: ((override: any): React.ComponentType<T>),
+      component: override as any as React.ComponentType<T>,
     };
   }
 
@@ -90,7 +89,7 @@ export function toObjectOverride<T>(override: OverrideT): OverrideObjectT {
   // catch React.StatelessFunctionalComponent
   // (probably related to https://github.com/facebook/flow/issues/6666)
   // eslint-disable-next-line flowtype/no-weak-types
-  return ((override || {}: any): OverrideObjectT);
+  return override || ({} as any as OverrideObjectT);
 }
 
 /**
@@ -135,8 +134,8 @@ export function getOverrides(
  * from upstream. See `mergeOverride` below.
  */
 export function mergeOverrides(
-  target?: OverridesT = {},
-  source?: OverridesT = {},
+  target: OverridesT = {},
+  source: OverridesT = {},
 ): OverridesT {
   const merged = Object.assign({}, target, source);
   const allIdentifiers = Object.keys(merged);
@@ -198,21 +197,19 @@ export function mergeConfigurationOverrides(
 // Lil' hook for memoized unpacking of overrides
 export function useOverrides(
   defaults: {
-    // eslint-disable-next-line flowtype/no-weak-types
-    [string]: React.ComponentType<any>,
+    [x: string]: React.ComponentType<any>;
   },
-  overrides?: OverridesT = {},
+  overrides: OverridesT = {},
 ) {
   return React.useMemo(
     () =>
       // eslint-disable-next-line flowtype/no-weak-types
-      Object.keys(defaults).reduce<{[string]: [React.ComponentType<any>, {}]}>(
-        (obj, key) => {
-          obj[key] = getOverrides(overrides[key], defaults[key]);
-          return obj;
-        },
-        {},
-      ),
+      Object.keys(defaults).reduce<{
+        [x: string]: [React.ComponentType<any>, {}];
+      }>((obj, key) => {
+        obj[key] = getOverrides(overrides[key], defaults[key]);
+        return obj;
+      }, {}),
     [overrides],
   );
 }

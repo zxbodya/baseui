@@ -4,12 +4,11 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 // Files
-import getBuiId from '../utils/get-bui-id.js';
-import {STATE_CHANGE_TYPES, KEY_STRINGS} from './constants.js';
-import {scrollItemIntoView} from './utils.js';
+import getBuiId from '../utils/get-bui-id';
+import {STATE_CHANGE_TYPES, KEY_STRINGS} from './constants';
+import {scrollItemIntoView} from './utils';
 // Types
 import type {
   StatefulContainerPropsT,
@@ -17,11 +16,13 @@ import type {
   GetRequiredItemPropsFnT,
   RenderPropsT,
   StateReducerFnT,
-} from './types.js';
+} from './types';
+
+import type {MouseEvent} from 'react';
 
 export default class MenuStatefulContainer extends React.Component<
   StatefulContainerPropsT,
-  StatefulContainerStateT,
+  StatefulContainerStateT
 > {
   static defaultProps = {
     // keeping it in defaultProps to satisfy Flow
@@ -32,7 +33,7 @@ export default class MenuStatefulContainer extends React.Component<
     },
     typeAhead: true,
     keyboardControlNode: {current: null},
-    stateReducer: ((changeType, changes) => changes: StateReducerFnT),
+    stateReducer: ((changeType, changes) => changes) as StateReducerFnT,
     onItemSelect: () => {},
     getRequiredItemProps: () => ({}),
     children: () => null,
@@ -51,7 +52,9 @@ export default class MenuStatefulContainer extends React.Component<
 
   // We need to have access to the root component user renders
   // to correctly facilitate keyboard scrolling behavior
-  rootRef = (React.createRef(): {current: HTMLElement | null});
+  rootRef = React.createRef() as {
+    current: HTMLElement | null;
+  };
   keyboardControlNode = this.props.keyboardControlNode.current;
   getItems() {
     if (Array.isArray(this.props.items)) {
@@ -101,7 +104,7 @@ export default class MenuStatefulContainer extends React.Component<
       this.props.removeMenuFromNesting(rootRef);
   }
 
-  componentDidUpdate(_: mixed, prevState: StatefulContainerStateT) {
+  componentDidUpdate(_: unknown, prevState: StatefulContainerStateT) {
     if (__BROWSER__) {
       if (!prevState.isFocused && this.state.isFocused) {
         if (this.keyboardControlNode)
@@ -136,19 +139,19 @@ export default class MenuStatefulContainer extends React.Component<
   }
 
   // One array to hold all of list item refs
-  refList: Array<React$ElementRef<*>> = [];
+  refList: Array<React$ElementRef<any>> = [];
   // list of ids applied to list items. used to set aria-activedescendant
   optionIds: string[] = [];
   //characters input from keyboard, will automatically be clear after some time
   typeAheadChars: string = '';
   //count time for each continous keyboard input
-  typeAheadTimeOut: * = null;
+  typeAheadTimeOut: any = null;
 
   // Internal set state function that will also invoke stateReducer
 
   internalSetState(
-    changeType: $Keys<typeof STATE_CHANGE_TYPES>,
-    changes: $Shape<StatefulContainerStateT>,
+    changeType: keyof typeof STATE_CHANGE_TYPES,
+    changes: Partial<StatefulContainerStateT>,
   ) {
     const {stateReducer} = this.props;
 
@@ -319,8 +322,8 @@ export default class MenuStatefulContainer extends React.Component<
 
   handleItemClick = (
     index: number,
-    item: *,
-    event: SyntheticMouseEvent<HTMLElement>,
+    item: any,
+    event: MouseEvent<HTMLElement>,
   ) => {
     if (this.props.onItemSelect && !item.disabled) {
       this.props.onItemSelect({item, event});
@@ -357,10 +360,8 @@ export default class MenuStatefulContainer extends React.Component<
       this.refList[index] = itemRef;
       this.optionIds[index] = getBuiId();
     }
-    const {
-      disabled: disabledVal,
-      ...requiredItemProps
-    } = this.props.getRequiredItemProps(item, index);
+    const {disabled: disabledVal, ...requiredItemProps} =
+      this.props.getRequiredItemProps(item, index);
     const disabled =
       typeof disabledVal === 'boolean' ? disabledVal : !!item.disabled;
     return {
@@ -433,21 +434,19 @@ export default class MenuStatefulContainer extends React.Component<
       ...restProps
     } = this.props;
 
-    return this.props.children(
-      ({
-        ...restProps,
-        rootRef: this.props.rootRef ? this.props.rootRef : this.rootRef,
-        activedescendantId: this.optionIds[this.state.highlightedIndex],
-        getRequiredItemProps: this.getRequiredItemProps,
-        handleMouseLeave: this.handleMouseLeave,
-        highlightedIndex: this.state.highlightedIndex,
-        isFocused: this.state.isFocused,
-        handleKeyDown: this.props.keyboardControlNode.current
-          ? event => {}
-          : this.onKeyDown,
-        focusMenu: this.focusMenu,
-        unfocusMenu: this.unfocusMenu,
-      }: RenderPropsT),
-    );
+    return this.props.children({
+      ...restProps,
+      rootRef: this.props.rootRef ? this.props.rootRef : this.rootRef,
+      activedescendantId: this.optionIds[this.state.highlightedIndex],
+      getRequiredItemProps: this.getRequiredItemProps,
+      handleMouseLeave: this.handleMouseLeave,
+      highlightedIndex: this.state.highlightedIndex,
+      isFocused: this.state.isFocused,
+      handleKeyDown: this.props.keyboardControlNode.current
+        ? event => {}
+        : this.onKeyDown,
+      focusMenu: this.focusMenu,
+      unfocusMenu: this.unfocusMenu,
+    } as RenderPropsT);
   }
 }

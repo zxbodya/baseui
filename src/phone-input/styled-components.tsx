@@ -4,22 +4,24 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {SIZE} from './constants.js';
-import {styled, withStyle, withWrapper} from '../styles/index.js';
-import {StyledList} from '../menu/index.js';
+import {SIZE} from './constants';
+import {styled, withStyle, withWrapper} from '../styles/index';
+import {StyledList} from '../menu/index';
 import {
   StyledDropdownListItem,
   StyledRoot as SelectStyledRoot,
-} from '../select/index.js';
-import defaultProps from '../select/default-props.js';
-import type {SizeT} from './types.js';
+} from '../select/index';
+import defaultProps from '../select/default-props';
+import type {SizeT} from './types';
 
 type SizeStyleProps = {
-  $size?: SizeT,
+  $size?: SizeT;
 };
-type HeightStyleProps = {$height: string};
+
+type HeightStyleProps = {
+  $height: string;
+};
 
 // The root element of the PhoneInputNext
 export const StyledPhoneInputRoot = styled('div', {display: 'flex'});
@@ -77,7 +79,7 @@ export const StyledCountrySelectContainer = styled('div', {
 
 export const StyledCountrySelectDropdownContainer = withStyle<
   typeof StyledList,
-  HeightStyleProps,
+  HeightStyleProps
 >(StyledList, props => {
   const {$height = defaultProps.maxDropdownHeight} = props;
   return {
@@ -88,7 +90,7 @@ export const StyledCountrySelectDropdownContainer = withStyle<
 });
 
 export const StyledCountrySelectDropdownListItemElement = withStyle<
-  typeof StyledDropdownListItem,
+  typeof StyledDropdownListItem
 >(StyledDropdownListItem, {
   paddingTop: 0,
   paddingBottom: 0,

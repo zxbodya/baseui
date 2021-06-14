@@ -4,31 +4,27 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {useStyletron} from '../styles/index.js';
+import {useStyletron} from '../styles/index';
 
-import {CategoricalFilter} from './column-categorical.js';
-import Column from './column.js';
-import {COLUMNS} from './constants.js';
-import type {ColumnT, SharedColumnOptionsT} from './types.js';
-import {LocaleContext} from '../locale/index.js';
+import {CategoricalFilter} from './column-categorical';
+import Column from './column';
+import {COLUMNS} from './constants';
+import type {ColumnT, SharedColumnOptionsT} from './types';
+import {LocaleContext} from '../locale/index';
 
-type OptionsT = {|
-  ...SharedColumnOptionsT<boolean>,
-|};
+type OptionsT = {} & SharedColumnOptionsT<boolean>;
 
-type FilterParametersT = {|
-  selection: Set<boolean>,
-  description: string,
-  exclude: boolean,
-|};
+type FilterParametersT = {
+  selection: Set<boolean>;
+  description: string;
+  exclude: boolean;
+};
 
 type BooleanColumnT = ColumnT<boolean, FilterParametersT>;
 
-function mapSelection<X, Y>(selection: Set<X>, transform: X => Y): Set<Y> {
+function mapSelection<X, Y>(selection: Set<X>, transform: (a: X) => Y): Set<Y> {
   const coercedSelection = new Set<Y>();
   selection.forEach(item => coercedSelection.add(transform(item)));
   return coercedSelection;
@@ -97,8 +93,8 @@ function BooleanCell(props) {
 function BooleanColumn(options: OptionsT): BooleanColumnT {
   return Column({
     kind: COLUMNS.BOOLEAN,
-    buildFilter: function(params) {
-      return function(data) {
+    buildFilter: function (params) {
+      return function (data) {
         const included = params.selection.has(data);
         return params.exclude ? !included : included;
       };
@@ -112,7 +108,7 @@ function BooleanColumn(options: OptionsT): BooleanColumnT {
     renderCell: BooleanCell,
     renderFilter: BooleanFilter,
     sortable: options.sortable === undefined ? true : options.sortable,
-    sortFn: function(a, b) {
+    sortFn: function (a, b) {
       if (a === b) return 0;
       return a ? -1 : 1;
     },

@@ -5,8 +5,6 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
 
 import {
@@ -14,11 +12,11 @@ import {
   ACCESSIBILITY_TYPE,
   PLACEMENT,
   TRIGGER_TYPE,
-} from '../popover/index.js';
-import {POPOVER_MARGIN} from '../popover/constants.js';
+} from '../popover/index';
+import {POPOVER_MARGIN} from '../popover/constants';
 
-import {Helper} from './helper.js';
-import type {StatefulPropsT} from './types.js';
+import {Helper} from './helper';
+import type {StatefulPropsT} from './types';
 
 export function StatefulHelper(props: StatefulPropsT) {
   const {children, ...restProps} = props;

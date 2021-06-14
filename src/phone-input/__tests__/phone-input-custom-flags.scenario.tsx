@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
 import {
@@ -13,10 +11,10 @@ import {
   COUNTRIES,
   CountrySelectDropdown,
   StyledFlag,
-} from '../../phone-input/index.js';
-import type {CountryIsoT} from '../../phone-input/index.js';
+} from '../../phone-input/index';
+import type {CountryIsoT} from '../../phone-input/index';
 
-function CustomFlag(props: {children: React.Node, $iso: CountryIsoT}) {
+function CustomFlag(props: {children: React.ReactNode; $iso: CountryIsoT}) {
   const {children, ...rest} = props;
   return <StyledFlag iso={props.$iso} {...rest} />;
 }

@@ -18,17 +18,11 @@ function capitalize(str) {
 }
 
 function pascalCase(str) {
-  return str
-    .split('-')
-    .map(capitalize)
-    .join('');
+  return str.split('-').map(capitalize).join('');
 }
 
 function titleCase(str) {
-  return str
-    .split('-')
-    .map(capitalize)
-    .join(' ');
+  return str.split('-').map(capitalize).join(' ');
 }
 
 // handle the exception from Chevrons, where we do not want the word Chevron in the title

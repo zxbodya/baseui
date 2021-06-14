@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-env browser */
 
 import * as React from 'react';
@@ -16,10 +15,10 @@ import {
   queryByText,
 } from '@testing-library/react';
 
-import {StatefulSelect} from '../../select/index.js';
-import {TestBaseProvider} from '../../test/test-utils.js';
+import {StatefulSelect} from '../../select/index';
+import {TestBaseProvider} from '../../test/test-utils';
 
-import {Modal, ModalBody, CLOSE_SOURCE} from '../index.js';
+import {Modal, ModalBody, CLOSE_SOURCE} from '../index';
 
 describe('Modal', () => {
   it('renders nothing when closed', () => {

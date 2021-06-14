@@ -4,32 +4,34 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 
-import {MaskedInput} from '../input/index.js';
-import {Popover, PLACEMENT} from '../popover/index.js';
-import Calendar from './calendar.js';
-import {getOverrides} from '../helpers/overrides.js';
-import getInterpolatedString from '../helpers/i18n-interpolation.js';
-import {LocaleContext} from '../locale/index.js';
-import {StyledInputWrapper} from './styled-components.js';
-import type {DatepickerPropsT} from './types.js';
-import DateHelpers from './utils/date-helpers.js';
-import dateFnsAdapter from './utils/date-fns-adapter.js';
+import {MaskedInput} from '../input/index';
+import {Popover, PLACEMENT} from '../popover/index';
+import Calendar from './calendar';
+import {getOverrides} from '../helpers/overrides';
+import getInterpolatedString from '../helpers/i18n-interpolation';
+import {LocaleContext} from '../locale/index';
+import {StyledInputWrapper} from './styled-components';
+import type {DatepickerPropsT} from './types';
+import DateHelpers from './utils/date-helpers';
+import dateFnsAdapter from './utils/date-fns-adapter';
 
-type StateT = {|
-  calendarFocused: boolean,
-  isOpen: boolean,
-  isPseudoFocused: boolean,
-  lastActiveElm: ?HTMLElement,
-  inputValue?: string,
-|};
+import type {ChangeEvent} from 'react';
+
+type StateT = {
+  calendarFocused: boolean;
+  isOpen: boolean;
+  isPseudoFocused: boolean;
+  lastActiveElm: HTMLElement | undefined | null;
+  inputValue?: string;
+};
+
 export const DEFAULT_DATE_FORMAT = 'yyyy/MM/dd';
 
 export default class Datepicker<T = Date> extends React.Component<
   DatepickerPropsT<T>,
-  StateT,
+  StateT
 > {
   static defaultProps = {
     'aria-describedby': 'datepicker--screenreader--message--input',
@@ -38,7 +40,7 @@ export default class Datepicker<T = Date> extends React.Component<
     adapter: dateFnsAdapter,
   };
 
-  calendar: ?HTMLElement;
+  calendar: HTMLElement | undefined | null;
 
   dateHelpers: DateHelpers<T>;
 
@@ -54,7 +56,7 @@ export default class Datepicker<T = Date> extends React.Component<
     };
   }
 
-  onChange: ({date: ?T | Array<T>}) => void = data => {
+  onChange: (a: {date: T | undefined | null | Array<T>}) => void = data => {
     let isOpen = false;
     let isPseudoFocused = false;
     let calendarFocused = false;
@@ -81,7 +83,7 @@ export default class Datepicker<T = Date> extends React.Component<
 
     // Time selectors previously caused the calendar popover to close.
     // The check below refrains from closing the popover if only times changed.
-    const onlyTimeChanged = (prev: ?T, next: ?T) => {
+    const onlyTimeChanged = (prev?: T | null, next?: T | null) => {
       if (!prev || !next) return false;
       const p = this.dateHelpers.format(prev, 'keyboardDate');
       const n = this.dateHelpers.format(next, 'keyboardDate');
@@ -116,7 +118,7 @@ export default class Datepicker<T = Date> extends React.Component<
     this.props.onChange && this.props.onChange({date: nextDate});
   };
 
-  formatDate(date: ?T | Array<T>, formatString: string) {
+  formatDate(date: T | undefined | null | Array<T>, formatString: string) {
     const format = date => {
       if (formatString === DEFAULT_DATE_FORMAT) {
         return this.dateHelpers.format(date, 'slashDate', this.props.locale);
@@ -134,7 +136,9 @@ export default class Datepicker<T = Date> extends React.Component<
     }
   }
 
-  formatDisplayValue: (?T | Array<T>) => string = (date: ?T | Array<T>) => {
+  formatDisplayValue: (a: T | undefined | null | Array<T>) => string = (
+    date: T | undefined | null | Array<T>,
+  ) => {
     const {displayValueAtRangeIndex, formatDisplayValue, range} = this.props;
     const formatString = this.normalizeDashes(this.props.formatString);
 
@@ -226,7 +230,7 @@ export default class Datepicker<T = Date> extends React.Component<
     return '9999/99/99';
   };
 
-  handleInputChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+  handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value;
     const mask = this.getMask();
 
@@ -496,28 +500,30 @@ export default class Datepicker<T = Date> extends React.Component<
                 clipPath: 'inset(100%)',
               }}
             >
-              {// No date selected
-              !this.props.value ||
-              (Array.isArray(this.props.value) && !this.props.value.length)
-                ? ''
-                : // Date selected in a non-range picker
-                !Array.isArray(this.props.value)
-                ? getInterpolatedString(locale.datepicker.selectedDate, {
-                    date: this.state.inputValue || '',
-                  })
-                : // Start and end dates are selected in a range picker
-                this.props.value.length > 1
-                ? getInterpolatedString(locale.datepicker.selectedDateRange, {
-                    startDate: this.formatDisplayValue(this.props.value[0]),
-                    endDate: this.formatDisplayValue(
-                      // $FlowFixMe
-                      this.props.value[1],
-                    ),
-                  })
-                : // A single date selected in a range picker
-                  `${getInterpolatedString(locale.datepicker.selectedDate, {
-                    date: this.formatDisplayValue(this.props.value[0]),
-                  })} ${locale.datepicker.selectSecondDatePrompt}`}
+              {
+                // No date selected
+                !this.props.value ||
+                (Array.isArray(this.props.value) && !this.props.value.length)
+                  ? ''
+                  : // Date selected in a non-range picker
+                  !Array.isArray(this.props.value)
+                  ? getInterpolatedString(locale.datepicker.selectedDate, {
+                      date: this.state.inputValue || '',
+                    })
+                  : // Start and end dates are selected in a range picker
+                  this.props.value.length > 1
+                  ? getInterpolatedString(locale.datepicker.selectedDateRange, {
+                      startDate: this.formatDisplayValue(this.props.value[0]),
+                      endDate: this.formatDisplayValue(
+                        // $FlowFixMe
+                        this.props.value[1],
+                      ),
+                    })
+                  : // A single date selected in a range picker
+                    `${getInterpolatedString(locale.datepicker.selectedDate, {
+                      date: this.formatDisplayValue(this.props.value[0]),
+                    })} ${locale.datepicker.selectSecondDatePrompt}`
+              }
             </p>
           </React.Fragment>
         )}

@@ -4,13 +4,11 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import type {TreeNodeT, TreeNodeIdT} from './types.js';
+import type {TreeNodeT, TreeNodeIdT} from './types';
 
 const getLastLeafId = (
-  node: TreeNodeT<>,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  node: TreeNodeT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   if (node.isExpanded && node.children && node.children.length) {
     return getLastLeafId(node.children[node.children.length - 1], getId);
@@ -19,10 +17,10 @@ const getLastLeafId = (
 };
 
 export const getParentId = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
   parentId: TreeNodeIdT | null,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   for (let i = 0; i < nodes.length; i++) {
     if (getId(nodes[i]) === nodeId) {
@@ -44,10 +42,10 @@ export const getParentId = (
 };
 
 export const getPrevId = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
   parentId: TreeNodeIdT | null,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   for (let i = 0; i < nodes.length; i++) {
     if (getId(nodes[i]) === nodeId) {
@@ -73,9 +71,9 @@ export const getPrevId = (
 };
 
 export const getFirstChildId = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   for (let i = 0; i < nodes.length; i++) {
     if (getId(nodes[i]) === nodeId) {
@@ -98,10 +96,10 @@ export const getFirstChildId = (
 };
 
 export const getNextId = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
   closestOmmer: TreeNodeIdT | null,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   for (let i = 0; i < nodes.length; i++) {
     if (getId(nodes[i]) === nodeId) {
@@ -133,8 +131,8 @@ export const getNextId = (
 };
 
 export const getEndId = (
-  nodes: TreeNodeT<>[],
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  nodes: TreeNodeT[],
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   const endNode = nodes[nodes.length - 1];
   if (endNode.isExpanded && endNode.children && endNode.children.length) {
@@ -144,9 +142,9 @@ export const getEndId = (
 };
 
 export const getExpandableSiblings = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   for (let i = 0; i < nodes.length; i++) {
     if (getId(nodes[i]) === nodeId) {
@@ -173,12 +171,12 @@ export const getExpandableSiblings = (
 };
 
 export const toggleIsExpanded = (
-  arr: TreeNodeT<>[],
-  toggledNode: TreeNodeT<>,
-  getId?: (node: TreeNodeT<>) => TreeNodeIdT = (node: TreeNodeT<>) =>
+  arr: TreeNodeT[],
+  toggledNode: TreeNodeT,
+  getId: (node: TreeNodeT) => TreeNodeIdT = (node: TreeNodeT) =>
     node.id ? node.id : '',
-): TreeNodeT<>[] => {
-  return arr.map<TreeNodeT<>>(node => {
+): TreeNodeT[] => {
+  return arr.map<TreeNodeT>(node => {
     const newNode = {...node};
     if (getId(newNode) === getId(toggledNode)) {
       newNode.isExpanded = !newNode.isExpanded;
@@ -190,11 +188,11 @@ export const toggleIsExpanded = (
   });
 };
 export const getCharMatchId = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
   chars: string,
   closestOmmer: TreeNodeIdT | null,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
 ) => {
   var foundid = matchString(nodes, nodeId, chars, closestOmmer, getId, true);
   if (foundid) return foundid;
@@ -203,11 +201,11 @@ export const getCharMatchId = (
 };
 
 export const matchString = (
-  nodes: TreeNodeT<>[],
+  nodes: TreeNodeT[],
   nodeId: TreeNodeIdT,
   chars: string,
   closestOmmer: TreeNodeIdT | null,
-  getId: (TreeNodeT<>) => TreeNodeIdT,
+  getId: (a: TreeNodeT) => TreeNodeIdT,
   //set true, match the prefix; set false, match full text
   matchPrefix: boolean,
 ) => {
@@ -240,7 +238,7 @@ export const matchString = (
   return null;
 };
 
-export const defaultGetId = (node: TreeNodeT<>) => {
+export const defaultGetId = (node: TreeNodeT) => {
   if (!node.id) {
     throw Error(
       'There needs to be an unique node.id. You can implement a custom mapping with getId.',

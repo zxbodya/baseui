@@ -5,30 +5,28 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
 
-import type {NestedMenuRefT, NestedMenuContextT} from './types.js';
+import type {NestedMenuRefT, NestedMenuContextT} from './types';
 
 type StateT = {
-  menus: NestedMenuRefT[],
-};
-type PropsT = {
-  children: React.Node,
+  menus: NestedMenuRefT[];
 };
 
-export const NestedMenuContext: React.Context<NestedMenuContextT> = React.createContext(
-  {
+type PropsT = {
+  children: React.ReactNode;
+};
+
+export const NestedMenuContext: React.Context<NestedMenuContextT> =
+  React.createContext({
     addMenuToNesting: () => {},
     removeMenuFromNesting: () => {},
     getParentMenu: () => {},
     getChildMenu: () => {},
     mountRef: {current: null},
-  },
-);
+  });
 
-function isSame(a: ?HTMLElement, b: ?HTMLElement) {
+function isSame(a?: HTMLElement | null, b?: HTMLElement | null) {
   if (!a || !b) {
     return false;
   }
@@ -38,7 +36,9 @@ function isSame(a: ?HTMLElement, b: ?HTMLElement) {
 
 export default class NestedMenus extends React.Component<PropsT, StateT> {
   state = {menus: []};
-  mountRef = (React.createRef(): {current: HTMLElement | null});
+  mountRef = React.createRef() as {
+    current: HTMLElement | null;
+  };
 
   addMenuToNesting = (ref: NestedMenuRefT) => {
     // check offsetHeight to determine if component is visible in the dom (0 means hidden)
@@ -64,12 +64,12 @@ export default class NestedMenus extends React.Component<PropsT, StateT> {
     return this.state.menus.findIndex(r => isSame(r.current, ref.current));
   };
 
-  getParentMenu = (ref: NestedMenuRefT): ?NestedMenuRefT => {
+  getParentMenu = (ref: NestedMenuRefT): NestedMenuRefT | undefined | null => {
     const index = this.findMenuIndexByRef(ref) - 1;
     return this.state.menus[index];
   };
 
-  getChildMenu = (ref: NestedMenuRefT): ?NestedMenuRefT => {
+  getChildMenu = (ref: NestedMenuRefT): NestedMenuRefT | undefined | null => {
     const index = this.findMenuIndexByRef(ref) + 1;
     return this.state.menus[index];
   };

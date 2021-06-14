@@ -5,18 +5,16 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
+import {styled} from '../styles/index';
 
-import {styled} from '../styles/index.js';
-
-import {PLACEMENT} from '../popover/constants.js';
+import {PLACEMENT} from '../popover/constants';
 import type {
   OffsetT,
   PopoverPlacementT,
   SharedStylePropsArgT,
-} from '../popover/types.js';
-import {getBodyStyles} from '../popover/styled-components.js';
-import {getPopoverMarginStyles, splitPlacement} from '../popover/utils.js';
+} from '../popover/types';
+import {getBodyStyles} from '../popover/styled-components';
+import {getPopoverMarginStyles, splitPlacement} from '../popover/utils';
 
 const CLAMP_ARROW_SIZE = 16;
 

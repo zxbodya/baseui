@@ -5,13 +5,11 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
+import {StyledSpinnerNext} from '../spinner/index';
+import {styled, withStyle} from '../styles/index';
 
-import {StyledSpinnerNext} from '../spinner/index.js';
-import {styled, withStyle} from '../styles/index.js';
-
-import {PLACEMENT} from './constants.js';
-import type {PlacementT} from './types.js';
+import {PLACEMENT} from './constants';
+import type {PlacementT} from './types';
 
 export const StyledRoot = styled<{}>('div', ({$theme}) => {
   return {
@@ -46,7 +44,10 @@ export const StyledStartEnhancerContainer = styled<{}>('span', ({$theme}) => {
 
 export const StyledSpinner = withStyle<
   typeof StyledSpinnerNext,
-  {$height: number, $width: number},
+  {
+    $height: number;
+    $width: number;
+  }
 >(StyledSpinnerNext, ({$height, $width}) => {
   return {
     boxSizing: 'border-box',
@@ -55,9 +56,10 @@ export const StyledSpinner = withStyle<
   };
 });
 
-export const StyledMessage = styled<{$hasSuffix: boolean}>(
-  'p',
-  // $FlowFixMe - suppressing due to webkit properties
+export const StyledMessage = styled<{
+  $hasSuffix: boolean;
+}>(
+  'p', // $FlowFixMe - suppressing due to webkit properties
   ({$theme, $hasSuffix}) => {
     const prefixPadding =
       $theme.direction === 'rtl' ? 'paddingRight' : 'paddingLeft';
@@ -134,9 +136,9 @@ function placementRules(placement) {
 }
 
 export const StyledPlacementContainer = styled<{
-  $animating: boolean,
-  $placement: PlacementT,
-  $translateHeight: number,
+  $animating: boolean;
+  $placement: PlacementT;
+  $translateHeight: number;
 }>('div', ({$animating, $placement, $translateHeight, $theme}) => {
   return {
     ...placementRules($placement),

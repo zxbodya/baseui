@@ -4,14 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
-import NumberedStepsScenario from './numbered-steps.scenario.js';
-import ProgressStepOverridesScenario from './progress-step-overrides.scenario.js';
-import ProgressStepsIsActive from './progress-steps-isActive.scenario.js';
-import ProgressStepsNumber from './progress-steps-number.scenario.js';
-import ProgressStepsDefault from './progress-steps.scenario.js';
+import NumberedStepsScenario from './numbered-steps.scenario';
+import ProgressStepOverridesScenario from './progress-step-overrides.scenario';
+import ProgressStepsIsActive from './progress-steps-isActive.scenario';
+import ProgressStepsNumber from './progress-steps-number.scenario';
+import ProgressStepsDefault from './progress-steps.scenario';
 
 export const NumberedSteps = () => <NumberedStepsScenario />;
 export const ProgressStepOverrides = () => <ProgressStepOverridesScenario />;

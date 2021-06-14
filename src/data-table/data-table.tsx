@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 import {VariableSizeGrid} from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -15,76 +13,76 @@ import {
   SHAPE as BUTTON_SHAPES,
   SIZE as BUTTON_SIZES,
   KIND as BUTTON_KINDS,
-} from '../button/index.js';
-import {useStyletron} from '../styles/index.js';
-import {Tooltip, PLACEMENT} from '../tooltip/index.js';
+} from '../button/index';
+import {useStyletron} from '../styles/index';
+import {Tooltip, PLACEMENT} from '../tooltip/index';
 
-import {SORT_DIRECTIONS} from './constants.js';
-import HeaderCell from './header-cell.js';
-import MeasureColumnWidths from './measure-column-widths.js';
+import {SORT_DIRECTIONS} from './constants';
+import HeaderCell from './header-cell';
+import MeasureColumnWidths from './measure-column-widths';
 import type {
   ColumnT,
   DataTablePropsT,
   RowT,
   SortDirectionsT,
   RowActionT,
-} from './types.js';
-import {LocaleContext} from '../locale/index.js';
+} from './types';
+import {LocaleContext} from '../locale/index';
 
 // consider pulling this out to a prop if useful.
 const HEADER_ROW_HEIGHT = 48;
 
-type HeaderContextT = {|
-  columns: ColumnT<>[],
-  columnHighlightIndex: number,
-  emptyMessage: string | React.ComponentType<{||}>,
-  filters: $PropertyType<DataTablePropsT, 'filters'>,
-  loading: boolean,
-  loadingMessage: string | React.ComponentType<{||}>,
-  isScrollingX: boolean,
-  isSelectable: boolean,
-  isSelectedAll: boolean,
-  isSelectedIndeterminate: boolean,
-  measuredWidths: number[],
-  onMouseEnter: number => void,
-  onMouseLeave: () => void,
-  onResize: (columnIndex: number, delta: number) => void,
-  onSelectMany: () => void,
-  onSelectNone: () => void,
-  onSort: number => void,
-  resizableColumnWidths: boolean,
-  rowActions: RowActionT[],
-  rowHeight: number,
-  rowHighlightIndex: number,
-  rows: RowT[],
-  scrollLeft: number,
-  sortIndex: number,
-  sortDirection: SortDirectionsT,
-  tableHeight: number,
-  widths: number[],
-|};
+type HeaderContextT = {
+  columns: ColumnT[];
+  columnHighlightIndex: number;
+  emptyMessage: string | React.ComponentType<{}>;
+  filters: DataTablePropsT['filters'];
+  loading: boolean;
+  loadingMessage: string | React.ComponentType<{}>;
+  isScrollingX: boolean;
+  isSelectable: boolean;
+  isSelectedAll: boolean;
+  isSelectedIndeterminate: boolean;
+  measuredWidths: number[];
+  onMouseEnter: (a: number) => void;
+  onMouseLeave: () => void;
+  onResize: (columnIndex: number, delta: number) => void;
+  onSelectMany: () => void;
+  onSelectNone: () => void;
+  onSort: (a: number) => void;
+  resizableColumnWidths: boolean;
+  rowActions: RowActionT[];
+  rowHeight: number;
+  rowHighlightIndex: number;
+  rows: RowT[];
+  scrollLeft: number;
+  sortIndex: number;
+  sortDirection: SortDirectionsT;
+  tableHeight: number;
+  widths: number[];
+};
 
 type CellPlacementPropsT = {
-  columnIndex: number,
-  rowIndex: number,
+  columnIndex: number;
+  rowIndex: number;
   style: {
-    position: string,
-    height: number,
-    width: number,
-    top: number,
-    left: number,
-  },
+    position: string;
+    height: number;
+    width: number;
+    top: number;
+    left: number;
+  };
   data: {
-    columns: ColumnT<>[],
-    columnHighlightIndex: number,
-    isSelectable: boolean,
-    isRowSelected: (string | number) => boolean,
-    onRowMouseEnter: (number, RowT) => void,
-    onSelectOne: RowT => void,
-    rowHighlightIndex: number,
-    rows: RowT[],
-    textQuery: string,
-  },
+    columns: ColumnT[];
+    columnHighlightIndex: number;
+    isSelectable: boolean;
+    isRowSelected: (a: string | number) => boolean;
+    onRowMouseEnter: (b: number, a: RowT) => void;
+    onSelectOne: (a: RowT) => void;
+    rowHighlightIndex: number;
+    rows: RowT[];
+    textQuery: string;
+  };
 };
 
 function CellPlacement({columnIndex, rowIndex, data, style}) {
@@ -194,7 +192,7 @@ function compareCellPlacement(prevProps, nextProps) {
 
   return false;
 }
-const CellPlacementMemo = React.memo<CellPlacementPropsT, mixed>(
+const CellPlacementMemo = React.memo<CellPlacementPropsT, unknown>(
   CellPlacement,
   compareCellPlacement,
 );
@@ -231,29 +229,30 @@ const HeaderContext = React.createContext<HeaderContextT>({
 });
 HeaderContext.displayName = 'HeaderContext';
 
-type HeaderProps = {|
-  columnTitle: string,
-  hoverIndex: number,
-  index: number,
-  isSortable: boolean,
-  isSelectable: boolean,
-  isSelectedAll: boolean,
-  isSelectedIndeterminate: boolean,
-  onMouseEnter: number => void,
-  onMouseLeave: () => void,
-  onResize: (columnIndex: number, delta: number) => void,
-  onResizeIndexChange: (columnIndex: number) => void,
-  onSelectMany: () => void,
-  onSelectNone: () => void,
-  onSort: () => void,
-  resizableColumnWidths: boolean,
-  resizeIndex: number,
-  resizeMaxWidth: number,
-  resizeMinWidth: number,
-  sortIndex: number,
-  sortDirection: SortDirectionsT,
-  tableHeight: number,
-|};
+type HeaderProps = {
+  columnTitle: string;
+  hoverIndex: number;
+  index: number;
+  isSortable: boolean;
+  isSelectable: boolean;
+  isSelectedAll: boolean;
+  isSelectedIndeterminate: boolean;
+  onMouseEnter: (a: number) => void;
+  onMouseLeave: () => void;
+  onResize: (columnIndex: number, delta: number) => void;
+  onResizeIndexChange: (columnIndex: number) => void;
+  onSelectMany: () => void;
+  onSelectNone: () => void;
+  onSort: () => void;
+  resizableColumnWidths: boolean;
+  resizeIndex: number;
+  resizeMaxWidth: number;
+  resizeMinWidth: number;
+  sortIndex: number;
+  sortDirection: SortDirectionsT;
+  tableHeight: number;
+};
+
 function Header(props: HeaderProps) {
   const [css, theme] = useStyletron();
   const [startResizePos, setStartResizePos] = React.useState(0);
@@ -411,7 +410,7 @@ function Header(props: HeaderProps) {
   );
 }
 
-function Headers(props: {||}) {
+function Headers(props: {}) {
   const [css, theme] = useStyletron();
   const locale = React.useContext(LocaleContext);
   const ctx = React.useContext(HeaderContext);
@@ -533,8 +532,13 @@ function LoadingOrEmptyMessage(props) {
 // replaces the content of the virtualized window with contents. in this case,
 // we are prepending a table header row before the table rows (children to the fn).
 const InnerTableElement = React.forwardRef<
-  {|children: React.Node, style: {[string]: mixed}|},
   HTMLDivElement,
+  {
+    children: React.ReactNode;
+    style: {
+      [x: string]: unknown;
+    };
+  }
 >((props, ref) => {
   const [, theme] = useStyletron();
   const ctx = React.useContext(HeaderContext);
@@ -1035,7 +1039,7 @@ export function DataTable({
           >
             <VariableSizeGrid
               // eslint-disable-next-line flowtype/no-weak-types
-              ref={(gridRef: any)}
+              ref={gridRef as any}
               overscanRowCount={10}
               innerElementType={InnerTableElement}
               columnCount={columns.length}

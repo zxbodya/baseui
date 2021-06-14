@@ -4,32 +4,33 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* global window */
 
 import * as React from 'react';
 
-import {getOverrides} from '../helpers/overrides.js';
-import {ADJOINED, SIZE, CUSTOM_INPUT_TYPE} from './constants.js';
+import {getOverrides} from '../helpers/overrides';
+import {ADJOINED, SIZE, CUSTOM_INPUT_TYPE} from './constants';
 import {
   InputContainer as StyledInputContainer,
   Input as StyledInput,
   StyledClearIcon,
   StyledClearIconContainer,
   StyledMaskToggleButton,
-} from './styled-components.js';
-import type {BaseInputPropsT, InternalStateT} from './types.js';
-import {getSharedProps} from './utils.js';
-import Hide from '../icon/hide.js';
-import Show from '../icon/show.js';
-import createEvent from '../utils/create-event.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import type {BaseInputPropsT, InternalStateT} from './types';
+import {getSharedProps} from './utils';
+import Hide from '../icon/hide';
+import Show from '../icon/show';
+import createEvent from '../utils/create-event';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
+
+import type {SyntheticEvent, FocusEvent} from 'react';
 
 const NullComponent = () => null;
 
-class BaseInput<T: EventTarget> extends React.Component<
+class BaseInput<T extends EventTarget> extends React.Component<
   BaseInputPropsT<T>,
-  InternalStateT,
+  InternalStateT
 > {
   static defaultProps = {
     'aria-activedescendant': null,
@@ -135,12 +136,12 @@ class BaseInput<T: EventTarget> extends React.Component<
     if (this.inputRef.current) this.inputRef.current.focus();
   };
 
-  onFocus = (e: SyntheticFocusEvent<T>) => {
+  onFocus = (e: FocusEvent<T>) => {
     this.setState({isFocused: true});
     this.props.onFocus(e);
   };
 
-  onBlur = (e: SyntheticFocusEvent<T>) => {
+  onBlur = (e: FocusEvent<T>) => {
     this.setState({isFocused: false});
     this.props.onBlur(e);
   };
@@ -156,13 +157,13 @@ class BaseInput<T: EventTarget> extends React.Component<
     }
   }
 
-  handleFocusForMaskToggle = (event: SyntheticEvent<>) => {
+  handleFocusForMaskToggle = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       this.setState({isFocusVisibleForMaskToggle: true});
     }
   };
 
-  handleBlurForMaskToggle = (event: SyntheticEvent<>) => {
+  handleBlurForMaskToggle = (event: SyntheticEvent) => {
     if (this.state.isFocusVisibleForMaskToggle !== false) {
       this.setState({isFocusVisibleForMaskToggle: false});
     }
@@ -224,13 +225,13 @@ class BaseInput<T: EventTarget> extends React.Component<
     );
   }
 
-  handleFocusForClear = (event: SyntheticEvent<>) => {
+  handleFocusForClear = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       this.setState({isFocusVisibleForClear: true});
     }
   };
 
-  handleBlurForClear = (event: SyntheticEvent<>) => {
+  handleBlurForClear = (event: SyntheticEvent) => {
     if (this.state.isFocusVisibleForClear !== false) {
       this.setState({isFocusVisibleForClear: false});
     }

@@ -5,16 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 /* global document */
-// @flow
 import * as React from 'react';
 import {render, fireEvent, getByTestId} from '@testing-library/react';
 
-import {TestBaseProvider} from '../../test/test-utils.js';
+import {TestBaseProvider} from '../../test/test-utils';
 
-import Select from '../select.js';
-import {STATE_CHANGE_TYPE} from '../constants.js';
+import Select from '../select';
+import {STATE_CHANGE_TYPE} from '../constants';
 
-describe('Select component', function() {
+describe('Select component', function () {
   let props: any = {};
   const item = {id: 'id1', label: 'label1'};
   const options = [
@@ -23,7 +22,7 @@ describe('Select component', function() {
     {id: 'id3', label: 'bel3'},
   ];
 
-  beforeEach(function() {
+  beforeEach(function () {
     props = {
       options: options,
       onChange: jest.fn(),
@@ -33,7 +32,7 @@ describe('Select component', function() {
     };
   });
 
-  it('calls onInputChange when input value changes', function() {
+  it('calls onInputChange when input value changes', function () {
     const {container} = render(
       <TestBaseProvider>
         <Select {...props} />
@@ -45,7 +44,7 @@ describe('Select component', function() {
     expect(props.onInputChange).toHaveBeenCalledTimes(1);
   });
 
-  it('removes selected tag on clear', function() {
+  it('removes selected tag on clear', function () {
     const {container} = render(
       <Select
         {...props}
@@ -63,7 +62,7 @@ describe('Select component', function() {
     });
   });
 
-  it('select flow allows custom keys in options objects', function() {
+  it('select flow allows custom keys in options objects', function () {
     const options = [
       {id: 'AliceBlue', color: '#F0F8FF'},
       {id: 'AntiqueWhite', color: '#FAEBD7'},

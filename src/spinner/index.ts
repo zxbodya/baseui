@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import {
   ProgressBarRounded,
   StyledProgressBarRoundedRoot,
@@ -12,18 +11,18 @@ import {
   StyledProgressBarRoundedText,
   StyledProgressBarRoundedTrackBackground,
   StyledProgressBarRoundedTrackForeground,
-} from '../progress-bar/index.js';
-export {default as Spinner} from './spinner.js';
+} from '../progress-bar/index';
+export {default as Spinner} from './spinner';
 // Styled elements
 export {
   Svg as StyledSvg,
   StyledTrackPath,
   StyledActivePath,
   StyledSpinnerNext,
-} from './styled-components.js';
-export {SIZE} from './constants.js';
+} from './styled-components';
+export {SIZE} from './constants';
 // Flow
-export type * from './types.js';
+export * from './types';
 
 // Backward compatibility with SpinnerDeterminate
 // Deprecated

@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 // At some point baseui published with errors in unit-tests that caused problems for users.
 // The assertions below will fail unit-tests if any errors or warnings are logs so that we
 // can have greater certainty that fewer bugs are published.
@@ -19,7 +17,7 @@ function applyErrorDetails(message) {
 
 let error = console.error;
 // $FlowFixMe
-console.error = function(message) {
+console.error = function (message) {
   error.apply(console, arguments);
   throw new Error(applyErrorDetails(message));
 };
@@ -30,7 +28,7 @@ function applyWarningDetails(message) {
 
 let warn = console.warn;
 // $FlowFixMe
-console.warn = function(message) {
+console.warn = function (message) {
   warn.apply(console, arguments);
   throw new Error(applyWarningDetails(message));
 };

@@ -4,13 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-env browser */
 import * as React from 'react';
 import {render} from '@testing-library/react';
 
-import StatefulContainer from '../stateful-container.js';
-import {KEY_STRINGS} from '../constants.js';
+import StatefulContainer from '../stateful-container';
+import {KEY_STRINGS} from '../constants';
 
 const mockItems = [{label: 'item1'}, {disabled: true, label: 'item2'}];
 const mockChildrenFn = jest.fn().mockImplementation(() => <div />);
@@ -26,7 +25,7 @@ function getSharedProps() {
     children: mockChildrenFn,
     stateReducer: jest
       .fn()
-      .mockImplementation((changeType, changes) => (changes: any)),
+      .mockImplementation((changeType, changes) => changes as any),
   };
 }
 

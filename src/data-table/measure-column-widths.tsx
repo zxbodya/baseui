@@ -4,14 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {useStyletron} from '../styles/index.js';
+import {useStyletron} from '../styles/index';
 
-import HeaderCell from './header-cell.js';
-import type {ColumnT, RowT} from './types.js';
+import HeaderCell from './header-cell';
+import type {ColumnT, RowT} from './types';
 
 // https://github.com/Swizec/useDimensions
 function useDimensions() {
@@ -36,9 +34,9 @@ function useDimensions() {
 }
 
 type ElementMeasurerPropsT = {
-  onDimensionsChange: (dimensions: {width: number}) => void,
+  onDimensionsChange: (dimensions: {width: number}) => void;
   // eslint-disable-next-line flowtype/no-weak-types
-  item: React.Element<any>,
+  item: React.ReactElement<any>;
 };
 
 function ElementMeasurer(props: ElementMeasurerPropsT) {
@@ -53,12 +51,12 @@ function ElementMeasurer(props: ElementMeasurerPropsT) {
 }
 
 type MeasureColumnWidthsPropsT = {
-  columns: ColumnT<>[],
+  columns: ColumnT[];
   // if selectable, measure the first column with checkbox included
-  isSelectable: boolean,
-  onWidthsChange: (number[]) => void,
-  rows: RowT[],
-  widths: number[],
+  isSelectable: boolean;
+  onWidthsChange: (a: number[]) => void;
+  rows: RowT[];
+  widths: number[];
 };
 
 // sample size could likely be generated based on row count, to have higher confidence

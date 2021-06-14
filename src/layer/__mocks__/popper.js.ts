@@ -4,8 +4,7 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import type {PopperOptionsT} from '../types.js';
+import type {PopperOptionsT} from '../types';
 
 const destroy = jest.fn();
 // $FlowFixMe
@@ -17,7 +16,7 @@ const mock = jest
       return {
         options,
         destroy,
-        _callOnPopperUpdate: function() {
+        _callOnPopperUpdate: function () {
           onPopperUpdate({
             offsets: {
               popper: {

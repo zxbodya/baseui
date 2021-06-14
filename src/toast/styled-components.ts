@@ -4,19 +4,17 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import {styled} from '../styles/index.js';
-import {getSvgStyles} from '../icon/styled-components.js';
-import {KIND, PLACEMENT, TYPE} from './constants.js';
+import {styled} from '../styles/index';
+import {getSvgStyles} from '../icon/styled-components';
+import {KIND, PLACEMENT, TYPE} from './constants';
 import type {
   SharedStylePropsArgT,
   ToasterSharedStylePropsArgT,
   KindTypeT,
   NotificationTypeT,
   PlacementTypeT,
-} from './types.js';
-import type {ThemeT} from '../styles/types.js';
+} from './types';
+import type {ThemeT} from '../styles/types';
 
 function getBackgroundColor(
   kind: KindTypeT,

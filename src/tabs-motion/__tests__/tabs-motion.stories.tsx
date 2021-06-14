@@ -4,27 +4,25 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
-import TabsMotionAlign from './tabs-motion-align.scenario.js';
-import TabsMotionArtwork from './tabs-motion-artwork.scenario.js';
-import TabsMotionConditional from './tabs-motion-conditional.scenario.js';
-import TabsMotionDisabled from './tabs-motion-disabled.scenario.js';
-import TabsMotionFixedVertical from './tabs-motion-fixed-vertical.scenario.js';
-import TabsMotionFixed from './tabs-motion-fixed.scenario.js';
-import TabsMotionFocus from './tabs-motion-focus.scenario.js';
-import TabsMotionManual from './tabs-motion-manual.scenario.js';
-import TabsMotionOverrides from './tabs-motion-overrides.scenario.js';
-import TabsMotionRefs from './tabs-motion-refs.scenario.js';
-import TabsMotionRenderAll from './tabs-motion-renderAll.scenario.js';
-import TabsMotionScrollSafe from './tabs-motion-scroll-safe.scenario.js';
-import TabsMotionScrollVertical from './tabs-motion-scroll-vertical.scenario.js';
-import TabsMotionScroll from './tabs-motion-scroll.scenario.js';
-import TabsMotionStateful from './tabs-motion-stateful.scenario.js';
-import TabsMotionVerticalPageScroll from './tabs-motion-vertical-pageScroll.scenario.js';
-import TabsMotionVertical from './tabs-motion-vertical.scenario.js';
-import TabsMotionDefault from './tabs-motion.scenario.js';
+import TabsMotionAlign from './tabs-motion-align.scenario';
+import TabsMotionArtwork from './tabs-motion-artwork.scenario';
+import TabsMotionConditional from './tabs-motion-conditional.scenario';
+import TabsMotionDisabled from './tabs-motion-disabled.scenario';
+import TabsMotionFixedVertical from './tabs-motion-fixed-vertical.scenario';
+import TabsMotionFixed from './tabs-motion-fixed.scenario';
+import TabsMotionFocus from './tabs-motion-focus.scenario';
+import TabsMotionManual from './tabs-motion-manual.scenario';
+import TabsMotionOverrides from './tabs-motion-overrides.scenario';
+import TabsMotionRefs from './tabs-motion-refs.scenario';
+import TabsMotionRenderAll from './tabs-motion-renderAll.scenario';
+import TabsMotionScrollSafe from './tabs-motion-scroll-safe.scenario';
+import TabsMotionScrollVertical from './tabs-motion-scroll-vertical.scenario';
+import TabsMotionScroll from './tabs-motion-scroll.scenario';
+import TabsMotionStateful from './tabs-motion-stateful.scenario';
+import TabsMotionVerticalPageScroll from './tabs-motion-vertical-pageScroll.scenario';
+import TabsMotionVertical from './tabs-motion-vertical.scenario';
+import TabsMotionDefault from './tabs-motion.scenario';
 
 export const Align = () => <TabsMotionAlign />;
 export const Artwork = () => <TabsMotionArtwork />;

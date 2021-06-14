@@ -4,11 +4,10 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 
 // eslint-disable-next-line flowtype/no-weak-types
-export default function(Component: any, displayName: string) {
+export default function (Component: any, displayName: string) {
   // eslint-disable-next-line flowtype/no-weak-types
   return React.forwardRef<any, any>((props, ref) => {
     if (__DEV__) {

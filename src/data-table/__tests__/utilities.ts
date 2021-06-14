@@ -6,8 +6,6 @@ LICENSE file in the root directory of this source tree.
 */
 /* eslint-env node */
 
-// @flow
-
 const TABLE_ROOT = 'div[data-baseweb="data-table"]';
 
 // eslint-disable-next-line flowtype/no-weak-types

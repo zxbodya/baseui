@@ -4,19 +4,17 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
-import LayoutGridAlign from './layout-grid-align.scenario.js';
-import LayoutGridCustom from './layout-grid-custom.scenario.js';
-import LayoutGridHide from './layout-grid-hide.scenario.js';
-import LayoutGridOrder from './layout-grid-order.scenario.js';
-import LayoutGridOverrides from './layout-grid-overrides.scenario.js';
-import LayoutGridSizing from './layout-grid-sizing.scenario.js';
-import LayoutGridSkip from './layout-grid-skip.scenario.js';
-import LayoutGridUnit from './layout-grid-unit.scenario.js';
-import LayoutGridWrap from './layout-grid-wrap.scenario.js';
-import LayoutGridDefault from './layout-grid.scenario.js';
+import LayoutGridAlign from './layout-grid-align.scenario';
+import LayoutGridCustom from './layout-grid-custom.scenario';
+import LayoutGridHide from './layout-grid-hide.scenario';
+import LayoutGridOrder from './layout-grid-order.scenario';
+import LayoutGridOverrides from './layout-grid-overrides.scenario';
+import LayoutGridSizing from './layout-grid-sizing.scenario';
+import LayoutGridSkip from './layout-grid-skip.scenario';
+import LayoutGridUnit from './layout-grid-unit.scenario';
+import LayoutGridWrap from './layout-grid-wrap.scenario';
+import LayoutGridDefault from './layout-grid.scenario';
 
 export const Align = () => <LayoutGridAlign />;
 export const Custom = () => <LayoutGridCustom />;

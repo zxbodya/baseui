@@ -4,13 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import Blank from '../icon/blank.js';
-import ChevronDown from '../icon/chevron-down.js';
-import ChevronUp from '../icon/chevron-up.js';
-import {styled, withStyle, expandBorderStyles} from '../styles/index.js';
-import {SIZE, DIVIDER} from './constants.js';
-import type {SizeT, DividerT} from './types.js';
+import Blank from '../icon/blank';
+import ChevronDown from '../icon/chevron-down';
+import ChevronUp from '../icon/chevron-up';
+import {styled, withStyle, expandBorderStyles} from '../styles/index';
+import {SIZE, DIVIDER} from './constants';
+import type {SizeT, DividerT} from './types';
 
 function sizeToCellPadding($theme, $size) {
   if ($size === SIZE.compact) {
@@ -22,7 +21,7 @@ function sizeToCellPadding($theme, $size) {
 }
 
 type StyledRootPropsT = {
-  $divider?: DividerT,
+  $divider?: DividerT;
 };
 
 export const StyledRoot = styled<StyledRootPropsT>(
@@ -44,7 +43,7 @@ export const StyledRoot = styled<StyledRootPropsT>(
 );
 
 type StyledTablePropsT = {
-  $width?: ?string,
+  $width?: string | null;
 };
 
 export const StyledTable = styled<StyledTablePropsT>(
@@ -68,10 +67,10 @@ export const StyledTableHeadRow = styled<{}>('tr', ({$theme}) => {
 });
 
 type StyledTableHeadCellPropsT = {
-  $col?: {},
-  $colIndex?: ?number,
-  $divider?: DividerT,
-  $size?: SizeT,
+  $col?: {};
+  $colIndex?: number | null;
+  $divider?: DividerT;
+  $size?: SizeT;
 };
 
 export const StyledTableHeadCell = styled<StyledTableHeadCellPropsT>(
@@ -120,13 +119,12 @@ export const StyledTableHeadCell = styled<StyledTableHeadCellPropsT>(
 );
 
 type StyledTableHeadCellSortablePropsT = {
-  ...StyledTableHeadCellPropsT,
-  $isFocusVisible: boolean,
-};
+  $isFocusVisible: boolean;
+} & StyledTableHeadCellPropsT;
 
 export const StyledTableHeadCellSortable = withStyle<
   typeof StyledTableHeadCell,
-  StyledTableHeadCellSortablePropsT,
+  StyledTableHeadCellSortablePropsT
 >(StyledTableHeadCell, ({$theme, $isFocusVisible}) => {
   return {
     cursor: 'pointer',
@@ -183,9 +181,9 @@ export const StyledTableBody = styled<{}>('tbody', ({$theme}) => {
 });
 
 type StyledTableBodyRowPropsT = {
-  $col?: {},
-  $colIndex?: ?number,
-  $divider?: DividerT,
+  $col?: {};
+  $colIndex?: number | null;
+  $divider?: DividerT;
 };
 
 export const StyledTableBodyRow = styled<StyledTableBodyRowPropsT>(
@@ -216,13 +214,13 @@ export const StyledTableBodyRow = styled<StyledTableBodyRowPropsT>(
 );
 
 type StyledTableBodyCellPropsT = {
-  $col?: {},
-  $colIndex?: ?number,
-  $divider?: DividerT,
-  $row?: {},
-  $rowIndex?: ?number,
-  $size?: SizeT,
-  $isNumeric?: ?boolean,
+  $col?: {};
+  $colIndex?: number | null;
+  $divider?: DividerT;
+  $row?: {};
+  $rowIndex?: number | null;
+  $size?: SizeT;
+  $isNumeric?: boolean | null;
 };
 
 export const StyledTableBodyCell = styled<StyledTableBodyCellPropsT>(

@@ -4,21 +4,22 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {STATE_TYPE} from './constants.js';
+import {STATE_TYPE} from './constants';
 import type {
   StatefulContainerPropsT,
   StateReducerT,
   DefaultStatefulPropsT,
   StateT,
-} from './types.js';
+} from './types';
+
+import type {ChangeEvent} from 'react';
 
 const defaultStateReducer: StateReducerT = (type, nextState) => nextState;
 
 class StatefulRadioGroupContainer extends React.Component<
   StatefulContainerPropsT,
-  StateT,
+  StateT
 > {
   static defaultProps: DefaultStatefulPropsT = {
     initialState: {
@@ -36,13 +37,13 @@ class StatefulRadioGroupContainer extends React.Component<
     };
   }
 
-  onChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  onChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.stateReducer(STATE_TYPE.change, e);
     const {onChange} = this.props;
     onChange && onChange(e);
   };
 
-  stateReducer = (type: string, e: SyntheticInputEvent<HTMLInputElement>) => {
+  stateReducer = (type: string, e: ChangeEvent<HTMLInputElement>) => {
     let nextState = {};
     const {stateReducer} = this.props;
     if (type === STATE_TYPE.change) {

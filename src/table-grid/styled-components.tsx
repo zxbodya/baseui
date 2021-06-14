@@ -4,19 +4,19 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
-import {withStyle, withWrapper} from '../styles/index.js';
+import {withStyle, withWrapper} from '../styles/index';
 import {
   StyledTable as FlexStyledTable,
   StyledHeadCell as FlexStyledHeadCell,
   StyledCell as FlexStyledBodyCell,
-} from '../table/index.js';
+} from '../table/index';
 
 const StyledTableElement = withStyle<
   typeof FlexStyledTable,
-  {$gridTemplateColumns: string},
+  {
+    $gridTemplateColumns: string;
+  }
 >(FlexStyledTable, props => {
   return {
     display: 'grid',
@@ -38,7 +38,10 @@ export const StyledTable = withWrapper(
 
 export const StyledHeadCell = withStyle<
   typeof FlexStyledHeadCell,
-  {$sticky?: boolean, $isFocusVisible?: boolean},
+  {
+    $sticky?: boolean;
+    $isFocusVisible?: boolean;
+  }
 >(FlexStyledHeadCell, ({$sticky = true, $isFocusVisible, $theme}) => {
   return {
     backgroundColor: $theme.colors.tableHeadBackgroundColor,
@@ -56,7 +59,11 @@ export const StyledHeadCell = withStyle<
 
 export const StyledBodyCell = withStyle<
   typeof FlexStyledBodyCell,
-  {$gridColumn?: string, $gridRow?: string, $isFocusVisible?: boolean},
+  {
+    $gridColumn?: string;
+    $gridRow?: string;
+    $isFocusVisible?: boolean;
+  }
 >(FlexStyledBodyCell, props => {
   return {
     display: 'block',

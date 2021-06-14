@@ -4,13 +4,11 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {Block} from '../block/index.js';
-import {mergeOverrides} from '../helpers/overrides.js';
-import type {AspectRatioBoxPropsT} from './types.js';
+import {Block} from '../block/index';
+import {mergeOverrides} from '../helpers/overrides';
+import type {AspectRatioBoxPropsT} from './types';
 
 const aspectRatioBoxStyle = ({$aspectRatio}) => ({
   position: 'relative',
@@ -35,7 +33,7 @@ const AspectRatioBox = ({
   aspectRatio = 1,
   overrides = {},
   ...restProps
-}): React.Node => {
+}): React.ReactNode => {
   const aspectRatioBoxOverrides = {
     Block: {
       style: aspectRatioBoxStyle,
@@ -47,7 +45,7 @@ const AspectRatioBox = ({
       // coerced to any because because of how react components are typed.
       // cannot guarantee an html element
       // eslint-disable-next-line flowtype/no-weak-types
-      ref={(forwardedRef: any)}
+      ref={forwardedRef as any}
       overrides={blockOverrides}
       $aspectRatio={aspectRatio}
       data-baseweb="aspect-ratio-box"
@@ -57,8 +55,8 @@ const AspectRatioBox = ({
 };
 
 const AspectRatioBoxComponent = React.forwardRef<
-  AspectRatioBoxPropsT,
   HTMLElement,
+  AspectRatioBoxPropsT
 >((props: AspectRatioBoxPropsT, ref) => (
   <AspectRatioBox {...props} forwardedRef={ref} />
 ));

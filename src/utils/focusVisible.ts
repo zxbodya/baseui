@@ -1,3 +1,4 @@
+import type {SyntheticEvent} from 'react';
 /*
 Copyright (c) Uber Technologies, Inc.
 
@@ -5,7 +6,6 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
 // based on:
 // - https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/utils/focusVisible.js
 // - https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
@@ -151,24 +151,28 @@ export function initFocusVisible(node) {
   }
 }
 
-export const forkFocus = (
-  // eslint-disable-next-line flowtype/no-weak-types
-  rootProps: any,
-  handler: (e: SyntheticEvent<>) => void,
-) => (e: SyntheticEvent<>) => {
-  if (typeof rootProps.onFocus === 'function') {
-    rootProps.onFocus(e);
-  }
-  handler(e);
-};
+export const forkFocus =
+  (
+    // eslint-disable-next-line flowtype/no-weak-types
+    rootProps: any,
+    handler: (e: SyntheticEvent) => void,
+  ) =>
+  (e: SyntheticEvent) => {
+    if (typeof rootProps.onFocus === 'function') {
+      rootProps.onFocus(e);
+    }
+    handler(e);
+  };
 
-export const forkBlur = (
-  // eslint-disable-next-line flowtype/no-weak-types
-  rootProps: any,
-  handler: (e: SyntheticEvent<>) => void,
-) => (e: SyntheticEvent<>) => {
-  if (typeof rootProps.onBlur === 'function') {
-    rootProps.onBlur(e);
-  }
-  handler(e);
-};
+export const forkBlur =
+  (
+    // eslint-disable-next-line flowtype/no-weak-types
+    rootProps: any,
+    handler: (e: SyntheticEvent) => void,
+  ) =>
+  (e: SyntheticEvent) => {
+    if (typeof rootProps.onBlur === 'function') {
+      rootProps.onBlur(e);
+    }
+    handler(e);
+  };

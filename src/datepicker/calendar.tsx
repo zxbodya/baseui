@@ -4,32 +4,33 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {FormControl} from '../form-control/index.js';
-import {LocaleContext} from '../locale/index.js';
-import {Select} from '../select/index.js';
-import CalendarHeader from './calendar-header.js';
-import Month from './month.js';
-import TimePicker from '../timepicker/timepicker.js';
-import type {DateIOAdapter} from './utils/types.js';
+import {FormControl} from '../form-control/index';
+import {LocaleContext} from '../locale/index';
+import {Select} from '../select/index';
+import CalendarHeader from './calendar-header';
+import Month from './month';
+import TimePicker from '../timepicker/timepicker';
+import type {DateIOAdapter} from './utils/types';
 import {
   StyledCalendarContainer,
   StyledMonthContainer,
   StyledRoot,
   StyledSelectorContainer,
-} from './styled-components.js';
-import dateFnsAdapter from './utils/date-fns-adapter.js';
-import DateHelpers from './utils/date-helpers.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import type {CalendarPropsT, CalendarInternalState} from './types.js';
-import {ORIENTATION} from './constants.js';
+} from './styled-components';
+import dateFnsAdapter from './utils/date-fns-adapter';
+import DateHelpers from './utils/date-helpers';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import type {CalendarPropsT, CalendarInternalState} from './types';
+import {ORIENTATION} from './constants';
 
 export default class Calendar<T = Date> extends React.Component<
   CalendarPropsT<T>,
-  CalendarInternalState<T>,
+  CalendarInternalState<T>
 > {
-  static defaultProps: {adapter: DateIOAdapter<Date>} = {
+  static defaultProps: {
+    adapter: DateIOAdapter<Date>;
+  } = {
     autoFocusCalendar: false,
     dateLabel: null,
     excludeDates: null,
@@ -57,7 +58,7 @@ export default class Calendar<T = Date> extends React.Component<
 
   dateHelpers: DateHelpers<T>;
 
-  calendar: React.ElementRef<*>;
+  calendar: React.RefObject<any>;
 
   constructor(props: CalendarPropsT<T>) {
     super(props);
@@ -139,7 +140,7 @@ export default class Calendar<T = Date> extends React.Component<
     return monthDelta >= 0 && monthDelta < (this.props.monthsShown || 1);
   }
 
-  getSingleDate(value: ?T | Array<T>): ?T {
+  getSingleDate(value: T | undefined | null | Array<T>): T | undefined | null {
     // need to check this.props.range but flow would complain
     // at the return value in the else clause
     if (Array.isArray(value)) {
@@ -166,29 +167,29 @@ export default class Calendar<T = Date> extends React.Component<
     return current;
   };
 
-  handleMonthChange: T => void = date => {
+  handleMonthChange: (a: T) => void = date => {
     this.setHighlightedDate(this.dateHelpers.getStartOfMonth(date));
     if (this.props.onMonthChange) {
       this.props.onMonthChange({date});
     }
   };
 
-  handleYearChange: T => void = date => {
+  handleYearChange: (a: T) => void = date => {
     this.setHighlightedDate(date);
     if (this.props.onYearChange) {
       this.props.onYearChange({date});
     }
   };
 
-  changeMonth: ({date: T}) => mixed = ({date}) => {
+  changeMonth: (a: {date: T}) => unknown = ({date}) => {
     this.setState({date: date}, () => this.handleMonthChange(this.state.date));
   };
 
-  changeYear: ({date: T}) => mixed = ({date}) => {
+  changeYear: (a: {date: T}) => unknown = ({date}) => {
     this.setState({date: date}, () => this.handleYearChange(this.state.date));
   };
 
-  renderCalendarHeader: (T, number) => React.Node = (
+  renderCalendarHeader: (b: T, a: number) => React.ReactNode = (
     date = this.state.date,
     order,
   ) => {
@@ -324,50 +325,51 @@ export default class Calendar<T = Date> extends React.Component<
     }
   };
 
-  onDayFocus: ({event: Event, date: T}) => mixed = data => {
+  onDayFocus: (a: {event: Event; date: T}) => unknown = data => {
     const {date} = data;
     this.setState({highlightedDate: date});
     this.focusCalendar();
     this.props.onDayFocus && this.props.onDayFocus(data);
   };
 
-  onDayMouseOver: ({event: Event, date: T}) => mixed = data => {
+  onDayMouseOver: (a: {event: Event; date: T}) => unknown = data => {
     const {date} = data;
     this.setState({highlightedDate: date});
     this.props.onDayMouseOver && this.props.onDayMouseOver(data);
   };
 
-  onDayMouseLeave: ({event: Event, date: T}) => mixed = data => {
+  onDayMouseLeave: (a: {event: Event; date: T}) => unknown = data => {
     const {date} = data;
     this.setHighlightedDate(date);
     this.props.onDayMouseLeave && this.props.onDayMouseLeave(data);
   };
 
-  handleDateChange: ({date: ?T | Array<T>}) => void = data => {
-    const {onChange = params => {}} = this.props;
-    let updatedDate = data.date;
-    // We'll need to update the date in time values of internal state
-    const newTimeState = [...this.state.time];
-    // Apply the currently selected time values (saved in state) to the updated date
-    if (Array.isArray(data.date)) {
-      updatedDate = data.date.map((date, index) => {
-        newTimeState[index] = this.dateHelpers.applyDateToTime(
-          newTimeState[index],
-          date,
+  handleDateChange: (a: {date: T | undefined | null | Array<T>}) => void =
+    data => {
+      const {onChange = params => {}} = this.props;
+      let updatedDate = data.date;
+      // We'll need to update the date in time values of internal state
+      const newTimeState = [...this.state.time];
+      // Apply the currently selected time values (saved in state) to the updated date
+      if (Array.isArray(data.date)) {
+        updatedDate = data.date.map((date, index) => {
+          newTimeState[index] = this.dateHelpers.applyDateToTime(
+            newTimeState[index],
+            date,
+          );
+          return newTimeState[index];
+        });
+      } else if (!Array.isArray(this.props.value) && data.date) {
+        newTimeState[0] = this.dateHelpers.applyDateToTime(
+          newTimeState[0],
+          data.date,
         );
-        return newTimeState[index];
-      });
-    } else if (!Array.isArray(this.props.value) && data.date) {
-      newTimeState[0] = this.dateHelpers.applyDateToTime(
-        newTimeState[0],
-        data.date,
-      );
-      updatedDate = newTimeState[0];
-    }
-    // Update the date in time values of internal state
-    this.setState({time: newTimeState});
-    onChange({date: updatedDate});
-  };
+        updatedDate = newTimeState[0];
+      }
+      // Update the date in time values of internal state
+      this.setState({time: newTimeState});
+      onChange({date: updatedDate});
+    };
 
   handleTimeChange = (time: T, index: number) => {
     const {onChange = params => {}} = this.props;
@@ -477,11 +479,11 @@ export default class Calendar<T = Date> extends React.Component<
   };
 
   // eslint-disable-next-line flowtype/no-weak-types
-  renderTimeSelect: (?T, Function, string) => React.Node = (
-    value,
-    onChange,
-    label,
-  ) => {
+  renderTimeSelect: (
+    c: T | undefined | null,
+    b: Function,
+    a: string,
+  ) => React.ReactNode = (value, onChange, label) => {
     const {overrides = {}} = this.props;
     const [TimeSelectContainer, timeSelectContainerProps] = getOverrides(
       overrides.TimeSelectContainer,
@@ -645,7 +647,7 @@ export default class Calendar<T = Date> extends React.Component<
                 !this.state.rootElement
               ) {
                 this.setState({
-                  rootElement: (root: HTMLElement),
+                  rootElement: root as HTMLElement,
                 });
               }
             }}

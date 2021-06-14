@@ -4,10 +4,9 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import {styled} from '../styles/index.js';
-import getDayStateCode from './utils/day-state.js';
-import type {SharedStylePropsT} from './types.js';
+import {styled} from '../styles/index';
+import getDayStateCode from './utils/day-state';
+import type {SharedStylePropsT} from './types';
 
 /**
  * Main component container element
@@ -97,29 +96,28 @@ export const StyledMonthHeader = styled<SharedStylePropsT>('div', props => {
   };
 });
 
-export const StyledMonthYearSelectButton = styled<{$isFocusVisible: boolean}>(
-  'button',
-  props => {
-    return {
-      ...props.$theme.typography.font200,
-      alignItems: 'center',
-      backgroundColor: 'transparent',
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      color: props.$theme.colors.calendarHeaderForeground,
-      cursor: 'pointer',
-      display: 'flex',
-      outline: 'none',
-      ':focus': {
-        boxShadow: props.$isFocusVisible
-          ? `0 0 0 3px ${props.$theme.colors.accent}`
-          : 'none',
-      },
-    };
-  },
-);
+export const StyledMonthYearSelectButton = styled<{
+  $isFocusVisible: boolean;
+}>('button', props => {
+  return {
+    ...props.$theme.typography.font200,
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    color: props.$theme.colors.calendarHeaderForeground,
+    cursor: 'pointer',
+    display: 'flex',
+    outline: 'none',
+    ':focus': {
+      boxShadow: props.$isFocusVisible
+        ? `0 0 0 3px ${props.$theme.colors.accent}`
+        : 'none',
+    },
+  };
+});
 
 export const StyledMonthYearSelectIconContainer = styled<{}>('span', props => {
   const marginDirection: string =
@@ -396,7 +394,7 @@ export const StyledDay = styled<SharedStylePropsT>('div', props => {
     $theme: {colors, sizing},
   } = props;
   const code = getDayStateCode(props);
-  return ({
+  return {
     boxSizing: 'border-box',
     position: 'relative',
     cursor:
@@ -501,8 +499,8 @@ export const StyledDay = styled<SharedStylePropsT>('div', props => {
         }
       : // a hack to make flow happy, otherwise it complains about complexity
         // eslint-disable-next-line flowtype/no-weak-types
-        ({}: any)),
-  }: {});
+        ({} as any)),
+  } as {};
 });
 
 export const StyledDayLabel = styled<SharedStylePropsT>('div', props => {
@@ -520,7 +518,7 @@ export const StyledWeekdayHeader = styled<SharedStylePropsT>('div', props => {
   const {
     $theme: {sizing},
   } = props;
-  return ({
+  return {
     boxSizing: 'border-box',
     position: 'relative',
     cursor: 'default',
@@ -539,5 +537,5 @@ export const StyledWeekdayHeader = styled<SharedStylePropsT>('div', props => {
     marginRight: 0,
     color: 'inherit',
     backgroundColor: 'transparent',
-  }: {});
+  } as {};
 });

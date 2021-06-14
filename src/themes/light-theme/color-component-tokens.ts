@@ -4,9 +4,8 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import colorTokens from './color-tokens.js';
-import type {ColorTokensT, ComponentColorTokensT} from '../types.js';
+import colorTokens from './color-tokens';
+import type {ColorTokensT, ComponentColorTokensT} from '../types';
 
 const tagHoverBackground = `rgba(0, 0, 0, 0.08)`;
 
@@ -20,6 +19,7 @@ export default (
 ): ComponentColorTokensT => ({
   // Buttons
   buttonPrimaryFill: themePrimitives.primary,
+
   buttonPrimaryText: themePrimitives.white,
   buttonPrimaryHover: themePrimitives.primary700,
   buttonPrimaryActive: themePrimitives.primary600,
@@ -27,7 +27,6 @@ export default (
   buttonPrimarySelectedText: themePrimitives.white,
   buttonPrimarySpinnerForeground: themePrimitives.primary50,
   buttonPrimarySpinnerBackground: themePrimitives.primary500,
-
   buttonSecondaryFill: themePrimitives.primary100,
   buttonSecondaryText: themePrimitives.primary,
   buttonSecondaryHover: themePrimitives.primary200,
@@ -36,7 +35,6 @@ export default (
   buttonSecondarySelectedText: themePrimitives.primary,
   buttonSecondarySpinnerForeground: themePrimitives.primary700,
   buttonSecondarySpinnerBackground: themePrimitives.primary300,
-
   buttonTertiaryFill: 'transparent',
   buttonTertiaryText: themePrimitives.primary,
   buttonTertiaryHover: themePrimitives.primary50,
@@ -45,7 +43,6 @@ export default (
   buttonTertiarySelectedText: themePrimitives.primary,
   buttonTertiarySpinnerForeground: themePrimitives.primary700,
   buttonTertiarySpinnerBackground: themePrimitives.primary300,
-
   buttonMinimalFill: 'transparent',
   buttonMinimalText: themePrimitives.primary,
   buttonMinimalHover: themePrimitives.primary50,
@@ -54,7 +51,6 @@ export default (
   buttonMinimalSelectedText: themePrimitives.primary,
   buttonMinimalSpinnerForeground: themePrimitives.primary700,
   buttonMinimalSpinnerBackground: themePrimitives.primary300,
-
   buttonDisabledFill: themePrimitives.mono200,
   buttonDisabledText: themePrimitives.mono600,
   buttonDisabledSpinnerForeground: themePrimitives.mono600,
@@ -62,10 +58,12 @@ export default (
 
   // Breadcrumbs
   breadcrumbsText: themePrimitives.mono900,
+
   breadcrumbsSeparatorFill: themePrimitives.mono700,
 
   // Datepicker
   datepickerBackground: themePrimitives.mono100,
+
   datepickerDayFont: themePrimitives.mono1000,
   datepickerDayFontDisabled: themePrimitives.mono500,
   datepickerDayPseudoSelected: themePrimitives.primary100,
@@ -73,6 +71,7 @@ export default (
 
   // Calendar
   calendarBackground: themePrimitives.mono100,
+
   calendarForeground: themePrimitives.mono1000,
   calendarForegroundDisabled: themePrimitives.mono500,
   calendarHeaderBackground: themePrimitives.white,
@@ -90,10 +89,12 @@ export default (
 
   // Combobox
   comboboxListItemFocus: themePrimitives.mono200,
+
   comboboxListItemHover: themePrimitives.mono300,
 
   // FileUploader
   fileUploaderBackgroundColor: themePrimitives.mono200,
+
   fileUploaderBackgroundColorActive: themePrimitives.primary50,
   fileUploaderBorderColorActive: themePrimitives.primary,
   fileUploaderBorderColorDefault: themePrimitives.mono500,
@@ -101,18 +102,21 @@ export default (
 
   // Links
   linkText: themePrimitives.primary,
+
   linkVisited: themePrimitives.primary700,
   linkHover: themePrimitives.primary600,
   linkActive: themePrimitives.primary500,
 
   // List
   listHeaderFill: themePrimitives.white,
+
   listBodyFill: themePrimitives.mono200,
   listIconFill: themePrimitives.mono500,
   listBorder: themePrimitives.mono500,
 
   // ProgressSteps
   progressStepsCompletedText: themePrimitives.white,
+
   progressStepsCompletedFill: themePrimitives.primary,
   progressStepsActiveText: themePrimitives.white,
   progressStepsActiveFill: themePrimitives.primary,
@@ -120,6 +124,7 @@ export default (
 
   // Toggle
   toggleFill: themePrimitives.white,
+
   toggleFillChecked: themePrimitives.primary,
   toggleFillDisabled: themePrimitives.mono600,
   toggleTrackFill: themePrimitives.mono400,
@@ -127,31 +132,28 @@ export default (
 
   // Tick
   tickFill: themePrimitives.mono100,
+
   tickFillHover: themePrimitives.mono200,
   tickFillActive: themePrimitives.mono300,
-
   tickFillSelected: themePrimitives.primary,
   tickFillSelectedHover: themePrimitives.primary700,
   tickFillSelectedHoverActive: themePrimitives.primary600,
-
   tickFillError: themePrimitives.negative50,
   tickFillErrorHover: themePrimitives.negative100,
   tickFillErrorHoverActive: themePrimitives.negative200,
   tickFillErrorSelected: themePrimitives.negative400,
   tickFillErrorSelectedHover: themePrimitives.negative500,
   tickFillErrorSelectedHoverActive: themePrimitives.negative600,
-
   tickFillDisabled: themePrimitives.mono600,
-
   tickBorder: themePrimitives.mono700,
   tickBorderError: themePrimitives.negative400,
-
   tickMarkFill: themePrimitives.white,
   tickMarkFillError: themePrimitives.white,
   tickMarkFillDisabled: themePrimitives.mono100,
 
   // Slider/Toggle
   sliderTrackFill: themePrimitives.mono400,
+
   sliderTrackFillHover: themePrimitives.mono500,
   sliderTrackFillActive: themePrimitives.mono600,
   sliderTrackFillSelected: themePrimitives.primary,
@@ -169,13 +171,13 @@ export default (
   sliderHandleInnerFillDisabled: themePrimitives.mono400,
   sliderHandleInnerFillSelectedHover: themePrimitives.primary,
   sliderHandleInnerFillSelectedActive: themePrimitives.primary500,
-
   sliderBorder: themePrimitives.mono500,
   sliderBorderHover: themePrimitives.primary,
   sliderBorderDisabled: themePrimitives.mono600,
 
   // Inputs
   inputBorder: themePrimitives.mono300,
+
   inputFill: themePrimitives.mono300,
   inputFillError: themePrimitives.negative50,
   inputFillDisabled: themePrimitives.mono200,
@@ -192,6 +194,7 @@ export default (
 
   // Menu
   menuFill: themePrimitives.mono100,
+
   menuFillHover: themePrimitives.mono200,
   menuFontDefault: themePrimitives.mono800,
   menuFontDisabled: themePrimitives.mono500,
@@ -200,6 +203,7 @@ export default (
 
   // Modal
   modalCloseColor: themePrimitives.mono1000,
+
   modalCloseColorHover: themePrimitives.mono800,
   modalCloseColorFocus: themePrimitives.mono800,
 
@@ -211,10 +215,12 @@ export default (
 
   // Tab
   tabBarFill: themePrimitives.mono200,
+
   tabColor: themePrimitives.mono800,
 
   // Notification
   notificationPrimaryBackground: themePrimitives.primary50,
+
   notificationPrimaryText: themePrimitives.primary500,
   notificationInfoBackground: themePrimitives.accent50,
   notificationInfoText: themePrimitives.accent500,
@@ -229,13 +235,16 @@ export default (
 
   // Custom ramps
   tagFontDisabledRampUnit: '100',
+
   tagOutlinedDisabledRampUnit: '200',
   tagSolidFontRampUnit: '0',
   tagSolidRampUnit: '400',
   tagOutlinedFontRampUnit: '400',
   tagOutlinedRampUnit: '200',
+
   // Deprecated
   tagSolidHoverRampUnit: '50',
+
   tagSolidActiveRampUnit: '100',
   tagSolidDisabledRampUnit: '50',
   tagSolidFontHoverRampUnit: '500',
@@ -251,13 +260,16 @@ export default (
 
   // Neutral
   tagNeutralFontDisabled: themePrimitives.mono600,
+
   tagNeutralOutlinedDisabled: themePrimitives.mono400,
   tagNeutralSolidFont: themePrimitives.white,
   tagNeutralSolidBackground: themePrimitives.black,
   tagNeutralOutlinedBackground: themePrimitives.mono600,
   tagNeutralOutlinedFont: themePrimitives.black,
+
   // Deprecated
   tagNeutralSolidHover: themePrimitives.mono300,
+
   tagNeutralSolidActive: themePrimitives.mono400,
   tagNeutralSolidDisabled: themePrimitives.mono200,
   tagNeutralSolidFontHover: themePrimitives.mono900,
@@ -273,13 +285,16 @@ export default (
 
   // Primary
   tagPrimaryFontDisabled: themePrimitives.primary400,
+
   tagPrimaryOutlinedDisabled: themePrimitives.primary200,
   tagPrimarySolidFont: themePrimitives.white,
   tagPrimarySolidBackground: themePrimitives.primary,
   tagPrimaryOutlinedFontHover: themePrimitives.primary,
   tagPrimaryOutlinedFont: themePrimitives.primary,
+
   // Deprecated
   tagPrimarySolidHover: themePrimitives.primary100,
+
   tagPrimarySolidActive: themePrimitives.primary200,
   tagPrimarySolidDisabled: themePrimitives.primary50,
   tagPrimarySolidFontHover: themePrimitives.primary700,
@@ -295,13 +310,16 @@ export default (
 
   // Accent
   tagAccentFontDisabled: themePrimitives.accent200,
+
   tagAccentOutlinedDisabled: themePrimitives.accent200,
   tagAccentSolidFont: themePrimitives.white,
   tagAccentSolidBackground: themePrimitives.accent400,
   tagAccentOutlinedBackground: themePrimitives.accent200,
   tagAccentOutlinedFont: themePrimitives.accent400,
+
   // Deprecated
   tagAccentSolidHover: themePrimitives.accent50,
+
   tagAccentSolidActive: themePrimitives.accent100,
   tagAccentSolidDisabled: themePrimitives.accent50,
   tagAccentSolidFontHover: themePrimitives.accent500,
@@ -317,13 +335,16 @@ export default (
 
   // Positive
   tagPositiveFontDisabled: themePrimitives.positive200,
+
   tagPositiveOutlinedDisabled: themePrimitives.positive200,
   tagPositiveSolidFont: themePrimitives.white,
   tagPositiveSolidBackground: themePrimitives.positive400,
   tagPositiveOutlinedBackground: themePrimitives.positive200,
   tagPositiveOutlinedFont: themePrimitives.positive400,
+
   // Deprecated
   tagPositiveSolidHover: themePrimitives.positive50,
+
   tagPositiveSolidActive: themePrimitives.positive100,
   tagPositiveSolidDisabled: themePrimitives.positive50,
   tagPositiveSolidFontHover: themePrimitives.positive500,
@@ -339,13 +360,16 @@ export default (
 
   // Warning
   tagWarningFontDisabled: themePrimitives.warning300,
+
   tagWarningOutlinedDisabled: themePrimitives.warning300,
   tagWarningSolidFont: themePrimitives.warning700,
   tagWarningSolidBackground: themePrimitives.warning400,
   tagWarningOutlinedBackground: themePrimitives.warning300,
   tagWarningOutlinedFont: themePrimitives.warning600,
+
   // Deprecated
   tagWarningSolidHover: themePrimitives.warning50,
+
   tagWarningSolidActive: themePrimitives.warning100,
   tagWarningSolidDisabled: themePrimitives.warning50,
   tagWarningSolidFontHover: themePrimitives.warning500,
@@ -361,13 +385,16 @@ export default (
 
   // Negative
   tagNegativeFontDisabled: themePrimitives.negative200,
+
   tagNegativeOutlinedDisabled: themePrimitives.negative200,
   tagNegativeSolidFont: themePrimitives.white,
   tagNegativeSolidBackground: themePrimitives.negative400,
   tagNegativeOutlinedBackground: themePrimitives.negative200,
   tagNegativeOutlinedFont: themePrimitives.negative400,
+
   // Deprecated
   tagNegativeSolidHover: themePrimitives.negative50,
+
   tagNegativeSolidActive: themePrimitives.negative100,
   tagNegativeSolidDisabled: themePrimitives.negative50,
   tagNegativeSolidFontHover: themePrimitives.negative500,
@@ -383,6 +410,7 @@ export default (
 
   // Table
   tableHeadBackgroundColor: themePrimitives.mono100,
+
   tableBackground: themePrimitives.mono100,
   tableStripedBackground: themePrimitives.mono200,
   tableFilter: themePrimitives.mono600,
@@ -392,6 +420,7 @@ export default (
 
   // Toast
   toastText: themePrimitives.white,
+
   toastPrimaryBackground: themePrimitives.primary500,
   toastInfoBackground: themePrimitives.accent500,
   toastPositiveBackground: themePrimitives.positive500,
@@ -406,5 +435,6 @@ export default (
 
   // Tooltip
   tooltipBackground: themePrimitives.mono900,
+
   tooltipText: themePrimitives.mono100,
 });

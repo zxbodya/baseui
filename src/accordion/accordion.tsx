@@ -4,23 +4,18 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-disable cup/no-undef */
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {Root as StyledRoot} from './styled-components.js';
-import {STATE_CHANGE_TYPE} from './constants.js';
-import type {
-  AccordionPropsT,
-  AccordionStateT,
-  StateChangeTypeT,
-} from './types.js';
+import {getOverrides} from '../helpers/overrides';
+import {Root as StyledRoot} from './styled-components';
+import {STATE_CHANGE_TYPE} from './constants';
+import type {AccordionPropsT, AccordionStateT, StateChangeTypeT} from './types';
 
 export default class Accordion extends React.Component<
   AccordionPropsT,
-  AccordionStateT,
+  AccordionStateT
 > {
-  static defaultProps: $Shape<AccordionPropsT> = {
+  static defaultProps: Partial<AccordionPropsT> = {
     accordion: true,
     disabled: false,
     initialState: {
@@ -38,7 +33,7 @@ export default class Accordion extends React.Component<
     ...this.props.initialState,
   };
 
-  onPanelChange(key: React.Key, onChange: () => {}, ...args: *) {
+  onPanelChange(key: React.Key, onChange: () => {}, ...args: any) {
     let activeKeys = this.state.expanded;
     const {accordion} = this.props;
     if (accordion) {
@@ -78,7 +73,7 @@ export default class Accordion extends React.Component<
       overrides,
     } = this.props;
     // eslint-disable-next-line flowtype/no-weak-types
-    return React.Children.map(children, (child: *, index) => {
+    return React.Children.map(children, (child: any, index) => {
       if (!child) return;
       // If there is no key provided use the panel order as a default key
       const key = child.key || String(index);

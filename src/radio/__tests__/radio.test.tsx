@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-env node */
 import * as React from 'react';
 import {
@@ -14,8 +13,8 @@ import {
   getByText,
 } from '@testing-library/react';
 
-import {ALIGN, Radio, StatefulRadioGroup} from '../index.js';
-import {Select} from '../../select/index.js';
+import {ALIGN, Radio, StatefulRadioGroup} from '../index';
+import {Select} from '../../select/index';
 
 describe('Radio', () => {
   it('calls provided handlers', () => {

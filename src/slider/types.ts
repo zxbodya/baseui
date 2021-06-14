@@ -4,54 +4,50 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
+import type {OverrideT} from '../helpers/overrides';
+import {STATE_CHANGE_TYPE} from './constants';
 
-import type {OverrideT} from '../helpers/overrides.js';
-import {STATE_CHANGE_TYPE} from './constants.js';
+import type {ReactNode} from 'react';
 
-export type ChangeActionT = $Keys<typeof STATE_CHANGE_TYPE>;
+export type ChangeActionT = keyof typeof STATE_CHANGE_TYPE;
 export type ParamsT = {
-  value: Array<number>,
+  value: Array<number>;
 };
 export type OverridesT = {
-  Root?: OverrideT,
-  Track?: OverrideT,
-  InnerTrack?: OverrideT,
-  Tick?: OverrideT,
-  TickBar?: OverrideT,
-  Thumb?: OverrideT,
-  InnerThumb?: OverrideT,
-  ThumbValue?: OverrideT,
-  Mark?: OverrideT,
+  Root?: OverrideT;
+  Track?: OverrideT;
+  InnerTrack?: OverrideT;
+  Tick?: OverrideT;
+  TickBar?: OverrideT;
+  Thumb?: OverrideT;
+  InnerThumb?: OverrideT;
+  ThumbValue?: OverrideT;
+  Mark?: OverrideT;
 };
 
 export type PropsT = {
   /** Position of the thumbs. It can be a single point (one thumb) or 2 points array (range thumbs). */
-  value: Array<number>,
+  value: Array<number>;
   /** The minimum allowed value of the slider. Should not be bigger than max. */
-  min?: number,
+  min?: number;
   /** The maximum allowed value of the slider. Should not be smaller than min. */
-  max?: number,
+  max?: number;
   /** The granularity the slider can step through value. Default step is 1. */
-  step?: number,
-  overrides?: OverridesT,
+  step?: number;
+  overrides?: OverridesT;
   /** Disable control from being changed. */
-  disabled?: boolean,
+  disabled?: boolean;
   /** Display a mark at each step. */
-  marks?: boolean,
+  marks?: boolean;
   /** Handler for events on trigger element, each time thumbs change selection, which is passed in `value`. */
-  onChange?: ({
-    ...ParamsT,
-  }) => mixed,
+  onChange?: (a: {} & ParamsT) => unknown;
   /** Handler for events on trigger element, each time thumbs finish changing selection, which is passed in `value`. */
-  onFinalChange?: ({
-    ...ParamsT,
-  }) => mixed,
+  onFinalChange?: (a: {} & ParamsT) => unknown;
 };
 
-export type StateT = {|
-  value: Array<number>,
-|};
+export type StateT = {
+  value: Array<number>;
+};
 
 export type StateReducerT = (
   stateType: string,
@@ -60,42 +56,42 @@ export type StateReducerT = (
 ) => StateT;
 
 export type StatefulContainerPropsT = {
-  overrides?: OverridesT,
-  children: (*) => React$Node,
-  min: number,
-  max: number,
-  step: number,
+  overrides?: OverridesT;
+  children: (a: any) => ReactNode;
+  min: number;
+  max: number;
+  step: number;
   /** Initial state populated into the component */
-  initialState: StateT,
+  initialState: StateT;
   /** Reducer function to manipulate internal state updates. */
-  stateReducer: StateReducerT,
+  stateReducer: StateReducerT;
   /** Handler for events on trigger element, each time thumbs change selection, which is passed in `value`. */
-  onChange: ({...ParamsT}) => mixed,
+  onChange: (a: {} & ParamsT) => unknown;
   /** Handler for events on trigger element, each time thumbs finish changing selection, which is passed in `value`. */
-  onFinalChange: ({...ParamsT}) => mixed,
+  onFinalChange: (a: {} & ParamsT) => unknown;
 };
 
 export type StatefulSliderPropsT = {
-  overrides?: OverridesT,
+  overrides?: OverridesT;
   /** Initial state populated into the component */
-  initialState?: StateT,
-  min?: number,
-  max?: number,
-  step?: number,
-  marks?: boolean,
+  initialState?: StateT;
+  min?: number;
+  max?: number;
+  step?: number;
+  marks?: boolean;
   /** Handler for events on trigger element, each time thumbs change selection, which is passed in `value`. */
-  onChange?: ({...ParamsT}) => mixed,
+  onChange?: (a: {} & ParamsT) => unknown;
   /** Handler for events on trigger element, each time thumbs finish changing selection, which is passed in `value`. */
-  onFinalChange?: ({...ParamsT}) => mixed,
+  onFinalChange?: (a: {} & ParamsT) => unknown;
 };
 
 export type StylePropsT = {
-  $disabled?: boolean,
-  $isDragged?: boolean,
-  $marks?: boolean,
-  $max?: number,
-  $min?: number,
-  $thumbIndex?: number,
-  $value?: Array<number>,
-  $isFocusVisible?: boolean,
+  $disabled?: boolean;
+  $isDragged?: boolean;
+  $marks?: boolean;
+  $max?: number;
+  $min?: number;
+  $thumbIndex?: number;
+  $value?: Array<number>;
+  $isFocusVisible?: boolean;
 };

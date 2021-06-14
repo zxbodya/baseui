@@ -4,13 +4,11 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
-import Block from '../block/block.js';
-import type {BlockPropsT} from '../block/types.js';
+import Block from '../block/block';
+import type {BlockPropsT} from '../block/types';
 
-export const DisplayLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const DisplayLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-displaylarge"
@@ -23,7 +21,7 @@ export const DisplayLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 DisplayLarge.displayName = 'DisplayLarge';
 
-export const DisplayMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const DisplayMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-displaymedium"
@@ -36,7 +34,7 @@ export const DisplayMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 DisplayMedium.displayName = 'DisplayMedium';
 
-export const DisplaySmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const DisplaySmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-displaysmall"
@@ -49,7 +47,7 @@ export const DisplaySmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 DisplaySmall.displayName = 'DisplaySmall';
 
-export const DisplayXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const DisplayXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-displayxsmall"
@@ -62,7 +60,7 @@ export const DisplayXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 DisplayXSmall.displayName = 'DisplayXSmall';
 
-export const HeadingXXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingXXLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headingxxlarge"
@@ -76,7 +74,7 @@ export const HeadingXXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingXXLarge.displayName = 'HeadingXXLarge';
 
-export const HeadingXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingXLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headingxlarge"
@@ -90,7 +88,7 @@ export const HeadingXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingXLarge.displayName = 'HeadingXLarge';
 
-export const HeadingLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headinglarge"
@@ -104,7 +102,7 @@ export const HeadingLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingLarge.displayName = 'HeadingLarge';
 
-export const HeadingMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headingmedium"
@@ -118,7 +116,7 @@ export const HeadingMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingMedium.displayName = 'HeadingMedium';
 
-export const HeadingSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headingsmall"
@@ -132,7 +130,7 @@ export const HeadingSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingSmall.displayName = 'HeadingSmall';
 
-export const HeadingXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const HeadingXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-headingxsmall"
@@ -146,7 +144,7 @@ export const HeadingXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 HeadingXSmall.displayName = 'HeadingXSmall';
 
-export const LabelLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const LabelLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-labellarge"
@@ -159,7 +157,7 @@ export const LabelLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 LabelLarge.displayName = 'LabelLarge';
 
-export const LabelMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const LabelMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-labelmedium"
@@ -172,7 +170,7 @@ export const LabelMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 LabelMedium.displayName = 'LabelMedium';
 
-export const LabelSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const LabelSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-labelsmall"
@@ -185,7 +183,7 @@ export const LabelSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 LabelSmall.displayName = 'LabelSmall';
 
-export const LabelXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const LabelXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-labelxsmall"
@@ -198,7 +196,7 @@ export const LabelXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 LabelXSmall.displayName = 'LabelXSmall';
 
-export const ParagraphLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const ParagraphLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-paragraphlarge"
@@ -212,7 +210,7 @@ export const ParagraphLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 ParagraphLarge.displayName = 'ParagraphLarge';
 
-export const ParagraphMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const ParagraphMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-paragraphmedium"
@@ -226,7 +224,7 @@ export const ParagraphMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 ParagraphMedium.displayName = 'ParagraphMedium';
 
-export const ParagraphSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const ParagraphSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-paragraphsmall"
@@ -240,7 +238,7 @@ export const ParagraphSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 ParagraphSmall.displayName = 'ParagraphSmall';
 
-export const ParagraphXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const ParagraphXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-paragraphxsmall"
@@ -254,7 +252,7 @@ export const ParagraphXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 ParagraphXSmall.displayName = 'ParagraphXSmall';
 
-export const MonoDisplayLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoDisplayLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monodisplaylarge"
@@ -267,7 +265,7 @@ export const MonoDisplayLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoDisplayLarge.displayName = 'MonoDisplayLarge';
 
-export const MonoDisplayMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoDisplayMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monodisplaymedium"
@@ -280,7 +278,7 @@ export const MonoDisplayMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoDisplayMedium.displayName = 'MonoDisplayMedium';
 
-export const MonoDisplaySmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoDisplaySmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monodisplaysmall"
@@ -293,7 +291,7 @@ export const MonoDisplaySmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoDisplaySmall.displayName = 'MonoDisplaySmall';
 
-export const MonoDisplayXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoDisplayXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monodisplayxsmall"
@@ -306,7 +304,7 @@ export const MonoDisplayXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoDisplayXSmall.displayName = 'MonoDisplayXSmall';
 
-export const MonoHeadingXXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingXXLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadingxxlarge"
@@ -320,7 +318,7 @@ export const MonoHeadingXXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingXXLarge.displayName = 'MonoHeadingXXLarge';
 
-export const MonoHeadingXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingXLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadingxlarge"
@@ -334,7 +332,7 @@ export const MonoHeadingXLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingXLarge.displayName = 'MonoHeadingXLarge';
 
-export const MonoHeadingLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadinglarge"
@@ -348,7 +346,7 @@ export const MonoHeadingLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingLarge.displayName = 'MonoHeadingLarge';
 
-export const MonoHeadingMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadingmedium"
@@ -362,7 +360,7 @@ export const MonoHeadingMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingMedium.displayName = 'MonoHeadingMedium';
 
-export const MonoHeadingSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadingsmall"
@@ -376,7 +374,7 @@ export const MonoHeadingSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingSmall.displayName = 'MonoHeadingSmall';
 
-export const MonoHeadingXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoHeadingXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoheadingxsmall"
@@ -390,7 +388,7 @@ export const MonoHeadingXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoHeadingXSmall.displayName = 'MonoHeadingXSmall';
 
-export const MonoLabelLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoLabelLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monolabellarge"
@@ -403,7 +401,7 @@ export const MonoLabelLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoLabelLarge.displayName = 'MonoLabelLarge';
 
-export const MonoLabelMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoLabelMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monolabelmedium"
@@ -416,7 +414,7 @@ export const MonoLabelMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoLabelMedium.displayName = 'MonoLabelMedium';
 
-export const MonoLabelSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoLabelSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monolabelsmall"
@@ -429,7 +427,7 @@ export const MonoLabelSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoLabelSmall.displayName = 'MonoLabelSmall';
 
-export const MonoLabelXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoLabelXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monolabelxsmall"
@@ -442,7 +440,7 @@ export const MonoLabelXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoLabelXSmall.displayName = 'MonoLabelXSmall';
 
-export const MonoParagraphLarge = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoParagraphLarge = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoparagraphlarge"
@@ -456,7 +454,7 @@ export const MonoParagraphLarge = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoParagraphLarge.displayName = 'MonoParagraphLarge';
 
-export const MonoParagraphMedium = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoParagraphMedium = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoparagraphmedium"
@@ -470,7 +468,7 @@ export const MonoParagraphMedium = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoParagraphMedium.displayName = 'MonoParagraphMedium';
 
-export const MonoParagraphSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoParagraphSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoparagraphsmall"
@@ -484,7 +482,7 @@ export const MonoParagraphSmall = React.forwardRef<BlockPropsT, HTMLElement>(
 );
 MonoParagraphSmall.displayName = 'MonoParagraphSmall';
 
-export const MonoParagraphXSmall = React.forwardRef<BlockPropsT, HTMLElement>(
+export const MonoParagraphXSmall = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Block
       data-baseweb="typo-monoparagraphxsmall"
@@ -520,7 +518,7 @@ export const Label2 = LabelMedium;
 export const Label3 = LabelSmall;
 export const Label4 = LabelXSmall;
 
-export const Caption1 = React.forwardRef<BlockPropsT, HTMLElement>(
+export const Caption1 = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Paragraph4
       {...props}
@@ -530,7 +528,7 @@ export const Caption1 = React.forwardRef<BlockPropsT, HTMLElement>(
   ),
 );
 Caption1.displayName = 'Caption1';
-export const Caption2 = React.forwardRef<BlockPropsT, HTMLElement>(
+export const Caption2 = React.forwardRef<HTMLElement, BlockPropsT>(
   (props, ref) => (
     <Label4 {...props} color={props.color || 'contentSecondary'} />
   ),

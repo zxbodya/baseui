@@ -4,17 +4,15 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
-import TableBorderless from './table-borderless.scenario.js';
-import TableCells from './table-cells.scenario.js';
-import TableFewRows from './table-few-rows.scenario.js';
-import TableFilter from './table-filter.scenario.js';
-import TablePagination from './table-pagination.scenario.js';
-import TableScroll from './table-scroll.scenario.js';
-import TableSortableFillClick from './table-sortable-fill-click.scenario.js';
-import TableSortable from './table-sortable.scenario.js';
+import TableBorderless from './table-borderless.scenario';
+import TableCells from './table-cells.scenario';
+import TableFewRows from './table-few-rows.scenario';
+import TableFilter from './table-filter.scenario';
+import TablePagination from './table-pagination.scenario';
+import TableScroll from './table-scroll.scenario';
+import TableSortableFillClick from './table-sortable-fill-click.scenario';
+import TableSortable from './table-sortable.scenario';
 
 export const Borderless = () => <TableBorderless />;
 export const Cells = () => <TableCells />;

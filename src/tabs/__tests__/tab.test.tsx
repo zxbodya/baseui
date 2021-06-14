@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 import {
   render,
@@ -14,7 +12,7 @@ import {
   getByTestId,
 } from '@testing-library/react';
 
-import {Tab} from '../index.js';
+import {Tab} from '../index';
 
 describe('Tab', () => {
   it('basic rendering', () => {

@@ -4,17 +4,19 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 import {render, getByText} from '@testing-library/react';
 
-import SelectDropdown from '../dropdown.js';
-import {SIZE, TYPE} from '../constants.js';
+import SelectDropdown from '../dropdown';
+import {SIZE, TYPE} from '../constants';
 
-const options = [{id: '1', label: 'label1'}, {id: '2', label: 'label2'}];
+const options = [
+  {id: '1', label: 'label1'},
+  {id: '2', label: 'label2'},
+];
 const value = [options[1]];
 
-describe('SelectDropdown', function() {
+describe('SelectDropdown', function () {
   it('renders provided options', () => {
     function TestCase() {
       const ref = React.useRef();

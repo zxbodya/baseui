@@ -4,21 +4,19 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
-import type {OnChangeParamsT, OptionT} from '../select/index.js';
-import {filterOptions, Select} from '../select/index.js';
-import DateHelpers from '../datepicker/utils/date-helpers.js';
-import dateFnsAdapter from '../datepicker/utils/date-fns-adapter.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
+import type {OnChangeParamsT, OptionT} from '../select/index';
+import {filterOptions, Select} from '../select/index';
+import DateHelpers from '../datepicker/utils/date-helpers';
+import dateFnsAdapter from '../datepicker/utils/date-fns-adapter';
 import type {
   TimePickerDefaultPropsT,
   TimePickerPropsT,
   TimePickerStateT,
-} from './types.js';
+} from './types';
 
 const MINUTE = 60;
 const HOUR = MINUTE * 60;
@@ -27,7 +25,7 @@ const NOON = DAY / 2;
 
 class TimePicker<T = Date> extends React.Component<
   TimePickerPropsT<T>,
-  TimePickerStateT,
+  TimePickerStateT
 > {
   static defaultProps: TimePickerDefaultPropsT = {
     format: '12',
@@ -132,7 +130,7 @@ class TimePicker<T = Date> extends React.Component<
    * Converts a time string, e.g. 10:00, to one or more possible TimePicker
    * options representing that time.
    */
-  stringToOptions: (string, format?: '12' | '24') => Array<OptionT> = (
+  stringToOptions: (a: string, format?: '12' | '24') => Array<OptionT> = (
     str,
     format = '12',
   ) => {
@@ -186,7 +184,7 @@ class TimePicker<T = Date> extends React.Component<
     this.props.onChange && this.props.onChange(updatedDate);
   };
 
-  setTime: (?T, number, number, number) => T = (
+  setTime: (d: T | undefined | null, c: number, b: number, a: number) => T = (
     val,
     hours,
     minutes,
@@ -199,7 +197,12 @@ class TimePicker<T = Date> extends React.Component<
     return setSeconds(setMinutes(setHours(date, hours), minutes), seconds);
   };
 
-  getTimeWindowInSeconds = (step: number): {start: number, end: number} => {
+  getTimeWindowInSeconds = (
+    step: number,
+  ): {
+    start: number;
+    end: number;
+  } => {
     let {minTime: min, maxTime: max} = this.props;
     let midnight = this.setTime(this.props.value, 0, 0, 0);
     if (!min) {
@@ -268,7 +271,7 @@ class TimePicker<T = Date> extends React.Component<
     return filterOptions(options, filterValue, excludeOptions, newProps);
   };
 
-  buildSelectedOption: (T, ?'12' | '24') => OptionT = (
+  buildSelectedOption: (b: T, a: '12' | undefined | null | '24') => OptionT = (
     value,
     format = '12',
   ) => {

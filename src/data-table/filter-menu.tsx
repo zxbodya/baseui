@@ -4,24 +4,24 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
-import {Button, SHAPE, SIZE} from '../button/index.js';
-import {Filter as FilterIcon} from '../icon/index.js';
-import {Input, SIZE as INPUT_SIZE} from '../input/index.js';
-import {Popover, PLACEMENT} from '../popover/index.js';
-import {useStyletron} from '../styles/index.js';
-import getBuiId from '../utils/get-bui-id.js';
+import {Button, SHAPE, SIZE} from '../button/index';
+import {Filter as FilterIcon} from '../icon/index';
+import {Input, SIZE as INPUT_SIZE} from '../input/index';
+import {Popover, PLACEMENT} from '../popover/index';
+import {useStyletron} from '../styles/index';
+import getBuiId from '../utils/get-bui-id';
 
-import {COLUMNS} from './constants.js';
-import {matchesQuery} from './text-search.js';
-import type {ColumnT} from './types.js';
-import {LocaleContext} from '../locale/index.js';
+import {COLUMNS} from './constants';
+import {matchesQuery} from './text-search';
+import type {ColumnT} from './types';
+import {LocaleContext} from '../locale/index';
 
-import {isFocusVisible} from '../utils/focusVisible.js';
+import {isFocusVisible} from '../utils/focusVisible';
 
-function ColumnIcon(props: {column: ColumnT<>}) {
+import type {SyntheticEvent} from 'react';
+
+function ColumnIcon(props: {column: ColumnT}) {
   if (props.column.kind === COLUMNS.BOOLEAN) {
     return '01';
   }
@@ -42,14 +42,14 @@ function ColumnIcon(props: {column: ColumnT<>}) {
 }
 
 type OptionsPropsT = {
-  columns: ColumnT<>[],
-  highlightIndex: number,
-  onClick: (ColumnT<>) => void,
-  onKeyDown: KeyboardEvent => void,
-  onMouseEnter: number => void,
-  onQueryChange: string => void,
-  query: string,
-  searchable: boolean,
+  columns: ColumnT[];
+  highlightIndex: number;
+  onClick: (a: ColumnT) => void;
+  onKeyDown: (a: KeyboardEvent) => void;
+  onMouseEnter: (a: number) => void;
+  onQueryChange: (a: string) => void;
+  query: string;
+  searchable: boolean;
 };
 
 function Options(props: OptionsPropsT) {
@@ -65,13 +65,13 @@ function Options(props: OptionsPropsT) {
   const [focusVisible, setFocusVisible] = React.useState(false);
   const buiRef = React.useRef(props.columns.map((_, index) => getBuiId()));
 
-  const handleFocus = (event: SyntheticEvent<>) => {
+  const handleFocus = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       setFocusVisible(true);
     }
   };
 
-  const handleBlur = (event: SyntheticEvent<>) => {
+  const handleBlur = (event: SyntheticEvent) => {
     if (focusVisible !== false) {
       setFocusVisible(false);
     }
@@ -199,15 +199,17 @@ function Options(props: OptionsPropsT) {
 }
 
 type PropsT = {
-  columns: ColumnT<>[],
+  columns: ColumnT[];
   // eslint-disable-next-line flowtype/no-weak-types
-  filters: Map<string, any>,
+  filters: Map<string, any>;
   // eslint-disable-next-line flowtype/no-weak-types
-  rows: any[],
+  rows: any[];
   onSetFilter: (
     columnTitle: string,
-    filterParams: {description: string},
-  ) => void,
+    filterParams: {
+      description: string;
+    },
+  ) => void;
 };
 
 function FilterMenu(props: PropsT) {

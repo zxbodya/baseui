@@ -4,16 +4,15 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-env node */
 
 import * as React from 'react';
 import {render, fireEvent, getByText} from '@testing-library/react';
 
-import {Checkbox} from '../index.js';
+import {Checkbox} from '../index';
 
-describe('Stateless checkbox', function() {
-  it('renders provided label', function() {
+describe('Stateless checkbox', function () {
+  it('renders provided label', function () {
     const {container} = render(<Checkbox>label</Checkbox>);
     getByText(container, 'label');
   });

@@ -4,17 +4,16 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import {styled} from '../styles/index.js';
-import type {ThemeT} from '../styles/types.js';
-import {ADJOINED, SIZE} from './constants.js';
-import type {SharedPropsT, SizeT} from './types.js';
-import DeleteAlt from '../icon/delete-alt.js';
+import {styled} from '../styles/index';
+import type {ThemeT} from '../styles/types';
+import {ADJOINED, SIZE} from './constants';
+import type {SharedPropsT, SizeT} from './types';
+import DeleteAlt from '../icon/delete-alt';
 
 export const StyledMaskToggleButton = styled<{
-  $size: SizeT,
-  $isFocusVisible: boolean,
-  $theme: ThemeT,
+  $size: SizeT;
+  $isFocusVisible: boolean;
+  $theme: ThemeT;
 }>('button', ({$theme, $size, $isFocusVisible}) => {
   const pad = {
     [SIZE.mini]: $theme.sizing.scale400,
@@ -39,9 +38,9 @@ export const StyledMaskToggleButton = styled<{
 });
 
 export const StyledClearIconContainer = styled<{
-  $size: SizeT,
-  $alignTop: boolean,
-  $theme: ThemeT,
+  $size: SizeT;
+  $alignTop: boolean;
+  $theme: ThemeT;
 }>('div', ({$alignTop = false, $size, $theme}) => {
   const pad = {
     [SIZE.mini]: $theme.sizing.scale200,
@@ -62,7 +61,9 @@ export const StyledClearIconContainer = styled<{
 
 export const StyledClearIcon = styled<
   typeof DeleteAlt,
-  {$isFocusVisible: boolean},
+  {
+    $isFocusVisible: boolean;
+  }
 >(DeleteAlt, ({$theme, $isFocusVisible}) => ({
   cursor: 'pointer',
   outline: $isFocusVisible ? `solid 3px ${$theme.colors.accent}` : 'none',
@@ -183,14 +184,14 @@ function getRootBorderRadius(radius) {
 }
 
 export const getRootStyles = (props: {
-  $adjoined: $Keys<typeof ADJOINED>,
-  $isFocused: boolean,
-  $error: boolean,
-  $disabled: boolean,
-  $positive: boolean,
-  $size: SizeT,
-  $theme: ThemeT,
-  $hasIconTrailing: boolean,
+  $adjoined: keyof typeof ADJOINED;
+  $isFocused: boolean;
+  $error: boolean;
+  $disabled: boolean;
+  $positive: boolean;
+  $size: SizeT;
+  $theme: ThemeT;
+  $hasIconTrailing: boolean;
 }) => {
   const {
     $isFocused,
@@ -236,10 +237,11 @@ export const Root = styled<SharedPropsT>('div', getRootStyles);
 
 // InputEnhancer
 
-type InputEnhancerStyles = {|
-  paddingRight: string,
-  paddingLeft: string,
-|};
+type InputEnhancerStyles = {
+  paddingRight: string;
+  paddingLeft: string;
+};
+
 function getInputEnhancerPadding($size, sizing): InputEnhancerStyles {
   return {
     [SIZE.mini]: {
@@ -368,12 +370,12 @@ function getInputContainerColors(
 }
 
 export const getInputContainerStyles = (props: {
-  $isFocused: boolean,
-  $error: boolean,
-  $disabled: boolean,
-  $positive: boolean,
-  $size: SizeT,
-  $theme: ThemeT,
+  $isFocused: boolean;
+  $error: boolean;
+  $disabled: boolean;
+  $positive: boolean;
+  $size: SizeT;
+  $theme: ThemeT;
 }) => {
   const {
     $isFocused,
@@ -407,14 +409,14 @@ export const InputContainer = styled<SharedPropsT>(
 
 function getInputColors($disabled, $isFocused, $error, colors) {
   if ($disabled) {
-    return ({
+    return {
       color: colors.inputTextDisabled,
       '-webkit-text-fill-color': colors.inputTextDisabled,
       caretColor: colors.contentPrimary,
       '::placeholder': {
         color: colors.inputPlaceholderDisabled,
       },
-    }: {});
+    } as {};
   }
 
   return {
@@ -426,7 +428,11 @@ function getInputColors($disabled, $isFocused, $error, colors) {
   };
 }
 
-export const getInputStyles = (props: SharedPropsT & {$theme: ThemeT}) => {
+export const getInputStyles = (
+  props: SharedPropsT & {
+    $theme: ThemeT;
+  },
+) => {
   const {
     $disabled,
     $isFocused,

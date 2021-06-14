@@ -4,34 +4,30 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {Button, SIZE, KIND} from '../button/index.js';
-import {ButtonGroup} from '../button-group/index.js';
-import {Checkbox, StyledLabel} from '../checkbox/index.js';
-import Search from '../icon/search.js';
-import {Input, SIZE as INPUT_SIZE} from '../input/index.js';
-import {useStyletron, withStyle} from '../styles/index.js';
-import {Label3} from '../typography/index.js';
+import {Button, SIZE, KIND} from '../button/index';
+import {ButtonGroup} from '../button-group/index';
+import {Checkbox, StyledLabel} from '../checkbox/index';
+import Search from '../icon/search';
+import {Input, SIZE as INPUT_SIZE} from '../input/index';
+import {useStyletron, withStyle} from '../styles/index';
+import {Label3} from '../typography/index';
 
-import Column from './column.js';
-import {COLUMNS} from './constants.js';
-import type {ColumnT, SharedColumnOptionsT} from './types.js';
-import {LocaleContext} from '../locale/index.js';
-import FilterShell from './filter-shell.js';
-import {matchesQuery, splitByQuery, HighlightCellText} from './text-search.js';
+import Column from './column';
+import {COLUMNS} from './constants';
+import type {ColumnT, SharedColumnOptionsT} from './types';
+import {LocaleContext} from '../locale/index';
+import FilterShell from './filter-shell';
+import {matchesQuery, splitByQuery, HighlightCellText} from './text-search';
 
-type OptionsT = {|
-  ...SharedColumnOptionsT<string>,
-|};
+type OptionsT = {} & SharedColumnOptionsT<string>;
 
-type FilterParametersT = {|
-  description: string,
-  exclude: boolean,
-  selection: Set<string>,
-|};
+type FilterParametersT = {
+  description: string;
+  exclude: boolean;
+  selection: Set<string>;
+};
 
 type CategoricalColumnT = ColumnT<string, FilterParametersT>;
 
@@ -51,8 +47,8 @@ function InputBefore() {
 }
 
 function FilterQuickControls(props: {
-  onSelectAll: () => void,
-  onClearSelection: () => void,
+  onSelectAll: () => void;
+  onClearSelection: () => void;
 }) {
   const locale = React.useContext(LocaleContext);
 
@@ -108,10 +104,10 @@ function HighlightCheckboxLabel(props) {
 }
 
 type CategoricalFilterProps = {
-  data: string[],
-  close: () => void,
-  setFilter: FilterParametersT => void,
-  filterParams?: FilterParametersT,
+  data: string[];
+  close: () => void;
+  setFilter: (a: FilterParametersT) => void;
+  filterParams?: FilterParametersT;
 };
 
 export function CategoricalFilter(props: CategoricalFilterProps) {
@@ -236,8 +232,8 @@ function CategoricalCell(props) {
 function CategoricalColumn(options: OptionsT): CategoricalColumnT {
   return Column({
     kind: COLUMNS.CATEGORICAL,
-    buildFilter: function(params) {
-      return function(data) {
+    buildFilter: function (params) {
+      return function (data) {
         const included = params.selection.has(data);
         return params.exclude ? !included : included;
       };
@@ -251,10 +247,10 @@ function CategoricalColumn(options: OptionsT): CategoricalColumnT {
     renderCell: CategoricalCell,
     renderFilter: CategoricalFilter,
     sortable: options.sortable === undefined ? true : options.sortable,
-    sortFn: function(a, b) {
+    sortFn: function (a, b) {
       return a.localeCompare(b);
     },
-    textQueryFilter: function(textQuery, data) {
+    textQueryFilter: function (textQuery, data) {
       return data.toLowerCase().includes(textQuery.toLowerCase());
     },
     title: options.title,

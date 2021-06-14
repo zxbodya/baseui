@@ -4,29 +4,34 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 import {
   BaseButton as StyledBaseButton,
   LoadingSpinner as StyledLoadingSpinner,
   LoadingSpinnerContainer as StyledLoadingSpinnerContainer,
-} from './styled-components.js';
-import {getSharedProps} from './utils.js';
-import ButtonInternals from './button-internals.js';
-import {defaultProps} from './default-props.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import {getSharedProps} from './utils';
+import ButtonInternals from './button-internals';
+import {defaultProps} from './default-props';
+import {getOverrides} from '../helpers/overrides';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
 
-import type {ButtonPropsT} from './types.js';
+import type {ButtonPropsT} from './types';
+
+import type {SyntheticEvent} from 'react';
 
 class Button extends React.Component<
-  ButtonPropsT & {forwardedRef: any},
-  {isFocusVisible: boolean},
+  ButtonPropsT & {
+    forwardedRef: any;
+  },
+  {
+    isFocusVisible: boolean;
+  }
 > {
   static defaultProps = defaultProps;
   state = {isFocusVisible: false};
 
-  internalOnClick = (...args: *) => {
+  internalOnClick = (...args: any) => {
     const {isLoading, onClick} = this.props;
     if (isLoading) {
       args[0].preventDefault();
@@ -35,13 +40,13 @@ class Button extends React.Component<
     onClick && onClick(...args);
   };
 
-  handleFocus = (event: SyntheticEvent<>) => {
+  handleFocus = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       this.setState({isFocusVisible: true});
     }
   };
 
-  handleBlur = (event: SyntheticEvent<>) => {
+  handleBlur = (event: SyntheticEvent) => {
     if (this.state.isFocusVisible !== false) {
       this.setState({isFocusVisible: false});
     }
@@ -74,13 +79,11 @@ class Button extends React.Component<
       overrides.LoadingSpinner,
       StyledLoadingSpinner,
     );
-    const [
-      LoadingSpinnerContainer,
-      loadingSpinnerContainerProps,
-    ] = getOverrides(
-      overrides.LoadingSpinnerContainer,
-      StyledLoadingSpinnerContainer,
-    );
+    const [LoadingSpinnerContainer, loadingSpinnerContainerProps] =
+      getOverrides(
+        overrides.LoadingSpinnerContainer,
+        StyledLoadingSpinnerContainer,
+      );
     const sharedProps = {
       ...getSharedProps(this.props),
       $isFocusVisible: this.state.isFocusVisible,
@@ -133,7 +136,7 @@ class Button extends React.Component<
   }
 }
 
-const ForwardedButton = React.forwardRef<ButtonPropsT, HTMLButtonElement>(
+const ForwardedButton = React.forwardRef<HTMLButtonElement, ButtonPropsT>(
   (props: ButtonPropsT, ref) => <Button forwardedRef={ref} {...props} />,
 );
 ForwardedButton.displayName = 'Button';

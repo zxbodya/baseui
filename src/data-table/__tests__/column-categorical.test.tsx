@@ -4,12 +4,10 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
 
-import {CategoricalColumn} from '../index.js';
+import {CategoricalColumn} from '../index';
 
 describe('categorical column', () => {
   it('is sortable by default', () => {
@@ -91,7 +89,7 @@ describe('categorical column', () => {
 
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
     fireEvent.click(checkboxes[0]);
-    expect(((checkboxes[0]: any): HTMLInputElement).checked).toBe(true);
+    expect((checkboxes[0] as any as HTMLInputElement).checked).toBe(true);
 
     fireEvent.click(getByText('Apply'));
 
@@ -120,9 +118,9 @@ describe('categorical column', () => {
     fireEvent.click(getByText('Select All'));
 
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-    expect(((checkboxes[0]: any): HTMLInputElement).checked).toBe(true);
-    expect(((checkboxes[1]: any): HTMLInputElement).checked).toBe(true);
-    expect(((checkboxes[2]: any): HTMLInputElement).checked).toBe(true);
+    expect((checkboxes[0] as any as HTMLInputElement).checked).toBe(true);
+    expect((checkboxes[1] as any as HTMLInputElement).checked).toBe(true);
+    expect((checkboxes[2] as any as HTMLInputElement).checked).toBe(true);
   });
 
   it('clears current selection', () => {
@@ -142,9 +140,9 @@ describe('categorical column', () => {
     fireEvent.click(checkboxes[0]);
     fireEvent.click(getByText('Clear'));
 
-    expect(((checkboxes[0]: any): HTMLInputElement).checked).toBe(false);
-    expect(((checkboxes[1]: any): HTMLInputElement).checked).toBe(false);
-    expect(((checkboxes[2]: any): HTMLInputElement).checked).toBe(false);
+    expect((checkboxes[0] as any as HTMLInputElement).checked).toBe(false);
+    expect((checkboxes[1] as any as HTMLInputElement).checked).toBe(false);
+    expect((checkboxes[2] as any as HTMLInputElement).checked).toBe(false);
   });
 
   it('renders input if more than 10 categories', () => {

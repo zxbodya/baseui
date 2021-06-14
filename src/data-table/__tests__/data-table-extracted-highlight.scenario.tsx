@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
 import {
@@ -13,18 +11,18 @@ import {
   StringColumn,
   BooleanColumn,
   StatefulDataTable,
-} from '../index.js';
+} from '../index';
 
-import AnimalData from './animal-data.js';
+import AnimalData from './animal-data';
 
 type RowDataT = {
-  isSelected: boolean,
-  Name: string,
-  Kingdom: string,
-  Phylum: string,
-  Class: string,
-  Order: string,
-  Family: string,
+  isSelected: boolean;
+  Name: string;
+  Kingdom: string;
+  Phylum: string;
+  Class: string;
+  Order: string;
+  Family: string;
 };
 
 const columns = [

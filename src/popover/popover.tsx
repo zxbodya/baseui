@@ -4,14 +4,13 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-disable react/no-find-dom-node */
 /* eslint-disable cup/no-undef */
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
-import getBuiId from '../utils/get-bui-id.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+import getBuiId from '../utils/get-bui-id';
 import {
   ACCESSIBILITY_TYPE,
   PLACEMENT,
@@ -19,38 +18,44 @@ import {
   ANIMATE_OUT_TIME,
   ANIMATE_IN_TIME,
   POPOVER_MARGIN,
-} from './constants.js';
-import {Layer, TetherBehavior} from '../layer/index.js';
+} from './constants';
+import {Layer, TetherBehavior} from '../layer/index';
 import {
   Arrow as StyledArrow,
   Body as StyledBody,
   Inner as StyledInner,
   Hidden,
-} from './styled-components.js';
-import {fromPopperPlacement} from './utils.js';
-import defaultProps from './default-props.js';
+} from './styled-components';
+import {fromPopperPlacement} from './utils';
+import defaultProps from './default-props';
 
 import type {
   AnchorPropsT,
   PopoverPropsT,
   PopoverPrivateStateT,
   SharedStylePropsArgT,
-} from './types.js';
-import type {PopperDataObjectT, NormalizedOffsetsT} from '../layer/types.js';
+} from './types';
+import type {PopperDataObjectT, NormalizedOffsetsT} from '../layer/types';
 
 class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
-  static defaultProps: $Shape<PopoverPropsT> = defaultProps;
+  static defaultProps: Partial<PopoverPropsT> = defaultProps;
 
   /* eslint-disable react/sort-comp */
-  animateInTimer: ?TimeoutID;
-  animateOutTimer: ?TimeoutID;
-  animateOutCompleteTimer: ?TimeoutID;
-  onMouseEnterTimer: ?TimeoutID;
-  onMouseLeaveTimer: ?TimeoutID;
+  animateInTimer: TimeoutID | undefined | null;
+  animateOutTimer: TimeoutID | undefined | null;
+  animateOutCompleteTimer: TimeoutID | undefined | null;
+  onMouseEnterTimer: TimeoutID | undefined | null;
+  onMouseLeaveTimer: TimeoutID | undefined | null;
   generatedId: string = '';
-  anchorRef = (React.createRef(): {current: *});
-  popperRef = (React.createRef(): {current: *});
-  arrowRef = (React.createRef(): {current: *});
+  anchorRef = React.createRef() as {
+    current: any;
+  };
+  popperRef = React.createRef() as {
+    current: any;
+  };
+  arrowRef = React.createRef() as {
+    current: any;
+  };
   /* eslint-enable react/sort-comp */
 
   /**
@@ -344,7 +349,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     return bodyProps;
   }
 
-  getSharedProps(): $Diff<SharedStylePropsArgT, {children?: React.Node}> {
+  getSharedProps(): Omit<SharedStylePropsArgT, 'children'> {
     const {isOpen, showArrow, popoverMargin = POPOVER_MARGIN} = this.props;
     const {isAnimating, arrowOffset, popoverOffset, placement} = this.state;
     return {
@@ -386,7 +391,7 @@ class Popover extends React.Component<PopoverPropsT, PopoverPrivateStateT> {
     return <span {...anchorProps}>{anchor}</span>;
   }
 
-  renderPopover(renderedContent: React.Node) {
+  renderPopover(renderedContent: React.ReactNode) {
     const {showArrow, overrides = {}} = this.props;
 
     const {

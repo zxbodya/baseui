@@ -5,9 +5,8 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 /* eslint-disable */
-// @flow
 import * as React from 'react';
-import {StyledInitials, StyledRoot, Avatar} from '../index.js';
+import {StyledInitials, StyledRoot, Avatar} from '../index';
 
 describe('Avatar styled Components flow', () => {
   test('it runs without flow error when we override Initials', () => {

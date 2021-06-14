@@ -4,26 +4,21 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import type {
   InputComponentsT,
   InputPropsT,
   StInputPropsDiffT,
-} from '../input/types.js';
-import type {OverrideT} from '../helpers/overrides.js';
+} from '../input/types';
+import type {OverrideT} from '../helpers/overrides';
 
 export type PaymentCardComponentsT = {
-  ...InputComponentsT,
-  IconWrapper?: OverrideT,
-};
+  IconWrapper?: OverrideT;
+} & InputComponentsT;
 
 export type PaymentCardPropsT = {
-  ...InputPropsT,
-  overrides: PaymentCardComponentsT,
-};
+  overrides: PaymentCardComponentsT;
+} & InputPropsT;
 
 export type StatefulPaymentCardPropsT = {
-  ...StInputPropsDiffT,
-  overrides?: PaymentCardComponentsT,
-};
+  overrides?: PaymentCardComponentsT;
+} & StInputPropsDiffT;

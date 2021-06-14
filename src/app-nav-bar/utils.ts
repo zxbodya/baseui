@@ -5,11 +5,9 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
+import type {NavItemT} from './types';
 
-import type {NavItemT} from './types.js';
-
-type GetUniqueIdentifierT = NavItemT => string | number;
+type GetUniqueIdentifierT = (a: NavItemT) => string | number;
 
 export function defaultMapItemToNode(item: NavItemT) {
   if (__DEV__) {
@@ -35,7 +33,7 @@ function defaultGetUniqueIdentifier(item: NavItemT) {
 
 export function mapItemsActive(
   items: NavItemT[],
-  predicate: NavItemT => boolean,
+  predicate: (a: NavItemT) => boolean,
 ) {
   return items.map<NavItemT>(current => {
     if (predicate(current)) {
@@ -58,7 +56,7 @@ export function mapItemsActive(
 export function setItemActive(
   items: NavItemT[],
   item: NavItemT,
-  getUniqueIdentifier?: GetUniqueIdentifierT = defaultGetUniqueIdentifier,
+  getUniqueIdentifier: GetUniqueIdentifierT = defaultGetUniqueIdentifier,
 ) {
   return mapItemsActive(
     items,

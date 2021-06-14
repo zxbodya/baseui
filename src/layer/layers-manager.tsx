@@ -4,16 +4,15 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {styled} from '../styles/index.js';
-import {getOverrides} from '../helpers/overrides.js';
+import {styled} from '../styles/index';
+import {getOverrides} from '../helpers/overrides';
 import type {
   LayersManagerPropsT,
   LayersManagerStateT,
   LayersContextT,
-} from './types.js';
-import {initFocusVisible} from '../utils/focusVisible.js';
+} from './types';
+import {initFocusVisible} from '../utils/focusVisible';
 
 const StyledAppContainer = styled('div', {});
 const StyledLayersContainer = styled('div', {});
@@ -39,16 +38,16 @@ export const Consumer = LayersContext.Consumer;
 
 export default class LayersManager extends React.Component<
   LayersManagerPropsT,
-  LayersManagerStateT,
+  LayersManagerStateT
 > {
   host: {
     // eslint-disable-next-line flowtype/no-weak-types
-    current: React.ElementRef<any> | null,
+    current: React.RefObject<any> | null;
   } = React.createRef();
 
   containerRef: {
     // eslint-disable-next-line flowtype/no-weak-types
-    current: React.ElementRef<any> | null,
+    current: React.RefObject<any> | null;
   } = React.createRef();
 
   constructor(props: LayersManagerPropsT) {
@@ -75,9 +74,8 @@ export default class LayersManager extends React.Component<
   }
 
   onDocumentClick = (event: MouseEvent) => {
-    const docClickHandler = this.state.docClickHandlers[
-      this.state.docClickHandlers.length - 1
-    ];
+    const docClickHandler =
+      this.state.docClickHandlers[this.state.docClickHandlers.length - 1];
     if (docClickHandler) {
       docClickHandler(event);
     }
@@ -85,22 +83,21 @@ export default class LayersManager extends React.Component<
 
   onKeyUp = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      const escapeKeyHandler = this.state.escapeKeyHandlers[
-        this.state.escapeKeyHandlers.length - 1
-      ];
+      const escapeKeyHandler =
+        this.state.escapeKeyHandlers[this.state.escapeKeyHandlers.length - 1];
       if (escapeKeyHandler) {
         escapeKeyHandler();
       }
     }
   };
 
-  onAddEscapeHandler = (escapeKeyHandler: () => mixed) => {
+  onAddEscapeHandler = (escapeKeyHandler: () => unknown) => {
     this.setState(prev => {
       return {escapeKeyHandlers: [...prev.escapeKeyHandlers, escapeKeyHandler]};
     });
   };
 
-  onRemoveEscapeHandler = (escapeKeyHandler: () => mixed) => {
+  onRemoveEscapeHandler = (escapeKeyHandler: () => unknown) => {
     this.setState(prev => {
       return {
         escapeKeyHandlers: prev.escapeKeyHandlers.filter(
@@ -110,13 +107,15 @@ export default class LayersManager extends React.Component<
     });
   };
 
-  onAddDocClickHandler = (docClickHandler: (event: MouseEvent) => mixed) => {
+  onAddDocClickHandler = (docClickHandler: (event: MouseEvent) => unknown) => {
     this.setState(prev => {
       return {docClickHandlers: [...prev.docClickHandlers, docClickHandler]};
     });
   };
 
-  onRemoveDocClickHandler = (docClickHandler: (event: MouseEvent) => mixed) => {
+  onRemoveDocClickHandler = (
+    docClickHandler: (event: MouseEvent) => unknown,
+  ) => {
     this.setState(prev => {
       return {
         docClickHandlers: prev.docClickHandlers.filter(

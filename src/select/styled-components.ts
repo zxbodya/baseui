@@ -4,15 +4,13 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import {styled} from '../styles/index.js';
-import {TYPE} from './constants.js';
-import {StyledList, StyledListItem} from '../menu/index.js';
-import {SIZE} from './constants.js';
-import type {SharedStylePropsArgT} from './types.js';
-import {ellipsisText} from '../styles/util.js';
-import type {ThemeT} from '../styles/types.js';
+import {styled} from '../styles/index';
+import {TYPE} from './constants';
+import {StyledList, StyledListItem} from '../menu/index';
+import {SIZE} from './constants';
+import type {SharedStylePropsArgT} from './types';
+import {ellipsisText} from '../styles/util';
+import type {ThemeT} from '../styles/types';
 
 function getFont(size = SIZE.default, typography) {
   return {
@@ -122,12 +120,12 @@ export const StyledOptionContent = styled<SharedStylePropsArgT>(
   props => {
     const {$isHighlighted, $selected, $disabled, $theme} = props;
 
-    return ({
+    return {
       cursor: $disabled ? 'not-allowed' : 'pointer',
       color:
         $selected && !$isHighlighted ? $theme.colors.menuFontSelected : null,
       fontWeight: $selected ? 'bold' : 'normal',
-    }: {});
+    } as {};
   },
 );
 

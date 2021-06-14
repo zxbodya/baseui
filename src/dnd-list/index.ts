@@ -4,13 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 export {arrayMove, arrayRemove} from 'react-movable';
-export {default as StatefulList} from './stateful-list.js';
-export {default as StatefulListContainer} from './stateful-list-container.js';
-export {default as List} from './list.js';
+export {default as StatefulList} from './stateful-list';
+export {default as StatefulListContainer} from './stateful-list-container';
+export {default as List} from './list';
 // Constants
-export {STATE_CHANGE_TYPE} from './constants.js';
+export {STATE_CHANGE_TYPE} from './constants';
 // Styled elements
 export {
   Root as StyledRoot,
@@ -19,6 +18,6 @@ export {
   DragHandle as StyledDragHandle,
   CloseHandle as StyledCloseHandle,
   Label as StyledLabel,
-} from './styled-components.js';
+} from './styled-components';
 // Flow
-export type * from './types.js';
+export * from './types';

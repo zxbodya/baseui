@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 import {render} from '@testing-library/react';
 
@@ -22,18 +21,18 @@ import {
   StyledClearIcon,
   StyledSearchIconContainer,
   StyledOptionContent,
-} from '../index.js';
-import SearchIconComponent from '../../icon/search.js';
-import Select from '../select.js';
+} from '../index';
+import SearchIconComponent from '../../icon/search';
+import Select from '../select';
 
 jest.mock('../select', () => jest.fn(() => null));
 
-describe('Stateful select', function() {
-  afterAll(function() {
+describe('Stateful select', function () {
+  afterAll(function () {
     jest.restoreAllMocks();
   });
 
-  it('should provide default styled components to render', function() {
+  it('should provide default styled components to render', function () {
     const props = {
       overrides: {
         Root: StyledRoot,

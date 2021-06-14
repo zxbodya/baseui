@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-env browser */
 import * as React from 'react';
 import {
@@ -14,7 +13,7 @@ import {
   fireEvent,
 } from '@testing-library/react';
 
-import Pagination from '../pagination.js';
+import Pagination from '../pagination';
 
 function getSharedProps() {
   return {

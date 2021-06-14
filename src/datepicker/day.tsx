@@ -4,20 +4,19 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import {StyledDay, StyledDayLabel} from './styled-components.js';
-import dateFnsAdapter from './utils/date-fns-adapter.js';
-import DateHelpers from './utils/date-helpers.js';
-import {getOverrides} from '../helpers/overrides.js';
-import type {DayPropsT, DayStateT} from './types.js';
-import {LocaleContext} from '../locale/index.js';
-import type {LocaleT} from '../locale/types.js';
-import {isFocusVisible} from '../utils/focusVisible.js';
+import {StyledDay, StyledDayLabel} from './styled-components';
+import dateFnsAdapter from './utils/date-fns-adapter';
+import DateHelpers from './utils/date-helpers';
+import {getOverrides} from '../helpers/overrides';
+import type {DayPropsT, DayStateT} from './types';
+import {LocaleContext} from '../locale/index';
+import type {LocaleT} from '../locale/types';
+import {isFocusVisible} from '../utils/focusVisible';
 
 export default class Day<T = Date> extends React.Component<
   DayPropsT<T>,
-  DayStateT,
+  DayStateT
 > {
   static defaultProps = {
     disabled: false,
@@ -35,7 +34,7 @@ export default class Day<T = Date> extends React.Component<
     value: null,
   };
 
-  dayElm: React.ElementRef<*>;
+  dayElm: React.RefObject<any>;
 
   state = {
     isHovered: false,
@@ -83,7 +82,7 @@ export default class Day<T = Date> extends React.Component<
       : this.props.month;
   };
 
-  onSelect: T => void = selectedDate => {
+  onSelect: (a: T) => void = selectedDate => {
     const {range, value} = this.props;
     let date;
     if (Array.isArray(value) && range) {
@@ -221,7 +220,7 @@ export default class Day<T = Date> extends React.Component<
     }
   }
 
-  clampToDayStart: T => T = dt => {
+  clampToDayStart: (a: T) => T = dt => {
     const {setSeconds, setMinutes, setHours} = this.dateHelpers;
     return setSeconds(setMinutes(setHours(dt, 0), 0), 0);
   };
@@ -336,11 +335,11 @@ export default class Day<T = Date> extends React.Component<
 
   getAriaLabel(
     sharedProps: {
-      $disabled: boolean,
-      $range: boolean,
-      $selected: boolean,
-      $startDate: boolean,
-      $endDate: boolean,
+      $disabled: boolean;
+      $range: boolean;
+      $selected: boolean;
+      $startDate: boolean;
+      $endDate: boolean;
     },
     localeContext: LocaleT,
   ) {

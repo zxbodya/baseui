@@ -5,13 +5,11 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
 
-import {Button, KIND, SHAPE} from '../button/index.js';
-import {getOverrides} from '../helpers/overrides.js';
-import {useStyletron} from '../styles/index.js';
+import {Button, KIND, SHAPE} from '../button/index';
+import {getOverrides} from '../helpers/overrides';
+import {useStyletron} from '../styles/index';
 
 import {
   StyledRoot,
@@ -21,8 +19,8 @@ import {
   StyledMessage,
   StyledWrapActionButtonContainer,
   StyledActionButtonContainer,
-} from './styled-components.js';
-import type {SnackbarElementPropsT} from './types.js';
+} from './styled-components';
+import type {SnackbarElementPropsT} from './types';
 
 const ActionButton = React.forwardRef(
   ({onClick, message, overrides = {}}, ref) => {
@@ -127,13 +125,11 @@ export default function SnackbarElement({
     overrides.Message,
     StyledMessage,
   );
-  const [
-    WrapActionButtonContainer,
-    wrapActionButtonContainerProps,
-  ] = getOverrides(
-    overrides.WrapActionButtonContainer,
-    StyledWrapActionButtonContainer,
-  );
+  const [WrapActionButtonContainer, wrapActionButtonContainerProps] =
+    getOverrides(
+      overrides.WrapActionButtonContainer,
+      StyledWrapActionButtonContainer,
+    );
 
   const prevFocusRef = React.useRef(null);
   const actionButtonRef = React.useRef(null);

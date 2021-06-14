@@ -5,8 +5,6 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 /* global document */
-// @flow
-
 import * as React from 'react';
 import {
   render,
@@ -18,7 +16,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react';
 
-import {toaster, ToasterContainer} from '../index.js';
+import {toaster, ToasterContainer} from '../index';
 
 function wait(ms) {
   return new Promise(res => {

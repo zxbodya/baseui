@@ -4,9 +4,8 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import colorTokens from './color-tokens.js';
-import type {ColorTokensT} from '../types.js';
+import colorTokens from './color-tokens';
+import type {ColorTokensT} from '../types';
 
 /* ---- DEPRECATED ---- */
 export default (themePrimitives: ColorTokensT = colorTokens) => ({

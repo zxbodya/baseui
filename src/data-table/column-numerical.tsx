@@ -4,27 +4,24 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {Button, SIZE} from '../button/index.js';
-import {ButtonGroup, MODE} from '../button-group/index.js';
-import {Input, SIZE as INPUT_SIZE} from '../input/index.js';
-import {useStyletron} from '../styles/index.js';
-import {Paragraph4} from '../typography/index.js';
+import {Button, SIZE} from '../button/index';
+import {ButtonGroup, MODE} from '../button-group/index';
+import {Input, SIZE as INPUT_SIZE} from '../input/index';
+import {useStyletron} from '../styles/index';
+import {Paragraph4} from '../typography/index';
 
-import Column from './column.js';
-import {COLUMNS, NUMERICAL_FORMATS, NUMERICAL_OPERATIONS} from './constants.js';
-import FilterShell from './filter-shell.js';
-import type {ColumnT, SharedColumnOptionsT} from './types.js';
-import {LocaleContext} from '../locale/index.js';
+import Column from './column';
+import {COLUMNS, NUMERICAL_FORMATS, NUMERICAL_OPERATIONS} from './constants';
+import FilterShell from './filter-shell';
+import type {ColumnT, SharedColumnOptionsT} from './types';
+import {LocaleContext} from '../locale/index';
 
 type NumericalFormats =
   | typeof NUMERICAL_FORMATS.DEFAULT
   | typeof NUMERICAL_FORMATS.ACCOUNTING
   | typeof NUMERICAL_FORMATS.PERCENTAGE;
-
 type NumericalOperations =
   | typeof NUMERICAL_OPERATIONS.EQ
   | typeof NUMERICAL_OPERATIONS.GT
@@ -32,21 +29,20 @@ type NumericalOperations =
   | typeof NUMERICAL_OPERATIONS.LT
   | typeof NUMERICAL_OPERATIONS.LTE;
 
-type OptionsT = {|
-  ...SharedColumnOptionsT<number>,
-  format?: NumericalFormats | ((value: number) => string),
-  highlight?: number => boolean,
-  precision?: number,
-|};
+type OptionsT = {
+  format?: NumericalFormats | ((value: number) => string);
+  highlight?: (a: number) => boolean;
+  precision?: number;
+} & SharedColumnOptionsT<number>;
 
-type FilterParametersT = {|
-  comparisons: Array<{|
-    value: number,
-    operation: NumericalOperations,
-  |}>,
-  description: string,
-  exclude: boolean,
-|};
+type FilterParametersT = {
+  comparisons: Array<{
+    value: number;
+    operation: NumericalOperations;
+  }>;
+  description: string;
+  exclude: boolean;
+};
 
 type NumericalColumnT = ColumnT<number, FilterParametersT>;
 
@@ -452,7 +448,7 @@ const defaultOptions = {
   sortable: true,
   filterable: true,
   format: NUMERICAL_FORMATS.DEFAULT,
-  highlight: (n => false: number => boolean),
+  highlight: (n => false) as (a: number) => boolean,
   precision: 0,
 };
 
@@ -473,13 +469,13 @@ function NumericalColumn(options: OptionsT): NumericalColumnT {
     normalizedOptions.format === NUMERICAL_FORMATS.ACCOUNTING &&
     (options.highlight === null || options.highlight === undefined)
   ) {
-    normalizedOptions.highlight = (n: number) => (n < 0: boolean);
+    normalizedOptions.highlight = (n: number) => (n < 0) as boolean;
   }
 
   return Column({
     kind: COLUMNS.NUMERICAL,
-    buildFilter: function(params) {
-      return function(data) {
+    buildFilter: function (params) {
+      return function (data) {
         const included = params.comparisons.some(c => {
           const left = roundToFixed(data, normalizedOptions.precision);
           const right = roundToFixed(c.value, normalizedOptions.precision);
@@ -521,7 +517,7 @@ function NumericalColumn(options: OptionsT): NumericalColumnT {
       return <NumericalFilter {...props} options={normalizedOptions} />;
     },
     sortable: normalizedOptions.sortable,
-    sortFn: function(a, b) {
+    sortFn: function (a, b) {
       return a - b;
     },
     title: normalizedOptions.title,

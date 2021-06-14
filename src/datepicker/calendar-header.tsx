@@ -4,17 +4,16 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
-import ArrowRight from '../icon/arrow-right.js';
-import ArrowLeft from '../icon/arrow-left.js';
-import TriangleDown from '../icon/triangle-down.js';
-import dateFnsAdapter from './utils/date-fns-adapter.js';
-import DateHelpers from './utils/date-helpers.js';
-import {StatefulMenu} from '../menu/index.js';
-import {Popover} from '../popover/index.js';
-import {LocaleContext} from '../locale/index.js';
-import {ThemeContext} from '../styles/theme-provider.js';
+import ArrowRight from '../icon/arrow-right';
+import ArrowLeft from '../icon/arrow-left';
+import TriangleDown from '../icon/triangle-down';
+import dateFnsAdapter from './utils/date-fns-adapter';
+import DateHelpers from './utils/date-helpers';
+import {StatefulMenu} from '../menu/index';
+import {Popover} from '../popover/index';
+import {LocaleContext} from '../locale/index';
+import {ThemeContext} from '../styles/theme-provider';
 import {
   StyledCalendarHeader,
   StyledPrevButton,
@@ -23,13 +22,15 @@ import {
   StyledWeekdayHeader,
   StyledMonthYearSelectButton,
   StyledMonthYearSelectIconContainer,
-} from './styled-components.js';
-import {ORIENTATION, WEEKDAYS} from './constants.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import type {HeaderPropsT} from './types.js';
-import type {LocaleT} from '../locale/types.js';
-import type {ThemeT} from '../styles/types.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import {ORIENTATION, WEEKDAYS} from './constants';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import type {HeaderPropsT} from './types';
+import type {LocaleT} from '../locale/types';
+import type {ThemeT} from '../styles/types';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
+
+import type {SyntheticEvent} from 'react';
 
 const navBtnStyle = ({$theme}) => ({
   cursor: 'pointer',
@@ -55,7 +56,10 @@ function idToYearMonth(id) {
 
 export default class CalendarHeader<T = Date> extends React.Component<
   HeaderPropsT<T>,
-  {isMonthYearDropdownOpen: boolean, isFocusVisible: boolean},
+  {
+    isMonthYearDropdownOpen: boolean;
+    isFocusVisible: boolean;
+  }
 > {
   static defaultProps = {
     adapter: dateFnsAdapter,
@@ -67,7 +71,10 @@ export default class CalendarHeader<T = Date> extends React.Component<
   };
 
   dateHelpers: DateHelpers<T>;
-  items: Array<{id: string, label: string}>;
+  items: Array<{
+    id: string;
+    label: string;
+  }>;
   minYear: number;
   maxYear: number;
 
@@ -86,7 +93,13 @@ export default class CalendarHeader<T = Date> extends React.Component<
     return this.props.date || this.dateHelpers.date();
   };
 
-  handleMonthChange = ({value}: {value: Array<{id: number}>}) => {
+  handleMonthChange = ({
+    value,
+  }: {
+    value: Array<{
+      id: number;
+    }>;
+  }) => {
     if (this.props.onMonthChange) {
       // $FlowFixMe
       this.props.onMonthChange({
@@ -95,7 +108,13 @@ export default class CalendarHeader<T = Date> extends React.Component<
     }
   };
 
-  handleYearChange = ({value}: {value: Array<{id: number}>}) => {
+  handleYearChange = ({
+    value,
+  }: {
+    value: Array<{
+      id: number;
+    }>;
+  }) => {
     if (this.props.onYearChange) {
       // $FlowFixMe
       this.props.onYearChange({
@@ -132,7 +151,9 @@ export default class CalendarHeader<T = Date> extends React.Component<
     return orientation === ORIENTATION.horizontal && monthsShown > 1;
   };
 
-  isHiddenPaginationButton = (direction: $Values<typeof DIRECTION>) => {
+  isHiddenPaginationButton = (
+    direction: typeof DIRECTION[keyof typeof DIRECTION],
+  ) => {
     const {monthsShown, order} = this.props;
 
     if (monthsShown && this.isMultiMonthHorizontal()) {
@@ -148,13 +169,13 @@ export default class CalendarHeader<T = Date> extends React.Component<
     return false;
   };
 
-  handleFocus = (event: SyntheticEvent<>) => {
+  handleFocus = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       this.setState({isFocusVisible: true});
     }
   };
 
-  handleBlur = (event: SyntheticEvent<>) => {
+  handleBlur = (event: SyntheticEvent) => {
     if (this.state.isFocusVisible !== false) {
       this.setState({isFocusVisible: false});
     }
@@ -164,8 +185,8 @@ export default class CalendarHeader<T = Date> extends React.Component<
     locale,
     theme,
   }: {
-    locale: LocaleT,
-    theme: ThemeT,
+    locale: LocaleT;
+    theme: ThemeT;
   }) => {
     const date = this.getDateProp();
     const {overrides = {}} = this.props;
@@ -230,8 +251,8 @@ export default class CalendarHeader<T = Date> extends React.Component<
     locale,
     theme,
   }: {
-    locale: LocaleT,
-    theme: ThemeT,
+    locale: LocaleT;
+    theme: ThemeT;
   }) => {
     const date = this.getDateProp();
     const {overrides = {}} = this.props;
@@ -315,13 +336,11 @@ export default class CalendarHeader<T = Date> extends React.Component<
       overrides.MonthYearSelectButton,
       StyledMonthYearSelectButton,
     );
-    const [
-      MonthYearSelectIconContainer,
-      monthYearSelectIconContainerProps,
-    ] = getOverrides(
-      overrides.MonthYearSelectIconContainer,
-      StyledMonthYearSelectIconContainer,
-    );
+    const [MonthYearSelectIconContainer, monthYearSelectIconContainerProps] =
+      getOverrides(
+        overrides.MonthYearSelectIconContainer,
+        StyledMonthYearSelectIconContainer,
+      );
     const [OverriddenPopover, popoverProps] = getOverrides(
       overrides.MonthYearSelectPopover,
       Popover,

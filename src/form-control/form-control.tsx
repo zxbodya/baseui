@@ -5,16 +5,15 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
 import * as React from 'react';
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
-import getBuiId from '../utils/get-bui-id.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+import getBuiId from '../utils/get-bui-id';
 import {
   Label as StyledLabel,
   Caption as StyledCaption,
   ControlContainer as StyledControlContainer,
-} from './styled-components.js';
-import type {FormControlPropsT, FormControlStateT} from './types.js';
+} from './styled-components';
+import type {FormControlPropsT, FormControlStateT} from './types';
 
 function chooseRenderedHint(caption, error, positive, sharedProps) {
   if (error && typeof error !== 'boolean') {
@@ -34,7 +33,7 @@ function chooseRenderedHint(caption, error, positive, sharedProps) {
 
 export default class FormControl extends React.Component<
   FormControlPropsT,
-  FormControlStateT,
+  FormControlStateT
 > {
   static defaultProps = {
     overrides: {},

@@ -6,12 +6,10 @@ LICENSE file in the root directory of this source tree.
 */
 
 /* global window */
-// @flow
-
 import React from 'react';
 import {render, getByText} from '@testing-library/react';
 
-import {SnackbarElement} from '../index.js';
+import {SnackbarElement} from '../index';
 
 describe('snackbar-element', () => {
   it('renders text content', () => {

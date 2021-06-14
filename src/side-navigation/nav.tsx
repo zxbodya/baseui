@@ -4,22 +4,24 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import NavItem from './nav-item.js';
+import {getOverrides} from '../helpers/overrides';
+import NavItem from './nav-item';
 import {
   StyledRoot,
   StyledNavItemContainer,
   StyledSubNavContainer,
-} from './styled-components.js';
-import type {NavPropsT, Item} from './types.js';
-import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible.js';
+} from './styled-components';
+import type {NavPropsT, Item} from './types';
+import {isFocusVisible, forkFocus, forkBlur} from '../utils/focusVisible';
+
+import type {SyntheticEvent} from 'react';
 
 export default class SideNav extends React.Component<
   NavPropsT,
-  {isFocusVisible: boolean},
+  {
+    isFocusVisible: boolean;
+  }
 > {
   static defaultProps = {
     activeItemId: '/',
@@ -30,13 +32,13 @@ export default class SideNav extends React.Component<
   };
   state = {isFocusVisible: false};
 
-  handleFocus = (event: SyntheticEvent<>) => {
+  handleFocus = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       this.setState({isFocusVisible: true});
     }
   };
 
-  handleBlur = (event: SyntheticEvent<>) => {
+  handleBlur = (event: SyntheticEvent) => {
     if (this.state.isFocusVisible !== false) {
       this.setState({isFocusVisible: false});
     }
@@ -45,14 +47,8 @@ export default class SideNav extends React.Component<
   activePredicate = (item: Item) => item.itemId === this.props.activeItemId;
 
   render() {
-    const {
-      activeItemId,
-      activePredicate,
-      items,
-      onChange,
-      overrides,
-      mapItem,
-    } = this.props;
+    const {activeItemId, activePredicate, items, onChange, overrides, mapItem} =
+      this.props;
     const navLevel = 1;
 
     const [Root, rootProps] = getOverrides(overrides.Root, StyledRoot);

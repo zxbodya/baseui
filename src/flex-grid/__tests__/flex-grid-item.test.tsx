@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 import {render} from '@testing-library/react';
 
@@ -13,8 +11,8 @@ import FlexGridItem, {
   flexGridItemMediaQueryStyle,
   flexGridItemStyle,
   getResponsiveValue,
-} from '../flex-grid-item.js';
-import {LightTheme} from '../../themes/index.js';
+} from '../flex-grid-item';
+import {LightTheme} from '../../themes/index';
 
 describe('FlexGridItem', () => {
   test('flexGridItemMediaQueryStyle', () => {

@@ -5,11 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-import {styled, expandBorderStyles} from '../styles/index.js';
-import {STYLE_TYPE} from './constants.js';
+import {styled, expandBorderStyles} from '../styles/index';
+import {STYLE_TYPE} from './constants';
 
-import type {SharedStylePropsT} from './types.js';
+import type {SharedStylePropsT} from './types';
 
 function getBorderColor(props) {
   const {
@@ -182,7 +181,7 @@ export const Checkmark = styled<SharedStylePropsT>('span', props => {
   const borderRadius = $theme.borders.inputBorderRadius;
   const borderColor = getBorderColor(props);
 
-  return ({
+  return {
     flex: '0 0 auto',
     transitionDuration: animation.timing200,
     transitionTimingFunction: animation.easeOutCurve,
@@ -227,20 +226,20 @@ export const Checkmark = styled<SharedStylePropsT>('span', props => {
     marginBottom: $theme.sizing.scale0,
     marginLeft: $theme.sizing.scale0,
     marginRight: $theme.sizing.scale0,
-  }: {});
+  } as {};
 });
 
 export const Label = styled<SharedStylePropsT>('div', props => {
   const {$theme, $checkmarkType} = props;
   const {typography} = $theme;
-  return ({
+  return {
     flex: $checkmarkType === STYLE_TYPE.toggle ? 'auto' : null,
     verticalAlign: 'middle',
     ...getLabelPadding(props),
     color: getLabelColor(props),
     ...typography.LabelMedium,
     lineHeight: '24px',
-  }: {});
+  } as {};
 });
 
 // tricky style for focus event cause display: none doesn't work
@@ -259,7 +258,7 @@ export const Toggle = styled<SharedStylePropsT>('div', props => {
     const borderRadius = props.$theme.borders.useRoundedCorners
       ? props.$theme.borders.radius200
       : null;
-    return ({
+    return {
       ...expandBorderStyles(props.$theme.borders.border300),
       alignItems: 'center',
       backgroundColor: props.$theme.colors.mono100,
@@ -275,7 +274,7 @@ export const Toggle = styled<SharedStylePropsT>('div', props => {
       justifyContent: 'center',
       height: props.$theme.sizing.scale800,
       width: props.$theme.sizing.scale800,
-    }: {});
+    } as {};
   }
 
   if (props.$checkmarkType === STYLE_TYPE.toggle_round) {
@@ -352,7 +351,7 @@ export const ToggleTrack = styled<SharedStylePropsT>('div', props => {
     const borderRadius = props.$theme.borders.useRoundedCorners
       ? props.$theme.borders.radius200
       : null;
-    return ({
+    return {
       alignItems: 'center',
       backgroundColor: getBackgroundColor(props),
       borderTopLeftRadius: borderRadius,
@@ -367,7 +366,7 @@ export const ToggleTrack = styled<SharedStylePropsT>('div', props => {
       marginLeft: props.$theme.sizing.scale100,
       marginRight: props.$theme.sizing.scale100,
       width: props.$theme.sizing.scale1000,
-    }: {});
+    } as {};
   }
 
   if (props.$checkmarkType === STYLE_TYPE.toggle_round) {

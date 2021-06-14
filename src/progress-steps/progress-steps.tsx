@@ -5,12 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
-import {getOverrides} from '../helpers/overrides.js';
-import {StyledProgressSteps} from './styled-components.js';
-import type {ProgressStepsPropsT, StepPropsT} from './types.js';
+import {getOverrides} from '../helpers/overrides';
+import {StyledProgressSteps} from './styled-components';
+import type {ProgressStepsPropsT, StepPropsT} from './types';
 
 function ProgressSteps({
   overrides = {},
@@ -29,20 +27,17 @@ function ProgressSteps({
         ? child.props.isActive
         : index === current;
 
-    return React.cloneElement(
-      child,
-      ({
-        isLast: index === numChildren - 1,
-        isCompleted: index < current,
-        isActive,
-        step: index + 1,
-        overrides: {
-          ...overrides,
-          Root: overrides.StepRoot,
-          ...childOverrides,
-        },
-      }: StepPropsT),
-    );
+    return React.cloneElement(child, {
+      isLast: index === numChildren - 1,
+      isCompleted: index < current,
+      isActive,
+      step: index + 1,
+      overrides: {
+        ...overrides,
+        Root: overrides.StepRoot,
+        ...childOverrides,
+      },
+    } as StepPropsT);
   });
 
   return (

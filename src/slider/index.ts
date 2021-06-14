@@ -4,10 +4,9 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-export {default as Slider} from './slider.js';
-export {default as StatefulSlider} from './stateful-slider.js';
-export {default as StatefulContainer} from './stateful-slider-container.js';
+export {default as Slider} from './slider';
+export {default as StatefulSlider} from './stateful-slider';
+export {default as StatefulContainer} from './stateful-slider-container';
 // Styled elements
 export {
   Root as StyledRoot,
@@ -19,5 +18,5 @@ export {
   TickBar as StyledTickBar,
   ThumbValue as StyledThumbValue,
   Mark as StyledMark,
-} from './styled-components.js';
-export type * from './types.js';
+} from './styled-components';
+export * from './types';

@@ -4,18 +4,16 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import React, {useState} from 'react';
-import {Button} from '../../button/index.js';
-import {StatefulSelect} from '../index.js';
+import {Button} from '../../button/index';
+import {StatefulSelect} from '../index';
 import {
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
   ModalButton,
-} from '../../modal/index.js';
+} from '../../modal/index';
 
 export default function SelectInModal() {
   const [isOpen, setIsOpen] = useState(false);

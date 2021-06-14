@@ -4,26 +4,23 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {useStyletron} from '../styles/index.js';
+import {useStyletron} from '../styles/index';
 
-import Column from './column.js';
-import {COLUMNS} from './constants.js';
-import {HighlightCellText} from './text-search.js';
-import type {ColumnT, SharedColumnOptionsT} from './types.js';
+import Column from './column';
+import {COLUMNS} from './constants';
+import {HighlightCellText} from './text-search';
+import type {ColumnT, SharedColumnOptionsT} from './types';
 
-type OptionsT = {|
-  ...SharedColumnOptionsT<string>,
-  lineClamp?: number,
-|};
+type OptionsT = {
+  lineClamp?: number;
+} & SharedColumnOptionsT<string>;
 
-type FilterParametersT = {|
-  description: string,
-  exclude: boolean,
-|};
+type FilterParametersT = {
+  description: string;
+  exclude: boolean;
+};
 
 type StringColumnT = ColumnT<string, FilterParametersT>;
 
@@ -55,8 +52,8 @@ function StringColumn(options: OptionsT): StringColumnT {
   return Column({
     kind: COLUMNS.STRING,
     cellBlockAlign: options.cellBlockAlign,
-    buildFilter: function(params) {
-      return function(data) {
+    buildFilter: function (params) {
+      return function (data) {
         return true;
       };
     },
@@ -70,10 +67,10 @@ function StringColumn(options: OptionsT): StringColumnT {
     },
     renderFilter: StringFilter,
     sortable: options.sortable === undefined ? true : options.sortable,
-    sortFn: function(a, b) {
+    sortFn: function (a, b) {
       return a.localeCompare(b);
     },
-    textQueryFilter: function(textQuery, data) {
+    textQueryFilter: function (textQuery, data) {
       return data.toLowerCase().includes(textQuery.toLowerCase());
     },
     title: options.title,

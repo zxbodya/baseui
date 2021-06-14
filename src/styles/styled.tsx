@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 import {
   createStyled,
@@ -14,9 +13,16 @@ import {
 } from 'styletron-react';
 import {driver, getInitialStyle} from 'styletron-standard';
 import type {StyleObject} from 'styletron-standard';
-import type {ThemeT} from './types.js';
+import type {ThemeT} from './types';
 
-import {ThemeContext} from './theme-provider.js';
+import {ThemeContext} from './theme-provider';
+
+type $Call1<F extends (...args: any) => any, A> = F extends (
+  a: A,
+  ...args: any
+) => infer R
+  ? R
+  : never;
 
 const wrapper = StyledComponent => {
   return React.forwardRef((props, ref) => (
@@ -28,74 +34,79 @@ const wrapper = StyledComponent => {
 
 /* eslint-disable flowtype/generic-spacing */
 /* eslint-disable flowtype/no-weak-types */
-export type StyletronComponent<
-  Props,
-> = React.StatelessFunctionalComponent<Props> & {
-  __STYLETRON__: any,
+export type StyletronComponent<Props> = React.FunctionComponent<Props> & {
+  __STYLETRON__: any;
 };
 
 type StyleFn<Theme> = {
-  (string): StyletronComponent<{}>,
-
-  (string, StyleObject): StyletronComponent<{}>,
-
+  (a: string): StyletronComponent<{}>;
+  (b: string, a: StyleObject): StyletronComponent<{}>;
   <Props>(
-    string,
-    ({$theme: Theme} & Props) => StyleObject,
-  ): StyletronComponent<Props>,
-
-  <Base: React.ComponentType<any>>(
-    Base,
-    StyleObject,
-  ): StyletronComponent<$Diff<React.ElementConfig<Base>, {className: any}>>,
-
-  <Base: React.ComponentType<any>, Props>(
-    Base,
-    ({$theme: Theme} & Props) => StyleObject,
-  ): StyletronComponent<
-    $Diff<React.ElementConfig<Base>, {className: any}> & Props,
-  >,
+    b: string,
+    a: (
+      a: {
+        $theme: Theme;
+      } & Props,
+    ) => StyleObject,
+  ): StyletronComponent<Props>;
+  <Base extends React.ComponentType<any>>(
+    b: Base,
+    a: StyleObject,
+  ): StyletronComponent<Omit<React.ComponentProps<Base>, 'className'>>;
+  <Base extends React.ComponentType<any>, Props>(
+    b: Base,
+    a: (
+      a: {
+        $theme: Theme;
+      } & Props,
+    ) => StyleObject,
+  ): StyletronComponent<Omit<React.ComponentProps<Base>, 'className'> & Props>;
 };
 
-type ExtractPropTypes = <T>(StyletronComponent<T>) => T;
+type ExtractPropTypes = <T>(a: StyletronComponent<T>) => T;
+
 type WithStyleFn<Theme> = {
-  <Base: StyletronComponent<any>, Props>(
-    Base,
-    (Props & {$theme: Theme}) => StyleObject,
-  ): StyletronComponent<$Call<ExtractPropTypes, Base> & Props>,
-
-  <Base: StyletronComponent<any>>(
-    Base,
-    StyleObject,
-  ): StyletronComponent<$Call<ExtractPropTypes, Base>>,
+  <Base extends StyletronComponent<any>, Props>(
+    b: Base,
+    a: (
+      a: Props & {
+        $theme: Theme;
+      },
+    ) => StyleObject,
+  ): StyletronComponent<$Call1<ExtractPropTypes, Base> & Props>;
+  <Base extends StyletronComponent<any>>(
+    b: Base,
+    a: StyleObject,
+  ): StyletronComponent<$Call1<ExtractPropTypes, Base>>;
 };
+
 /* eslint-enable flowtype/generic-spacing */
 /* eslint-enable flowtype/no-weak-types */
 
 export function createThemedStyled<Theme>(): StyleFn<Theme> {
-  return ((createStyled({
+  return createStyled({
     wrapper,
     getInitialStyle,
     driver,
     // eslint-disable-next-line flowtype/no-weak-types
-  }): any): StyleFn<Theme>);
+  }) as any as StyleFn<Theme>;
 }
 
 export const styled = createThemedStyled<ThemeT>();
 
 export function createThemedWithStyle<Theme>(): WithStyleFn<Theme> {
   // eslint-disable-next-line flowtype/no-weak-types
-  return ((styletronWithStyle: any): WithStyleFn<Theme>);
+  return styletronWithStyle as any as WithStyleFn<Theme>;
 }
 
 export const withStyle = createThemedWithStyle<ThemeT>();
 
-type UseStyletronFn<Theme> = () => [(StyleObject) => string, Theme];
+type UseStyletronFn<Theme> = () => [(a: StyleObject) => string, Theme];
 
 export function createThemedUseStyletron<Theme>(): UseStyletronFn<Theme> {
-  return function() {
+  return function () {
     // eslint-disable-next-line flowtype/no-weak-types
-    const theme = ((React.useContext(ThemeContext): any): Theme);
+    const theme = React.useContext(ThemeContext) as any as Theme;
     const [css] = styletronUseStyletron();
     return [css, theme];
   };
@@ -108,9 +119,9 @@ export function withWrapper(
   StyledElement: StyletronComponent<any>,
   wrapperFn: (
     // eslint-disable-next-line flowtype/no-weak-types
-    StyletronComponent<any>,
     // eslint-disable-next-line flowtype/no-weak-types
-  ) => any => any,
+    a: StyletronComponent<any>,
+  ) => (a: any) => any,
 ) {
   // eslint-disable-next-line flowtype/no-weak-types
   return styletronWithWrapper<StyletronComponent<any>, any>(

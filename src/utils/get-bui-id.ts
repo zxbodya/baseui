@@ -4,8 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 /**
  * For aria and other attributes like htmlFor, we often need
  * to attach identifiers to elements. Making `id` a required

@@ -4,12 +4,10 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
-import {styled} from '../styles/index.js';
-import {getMediaQueries} from '../helpers/responsive-helpers.js';
-import {BEHAVIOR} from './constants.js';
-import type {ResponsiveT, StyledGridPropsT, StyledCellPropsT} from './types.js';
+import {styled} from '../styles/index';
+import {getMediaQueries} from '../helpers/responsive-helpers';
+import {BEHAVIOR} from './constants';
+import type {ResponsiveT, StyledGridPropsT, StyledCellPropsT} from './types';
 
 export const StyledGrid = styled<StyledGridPropsT>(
   'div',
@@ -28,23 +26,31 @@ export const StyledGrid = styled<StyledGridPropsT>(
         return {
           ...acc,
           [cur]: {
-            paddingLeft: `${getResponsiveNumber($gridMargins, idx) -
+            paddingLeft: `${
+              getResponsiveNumber($gridMargins, idx) -
               getResponsiveNumber($gridGutters, idx) / 2 -
-              0.5}${$gridUnit}`,
-            paddingRight: `${getResponsiveNumber($gridMargins, idx) -
+              0.5
+            }${$gridUnit}`,
+            paddingRight: `${
+              getResponsiveNumber($gridMargins, idx) -
               getResponsiveNumber($gridGutters, idx) / 2 -
-              0.5}${$gridUnit}`,
+              0.5
+            }${$gridUnit}`,
             alignItems: getResponsiveValue($align, idx),
           },
         };
       },
       {
-        paddingLeft: `${getResponsiveNumber($gridMargins, 0) -
+        paddingLeft: `${
+          getResponsiveNumber($gridMargins, 0) -
           getResponsiveNumber($gridGutters, 0) / 2 -
-          0.5}${$gridUnit}`,
-        paddingRight: `${getResponsiveNumber($gridMargins, 0) -
+          0.5
+        }${$gridUnit}`,
+        paddingRight: `${
+          getResponsiveNumber($gridMargins, 0) -
           getResponsiveNumber($gridGutters, 0) / 2 -
-          0.5}${$gridUnit}`,
+          0.5
+        }${$gridUnit}`,
         alignItems: getResponsiveValue($align, 0),
       },
     );
@@ -56,9 +62,11 @@ export const StyledGrid = styled<StyledGridPropsT>(
       marginRight: 'auto',
       maxWidth:
         $behavior === BEHAVIOR.fixed
-          ? `${$gridMaxWidth +
+          ? `${
+              $gridMaxWidth +
               2 * getResponsiveNumber($gridMargins, Infinity) -
-              1}${$gridUnit}`
+              1
+            }${$gridUnit}`
           : null,
       ...gridStyles,
     };
@@ -98,20 +106,26 @@ export const StyledCell = styled<StyledCellPropsT>(
           ...acc,
           [cur]: {
             display: 'block',
-            width: `${(100 / getResponsiveNumber($gridColumns, idx)) *
+            width: `${
+              (100 / getResponsiveNumber($gridColumns, idx)) *
               Math.min(
                 getResponsiveNumber($span, idx),
                 getResponsiveNumber($gridColumns, idx),
-              )}%`,
-            marginLeft: `${(100 / getResponsiveNumber($gridColumns, idx)) *
+              )
+            }%`,
+            marginLeft: `${
+              (100 / getResponsiveNumber($gridColumns, idx)) *
               Math.min(
                 getResponsiveNumber($skip, idx),
                 getResponsiveNumber($gridColumns, idx) - 1,
-              )}%`,
-            paddingLeft: `${getResponsiveNumber($gridGutters, idx) /
-              2}${$gridUnit}`,
-            paddingRight: `${getResponsiveNumber($gridGutters, idx) /
-              2}${$gridUnit}`,
+              )
+            }%`,
+            paddingLeft: `${
+              getResponsiveNumber($gridGutters, idx) / 2
+            }${$gridUnit}`,
+            paddingRight: `${
+              getResponsiveNumber($gridGutters, idx) / 2
+            }${$gridUnit}`,
             marginBottom: `${getResponsiveNumber($gridGaps, idx)}${$gridUnit}`,
             alignSelf: getResponsiveValue($align, idx),
             order: getResponsiveNumber($order, idx),
@@ -139,7 +153,10 @@ function getResponsiveNumber<T>(responsive: ResponsiveT<T>, i: number): number {
   return typeof res === 'number' ? res : 0;
 }
 
-function getResponsiveValue<T>(responsive: ResponsiveT<T>, i: number): ?T {
+function getResponsiveValue<T>(
+  responsive: ResponsiveT<T>,
+  i: number,
+): T | undefined | null {
   if (!responsive) {
     return null;
   }

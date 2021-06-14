@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 import {
   render,
@@ -15,9 +14,9 @@ import {
   getByText,
 } from '@testing-library/react';
 
-import {TestBaseProvider} from '../../test/test-utils.js';
+import {TestBaseProvider} from '../../test/test-utils';
 import {addDays} from 'date-fns';
-import {Datepicker, ORIENTATION} from '../index.js';
+import {Datepicker, ORIENTATION} from '../index';
 
 describe('Datepicker', () => {
   it('opens calendar on down arrow press', () => {

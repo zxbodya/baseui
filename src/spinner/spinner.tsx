@@ -4,21 +4,20 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 
-import {mergeOverrides, getOverrides} from '../helpers/overrides.js';
-import Icon from '../icon/icon.js';
+import {mergeOverrides, getOverrides} from '../helpers/overrides';
+import Icon from '../icon/icon';
 
 import {
   Svg as StyledSvg,
   StyledActivePath,
   StyledTrackPath,
-} from './styled-components.js';
-import type {SpinnerPropsT} from './types.js';
+} from './styled-components';
+import type {SpinnerPropsT} from './types';
 
 class Spinner extends React.Component<SpinnerPropsT> {
-  static defaultProps: $Shape<SpinnerPropsT> = {
+  static defaultProps: Partial<SpinnerPropsT> = {
     color: '',
     size: 44,
     title: 'Loading',

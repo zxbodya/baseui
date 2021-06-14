@@ -4,8 +4,7 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-import type {PropsT, OptionT, OptionsT, OptgroupsT, ValueT} from '../types.js';
+import type {PropsT, OptionT, OptionsT, OptgroupsT, ValueT} from '../types';
 
 function groupedOptionsToArray(groupedOptions: OptgroupsT): ValueT {
   return Object.keys(groupedOptions).reduce((arr, optgroup) => {
@@ -36,7 +35,7 @@ export function normalizeOptions(options: OptionsT): ValueT {
 export const expandValue = (
   // eslint-disable-next-line flowtype/no-weak-types
   value: OptionT,
-  props: $Shape<PropsT>,
+  props: Partial<PropsT>,
 ): OptionT => {
   if (!props.options) return value;
 

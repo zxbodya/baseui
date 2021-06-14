@@ -4,15 +4,13 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import tint from 'polished/lib/color/tint.js';
 import shade from 'polished/lib/color/shade.js';
 
-import {styled} from '../styles/index.js';
-import {KIND, VARIANT, SIZE} from './constants.js';
-import type {SharedPropsArgT} from './types.js';
-import {colors as colorTokens} from '../tokens/index.js';
+import {styled} from '../styles/index';
+import {KIND, VARIANT, SIZE} from './constants';
+import type {SharedPropsArgT} from './types';
+import {colors as colorTokens} from '../tokens/index';
 
 export function customOnRamp(color?: string, unit?: string) {
   switch (unit) {
@@ -268,7 +266,7 @@ export const Action = styled<SharedPropsArgT>('span', props => {
     $theme.direction === 'rtl' ? 'borderTopLeftRadius' : 'borderTopRightRadius';
   const marginDir: string =
     $theme.direction === 'rtl' ? 'marginRight' : 'marginLeft';
-  return ({
+  return {
     alignItems: 'center',
     [bottomRadiusDir]: $theme.borders.useRoundedCorners
       ? $theme.borders.radius400
@@ -287,7 +285,7 @@ export const Action = styled<SharedPropsArgT>('span', props => {
     transitionProperty: 'all',
     transitionDuration: 'background-color',
     transitionTimingFunction: $theme.animation.easeOutCurve,
-  }: {});
+  } as {};
 });
 
 export const ActionIcon = styled('svg', {});
@@ -328,7 +326,7 @@ export const Root = styled<SharedPropsArgT>('span', props => {
   const {color, backgroundColor, borderColor} = colorMap[$kind][
     getColorStateFromProps(props)
   ]($theme, $color);
-  return ({
+  return {
     ...{
       [SIZE.small]: $theme.typography.LabelSmall,
       [SIZE.medium]: $theme.typography.LabelMedium,
@@ -393,5 +391,5 @@ export const Root = styled<SharedPropsArgT>('span', props => {
                 }`
               : 'none',
           },
-  }: {});
+  } as {};
 });

@@ -5,15 +5,13 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
 
-import {ArrowLeft, ArrowRight, Check} from '../icon/index.js';
-import {Button, KIND, SHAPE} from '../button/index.js';
-import {useStyletron} from '../styles/index.js';
+import {ArrowLeft, ArrowRight, Check} from '../icon/index';
+import {Button, KIND, SHAPE} from '../button/index';
+import {useStyletron} from '../styles/index';
 
-import type {HelperStepsPropsT} from './types.js';
+import type {HelperStepsPropsT} from './types';
 
 export function HelperSteps({
   index,

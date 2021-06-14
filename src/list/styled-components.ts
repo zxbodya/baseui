@@ -4,15 +4,10 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
+import {styled, expandBorderStyles} from '../styles/index';
 
-import {styled, expandBorderStyles} from '../styles/index.js';
-
-import type {
-  StyledContentPropsT,
-  StyledArtworkContainerPropsT,
-} from './types.js';
-import {artworkSizeToValue} from './utils.js';
+import type {StyledContentPropsT, StyledArtworkContainerPropsT} from './types';
+import {artworkSizeToValue} from './utils';
 
 export const StyledRoot = styled<{}>('li', ({$theme}) => {
   return {
@@ -76,7 +71,7 @@ export const StyledArtworkContainer = styled<StyledArtworkContainerPropsT>(
   },
 );
 
-export const StyledLabelContent = styled<{||}>('p', ({$theme}) => {
+export const StyledLabelContent = styled<{}>('p', ({$theme}) => {
   return {
     ...$theme.typography.LabelMedium,
     color: $theme.colors.contentPrimary,
@@ -85,7 +80,7 @@ export const StyledLabelContent = styled<{||}>('p', ({$theme}) => {
   };
 });
 
-export const StyledLabelDescription = styled<{||}>('p', ({$theme}) => {
+export const StyledLabelDescription = styled<{}>('p', ({$theme}) => {
   return {
     ...$theme.typography.ParagraphSmall,
     color: $theme.colors.contentPrimary,
@@ -94,7 +89,7 @@ export const StyledLabelDescription = styled<{||}>('p', ({$theme}) => {
   };
 });
 
-export const StyledLabelSublistContent = styled<{||}>('p', ({$theme}) => {
+export const StyledLabelSublistContent = styled<{}>('p', ({$theme}) => {
   return {
     ...$theme.typography.ParagraphMedium,
     color: $theme.colors.contentPrimary,

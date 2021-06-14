@@ -5,8 +5,6 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 // global Intl
-// @flow
-
 import * as React from 'react';
 import {
   findTimeZone,
@@ -15,15 +13,15 @@ import {
 } from 'timezone-support/dist/index-1900-2050.js';
 import {formatZonedTime} from 'timezone-support/dist/parse-format.js';
 
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import {LocaleContext} from '../locale/index.js';
-import {Select} from '../select/index.js';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import {LocaleContext} from '../locale/index';
+import {Select} from '../select/index';
 
-import type {TimezonePickerPropsT, TimezonePickerStateT} from './types.js';
+import type {TimezonePickerPropsT, TimezonePickerStateT} from './types';
 
 class TimezonePicker extends React.Component<
   TimezonePickerPropsT,
-  TimezonePickerStateT,
+  TimezonePickerStateT
 > {
   state = {timezones: [], value: null};
 

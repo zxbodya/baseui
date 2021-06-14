@@ -4,25 +4,24 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-disable flowtype/generic-spacing */
 import * as React from 'react';
-import type {OverrideT} from '../helpers/overrides.js';
+import type {OverrideT} from '../helpers/overrides';
 
-import type {OptionT} from '../select/index.js';
-import type {SizeT} from '../input/types.js';
+import type {OptionT} from '../select/index';
+import type {SizeT} from '../input/types';
 
 export type TimezonePickerStateT = {
   /** List of timezones from the IANA database. */
-  timezones: OptionT[],
+  timezones: OptionT[];
   /** Value provided to the select component. */
-  value: ?string,
+  value: string | undefined | null;
 };
 
 export type TimezoneT = {
-  id: string,
-  label: string,
-  offset: number,
+  id: string;
+  label: string;
+  offset: number;
 };
 export type TimezonePickerPropsT = {
   /**
@@ -32,22 +31,24 @@ export type TimezonePickerPropsT = {
    * Pacific Daylight Time. The timezone picker will never display PST and PDT together. If you need
    * exact specificity, provide a date. Otherwise it will default to the relevant timezone at render.
    */
-  date?: Date,
+  date?: Date;
   /**
    * Customize the option's label. Useful for translations and optionally mapping from
    * 'America/Los_Angeles' to 'Pacific Time'.
    */
-  mapLabels?: OptionT => React.Node,
+  mapLabels?: (a: OptionT) => React.ReactNode;
   /** Callback for when the timezone selection changes. */
-  onChange?: (value: ?TimezoneT) => mixed,
-  overrides?: {Select?: OverrideT},
+  onChange?: (value?: TimezoneT | null) => unknown;
+  overrides?: {
+    Select?: OverrideT;
+  };
   /**
    * Optional value that can be provided to fully control the component. If not provided,
    * TimezonePicker will manage state internally.
    */
-  value?: ?string,
-  disabled?: boolean,
-  error?: boolean,
-  positive?: boolean,
-  size?: SizeT,
+  value?: string | null;
+  disabled?: boolean;
+  error?: boolean;
+  positive?: boolean;
+  size?: SizeT;
 };

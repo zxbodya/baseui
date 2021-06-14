@@ -4,13 +4,12 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import React, {useRef} from 'react';
-import {Input as DefaultInput} from '../input/index.js';
-import CountrySelect from './country-select.js';
-import {getOverrides, mergeOverrides} from '../helpers/overrides.js';
-import defaultProps from './default-props.js';
-import type {LitePropsT} from './types.js';
+import {Input as DefaultInput} from '../input/index';
+import CountrySelect from './country-select';
+import {getOverrides, mergeOverrides} from '../helpers/overrides';
+import defaultProps from './default-props';
+import type {LitePropsT} from './types';
 
 const {country, ...lightDefaultProps} = defaultProps;
 

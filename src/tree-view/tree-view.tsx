@@ -5,12 +5,10 @@ This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
 
-// @flow
-
 import * as React from 'react';
 
-import TreeNode from './tree-node.js';
-import {StyledTreeItemList} from './styled-components.js';
+import TreeNode from './tree-node';
+import {StyledTreeItemList} from './styled-components';
 import {
   getPrevId,
   getNextId,
@@ -20,11 +18,13 @@ import {
   getExpandableSiblings,
   defaultGetId,
   getCharMatchId,
-} from './utils.js';
-import type {TreeViewPropsT, TreeNodeT, TreeNodeIdT} from './types.js';
-import {isFocusVisible} from '../utils/focusVisible.js';
+} from './utils';
+import type {TreeViewPropsT, TreeNodeT, TreeNodeIdT} from './types';
+import {isFocusVisible} from '../utils/focusVisible';
 
-import {getOverride, getOverrideProps} from '../helpers/overrides.js';
+import {getOverride, getOverrideProps} from '../helpers/overrides';
+
+import type {SyntheticEvent} from 'react';
 
 export default function TreeView(props: TreeViewPropsT) {
   const {
@@ -45,7 +45,9 @@ export default function TreeView(props: TreeViewPropsT) {
   const timeOutRef = React.useRef(null);
   const treeItemRefs: {
     // eslint-disable-next-line flowtype/no-weak-types
-    current: {[key: TreeNodeIdT]: React.ElementRef<any>},
+    current: {
+      [key in TreeNodeIdT]: React.RefObject<any>;
+    };
   } = React.useRef({});
 
   const focusTreeItem = (id: TreeNodeIdT | null) => {
@@ -57,9 +59,9 @@ export default function TreeView(props: TreeViewPropsT) {
     if (node) node.focus();
   };
 
-  const onKeyDown = (e: KeyboardEvent, node: TreeNodeT<>) => {
+  const onKeyDown = (e: KeyboardEvent, node: TreeNodeT) => {
     // eslint-disable-next-line flowtype/no-weak-types
-    const elementId = ((e.target: any): HTMLLIElement).getAttribute(
+    const elementId = (e.target as any as HTMLLIElement).getAttribute(
       'data-nodeid',
     );
     // this check prevents bubbling
@@ -135,7 +137,7 @@ export default function TreeView(props: TreeViewPropsT) {
     }
   };
 
-  const onFocus = (event: SyntheticEvent<>) => {
+  const onFocus = (event: SyntheticEvent) => {
     if (isFocusVisible(event)) {
       setFocusVisible(true);
     }
@@ -144,7 +146,7 @@ export default function TreeView(props: TreeViewPropsT) {
     }
   };
 
-  const onBlur = (event: SyntheticEvent<>) => {
+  const onBlur = (event: SyntheticEvent) => {
     if (focusVisible) {
       setFocusVisible(false);
     }
@@ -168,7 +170,7 @@ export default function TreeView(props: TreeViewPropsT) {
           onKeyDown={onKeyDown}
           onFocus={onFocus}
           onBlur={onBlur}
-          addRef={(id: TreeNodeIdT, ref: React.ElementRef<HTMLLIElement>) => {
+          addRef={(id: TreeNodeIdT, ref: React.RefObject<HTMLLIElement>) => {
             treeItemRefs.current[id] = ref;
           }}
           removeRef={(id: TreeNodeIdT) => {

@@ -4,20 +4,18 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
-
 import * as React from 'react';
 
-import {Button, SIZE as BUTTON_SIZE} from '../button/index.js';
-import {Checkbox, STYLE_TYPE} from '../checkbox/index.js';
-import {useStyletron} from '../styles/index.js';
-import {LocaleContext} from '../locale/index.js';
+import {Button, SIZE as BUTTON_SIZE} from '../button/index';
+import {Checkbox, STYLE_TYPE} from '../checkbox/index';
+import {useStyletron} from '../styles/index';
+import {LocaleContext} from '../locale/index';
 
 type PropsT = {
-  children: React.Node,
-  exclude: boolean,
-  onExcludeChange: () => void,
-  onApply: () => void,
+  children: React.ReactNode;
+  exclude: boolean;
+  onExcludeChange: () => void;
+  onApply: () => void;
 };
 
 function FilterShell(props: PropsT) {

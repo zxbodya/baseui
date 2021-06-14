@@ -4,12 +4,11 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 import * as React from 'react';
 
-import Pagination from './pagination.js';
-import StatefulContainer from './stateful-container.js';
-import type {StatefulPaginationPropsT} from './types.js';
+import Pagination from './pagination';
+import StatefulContainer from './stateful-container';
+import type {StatefulPaginationPropsT} from './types';
 
 export default function StatefulPagination({
   numPages,
@@ -36,6 +35,6 @@ StatefulPagination.defaultProps = {
   initialState: {
     currentPage: 1,
   },
-  stateReducer: (changeType: *, changes: *) => changes,
+  stateReducer: (changeType: any, changes: any) => changes,
   overrides: {},
 };

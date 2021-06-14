@@ -4,7 +4,6 @@ Copyright (c) Uber Technologies, Inc.
 This source code is licensed under the MIT license found in the
 LICENSE file in the root directory of this source tree.
 */
-// @flow
 /* eslint-disable cup/no-undef */
 import * as React from 'react';
 import {render} from '@testing-library/react';
@@ -16,10 +15,10 @@ import {
   mergeOverride,
   mergeConfigurationOverrides,
   getOverrides,
-} from '../overrides.js';
+} from '../overrides';
 
-function getMockComponent(): React.ComponentType<*> {
-  const mock: React.ComponentType<*> = () => null;
+function getMockComponent(): React.ComponentType<any> {
+  const mock: React.ComponentType<any> = () => null;
   return mock;
 }
 
@@ -66,7 +65,7 @@ describe('Helpers - Overrides', () => {
     });
     expect(
       toObjectOverride({
-        component: (CustomComponent: React.ComponentType<*>),
+        component: CustomComponent as React.ComponentType<any>,
         style: {width: '300px'},
       }),
     ).toEqual({
@@ -86,7 +85,7 @@ describe('Helpers - Overrides', () => {
 
     const overrides2 = {
       Root: {
-        component: (CustomFoo: React.ComponentType<*>),
+        component: CustomFoo as React.ComponentType<any>,
       },
       Bar: CustomBar,
     };
